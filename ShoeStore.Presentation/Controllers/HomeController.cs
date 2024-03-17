@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using ShoeStore.Presentation.Models;
 using System.Diagnostics;
 
 namespace ShoeStore.Presentation.Controllers
