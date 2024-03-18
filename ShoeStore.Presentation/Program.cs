@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using ShoeStore.Data.AppDbContext;
+
 namespace ShoeStore.Presentation
 {
     public class Program
@@ -8,6 +11,15 @@ namespace ShoeStore.Presentation
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            #region Context
+
+            builder.Services.AddDbContext<ShoeStoreDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ShoeStoreConnectionString"));
+            });
+
+            #endregion
 
             var app = builder.Build();
 
