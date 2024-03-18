@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ShoeStore.Domain.Entities.User;
 
 namespace ShoeStore.Data.AppDbContext;
 
@@ -15,7 +16,7 @@ public class ShoeStoreDbContext: DbContext
 
     #region Db Sets
 
-    
+    public DbSet<User> Users { get; set; }
 
     #endregion
 
