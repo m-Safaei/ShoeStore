@@ -10,10 +10,4 @@
     <ProjectReference Include="..\ShoeStore.Domain\ShoeStore.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Implementation\" />
-    <Folder Include="Services\Interface\" />
-    <Folder Include="Utilities\" />
-  </ItemGroup>
-
 </Project>

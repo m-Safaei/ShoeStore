@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="DTOs\AdminSide\" />
     <Folder Include="DTOs\UserSide\" />
-    <Folder Include="DTOs\SiteSide\" />
     <Folder Include="Enums\" />
   </ItemGroup>
 
