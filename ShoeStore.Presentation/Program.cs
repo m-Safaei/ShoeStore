@@ -1,5 +1,10 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using ShoeStore.Application.Services.Implementation;
+using ShoeStore.Application.Services.Interface;
 using ShoeStore.Data.AppDbContext;
+using ShoeStore.Data.Repositories;
+using ShoeStore.Domain.IRepositories;
 
 namespace ShoeStore.Presentation
 {
@@ -12,12 +17,35 @@ namespace ShoeStore.Presentation
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+
             #region Context
 
             builder.Services.AddDbContext<ShoeStoreDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ShoeStoreConnectionString"));
             });
+
+            #endregion
+
+            #region Authentication
+
+            builder.Services.AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                })
+                // Add Cookie settings
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Account/Register";
+                    options.LoginPath = "/Account/Login";
+                    options.LogoutPath = "/Logout";
+                    options.ExpireTimeSpan = TimeSpan.FromDays(30);
+                });
 
             #endregion
 
@@ -36,6 +64,7 @@ namespace ShoeStore.Presentation
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
