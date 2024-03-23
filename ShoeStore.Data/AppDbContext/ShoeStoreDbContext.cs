@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoeStore.Domain.Entities.Category;
 using ShoeStore.Domain.Entities.Color_Size;
+using ShoeStore.Domain.Entities.ContactUs;
 using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.Entities.User;
 
@@ -25,6 +26,9 @@ public class ShoeStoreDbContext: DbContext
     public DbSet<ProductCategory> ProductCategories { get; set; }
     public DbSet<Color> Colors { get; set; }
     public DbSet<Size> Sizes { get; set; }
+    public DbSet<ContactUs>contactUs { get; set; }
+
+    
 
     #endregion
 

@@ -1,0 +1,93 @@
+﻿@model ShoeStore.Domain.DTOs.SiteSide.ContactUs.ContactUsDTO
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="theme-color-1 rtl">
+    <!--section start-->
+    <section class="contact-page section-b-space">
+        <div class="container">
+            <div class="row section-b-space">
+                <div class="col-lg-7 map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1605.811957341231!2d25.45976406005396!3d36.3940974010114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1550912388321" allowfullscreen=""></iframe>
+                </div>
+                <div class="col-lg-5">
+                    <div class="contact-right">
+                        <ul>
+                            <li>
+                                <div class="contact-icon"><img src="../assets/images/icon/phone.png" alt="عکس محصول ">
+                                    <h6>تماس با ما </h6>
+                                </div>
+                                <div class="media-body">
+                                    <p>+91 123 - 456 - 7890</p>
+                                    <p>+86 163 - 451 - 7894</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact-icon"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <h6>آدرس </h6>
+                                </div>
+                                <div class="media-body">
+                                    <p>ایران،یزد،خیابان مطهری </p>
+                                    <p>ایران،یزد،خیابان مطهری </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact-icon"><img src="../assets/images/icon/email.png" alt="عکس محصول ">
+                                    <h6>آدرس </h6>
+                                </div>
+                                <div class="media-body">
+                                    <p>Support@Shopcart.com</p>
+                                    <p>info@shopcart.com</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact-icon"><i class="fa fa-fax" aria-hidden="true"></i>
+                                    <h6>فکس</h6>
+                                </div>
+                                <div class="media-body">
+                                    <p>Support@Shopcart.com</p>
+                                    <p>info@shopcart.com</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <form asp-action="ContactUs" asp-controller="ContactUs" method="post">
+                        <div class="form-row row">
+                            <div class="col-md-6">
+                                <label for="name">نام کوچک</label>
+                                <input type="text"  class="form-control" asp-for ="FirstName" id="name" placeholder="نام خود را وارد کنید " required="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email">نام خانوادگی </label>
+                                <input type="text" class="form-control" asp-for = "LastName" id="last-name" placeholder="ایمیل" required="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">شماره تلفن</label>
+                                <input type="text" class="form-control" asp-for ="Mobile" id="review" placeholder="شماره تلفن را وارد کنید" required="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email">ایمیل</label>
+                                <input type="email" class="form-control" asp-for ="Email" id="email" placeholder="ایمیل" required="">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="review">پیام خود را وارد کنید</label>
+                                <textarea class="form-control" asp-for="Messege" placeholder="پیام خود را وارد کنید" id="exampleFormControlTextarea1" rows="6"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn btn-solid" type="submit">ارسال پیام شما </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Section ends-->         
+</body>
+
+</html>
