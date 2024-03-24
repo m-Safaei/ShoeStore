@@ -106,6 +106,9 @@ namespace ShoeStore.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -128,7 +131,7 @@ namespace ShoeStore.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("contactUs");
+                    b.ToTable("ContactUs");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Product", b =>

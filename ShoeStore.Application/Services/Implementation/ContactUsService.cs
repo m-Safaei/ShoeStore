@@ -23,6 +23,7 @@ public class ContactUsService : IContactUsService
             Email = contactUs.Email,
             Messege = contactUs.Messege,
             Mobile = contactUs.Mobile,
+           CreateDate  = DateTime.Now,
         };
         _contactUsRepository.AddContactUsToDatabase(contact);
         _contactUsRepository.SaveChange();

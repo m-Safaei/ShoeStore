@@ -15,7 +15,7 @@ public class ContactUsRepository : IContactUsRepository
 
     public void AddContactUsToDatabase(ContactUs contactUs)
     {
-        _context.contactUs.Add(contactUs);
+        _context.ContactUs.Add(contactUs);
     }
 
     public void SaveChange()

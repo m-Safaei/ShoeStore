@@ -12,8 +12,8 @@ using ShoeStore.Data.AppDbContext;
 namespace ShoeStore.Data.Migrations
 {
     [DbContext(typeof(ShoeStoreDbContext))]
-    [Migration("20240322094447_Initial-ContactUs-Table")]
-    partial class InitialContactUsTable
+    [Migration("20240324150256_Change-ContactUs-Migration")]
+    partial class ChangeContactUsMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -109,6 +109,9 @@ namespace ShoeStore.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -131,7 +134,7 @@ namespace ShoeStore.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("contactUs");
+                    b.ToTable("ContactUs");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Product", b =>

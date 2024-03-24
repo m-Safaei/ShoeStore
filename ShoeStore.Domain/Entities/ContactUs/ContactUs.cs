@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using ShoeStore.Domain.Common;
 
 namespace ShoeStore.Domain.Entities.ContactUs;
 
-public class ContactUs
+public class ContactUs : BaseEntity
 {
-
-    public int Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Mobile { get; set; }
