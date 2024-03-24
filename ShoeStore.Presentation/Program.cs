@@ -5,6 +5,7 @@ using ShoeStore.Application.Services.Interface;
 using ShoeStore.Data.AppDbContext;
 using ShoeStore.Data.Repositories;
 using ShoeStore.Domain.IRepositories;
+using System;
 
 namespace ShoeStore.Presentation
 {
@@ -19,6 +20,8 @@ namespace ShoeStore.Presentation
 
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IContactUsRepository, ContactUsRepository>();
+            builder.Services.AddScoped<IContactUsService, ContactUsService>();
 
             #region Context
 
