@@ -12,8 +12,8 @@ using ShoeStore.Data.AppDbContext;
 namespace ShoeStore.Data.Migrations
 {
     [DbContext(typeof(ShoeStoreDbContext))]
-    [Migration("20240324150256_Change-ContactUs-Migration")]
-    partial class ChangeContactUsMigration
+    [Migration("20240327130133_ContactUs-Product")]
+    partial class ContactUsProduct
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
