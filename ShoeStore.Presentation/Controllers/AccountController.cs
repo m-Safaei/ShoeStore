@@ -36,14 +36,14 @@ public class AccountController : Controller
             bool result = await _userService.RegisterUser(userDto, cancellation);
             if (result)
             {
-                var user = _userService.GetUserByMobileAsync(userDto.Mobile, cancellation);
+                var user = await _userService.GetUserByMobileAsync(userDto.Mobile, cancellation);
 
                 //Set Cookie
                 var claims = new List<Claim>
                     {
                         new (ClaimTypes.NameIdentifier, user.Id.ToString()),
-                        new (ClaimTypes.MobilePhone, userDto.Mobile),
-                        new (ClaimTypes.Name, userDto.FirstName + " " + userDto.LastName),
+                        new (ClaimTypes.MobilePhone, user.Mobile),
+                        new (ClaimTypes.Name, user.FirstName + " " + user.LastName),
                     };
 
                 var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
