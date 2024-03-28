@@ -62,8 +62,8 @@ public class AccountController : Controller
             }
         }
 
-        TempData["ErrorMessage"] = "کاربری با شماره موبایل وارد شده در سیستم وجود دارد.";
-        return View();
+        TempData["InfoMessage"] = "کاربری با شماره موبایل وارد شده در سیستم وجود دارد.";
+        return View(userDto);
     }
     #endregion
 

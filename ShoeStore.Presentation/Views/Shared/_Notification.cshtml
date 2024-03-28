@@ -1,0 +1,14 @@
+﻿@if (TempData["InfoMessage"] != null)
+{
+    <script>
+        Toastify({
+
+            text: "کاربری با شماره موبایل وارد شده در سیستم وجود دارد",
+
+            duration: 4000,
+            gravity: "bottom",
+            close: true
+
+        }).showToast();
+    </script>
+}
