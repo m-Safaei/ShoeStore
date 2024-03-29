@@ -22,7 +22,7 @@ public class AccountController : Controller
     #endregion
 
     #region Register
-
+    [HttpGet("Register")]
     public IActionResult Register()
     {
         return View();
@@ -55,14 +55,18 @@ public class AccountController : Controller
 
                 if (!string.IsNullOrEmpty(userDto.ReturnUrl))
                 {
+                    TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
                     return Redirect(userDto.ReturnUrl);
                 }
 
+                TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
                 return RedirectToAction("Index", "Home");
             }
+
+            TempData["InfoMessage"] = "کاربری با شماره موبایل وارد شده در سیستم وجود دارد.";
         }
 
-        TempData["InfoMessage"] = "کاربری با شماره موبایل وارد شده در سیستم وجود دارد.";
+        
         return View(userDto);
     }
     #endregion
