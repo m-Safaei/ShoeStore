@@ -32,7 +32,7 @@ public class AccountController : Controller
         return View();
     }
 
-    [HttpPost, ValidateAntiForgeryToken]
+    [HttpPost("Register"), ValidateAntiForgeryToken]
     public async Task<IActionResult> Register(UserRegisterDto userDto, CancellationToken cancellation = default)
     {
         if (ModelState.IsValid)
@@ -70,7 +70,7 @@ public class AccountController : Controller
             TempData["InfoMessage"] = "کاربری با شماره موبایل وارد شده در سیستم وجود دارد.";
         }
 
-        
+
         return View(userDto);
     }
     #endregion
@@ -83,7 +83,13 @@ public class AccountController : Controller
 
     #region Logout
 
+    [HttpGet("Logout")]
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync();
 
+        return RedirectToAction("Index", "Home");
+    }
 
     #endregion
 }
