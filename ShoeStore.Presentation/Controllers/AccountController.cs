@@ -25,6 +25,10 @@ public class AccountController : Controller
     [HttpGet("Register")]
     public IActionResult Register()
     {
+        if (User.Identity.IsAuthenticated)
+        {
+            return RedirectToAction("Index", "Home");
+        }
         return View();
     }
 
