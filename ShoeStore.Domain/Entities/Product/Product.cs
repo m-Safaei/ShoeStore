@@ -11,8 +11,8 @@ public class Product : BaseEntity
     public List<string>? ProductImages { get; set; }
     public bool IsDelete { get; set; }
 
-    public List<int>? ProductCategoryId { get; set; }
-    public List<ProductCategory>? ProductCategories {  get; set; }
-    public List<int>? ProductItemId { get; set; }
+    public int ProductCategoryId { get; set; }
+    public ProductCategory? ProductCategory { get; set; }
+
     public List<ProductItem>? productItems { get; set; }
 }
