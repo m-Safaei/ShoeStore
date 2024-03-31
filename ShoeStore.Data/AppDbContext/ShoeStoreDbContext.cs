@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ShoeStore.Domain.Entities.Category;
+using ShoeStore.Domain.Entities.ProductCategory;
 using ShoeStore.Domain.Entities.Color_Size;
 using ShoeStore.Domain.Entities.ContactUs;
 using ShoeStore.Domain.Entities.Product;
