@@ -1,1 +1,7 @@
-﻿<li><a href="category-page(list-view).html">لیست </a></li>
+﻿@model List<ShoeStore.Domain.DTOs.SiteSide.Category.CategoryDto>
+
+@foreach (var category in Model)
+{
+    <li><a href="category-page(list-view).html">@category.Title </a></li>
+}
+
