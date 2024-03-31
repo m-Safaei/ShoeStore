@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoeStore.Data.AppDbContext;
-using ShoeStore.Domain.Entities.Category;
+using ShoeStore.Domain.Entities.ProductCategory;
 using ShoeStore.Domain.IRepositories;
 
 namespace ShoeStore.Data.Repositories;

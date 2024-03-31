@@ -44,8 +44,8 @@ namespace ShoeStore.Presentation
                 // Add Cookie settings
                 .AddCookie(options =>
                 {
-                    options.LoginPath = "/Account/Register";
-                    options.LoginPath = "/Account/Login";
+                    options.LoginPath = "/Register";
+                    options.LoginPath = "/Login";
                     options.LogoutPath = "/Logout";
                     options.ExpireTimeSpan = TimeSpan.FromDays(30);
                 });
