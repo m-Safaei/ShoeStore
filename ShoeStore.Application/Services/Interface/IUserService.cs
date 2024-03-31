@@ -13,6 +13,6 @@ public interface IUserService
 
     Task<bool> RegisterUser(UserRegisterDto userDto, CancellationToken cancellation);
 
-    Task<User?> GetUserByMobileAsync(string mobile, CancellationToken cancellation);
+    Task<UserDto> GetUserByMobileAsync(string mobile, CancellationToken cancellation);
 }
 

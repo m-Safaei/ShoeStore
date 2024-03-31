@@ -11,12 +11,10 @@
     <meta name="author" content="multikart">
     <link rel="icon" href="~/images/favicon/10.png" type="image/x-icon">
     <link rel="shortcut icon" href="~/images/favicon/10.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <title>Multikart - قالب Html تجارت الکترونیک چند منظوره</title>
 
     <!--Google font-->
-
-   
-
     <!-- Icons -->
     <link rel="stylesheet" type="text/css" href="~/css/vendors/font-awesome.css">
 
@@ -38,7 +36,7 @@
 
 </head>
 
-<body class="theme-color-10 rtl"> 
+<body class="theme-color-10 rtl">
 
     <!-- loader start -->
     <div class="loader_skeleton">
@@ -56,9 +54,14 @@
                         </div>
                         <div class="col-lg-6 text-end">
                             <ul class="header-dropdown">
-                                <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i>
-                                        علاقه مندی</a></li>
-                                <li class="onhover-dropdown mobile-account"><i class="fa fa-user" aria-hidden="true"></i> حساب من 
+                                <li class="mobile-wishlist">
+                                    <a href="#">
+                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                        علاقه مندی
+                                    </a>
+                                </li>
+                                <li class="onhover-dropdown mobile-account">
+                                    <i class="fa fa-user" aria-hidden="true"></i> حساب من
                                 </li>
                             </ul>
                         </div>
@@ -70,7 +73,8 @@
                     <div class="col-sm-12">
                         <div class="main-menu border-section border-top-0">
                             <div class="menu-left">
-                                <div class="navbar"><a href="javascript:void(0)" onclick="openNav()"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i></a>
+                                <div class="navbar">
+                                    <a href="javascript:void(0)" onclick="openNav()"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                             <div class="brand-logo layout2-logo">
@@ -83,7 +87,8 @@
                                             <div><img src="~/images/icon/search.png" onclick="openSearch()" class="img-fluid blur-up lazyload" alt=""> <i class="ti-search" onclick="openSearch()"></i></div>
                                         </li>
                                         <li class="onhover-div mobile-setting">
-                                            <div><img src="~/images/icon/setting.png" class="img-fluid blur-up lazyload" alt=""> <i class="ti-settings"></i>
+                                            <div>
+                                                <img src="~/images/icon/setting.png" class="img-fluid blur-up lazyload" alt=""> <i class="ti-settings"></i>
                                             </div>
                                         </li>
                                         <li class="onhover-div mobile-cart">
@@ -122,7 +127,8 @@
                                     <li>
                                         <a href="#">صفحات</a>
                                     </li>
-                                    <li><a href="#">وبلاگ</a>
+                                    <li>
+                                        <a href="#">وبلاگ</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -280,8 +286,6 @@
         </div>
     </div>
     <!-- loader end -->
-
-
     <!-- header start -->
     <header class="header-2">
         <div class="mobile-fix-option"></div>
@@ -298,13 +302,27 @@
                     </div>
                     <div class="col-lg-6 text-end">
                         <ul class="header-dropdown">
-                            <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i>
-                                    علاقه مندی</a></li>
-                            <li class="onhover-dropdown mobile-account"><i class="fa fa-user" aria-hidden="true"></i>
-                               حساب کاربری
+                            <li class="mobile-wishlist">
+                                <a href="#">
+                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                    علاقه مندی
+                                </a>
+                            </li>
+                            <li class="onhover-dropdown mobile-account">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                حساب کاربری
                                 <ul class="onhover-show-div">
-                                    <li><a href="login.html">ورود</a></li>
-                                    <li><a asp-controller="Account" asp-action="Register">ثبت نام</a></li>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <li><a href="login.html">پروفایل</a></li>
+                                        <li><a asp-controller="Account" asp-action="Logout">خروج</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="login.html">ورود</a></li>
+                                        <li><a asp-controller="Account" asp-action="Register">ثبت نام</a></li>
+                                    }
+                                    
                                 </ul>
                             </li>
                         </ul>
@@ -317,7 +335,8 @@
                 <div class="col-sm-12">
                     <div class="main-menu border-section border-top-0">
                         <div class="menu-left">
-                            <div class="navbar"><a href="javascript:void(0)" onclick="openNav()"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i></a>
+                            <div class="navbar">
+                                <a href="javascript:void(0)" onclick="openNav()"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i></a>
                                 <div id="mySidenav" class="sidenav">
                                     <a href="javascript:void(0)" class="sidebar-overlay" onclick="closeNav()"></a>
                                     <nav>
@@ -326,7 +345,8 @@
                                         </a>
                                         <!-- Vertical Menu -->
                                         <ul id="sub-menu" class="sm pixelstrap sm-vertical">
-                                            <li><a href="#">تن پوش</a>
+                                            <li>
+                                                <a href="#">تن پوش</a>
                                                 <ul class="mega-menu clothing-menu">
                                                     <li>
                                                         <div class="row m-0">
@@ -371,12 +391,14 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">کیف</a>
+                                            <li>
+                                                <a href="#">کیف</a>
                                                 <ul>
                                                     <li><a href="#">کیف خرید</a></li>
                                                     <li><a href="#">کیف لپ تاپ</a></li>
                                                     <li><a href="#">کیف پول</a></li>
-                                                    <li><a href="#">کیف پول</a>
+                                                    <li>
+                                                        <a href="#">کیف پول</a>
                                                         <ul>
                                                             <li><a href="#">کیف پول</a></li>
                                                             <li><a href="#">کیف پول</a></li>
@@ -386,7 +408,8 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">کفش</a>
+                                            <li>
+                                                <a href="#">کفش</a>
                                                 <ul>
                                                     <li><a href="#">کفش ورزشی</a></li>
                                                     <li><a href="#">کفش رسمی</a></li>
@@ -394,24 +417,28 @@
                                                 </ul>
                                             </li>
                                             <li><a href="#">ساعت</a></li>
-                                            <li><a href="#">لوازم جانبی</a>
+                                            <li>
+                                                <a href="#">لوازم جانبی</a>
                                                 <ul>
                                                     <li><a href="#">جواهرات</a></li>
                                                     <li><a href="#">کلاه</a></li>
                                                     <li><a href="#">جواهرات گرانبها</a></li>
-                                                    <li><a href="#">بیشتر ...</a>
+                                                    <li>
+                                                        <a href="#">بیشتر ...</a>
                                                         <ul>
                                                             <li><a href="#">گردنبند</a></li>
                                                             <li><a href="#">گوشواره</a></li>
                                                             <li><a href="#">دست بند</a></li>
-                                                            <li><a href="#">لوازم جانبی</a>
+                                                            <li>
+                                                                <a href="#">لوازم جانبی</a>
                                                                 <ul>
                                                                     <li><a href="#">روابط</a></li>
                                                                     <li><a href="#">دکمه سر دست</a></li>
                                                                     <li><a href="#">مربع های جیب</a></li>
                                                                     <li><a href="#">کمربند</a></li>
                                                                     <li><a href="#">پوشیدنی</a></li>
-                                                                    <li><a href="#">بیشتر ....</a>
+                                                                    <li>
+                                                                        <a href="#">بیشتر ....</a>
                                                                         <ul>
                                                                             <li><a href="#">هدیه</a></li>
                                                                             <li><a href="#">وسایل سفر</a></li>
@@ -427,12 +454,14 @@
                                                 </ul>
                                             </li>
                                             <li><a href="#">طراحی خانه</a></li>
-                                            <li><a href="#">زیبایی</a>
+                                            <li>
+                                                <a href="#">زیبایی</a>
                                                 <ul>
                                                     <li><a href="#">آرایشی</a></li>
                                                     <li><a href="#">مراقیت از پوست</a></li>
                                                     <li><a href="#">آرایشی</a></li>
-                                                    <li><a href="#">بیشتر</a>
+                                                    <li>
+                                                        <a href="#">بیشتر</a>
                                                         <ul>
                                                             <li><a href="#">عطر</a></li>
                                                             <li><a href="#">مراقیت از پوست</a></li>
@@ -458,7 +487,8 @@
                                     <li class="onhover-div mobile-search">
                                         <div><img src="~/images/icon/search.png" onclick="openSearch()" class="img-fluid blur-up lazyload" alt=""> <i class="ti-search" onclick="openSearch()"></i></div>
                                         <div id="search-overlay" class="search-overlay">
-                                            <div><span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+                                            <div>
+                                                <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
                                                 <div class="overlay-content">
                                                     <div class="container">
                                                         <div class="row">
@@ -477,7 +507,8 @@
                                         </div>
                                     </li>
                                     <li class="onhover-div mobile-setting">
-                                        <div><img src="~/images/icon/setting.png" class="img-fluid blur-up lazyload" alt=""> <i class="ti-settings"></i>
+                                        <div>
+                                            <img src="~/images/icon/setting.png" class="img-fluid blur-up lazyload" alt=""> <i class="ti-settings"></i>
                                         </div>
                                         <div class="show-div setting">
                                             <h6>زبان </h6>
@@ -544,7 +575,8 @@
                                         <li><a href="category-page.html">نوار کنار چپ</a></li>
                                         <li><a href="category-page(right).html">نوار کنار راست</a></li>
                                         <li><a href="category-page(no-sidebar).html">بدون نوار</a></li>
-                                        <li><a href="category-page(sidebar-popup).html">پنجره کناری</a>
+                                        <li>
+                                            <a href="category-page(sidebar-popup).html">پنجره کناری</a>
                                         </li>
                                         <li><a href="category-page(metro).html">مترو</a></li>
                                         <li><a href="category-page(full-width).html">تمام صفحه</a></li>
@@ -563,18 +595,22 @@
                                             <a href="#">نوار کنار </a>
                                             <ul>
                                                 <li><a href="product-page.html">نوار کنار چپ</a></li>
-                                                <li><a href="product-page(right-sidebar).html">نوار کنار راست</a>
+                                                <li>
+                                                    <a href="product-page(right-sidebar).html">نوار کنار راست</a>
                                                 </li>
-                                                <li><a href="product-page(no-sidebar).html">بدون نوار</a>
+                                                <li>
+                                                    <a href="product-page(no-sidebar).html">بدون نوار</a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
                                             <a href="#">تصویر کوچک </a>
                                             <ul>
-                                                <li><a href="product-page(left-image).html">عکس چپ</a>
+                                                <li>
+                                                    <a href="product-page(left-image).html">عکس چپ</a>
                                                 </li>
-                                                <li><a href="product-page(right-image).html">عکس راست </a>
+                                                <li>
+                                                    <a href="product-page(right-image).html">عکس راست </a>
                                                 </li>
                                                 <li><a href="product-page(image-outside).html">تصویر بیرونی</a></li>
                                             </ul>
@@ -582,11 +618,14 @@
                                         <li>
                                             <a href="#">سه ستون </a>
                                             <ul>
-                                                <li><a href="product-page(3-col-left).html">تصویر چپ</a>
+                                                <li>
+                                                    <a href="product-page(3-col-left).html">تصویر چپ</a>
                                                 </li>
-                                                <li><a href="product-page(3-col-right).html">تصویر راست</a>
+                                                <li>
+                                                    <a href="product-page(3-col-right).html">تصویر راست</a>
                                                 </li>
-                                                <li><a href="product-page(3-column).html">تصویر پایین</a>
+                                                <li>
+                                                    <a href="product-page(3-column).html">تصویر پایین</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -598,12 +637,14 @@
                                         <li><a href="product-page(vertical-tab).html">زبانه عمودی</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">صفحات</a>
+                                <li>
+                                    <a href="#">صفحات</a>
                                     <ul>
                                         <li>
                                             <a href="#">فروشنده </a>
                                             <ul>
-                                                <li><a href="vendor-dashboard.html">داشبورد فروشنده</a>
+                                                <li>
+                                                    <a href="vendor-dashboard.html">داشبورد فروشنده</a>
                                                 </li>
                                                 <li><a href="vendor-profile.html">پروفایل فروشنده</a></li>
                                                 <li><a href="become-vendor.html">فروشنده شدن</a></li>
@@ -628,19 +669,22 @@
                                         <li>
                                             <a href="#">پروفایل</a>
                                             <ul>
-                                                <li><a href="">شبکه </a>
+                                                <li>
+                                                    <a href="">شبکه </a>
                                                     <ul>
                                                         <li><a href="grid-2-col.html">شبکه 2 </a></li>
                                                         <li><a href="grid-3-col.html">شبکه 3 </a></li>
                                                         <li><a href="grid-4-col.html">شبکه 4 </a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="">نمونه کار </a>
+                                                <li>
+                                                    <a href="">نمونه کار </a>
                                                     <ul>
                                                         <li><a href="masonary-2-grid.html">شبکه 2 </a></li>
                                                         <li><a href="masonary-3-grid.html">شبکه 3 </a></li>
                                                         <li><a href="masonary-4-grid.html">شبکه 4  </a></li>
-                                                        <li><a href="masonary-fullwidth.html">تمام صفحه</a>
+                                                        <li>
+                                                            <a href="masonary-fullwidth.html">تمام صفحه</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -648,7 +692,8 @@
                                         </li>
                                         <li><a href="about-page.html">درباره ما </a></li>
                                         <li><a href="search.html">جستجو </a></li>
-                                        <li><a href="review.html">مرور </a>
+                                        <li>
+                                            <a href="review.html">مرور </a>
                                         </li>
                                         <li>
                                             <a href="#">مقایسه</a>
@@ -659,7 +704,8 @@
                                         </li>
                                         <li><a href="collection.html">مجموعه</a></li>
                                         <li><a href="lookbook.html">چشم انداز </a></li>
-                                        <li><a href="sitemap.html">سایت مپ </a>
+                                        <li>
+                                            <a href="sitemap.html">سایت مپ </a>
                                         </li>
                                         <li><a href="404.html">404</a></li>
                                         <li><a href="coming-soon.html">بزودی </a></li>
@@ -683,8 +729,6 @@
         </div>
     </header>
     <!-- header end -->
-
-
     @RenderBody()
 
 
@@ -777,8 +821,6 @@
         </div>
     </section>
     <!-- blog section end -->
-
-
     <!-- service -->
     <div class="container">
         <section class="service border-section small-section border-top-0">
@@ -797,13 +839,13 @@
                 <div class="col-md-4 service-block">
                     <div class="media">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewbox="0 0 480 480" style="enable-background:new 0 0 480 480;" xml:space="preserve" width="512px" height="512px">
-                            <g>
-                                <g>
-                                    <g>
-                                        <path d="M472,432h-24V280c-0.003-4.418-3.588-7.997-8.006-7.994c-2.607,0.002-5.05,1.274-6.546,3.41l-112,160     c-2.532,3.621-1.649,8.609,1.972,11.14c1.343,0.939,2.941,1.443,4.58,1.444h104v24c0,4.418,3.582,8,8,8s8-3.582,8-8v-24h24     c4.418,0,8-3.582,8-8S476.418,432,472,432z M432,432h-88.64L432,305.376V432z" fill="#ff4c3b"></path>
-                                        <path d="M328,464h-94.712l88.056-103.688c0.2-0.238,0.387-0.486,0.56-0.744c16.566-24.518,11.048-57.713-12.56-75.552     c-28.705-20.625-68.695-14.074-89.319,14.631C212.204,309.532,207.998,322.597,208,336c0,4.418,3.582,8,8,8s8-3.582,8-8     c-0.003-26.51,21.486-48.002,47.995-48.005c10.048-0.001,19.843,3.151,28.005,9.013c16.537,12.671,20.388,36.007,8.8,53.32     l-98.896,116.496c-2.859,3.369-2.445,8.417,0.924,11.276c1.445,1.226,3.277,1.899,5.172,1.9h112c4.418,0,8-3.582,8-8     S332.418,464,328,464z" fill="#ff4c3b"></path>
-                                        <path d="M216.176,424.152c0.167-4.415-3.278-8.129-7.693-8.296c-0.001,0-0.002,0-0.003,0     C104.11,411.982,20.341,328.363,16.28,224H48c4.418,0,8-3.582,8-8s-3.582-8-8-8H16.28C20.283,103.821,103.82,20.287,208,16.288     V40c0,4.418,3.582,8,8,8s8-3.582,8-8V16.288c102.754,3.974,185.686,85.34,191.616,188l-31.2-31.2     c-3.178-3.07-8.242-2.982-11.312,0.196c-2.994,3.1-2.994,8.015,0,11.116l44.656,44.656c0.841,1.018,1.925,1.807,3.152,2.296     c0.313,0.094,0.631,0.172,0.952,0.232c0.549,0.198,1.117,0.335,1.696,0.408c0.08,0,0.152,0,0.232,0c0.08,0,0.152,0,0.224,0     c0.609-0.046,1.211-0.164,1.792-0.352c0.329-0.04,0.655-0.101,0.976-0.184c1.083-0.385,2.069-1.002,2.888-1.808l45.264-45.248     c3.069-3.178,2.982-8.242-0.196-11.312c-3.1-2.994-8.015-2.994-11.116,0l-31.976,31.952     C425.933,90.37,331.38,0.281,216.568,0.112C216.368,0.104,216.2,0,216,0s-0.368,0.104-0.568,0.112     C96.582,0.275,0.275,96.582,0.112,215.432C0.112,215.632,0,215.8,0,216s0.104,0.368,0.112,0.568     c0.199,115.917,91.939,210.97,207.776,215.28h0.296C212.483,431.847,216.013,428.448,216.176,424.152z" fill="#ff4c3b"></path>
-                                        <path d="M323.48,108.52c-3.124-3.123-8.188-3.123-11.312,0L226.2,194.48c-6.495-2.896-13.914-2.896-20.408,0l-40.704-40.704     c-3.178-3.069-8.243-2.981-11.312,0.197c-2.994,3.1-2.994,8.015,0,11.115l40.624,40.624c-5.704,11.94-0.648,26.244,11.293,31.947     c9.165,4.378,20.095,2.501,27.275-4.683c7.219-7.158,9.078-18.118,4.624-27.256l85.888-85.888     C326.603,116.708,326.603,111.644,323.48,108.52z M221.658,221.654c-0.001,0.001-0.001,0.001-0.002,0.002     c-3.164,3.025-8.148,3.025-11.312,0c-3.125-3.124-3.125-8.189-0.002-11.314c3.124-3.125,8.189-3.125,11.314-0.002     C224.781,213.464,224.781,218.53,221.658,221.654z" fill="#ff4c3b"></path>
+                        <g>
+                        <g>
+                        <g>
+                        <path d="M472,432h-24V280c-0.003-4.418-3.588-7.997-8.006-7.994c-2.607,0.002-5.05,1.274-6.546,3.41l-112,160     c-2.532,3.621-1.649,8.609,1.972,11.14c1.343,0.939,2.941,1.443,4.58,1.444h104v24c0,4.418,3.582,8,8,8s8-3.582,8-8v-24h24     c4.418,0,8-3.582,8-8S476.418,432,472,432z M432,432h-88.64L432,305.376V432z" fill="#ff4c3b"></path>
+                        <path d="M328,464h-94.712l88.056-103.688c0.2-0.238,0.387-0.486,0.56-0.744c16.566-24.518,11.048-57.713-12.56-75.552     c-28.705-20.625-68.695-14.074-89.319,14.631C212.204,309.532,207.998,322.597,208,336c0,4.418,3.582,8,8,8s8-3.582,8-8     c-0.003-26.51,21.486-48.002,47.995-48.005c10.048-0.001,19.843,3.151,28.005,9.013c16.537,12.671,20.388,36.007,8.8,53.32     l-98.896,116.496c-2.859,3.369-2.445,8.417,0.924,11.276c1.445,1.226,3.277,1.899,5.172,1.9h112c4.418,0,8-3.582,8-8     S332.418,464,328,464z" fill="#ff4c3b"></path>
+                        <path d="M216.176,424.152c0.167-4.415-3.278-8.129-7.693-8.296c-0.001,0-0.002,0-0.003,0     C104.11,411.982,20.341,328.363,16.28,224H48c4.418,0,8-3.582,8-8s-3.582-8-8-8H16.28C20.283,103.821,103.82,20.287,208,16.288     V40c0,4.418,3.582,8,8,8s8-3.582,8-8V16.288c102.754,3.974,185.686,85.34,191.616,188l-31.2-31.2     c-3.178-3.07-8.242-2.982-11.312,0.196c-2.994,3.1-2.994,8.015,0,11.116l44.656,44.656c0.841,1.018,1.925,1.807,3.152,2.296     c0.313,0.094,0.631,0.172,0.952,0.232c0.549,0.198,1.117,0.335,1.696,0.408c0.08,0,0.152,0,0.232,0c0.08,0,0.152,0,0.224,0     c0.609-0.046,1.211-0.164,1.792-0.352c0.329-0.04,0.655-0.101,0.976-0.184c1.083-0.385,2.069-1.002,2.888-1.808l45.264-45.248     c3.069-3.178,2.982-8.242-0.196-11.312c-3.1-2.994-8.015-2.994-11.116,0l-31.976,31.952     C425.933,90.37,331.38,0.281,216.568,0.112C216.368,0.104,216.2,0,216,0s-0.368,0.104-0.568,0.112     C96.582,0.275,0.275,96.582,0.112,215.432C0.112,215.632,0,215.8,0,216s0.104,0.368,0.112,0.568     c0.199,115.917,91.939,210.97,207.776,215.28h0.296C212.483,431.847,216.013,428.448,216.176,424.152z" fill="#ff4c3b"></path>
+                        <path d="M323.48,108.52c-3.124-3.123-8.188-3.123-11.312,0L226.2,194.48c-6.495-2.896-13.914-2.896-20.408,0l-40.704-40.704     c-3.178-3.069-8.243-2.981-11.312,0.197c-2.994,3.1-2.994,8.015,0,11.115l40.624,40.624c-5.704,11.94-0.648,26.244,11.293,31.947     c9.165,4.378,20.095,2.501,27.275-4.683c7.219-7.158,9.078-18.118,4.624-27.256l85.888-85.888     C326.603,116.708,326.603,111.644,323.48,108.52z M221.658,221.654c-0.001,0.001-0.001,0.001-0.002,0.002     c-3.164,3.025-8.148,3.025-11.312,0c-3.125-3.124-3.125-8.189-0.002-11.314c3.124-3.125,8.189-3.125,11.314-0.002     C224.781,213.464,224.781,218.53,221.658,221.654z" fill="#ff4c3b"></path>
                                     </g>
                                 </g>
                             </g>
@@ -834,8 +876,6 @@
         </section>
     </div>
     <!-- service end -->
-
-
     <!-- instagram section -->
     <section class="instagram ratio_square">
         <div class="container">
@@ -845,63 +885,72 @@
                     <div class="slide-5 no-arrow slick-instagram">
                         <div>
                             <a href="#">
-                                <div class="instagram-box"><img src="~/images/slider/shoes/2.jpg" class="bg-img" alt="img">
+                                <div class="instagram-box">
+                                    <img src="~/images/slider/shoes/2.jpg" class="bg-img" alt="img">
                                     <div class="overlay"><i class="fa fa-instagram"></i></div>
                                 </div>
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"><img src="~/images/slider/shoes/3.jpg" class="bg-img" alt="img">
+                                <div class="instagram-box">
+                                    <img src="~/images/slider/shoes/3.jpg" class="bg-img" alt="img">
                                     <div class="overlay"><i class="fa fa-instagram"></i></div>
                                 </div>
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"><img src="~/images/slider/shoes/4.jpg" class="bg-img" alt="img">
+                                <div class="instagram-box">
+                                    <img src="~/images/slider/shoes/4.jpg" class="bg-img" alt="img">
                                     <div class="overlay"><i class="fa fa-instagram"></i></div>
                                 </div>
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"><img src="~/images/slider/shoes/9.jpg" class="bg-img" alt="img">
+                                <div class="instagram-box">
+                                    <img src="~/images/slider/shoes/9.jpg" class="bg-img" alt="img">
                                     <div class="overlay"><i class="fa fa-instagram"></i></div>
                                 </div>
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"><img src="~/images/slider/shoes/6.jpg" class="bg-img" alt="img">
+                                <div class="instagram-box">
+                                    <img src="~/images/slider/shoes/6.jpg" class="bg-img" alt="img">
                                     <div class="overlay"><i class="fa fa-instagram"></i></div>
                                 </div>
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"><img src="~/images/slider/shoes/7.jpg" class="bg-img" alt="img">
+                                <div class="instagram-box">
+                                    <img src="~/images/slider/shoes/7.jpg" class="bg-img" alt="img">
                                     <div class="overlay"><i class="fa fa-instagram"></i></div>
                                 </div>
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"><img src="~/images/slider/shoes/8.jpg" class="bg-img" alt="img">
+                                <div class="instagram-box">
+                                    <img src="~/images/slider/shoes/8.jpg" class="bg-img" alt="img">
                                     <div class="overlay"><i class="fa fa-instagram"></i></div>
                                 </div>
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"><img src="~/images/slider/shoes/10.jpg" class="bg-img" alt="img">
+                                <div class="instagram-box">
+                                    <img src="~/images/slider/shoes/10.jpg" class="bg-img" alt="img">
                                     <div class="overlay"><i class="fa fa-instagram"></i></div>
                                 </div>
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"><img src="~/images/slider/shoes/1.jpg" class="bg-img" alt="img">
+                                <div class="instagram-box">
+                                    <img src="~/images/slider/shoes/1.jpg" class="bg-img" alt="img">
                                     <div class="overlay"><i class="fa fa-instagram"></i></div>
                                 </div>
                             </a>
@@ -912,8 +961,6 @@
         </div>
     </section>
     <!-- instagram section end -->
-
-
     <!--  logo section -->
     <section class="section-b-space">
         <div class="container">
@@ -966,8 +1013,6 @@
         </div>
     </section>
     <!--  logo section end-->
-
-
     <!-- footer -->
     <footer>
         <div class="white-layout">
@@ -981,17 +1026,22 @@
                                         <h4>درباره ما </h4>
                                     </div>
                                     <div class="footer-contant">
-                                        <div class="footer-logo"><img src="~/images/icon/logo/6.png" alt="">
+                                        <div class="footer-logo">
+                                            <img src="~/images/icon/logo/6.png" alt="">
                                         </div>
                                         <div class="social-white">
                                             <ul>
-                                                <li><a href="#"><i class="fa fa-facebook-f"></i></a>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-facebook-f"></i></a>
                                                 </li>
-                                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                                                 </li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-twitter"></i></a>
                                                 </li>
-                                                <li><a href="#"><i class="fa fa-instagram"></i></a>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-instagram"></i></a>
                                                 </li>
                                                 <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
                                             </ul>
@@ -1098,8 +1148,6 @@
         </div>
     </footer>
     <!-- footer end -->
-
-
     <!-- Add to cart bar -->
     <div id="cart_side" class=" add_to_cart bottom">
         <a href="javascript:void(0)" class="overlay" onclick="closeCart()"></a>
@@ -1188,8 +1236,6 @@
         </div>
     </div>
     <!-- Add to cart bar end-->
-
-
     <!--modal popup start-->
     <div class="modal fade bd-example-modal-lg theme-modal" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -1200,7 +1246,8 @@
                             <div class="col-12">
                                 <div class="modal-bg">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <div class="offer-content"><img src="~/images/Offer-banner.png" class="img-fluid blur-up lazyload" alt="">
+                                    <div class="offer-content">
+                                        <img src="~/images/Offer-banner.png" class="img-fluid blur-up lazyload" alt="">
                                         <h2>خبر نامه </h2>
                                         <form action="" class="auth-form needs-validation" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
                                             <div class="form-group mx-sm-3">
@@ -1218,8 +1265,6 @@
         </div>
     </div>
     <!--modal popup end-->
-
-
     <!-- Quick-view modal popup start-->
     <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -1254,7 +1299,8 @@
                                     </div>
                                     <h6 class="product-title">تعداد </h6>
                                     <div class="qty-box">
-                                        <div class="input-group"><span class="input-group-prepend"><button type="button" class="btn quantity-left-minus" data-type="minus" data-field=""><i class="ti-angle-right"></i></button> </span>
+                                        <div class="input-group">
+                                            <span class="input-group-prepend"><button type="button" class="btn quantity-left-minus" data-type="minus" data-field=""><i class="ti-angle-right"></i></button> </span>
                                             <input type="text" name="quantity" class="form-control input-number" value="1"> <span class="input-group-prepend"><button type="button" class="btn quantity-right-plus" data-type="plus" data-field=""><i class="ti-angle-left"></i></button></span>
                                         </div>
                                     </div>
@@ -1268,8 +1314,6 @@
         </div>
     </div>
     <!-- Quick-view modal popup end-->
-
-
     <!-- theme setting -->
     <div class="theme-settings">
         <ul>
@@ -1297,7 +1341,8 @@
             <a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
             <div class="setting_box_body">
                 <div onclick="closeSetting()">
-                    <div class="sidebar-back text-start"><i class="fa fa-angle-right  pe-2" aria-hidden="true"></i> برگشت
+                    <div class="sidebar-back text-start">
+                        <i class="fa fa-angle-right  pe-2" aria-hidden="true"></i> برگشت
                     </div>
                 </div>
                 <div class="setting-body">
@@ -1315,8 +1360,11 @@
                                         <img src="~/images/landing-page/demo/vegetables-4.jpg" class="img-fluid bg-img bg-top" alt="">
                                     </a>
                                     <a href="vegetables-4.html" class="demo-text">
-                                        <h4>سبزیجات 4 <span>جدید </span><h4>
-                                    </h4></h4></a>
+                                        <h4>
+                                            سبزیجات 4 <span>جدید </span><h4>
+                                            </h4>
+                                        </h4>
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-6 text-center demo-effects">
@@ -1325,8 +1373,11 @@
                                         <img src="~/images/landing-page/demo/vegetables-5.jpg" class="img-fluid bg-img bg-top" alt="">
                                     </a>
                                     <a href="vegetables-5.html" class="demo-text">
-                                        <h4>سبزیجات 5  <span>جدید </span><h4>
-                                    </h4></h4></a>
+                                        <h4>
+                                            سبزیجات 5  <span>جدید </span><h4>
+                                            </h4>
+                                        </h4>
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-6 text-center demo-effects">
@@ -1335,8 +1386,11 @@
                                         <img src="~/images/landing-page/demo/gradient.jpg" class="img-fluid bg-img bg-top" alt="">
                                     </a>
                                     <a href="gradient.html" class="demo-text">
-                                        <h4>شیب <h4>
-                                    </h4></h4></a>
+                                        <h4>
+                                            شیب <h4>
+                                            </h4>
+                                        </h4>
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-6 text-center demo-effects">
@@ -1365,7 +1419,7 @@
                                         <img src="~/images/landing-page/demo/fashion-3.jpg" class="img-fluid bg-img bg-top" alt="">
                                     </a>
                                     <a href="fashion-3.html" class="demo-text">
-                                        <h4>مد 3 </h4> 
+                                        <h4>مد 3 </h4>
                                     </a>
                                 </div>
                             </div>
@@ -1856,15 +1910,11 @@
         </div>
     </div>
     <!-- theme setting -->
-
-
     <!-- tap to top start -->
     <div class="tap-top">
         <div><i class="fa fa-angle-double-up"></i></div>
     </div>
     <!-- tap to top end -->
-
-
     <!-- latest jquery-->
     <script src="~/js/jquery-3.3.1.min.js"></script>
 
@@ -1889,13 +1939,14 @@
     <!-- Theme js-->
     <script src="~/js/theme-setting.js"></script>
     <script src="~/js/script.js"></script>
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <partial name="_Notification"/>
     <script>
-       $( window ).on('load', function () {
-            setTimeout(function () {
-                $('#exampleModal').modal('show');
-            }, 2500);
-        });
+        // $(window).on('load', function () {
+        //     setTimeout(function () {
+        //         $('#exampleModal').modal('show');
+        //     }, 2500);
+        // });
 
         function openSearch() {
             document.getElementById("search-overlay").style.display = "block";
