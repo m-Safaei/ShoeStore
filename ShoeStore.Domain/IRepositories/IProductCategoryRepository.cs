@@ -1,4 +1,4 @@
-﻿using ShoeStore.Domain.Entities.Category;
+﻿using ShoeStore.Domain.Entities.ProductCategory;
 
 namespace ShoeStore.Domain.IRepositories;
 
