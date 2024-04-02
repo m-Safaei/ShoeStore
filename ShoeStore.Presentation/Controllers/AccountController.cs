@@ -22,13 +22,17 @@ public class AccountController : Controller
     #endregion
 
     #region Register
-
+    [HttpGet("Register")]
     public IActionResult Register()
     {
+        if (User.Identity.IsAuthenticated)
+        {
+            return RedirectToAction("Index", "Home");
+        }
         return View();
     }
 
-    [HttpPost, ValidateAntiForgeryToken]
+    [HttpPost("Register"), ValidateAntiForgeryToken]
     public async Task<IActionResult> Register(UserRegisterDto userDto, CancellationToken cancellation = default)
     {
         if (ModelState.IsValid)
@@ -36,14 +40,14 @@ public class AccountController : Controller
             bool result = await _userService.RegisterUser(userDto, cancellation);
             if (result)
             {
-                var user = _userService.GetUserByMobileAsync(userDto.Mobile, cancellation);
+                var user = await _userService.GetUserByMobileAsync(userDto.Mobile, cancellation);
 
                 //Set Cookie
                 var claims = new List<Claim>
                     {
                         new (ClaimTypes.NameIdentifier, user.Id.ToString()),
-                        new (ClaimTypes.MobilePhone, userDto.Mobile),
-                        new (ClaimTypes.Name, userDto.FirstName + " " + userDto.LastName),
+                        new (ClaimTypes.MobilePhone, user.Mobile),
+                        new (ClaimTypes.Name, user.FirstName + " " + user.LastName),
                     };
 
                 var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -55,15 +59,19 @@ public class AccountController : Controller
 
                 if (!string.IsNullOrEmpty(userDto.ReturnUrl))
                 {
+                    TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
                     return Redirect(userDto.ReturnUrl);
                 }
 
+                TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
                 return RedirectToAction("Index", "Home");
             }
+
+            TempData["InfoMessage"] = "کاربری با شماره موبایل وارد شده در سیستم وجود دارد.";
         }
 
-        TempData["ErrorMessage"] = "کاربری با شماره موبایل وارد شده در سیستم وجود دارد.";
-        return View();
+
+        return View(userDto);
     }
     #endregion
 
@@ -75,7 +83,13 @@ public class AccountController : Controller
 
     #region Logout
 
+    [HttpGet("Logout")]
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync();
 
+        return RedirectToAction("Index", "Home");
+    }
 
     #endregion
 }
