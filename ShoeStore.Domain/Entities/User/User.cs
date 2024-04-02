@@ -19,8 +19,7 @@ public class User : BaseEntity
     #endregion
 
     #region Relations
-
-    public OrderItem OrderItem { get; set; }
+     public List<Order.Order> Orders { get; set; }
 
     #endregion
 }
