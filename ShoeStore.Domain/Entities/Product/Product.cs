@@ -1,5 +1,5 @@
 ﻿using ShoeStore.Domain.Common;
-using ShoeStore.Domain.Entities.Category;
+using ShoeStore.Domain.Entities.ProductCategory;
 using System.ComponentModel.DataAnnotations;
 
 namespace ShoeStore.Domain.Entities.Product;
@@ -11,8 +11,8 @@ public class Product : BaseEntity
     public List<string>? ProductImages { get; set; }
     public bool IsDelete { get; set; }
 
-    public List<int>? ProductCategoryId { get; set; }
-    public List<ProductCategory>? ProductCategories {  get; set; }
-    public List<int>? ProductItemId { get; set; }
+    public int ProductCategoryId { get; set; }
+    public ProductCategory.ProductCategory? ProductCategory { get; set; }
+
     public List<ProductItem>? productItems { get; set; }
 }

@@ -1,6 +1,6 @@
 ﻿using ShoeStore.Domain.Common;
 
-namespace ShoeStore.Domain.Entities.Category;
+namespace ShoeStore.Domain.Entities.ProductCategory;
 
 public class ProductCategory : BaseEntity
 {

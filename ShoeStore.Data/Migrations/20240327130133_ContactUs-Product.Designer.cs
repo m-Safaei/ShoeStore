@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShoeStore.Data.AppDbContext;
 
@@ -11,9 +12,11 @@ using ShoeStore.Data.AppDbContext;
 namespace ShoeStore.Data.Migrations
 {
     [DbContext(typeof(ShoeStoreDbContext))]
-    partial class ShoeStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240327130133_ContactUs-Product")]
+    partial class ContactUsProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,37 @@ namespace ShoeStore.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Category.ProductCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductCategories");
+                });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Color_Size.Color", b =>
                 {
@@ -125,15 +159,16 @@ namespace ShoeStore.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductCategoryId")
-                        .HasColumnType("int");
+                    b.Property<string>("ProductCategoryId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductImages")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("ProductItemId")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("ProductCategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("Products");
                 });
@@ -184,32 +219,6 @@ namespace ShoeStore.Data.Migrations
                     b.ToTable("ProductItems");
                 });
 
-            modelBuilder.Entity("ShoeStore.Domain.Entities.ProductCategory.ProductCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("ParentId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProductCategories");
-                });
-
             modelBuilder.Entity("ShoeStore.Domain.Entities.User.User", b =>
                 {
                     b.Property<int>("Id")
@@ -254,15 +263,11 @@ namespace ShoeStore.Data.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Product", b =>
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Category.ProductCategory", b =>
                 {
-                    b.HasOne("ShoeStore.Domain.Entities.ProductCategory.ProductCategory", "ProductCategory")
-                        .WithMany()
-                        .HasForeignKey("ProductCategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("ProductCategory");
+                    b.HasOne("ShoeStore.Domain.Entities.Product.Product", null)
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.ProductItem", b =>
@@ -294,6 +299,8 @@ namespace ShoeStore.Data.Migrations
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Product", b =>
                 {
+                    b.Navigation("ProductCategories");
+
                     b.Navigation("productItems");
                 });
 #pragma warning restore 612, 618

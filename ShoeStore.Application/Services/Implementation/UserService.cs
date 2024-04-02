@@ -59,9 +59,18 @@ public class UserService : IUserService
         return true;
     }
 
-    public async Task<User?> GetUserByMobileAsync(string mobile, CancellationToken cancellation)
+    public async Task<UserDto> GetUserByMobileAsync(string mobile, CancellationToken cancellation)
     {
-        return await _userRepository.GetUserByMobileAsync(mobile, cancellation);
+        var user = await _userRepository.GetUserByMobileAsync(mobile, cancellation);
+        //map to Dto
+        UserDto result = new()
+        {
+            Id = user.Id,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Mobile = user.Mobile,
+        };
+        return result;
     }
 }
 
