@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoeStore.Data.AppDbContext;
+using ShoeStore.Domain.DTOs.SiteSide.ProductCategory;
 using ShoeStore.Domain.Entities.ProductCategory;
 using ShoeStore.Domain.IRepositories;
 
@@ -30,11 +31,33 @@ public class ProductCategoryRepository : IProductCategoryRepository
 
     public async Task SaveChangesAsync(CancellationToken cancellation)
     {
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync(cancellation);
     }
 
     public void UpdateProductCategory(ProductCategory productCategory)
     {
         _context.ProductCategories.Update(productCategory);
+    }
+
+    public async Task<ICollection<CategoryDTO>> GetCategoriesByParentId(int parentId, CancellationToken cancellation)
+    {
+        return await _context.ProductCategories.Where(p => p.ParentId == parentId)
+            .Select(p => new CategoryDTO()
+            {
+                Id = p.Id,
+                Title = p.Title,
+            })
+            .ToListAsync(cancellation);
+    }
+
+    public async Task<ICollection<ParentCategoryDTO>> GetParentCategories(CancellationToken cancellation)
+    {
+        return await _context.ProductCategories.Where(p => p.ParentId == null)
+            .Select(p => new ParentCategoryDTO()
+            {
+                Id = p.Id,
+                Title = p.Title,
+            })
+            .ToListAsync(cancellation);
     }
 }
