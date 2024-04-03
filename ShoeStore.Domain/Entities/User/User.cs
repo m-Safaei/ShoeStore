@@ -1,7 +1,8 @@
-﻿using ShoeStore.Domain.Common;
-
+﻿#region Using
+using ShoeStore.Domain.Common;
+using ShoeStore.Domain.Entities.Order;
 namespace ShoeStore.Domain.Entities.User;
-
+#endregion
 public class User : BaseEntity
 {
     #region Properties
@@ -18,8 +19,7 @@ public class User : BaseEntity
     #endregion
 
     #region Relations
-
-
+     public List<Order.Order> Orders { get; set; }
 
     #endregion
 }
