@@ -6,8 +6,8 @@ namespace ShoeStore.Domain.Entities.Order;
 public class OrderItem:BaseEntity
 {
     #region Entites
-  public int OrderId { get; set; }
     public int ProductId { get; set; }
+    public int OrderId { get; set; }
     public decimal Price { get; set; }
     public int Count { get; set; }
     public bool Isdelete { get; set; }=false;   
@@ -17,6 +17,5 @@ public class OrderItem:BaseEntity
     public Order Order { get; set; }
     public Product.Product Product { get; set; }
     public List<ProductItem> ProductItem { get; set; }
-    public User.User UserId { get; set; }
     #endregion
 }

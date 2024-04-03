@@ -23,7 +23,7 @@ public class ProductRepository : IProductRepository
         return await _context.Products.Where(p=> !p.IsDelete).ToListAsync();
     }
 
-    public async Task<Product?> GetProductByIdAsync(int Id, CancellationToken cancellation)
+    public async Task<Product?> GetProductByIdAsync(int Id)
     {
         return await _context.Products.FirstOrDefaultAsync(p => p.Id == Id && !p.IsDelete);
     }
