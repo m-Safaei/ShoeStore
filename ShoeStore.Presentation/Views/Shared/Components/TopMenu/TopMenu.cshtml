@@ -1,0 +1,36 @@
+﻿@model ICollection<ShoeStore.Domain.DTOs.SiteSide.ProductCategory.ParentCategoryDTO>
+
+
+
+<ul id="main-menu" class="sm pixelstrap sm-horizontal">
+    <li>
+        <div class="mobile-back text-start ltr">برگشت<i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
+    </li>
+    <li><a asp-controller="Home" asp-action="Index">خانه</a></li>
+    @foreach (var parentCategory in Model)
+    {
+        <li>
+            <a href="#">@parentCategory.Title</a>
+            <ul>
+                @if (parentCategory.ChildCategories != null && parentCategory.ChildCategories.Any()){
+                    @foreach (var childCategory in parentCategory.ChildCategories)
+                    {
+                        
+                        <li><a href="category-page(modern).html">@childCategory.Title </a></li>
+                        
+                    }
+                }
+            </ul>
+            
+        </li>
+    }
+@*     <li>
+        <a href="#">وبلاگ</a>
+        <ul>
+            <li><a href="blog-page.html">نوار کنار چپ</a></li>
+            <li><a href="blog(right-sidebar).html">نوار کنار راست</a></li>
+            <li><a href="blog(no-sidebar).html">بدون نوار</a></li>
+            <li><a href="blog-details.html">جزئیات وبلاگ </a></li>
+        </ul>
+    </li> *@
+</ul>
