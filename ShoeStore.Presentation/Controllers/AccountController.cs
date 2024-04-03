@@ -77,7 +77,17 @@ public class AccountController : Controller
 
     #region Login
 
+    [HttpGet("Login")]
+    public IActionResult Login()
+    {
+        return View();
+    }
 
+    [HttpPost("Login"), ValidateAntiForgeryToken]
+    public async Task<IActionResult> Login(UserLoginDto userDto)
+    {
+        return View();
+    }
 
     #endregion
 
