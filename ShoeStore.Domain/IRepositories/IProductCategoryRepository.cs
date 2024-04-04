@@ -1,4 +1,5 @@
-﻿using ShoeStore.Domain.Entities.ProductCategory;
+﻿using ShoeStore.Domain.DTOs.SiteSide.ProductCategory;
+using ShoeStore.Domain.Entities.ProductCategory;
 
 namespace ShoeStore.Domain.IRepositories;
 
@@ -9,4 +10,6 @@ public interface IProductCategoryRepository
     void AddProductCategory(ProductCategory productCategory);
     void UpdateProductCategory(ProductCategory productCategory);
     Task SaveChangesAsync(CancellationToken cancellation);
+    Task<ICollection<CategoryDTO>> GetCategoriesByParentId(int parentId, CancellationToken cancellation);
+    Task<ICollection<ParentCategoryDTO>> GetParentCategories(CancellationToken cancellation);
 }

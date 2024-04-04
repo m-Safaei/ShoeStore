@@ -1,26 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
+using ShoeStore.Application.Services.Interface;
 using System.Diagnostics;
 
 namespace ShoeStore.Presentation.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        //private readonly IHomeService _homeService;
+        //public HomeController(IHomeService homeService)
+        //{
+        //    _homeService = homeService;
+        //}
 
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+
         
     }
 }
