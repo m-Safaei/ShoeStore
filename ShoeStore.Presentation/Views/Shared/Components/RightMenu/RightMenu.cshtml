@@ -1,0 +1,54 @@
+﻿@model ICollection<ShoeStore.Domain.DTOs.SiteSide.ProductCategory.ParentCategoryDTO>
+
+<div class="menu-left">
+    <div class="navbar">
+        <a href="javascript:void(0)" onclick="openNav()"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i></a>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="sidebar-overlay" onclick="closeNav()"></a>
+            <nav>
+                <a href="javascript:void(0)" onclick="closeNav()">
+                    <div class="sidebar-back text-start"><i class="fa fa-angle-right  pe-2" aria-hidden="true"></i> برگشت</div>
+                </a>
+                <!-- Vertical Menu -->
+                <ul id="sub-menu" class="sm pixelstrap sm-vertical">
+                    @foreach (var parentCategory in Model)
+                    {
+                        <li>
+                            <a href="#">@parentCategory.Title</a>
+                            <ul>
+                                @if (parentCategory.ChildCategories != null && parentCategory.ChildCategories.Any()){
+                                    @foreach (var childCategory in parentCategory.ChildCategories)
+                                    {
+                        
+                                        <li><a href="category-page(modern).html">@childCategory.Title </a></li>
+                        
+                                    }
+                                }
+                            </ul>
+            
+                        </li>
+                    }
+
+                    <li><a asp-controller="ContactUs" asp-action="ContactUs">تماس با ما</a></li>
+                    <li><a href="#">حساب کاربری</a>
+                        <ul>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a href="login.html">پروفایل</a></li>
+                                <li><a asp-controller="Account" asp-action="Logout">خروج</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-controller="Account" asp-action="Login">ورود</a></li>
+                                <li><a asp-controller="Account" asp-action="Register">ثبت نام</a></li>
+                            }
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">وبلاگ</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
