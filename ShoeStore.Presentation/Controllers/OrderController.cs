@@ -26,24 +26,25 @@ public class OrderController : Controller
         //    return NotFound();
         //}
         int _userId = 2;
-        int _productId = 2;
-        Product _product =await _productService.GetProductByIdAsync((int)Id);
-        if (_orderService.IsExistOrderForUserInToday(_userId))
-        {
-            Order order=_orderService.GetOrderForCart(_userId);
-            if (_orderService.IsExistOrderItemFromUserFromToday(order.Id, _productId))
-            {
+  
+        //Product _product =await _productService.GetProductByIdAsync((int)Id);
+        //if (_orderService.IsExistOrderForUserInToday(_userId))
+        //{
+        //    Order order=_orderService.GetOrderForCart(_userId);
+        //    if (_orderService.IsExistOrderItemFromUserFromToday(order.Id, _product.Id))
+        //    {
 
-            }
-            else
-            {
-                _orderService.AddProductToOrderItem(_productId,order.Id,);
-            }
-        }
-        else
-        {
-            int OrderId = _orderService.AddOrderToTheShopCart(_userId);
-        }
+        //    }
+        //    else
+        //    {
+                
+        //        _orderService.AddProductToOrderItem(_product.Id,order.Id,);
+        //    }
+        //}
+        //else
+        //{
+        //    int OrderId = _orderService.AddOrderToTheShopCart(_userId);
+        //}
         return View();
 
     }
