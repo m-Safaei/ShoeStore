@@ -30,9 +30,8 @@ public class ShoeStoreDbContext: DbContext
     public DbSet<ProductCategory> ProductCategories { get; set; }
     public DbSet<Color> Colors { get; set; }
     public DbSet<Size> Sizes { get; set; }
-
-    public DbSet<Order> Orders { get; set; }
-
+    public DbSet<Order> Orders { get; set; } 
+    public DbSet<OrderItem> orderItems { get; set; }
     public DbSet<ContactUs> ContactUs { get; set; } 
 
     
