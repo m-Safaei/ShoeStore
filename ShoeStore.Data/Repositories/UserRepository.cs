@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoeStore.Data.AppDbContext;
+using ShoeStore.Domain.DTOs.SiteSide.Account;
 using ShoeStore.Domain.Entities.User;
 using ShoeStore.Domain.IRepositories;
 
@@ -36,9 +37,17 @@ public class UserRepository : IUserRepository
         await _context.SaveChangesAsync(cancellation);
     }
 
-    public async Task<User?> GetUserByMobileAsync(string mobile,CancellationToken cancellation)
+    public async Task<UserDto?> GetUserByMobileAsync(string mobile,CancellationToken cancellation)
     {
-        return await _context.Users.SingleOrDefaultAsync(p => p.Mobile == mobile, cancellation);
+        return await _context.Users.Select(p=>new UserDto()
+            {
+                Id = p.Id,
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                Mobile = p.Mobile,
+                Password = p.Password
+            })
+            .SingleOrDefaultAsync(p => p.Mobile == mobile, cancellation);
     }
 
     

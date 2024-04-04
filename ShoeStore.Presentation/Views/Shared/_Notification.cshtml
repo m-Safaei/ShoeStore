@@ -25,3 +25,32 @@
         }).showToast();
     </script>
 }
+
+@if (TempData["NotFoundUser"] != null)
+{
+    <script>
+        Toastify({
+
+            text: "کاربری با مشخصات وارد شده یافت نشد",
+
+            duration: 4000,
+            gravity: "bottom",
+            close: true
+
+        }).showToast();
+    </script>
+}
+@if (TempData["WrongPassword"] != null)
+{
+    <script>
+        Toastify({
+
+            text: "پسورد وارد شده اشتباه است",
+
+            duration: 4000,
+            gravity: "bottom",
+            close: true
+
+        }).showToast();
+    </script>
+}
