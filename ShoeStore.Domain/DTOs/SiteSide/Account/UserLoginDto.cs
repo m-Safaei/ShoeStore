@@ -11,10 +11,8 @@ public class UserLoginDto
     [DataType(DataType.Password)]
     public string Password { get; set; }
 
-    [DataType(DataType.Password)]
-    [Compare("Password", ErrorMessage = "کلمه‌ی عبور و تکرار آن یکسان نیستند")]
-    public string RePassword { get; set; }
-
     public string? ReturnUrl { get; set; }
+
+    public bool RememberMe { get; set; }
 }
 

@@ -5,6 +5,7 @@ using ShoeStore.Application.Services.Interface;
 using ShoeStore.Domain.DTOs.SiteSide.Account;
 using ShoeStore.Domain.Entities.User;
 using System.Security.Claims;
+using ShoeStore.Application.Utilities;
 
 namespace ShoeStore.Presentation.Controllers;
 
@@ -78,15 +79,64 @@ public class AccountController : Controller
     #region Login
 
     [HttpGet("Login")]
-    public IActionResult Login()
+    public IActionResult Login(string? ReturnUrl)
     {
-        return View();
+        UserLoginDto returnModel = new UserLoginDto();
+        if (!string.IsNullOrEmpty(ReturnUrl))
+        {
+            returnModel.ReturnUrl = ReturnUrl;
+        }
+        return View(returnModel);
     }
 
     [HttpPost("Login"), ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login(UserLoginDto userDto)
+    public async Task<IActionResult> Login(UserLoginDto userDto, CancellationToken cancellation = default)
     {
-        return View();
+        if (ModelState.IsValid)
+        {
+            var user = await _userService.GetUserByMobileAsync(userDto.Mobile.Trim(), cancellation);
+
+            if (user != null)
+            {
+                var password = PasswordHelper.EncodePasswordMd5(userDto.Password);
+
+                if (user.Password == password)
+                {
+                    //Set Cookie
+                    var claims = new List<Claim>
+                    {
+                        new (ClaimTypes.NameIdentifier, user.Id.ToString()),
+                        new (ClaimTypes.MobilePhone, user.Mobile),
+                        new (ClaimTypes.Name, user.FirstName + " " + user.LastName),
+                    };
+
+                    var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var principal = new ClaimsPrincipal(claimIdentity);
+
+                    var authProps = new AuthenticationProperties();
+                    authProps.IsPersistent = userDto.RememberMe;
+
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authProps);
+
+                    if (!string.IsNullOrEmpty(userDto.ReturnUrl))
+                    {
+                        TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
+                        return Redirect(userDto.ReturnUrl);
+                    }
+
+                    TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
+                    return RedirectToAction("Index", "Home");
+                }
+
+                TempData["WrongPassword"] = "پسورد وارد شده اشتباه است";
+            }
+            else
+            {
+                TempData["NotFoundUser"] = "کاربری با مشخصات وارد شده یافت نشد.";
+            }
+            
+        }
+        return View(userDto);
     }
 
     #endregion
