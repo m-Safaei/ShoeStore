@@ -7,6 +7,7 @@ using ShoeStore.Domain.Entities.Order;
 using ShoeStore.Domain.Entities.ContactUs;
 
 using ShoeStore.Domain.Entities.Product;
+using ShoeStore.Domain.Entities.Role;
 using ShoeStore.Domain.Entities.User;
 
 namespace ShoeStore.Data.AppDbContext;
@@ -35,7 +36,10 @@ public class ShoeStoreDbContext: DbContext
 
     public DbSet<ContactUs> ContactUs { get; set; } 
 
-    
+    public DbSet<Role> Roles { get; set; }
+    public DbSet<UserRole> UserRoles { get; set; }
+
+
 
     #endregion
 
