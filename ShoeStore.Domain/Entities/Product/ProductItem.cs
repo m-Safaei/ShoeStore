@@ -27,10 +27,6 @@ public class ProductItem : BaseEntity
     public Size? Size { get; set; }
 
     [Required]
-    public int MaterialId { get; set; }
-    public Material Material { get; set; }
-
-    [Required]
     public int ProductId { get; set; }
     public Product? Product { get; set; }
 }

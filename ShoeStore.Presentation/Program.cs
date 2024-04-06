@@ -22,16 +22,13 @@ namespace ShoeStore.Presentation
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IContactUsRepository, ContactUsRepository>();
             builder.Services.AddScoped<IContactUsService, ContactUsService>();
-
-            builder.Services.AddScoped< IOrderRepository, OrderRepository > (); 
-            builder.Services.AddScoped< IOrderService, OrderService > ();
-            builder.Services.AddScoped<IProductRepository, ProductRepository>();  
-            builder.Services.AddScoped<IProductService, ProductService>();
-
             builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
             builder.Services.AddScoped<IProductCategoryService, ProductCategoryService>();
-            //builder.Services.AddScoped<IHomeService, HomeService>();
-
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IProductItemRepository, ProductItemRepository>();
+            builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<IMaterialRepository, MaterialRepository>();
+            builder.Services.AddScoped<IHomeService, HomeService>();
 
             #region Context
 
