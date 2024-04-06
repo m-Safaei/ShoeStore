@@ -12,8 +12,8 @@ using ShoeStore.Data.AppDbContext;
 namespace ShoeStore.Data.Migrations
 {
     [DbContext(typeof(ShoeStoreDbContext))]
-    [Migration("20240406135417_AddMaterial")]
-    partial class AddMaterial
+    [Migration("20240406170430_Delete_Material")]
+    partial class Delete_Material
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,23 +46,6 @@ namespace ShoeStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Colors");
-                });
-
-            modelBuilder.Entity("ShoeStore.Domain.Entities.Color_Size.Material", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Materials");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Color_Size.Size", b =>
@@ -203,9 +186,6 @@ namespace ShoeStore.Data.Migrations
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<int>("MaterialId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -217,8 +197,6 @@ namespace ShoeStore.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MaterialId");
 
                     b.HasIndex("ProductCategoryId");
 
@@ -248,9 +226,6 @@ namespace ShoeStore.Data.Migrations
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("MaterialId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("OrderItemId")
                         .HasColumnType("int");
 
@@ -269,8 +244,6 @@ namespace ShoeStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ColorId");
-
-                    b.HasIndex("MaterialId");
 
                     b.HasIndex("OrderItemId");
 
@@ -383,19 +356,11 @@ namespace ShoeStore.Data.Migrations
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Product", b =>
                 {
-                    b.HasOne("ShoeStore.Domain.Entities.Color_Size.Material", "Material")
-                        .WithMany()
-                        .HasForeignKey("MaterialId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("ShoeStore.Domain.Entities.ProductCategory.ProductCategory", "ProductCategory")
                         .WithMany()
                         .HasForeignKey("ProductCategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("Material");
 
                     b.Navigation("ProductCategory");
                 });
@@ -407,10 +372,6 @@ namespace ShoeStore.Data.Migrations
                         .HasForeignKey("ColorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("ShoeStore.Domain.Entities.Color_Size.Material", null)
-                        .WithMany("ProductItems")
-                        .HasForeignKey("MaterialId");
 
                     b.HasOne("ShoeStore.Domain.Entities.Order.OrderItem", null)
                         .WithMany("ProductItem")
@@ -433,11 +394,6 @@ namespace ShoeStore.Data.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("Size");
-                });
-
-            modelBuilder.Entity("ShoeStore.Domain.Entities.Color_Size.Material", b =>
-                {
-                    b.Navigation("ProductItems");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Order.Order", b =>

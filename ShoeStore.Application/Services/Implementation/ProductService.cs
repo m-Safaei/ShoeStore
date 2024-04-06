@@ -10,12 +10,10 @@ public class ProductService : IProductService
 {
     private readonly IProductRepository _productRepository;
     private readonly IProductItemRepository _productItemRepository;
-    private readonly IMaterialRepository _materialRepository;
-    public ProductService(IProductRepository productRepository, IProductItemRepository productItemRepository, IMaterialRepository materialRepository)
+    public ProductService(IProductRepository productRepository, IProductItemRepository productItemRepository)
     {
         _productRepository = productRepository;
         _productItemRepository = productItemRepository;
-        _materialRepository = materialRepository;
     }
 
     public async Task<Product?> GetProductByIdAsync(int Id)
@@ -42,7 +40,6 @@ public class ProductService : IProductService
             ProductId = product.Id,
             Name = product.Name,
             Description = product.Description,
-            MaterialTitle = product.Material!=null ? product.Material.Name : "",
             ProductCategoryId = product.ProductCategoryId,
             ProductImages = product.ProductImages,
             ExistingColors = await _productItemRepository.GetExistingColorsByProductId(productId, cancellation)
