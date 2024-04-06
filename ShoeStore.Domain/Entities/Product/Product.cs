@@ -15,9 +15,5 @@ public class Product : BaseEntity
     public int ProductCategoryId { get; set; }
     public ProductCategory.ProductCategory? ProductCategory { get; set; }
 
-    [Required]
-    public int MaterialId { get; set; }
-    public Material? Material { get; set; }
-
     public List<ProductItem>? productItems { get; set; }
 }
