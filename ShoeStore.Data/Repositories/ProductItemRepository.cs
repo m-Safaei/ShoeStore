@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoeStore.Data.AppDbContext;
+using ShoeStore.Domain.Entities.Color_Size;
 using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.IRepositories;
 
@@ -36,5 +37,10 @@ public class ProductItemRepository : IProductItemRepository
     public void UpdateProductItem(ProductItem productItem)
     {
         _context.ProductItems.Update(productItem);
+    }
+
+    public async Task<List<Color?>?> GetExistingColorsByProductId(int productId,CancellationToken cancellation)
+    {
+        return await _context.ProductItems.Where(p=> p.ProductId == productId && !p.IsDelete).Select(p=> p.Color).ToListAsync(cancellation);
     }
 }
