@@ -443,11 +443,28 @@ namespace ShoeStore.Data.Migrations
 
                     b.Navigation("Color");
 
-                    b.Navigation("Material");
-
                     b.Navigation("Product");
 
                     b.Navigation("Size");
+                });
+
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Role.UserRole", b =>
+                {
+                    b.HasOne("ShoeStore.Domain.Entities.Role.Role", "Role")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ShoeStore.Domain.Entities.User.User", "User")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Order.Order", b =>
@@ -465,9 +482,16 @@ namespace ShoeStore.Data.Migrations
                     b.Navigation("productItems");
                 });
 
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Role.Role", b =>
+                {
+                    b.Navigation("UserRoles");
+                });
+
             modelBuilder.Entity("ShoeStore.Domain.Entities.User.User", b =>
                 {
                     b.Navigation("Orders");
+
+                    b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618
         }
