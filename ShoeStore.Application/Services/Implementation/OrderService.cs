@@ -1,7 +1,6 @@
 ﻿#region Using
 using ShoeStore.Application.Services.Interface;
 using ShoeStore.Domain.Entities.Order;
-using ShoeStore.Domain.Entities.User;
 using ShoeStore.Domain.IRepositories;
 namespace ShoeStore.Application.Services.Implementation;
 #endregion
@@ -24,4 +23,30 @@ public class OrderService : IOrderService
        _orderRepository.AddOrderToTheCart(order);
         return userId;
     }
+    public bool IsExistOrderForUserInToday(int id)
+    {
+        return _orderRepository.IsExistOrderForUserInToday(id);  
+    }
+    public Order GetOrderForCart(int userId)
+    {
+    return _orderRepository.GetOrderForCart(userId);
+    
+    }
+    public bool IsExistOrderItemFromUserFromToday(int OrderId, int productId)
+    {
+        return _orderRepository.IsExistOrderItemFromUserFromToday(OrderId,productId);
+    }
+    public void AddProductToOrderItem(int productId, int orderId, decimal Price)
+    {
+        OrderItem orderItem = new OrderItem()
+        {
+            ProductId = productId,
+            OrderId = orderId,
+            Price = Price,
+            Count = 1
+        };
+        _orderRepository.AddOrderItem(orderItem);
+    }
+
+
 }

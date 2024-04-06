@@ -7,4 +7,17 @@ namespace ShoeStore.Domain.IRepositories;
 public interface IOrderRepository
 {
     void AddOrderToTheCart(Order order);
+    bool IsExistOrderForUserInToday(int id);
+    Order GetOrderForCart(int userId);
+
+
+
+    #region orderItem
+    bool IsExistOrderItemFromUserFromToday(int OrderId, int productId);
+    void AddOrderItem(OrderItem orderItem);
+    #endregion
+
+
+
+
 }

@@ -8,7 +8,7 @@ public class Order:BaseEntity
 {
     #region Entites
     public int UserId { get; set; }
-    public int OrderId { get; set; }
+    public int OrderItemId { get; set; }
     public bool Isfainally { get; set; }
     #endregion
     #region Navigations
