@@ -1,4 +1,5 @@
 ﻿using ShoeStore.Application.Services.Interface;
+using ShoeStore.Domain.DTOs.SiteSide.Product;
 using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.IRepositories;
 
@@ -19,8 +20,28 @@ public class ProductService : IProductService
         return await _productRepository.GetProductByIdAsync(Id);
     }
 
-    public async Task<ProductItem?> GetProductItemByIdAsync(int Id)
+    public Task<Product?> GetProductByIdAsync(int Id, CancellationToken cancellation)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<ProductItem?> GetProductItemByIdAsync(int Id, CancellationToken cancellation)
     {
         return await _productItemRepository.GetProductItemByIdAsync(Id);
     }
+
+    public async Task<ProductPageDTO?> GetProductPageDTO(int productId, CancellationToken cancellation)
+    {
+        var product = await GetProductByIdAsync(productId, cancellation);
+        if (product == null) { return null; }
+        return new ProductPageDTO()
+        {
+            ProductId = product.Id,
+            Name = product.Name,
+            Description = product.Description,
+            ProductCategoryId = product.ProductCategoryId,
+        };
+    }
+
+    
 }

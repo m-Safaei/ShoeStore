@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShoeStore.Data.AppDbContext;
 
@@ -11,9 +12,11 @@ using ShoeStore.Data.AppDbContext;
 namespace ShoeStore.Data.Migrations
 {
     [DbContext(typeof(ShoeStoreDbContext))]
-    partial class ShoeStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240406170430_Delete_Material")]
+    partial class Delete_Material
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,51 @@ namespace ShoeStore.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Color_Size.Color", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ColorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Colors");
+                });
+
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Color_Size.Size", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<float>("SizeNumber")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sizes");
+                });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.ContactUs.ContactUs", b =>
                 {
@@ -135,9 +183,6 @@ namespace ShoeStore.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DiscountPercentage")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
@@ -145,13 +190,10 @@ namespace ShoeStore.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ProductImage")
+                    b.Property<string>("ProductImages")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -159,35 +201,6 @@ namespace ShoeStore.Data.Migrations
                     b.HasIndex("ProductCategoryId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("ShoeStore.Domain.Entities.Product.ProductFeature", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FeatureDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FeatureTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductFeature");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.ProductItem", b =>
@@ -198,11 +211,17 @@ namespace ShoeStore.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("DiscountPercentage")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
@@ -210,13 +229,21 @@ namespace ShoeStore.Data.Migrations
                     b.Property<int?>("OrderItemId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ProductItemImage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SizeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ColorId");
 
                     b.HasIndex("OrderItemId");
 
@@ -225,28 +252,6 @@ namespace ShoeStore.Data.Migrations
                     b.HasIndex("SizeId");
 
                     b.ToTable("ProductItems");
-                });
-
-            modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Size", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<float>("SizeNumber")
-                        .HasColumnType("real");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Sizes");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.ProductCategory.ProductCategory", b =>
@@ -352,7 +357,7 @@ namespace ShoeStore.Data.Migrations
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Product", b =>
                 {
                     b.HasOne("ShoeStore.Domain.Entities.ProductCategory.ProductCategory", "ProductCategory")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("ProductCategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -360,34 +365,31 @@ namespace ShoeStore.Data.Migrations
                     b.Navigation("ProductCategory");
                 });
 
-            modelBuilder.Entity("ShoeStore.Domain.Entities.Product.ProductFeature", b =>
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Product.ProductItem", b =>
                 {
-                    b.HasOne("ShoeStore.Domain.Entities.Product.Product", "Product")
-                        .WithMany("ProductFeatures")
-                        .HasForeignKey("ProductId")
+                    b.HasOne("ShoeStore.Domain.Entities.Color_Size.Color", "Color")
+                        .WithMany()
+                        .HasForeignKey("ColorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("ShoeStore.Domain.Entities.Product.ProductItem", b =>
-                {
                     b.HasOne("ShoeStore.Domain.Entities.Order.OrderItem", null)
                         .WithMany("ProductItem")
                         .HasForeignKey("OrderItemId");
 
                     b.HasOne("ShoeStore.Domain.Entities.Product.Product", "Product")
-                        .WithMany("ProductItems")
+                        .WithMany("productItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("ShoeStore.Domain.Entities.Product.Size", "Size")
-                        .WithMany("ProductItems")
+                    b.HasOne("ShoeStore.Domain.Entities.Color_Size.Size", "Size")
+                        .WithMany()
                         .HasForeignKey("SizeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Color");
 
                     b.Navigation("Product");
 
@@ -406,19 +408,7 @@ namespace ShoeStore.Data.Migrations
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Product", b =>
                 {
-                    b.Navigation("ProductFeatures");
-
-                    b.Navigation("ProductItems");
-                });
-
-            modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Size", b =>
-                {
-                    b.Navigation("ProductItems");
-                });
-
-            modelBuilder.Entity("ShoeStore.Domain.Entities.ProductCategory.ProductCategory", b =>
-                {
-                    b.Navigation("Products");
+                    b.Navigation("productItems");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.User.User", b =>

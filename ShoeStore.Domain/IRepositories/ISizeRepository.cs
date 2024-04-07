@@ -1,4 +1,4 @@
-﻿using ShoeStore.Domain.Entities.Color_Size;
+﻿using ShoeStore.Domain.Entities.Product;
 
 namespace ShoeStore.Domain.IRepositories;
 

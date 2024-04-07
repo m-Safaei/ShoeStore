@@ -3,17 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShoeStore.Domain.Entities.Product;
 
-public class ProductItem : BaseEntity
+public class ProductFeature : BaseEntity
 {
-
-    [Required]
-    public int Count { get; set; }
-
-    public bool IsDelete { get; set; }
-
-    [Required]
-    public int SizeId { get; set; }
-    public Size? Size { get; set; }
+    public string FeatureTitle { get; set; }
+    public string FeatureDescription { get; set; }
 
     [Required]
     public int ProductId { get; set; }
