@@ -12,8 +12,8 @@ using ShoeStore.Data.AppDbContext;
 namespace ShoeStore.Data.Migrations
 {
     [DbContext(typeof(ShoeStoreDbContext))]
-    [Migration("20240331081506_Change-Product")]
-    partial class ChangeProduct
+    [Migration("20240406184139_Add-Database-Tables")]
+    partial class AddDatabaseTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,6 +106,68 @@ namespace ShoeStore.Data.Migrations
                     b.ToTable("ContactUs");
                 });
 
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Order.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Isfainally")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OrderItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Order.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Isdelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("orderItems");
+                });
+
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -164,6 +226,9 @@ namespace ShoeStore.Data.Migrations
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("OrderItemId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
@@ -179,6 +244,8 @@ namespace ShoeStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ColorId");
+
+                    b.HasIndex("OrderItemId");
 
                     b.HasIndex("ProductId");
 
@@ -211,6 +278,61 @@ namespace ShoeStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductCategories");
+                });
+
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Role.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("RoleTitle")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("RoleUniqueName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Role.UserRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRoles");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.User.User", b =>
@@ -257,6 +379,36 @@ namespace ShoeStore.Data.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Order.Order", b =>
+                {
+                    b.HasOne("ShoeStore.Domain.Entities.User.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Order.OrderItem", b =>
+                {
+                    b.HasOne("ShoeStore.Domain.Entities.Order.Order", "Order")
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ShoeStore.Domain.Entities.Product.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Product", b =>
                 {
                     b.HasOne("ShoeStore.Domain.Entities.ProductCategory.ProductCategory", "ProductCategory")
@@ -275,6 +427,10 @@ namespace ShoeStore.Data.Migrations
                         .HasForeignKey("ColorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("ShoeStore.Domain.Entities.Order.OrderItem", null)
+                        .WithMany("ProductItem")
+                        .HasForeignKey("OrderItemId");
 
                     b.HasOne("ShoeStore.Domain.Entities.Product.Product", "Product")
                         .WithMany("productItems")
@@ -295,9 +451,50 @@ namespace ShoeStore.Data.Migrations
                     b.Navigation("Size");
                 });
 
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Role.UserRole", b =>
+                {
+                    b.HasOne("ShoeStore.Domain.Entities.Role.Role", "Role")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ShoeStore.Domain.Entities.User.User", "User")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Order.Order", b =>
+                {
+                    b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Order.OrderItem", b =>
+                {
+                    b.Navigation("ProductItem");
+                });
+
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Product", b =>
                 {
                     b.Navigation("productItems");
+                });
+
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Role.Role", b =>
+                {
+                    b.Navigation("UserRoles");
+                });
+
+            modelBuilder.Entity("ShoeStore.Domain.Entities.User.User", b =>
+                {
+                    b.Navigation("Orders");
+
+                    b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618
         }

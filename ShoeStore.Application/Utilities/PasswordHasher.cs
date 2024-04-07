@@ -3,7 +3,7 @@ using System.Text;
 
 namespace ShoeStore.Application.Utilities;
 
-public class PasswordHelper
+public class PasswordHasher
 {
     //Encrypt using Md5
     public static string EncodePasswordMd5(string pass)

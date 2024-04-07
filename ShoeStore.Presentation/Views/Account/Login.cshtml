@@ -29,15 +29,16 @@
                 <h3>ورود </h3>
                 <div class="theme-card">
                     <form class="theme-form" asp-controller="Account" asp-action="Login" method="post">
+                        <input type="hidden" asp-for="ReturnUrl"/>
                         <div class="form-group">
                             <label for="email">شماره موبایل</label>
                             <input asp-for="Mobile" type="text" class="form-control" id="email" placeholder="موبایل" required="">
-                            <span style="color: red; position: relative;top: -20px" asp-validation-for="Mobile"></span>
+                            <span style="color: red; position: relative; top: -20px" asp-validation-for="Mobile"></span>
                         </div>
                         <div class="form-group">
                             <label for="review">پسورد </label>
                             <input asp-for="Password" type="password" class="form-control" id="review" placeholder="پسورد را وارد کنید" required="">
-                            <span style="color: red; position: relative;top: -20px" asp-validation-for="Password"></span>
+                            <span style="color: red; position: relative; top: -20px" asp-validation-for="Password"></span>
                         </div>
                         <div class="form-group">
                             <div class="form-terms">

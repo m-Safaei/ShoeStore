@@ -30,6 +30,8 @@ namespace ShoeStore.Presentation
             builder.Services.AddScoped<ISizeRepository, SizeRepository>();
             builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<IHomeService, HomeService>();
+            builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+            builder.Services.AddScoped<IRoleService, RoleService>();
 
             #region Context
 

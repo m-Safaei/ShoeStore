@@ -33,7 +33,7 @@ public class UserService : IUserService
             FirstName = userDto.FirstName,
             LastName = userDto.LastName,
             Mobile = userDto.Mobile.Trim(),
-            Password = PasswordHelper.EncodePasswordMd5(userDto.Password)
+            Password = PasswordHasher.EncodePasswordMd5(userDto.Password)
         };
         return user;
     }
