@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShoeStore.Data.AppDbContext;
 
@@ -11,9 +12,11 @@ using ShoeStore.Data.AppDbContext;
 namespace ShoeStore.Data.Migrations
 {
     [DbContext(typeof(ShoeStoreDbContext))]
-    partial class ShoeStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240407085134_Move-Price")]
+    partial class MovePrice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -275,61 +278,6 @@ namespace ShoeStore.Data.Migrations
                     b.ToTable("ProductCategories");
                 });
 
-            modelBuilder.Entity("ShoeStore.Domain.Entities.Role.Role", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("RoleTitle")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("RoleUniqueName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Roles");
-                });
-
-            modelBuilder.Entity("ShoeStore.Domain.Entities.Role.UserRole", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserRoles");
-                });
-
             modelBuilder.Entity("ShoeStore.Domain.Entities.User.User", b =>
                 {
                     b.Property<int>("Id")
@@ -449,25 +397,6 @@ namespace ShoeStore.Data.Migrations
                     b.Navigation("Size");
                 });
 
-            modelBuilder.Entity("ShoeStore.Domain.Entities.Role.UserRole", b =>
-                {
-                    b.HasOne("ShoeStore.Domain.Entities.Role.Role", "Role")
-                        .WithMany("UserRoles")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("ShoeStore.Domain.Entities.User.User", "User")
-                        .WithMany("UserRoles")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Role");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("ShoeStore.Domain.Entities.Order.Order", b =>
                 {
                     b.Navigation("Items");
@@ -495,16 +424,9 @@ namespace ShoeStore.Data.Migrations
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("ShoeStore.Domain.Entities.Role.Role", b =>
-                {
-                    b.Navigation("UserRoles");
-                });
-
             modelBuilder.Entity("ShoeStore.Domain.Entities.User.User", b =>
                 {
                     b.Navigation("Orders");
-
-                    b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618
         }
