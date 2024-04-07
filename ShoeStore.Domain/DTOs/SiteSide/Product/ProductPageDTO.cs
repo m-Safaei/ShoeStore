@@ -1,4 +1,4 @@
-﻿using ShoeStore.Domain.Entities.Color_Size;
+﻿using ShoeStore.Domain.Entities.Product;
 
 namespace ShoeStore.Domain.DTOs.SiteSide.Product;
 
@@ -10,6 +10,5 @@ public class ProductPageDTO
     public string MaterialTitle { get; set; }
     public List<string>? ProductImages { get; set; }
     public int ProductCategoryId { get; set; }
-    public ICollection<Color>? ExistingColors { get; set; }
 
 }

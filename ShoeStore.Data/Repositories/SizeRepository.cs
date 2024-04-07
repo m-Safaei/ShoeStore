@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoeStore.Data.AppDbContext;
-using ShoeStore.Domain.Entities.Color_Size;
+using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.IRepositories;
 
 namespace ShoeStore.Data.Repositories;
