@@ -19,8 +19,8 @@ public class ProductService : IProductService
         return await _productRepository.GetProductByIdAsync(Id);
     }
 
-    public async Task<ProductItem?> GetProductItemByIdAsync(int Id,CancellationToken cancellation)
+    public async Task<ProductItem?> GetProductItemByIdAsync(int Id)
     {
-        return await _productItemRepository.GetProductItemByIdAsync(Id, cancellation);
+        return await _productItemRepository.GetProductItemByIdAsync(Id);
     }
 }

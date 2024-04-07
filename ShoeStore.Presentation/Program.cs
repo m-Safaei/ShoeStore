@@ -30,6 +30,7 @@ namespace ShoeStore.Presentation
 
             builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
             builder.Services.AddScoped<IProductCategoryService, ProductCategoryService>();
+            builder.Services.AddScoped<IProductItemRepository, ProductItemRepository>();
             //builder.Services.AddScoped<IHomeService, HomeService>();
 
 
