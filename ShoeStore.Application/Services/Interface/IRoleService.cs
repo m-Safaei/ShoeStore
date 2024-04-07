@@ -4,8 +4,10 @@ namespace ShoeStore.Application.Services.Interface;
 
 public interface IRoleService
 {
-    Task<List<Role>> GetUserRolesByUserId(int userId, CancellationToken cancellation);
+    Task<List<Role>> GetUserRolesByUserIdAsync(int userId, CancellationToken cancellation);
 
     bool IsUserAdmin(int userId);
+
+    List<Role> GetUserRolesByUserId(int userId);
 }
 
