@@ -11,15 +11,15 @@ namespace ShoeStore.Presentation.Controllers
             _productService = productService;
         }
 
-        //public async Task<IActionResult> Index(int productId,CancellationToken cancellation=default)
-        //{
-        //    var pageModel = await _productService.GetProductPageDTO(productId, cancellation);
-        //    return View(pageModel);
-        //}
-
-        public IActionResult Index()
+        public async Task<IActionResult> Index(int productId, CancellationToken cancellation = default)
         {
-            return View();
+            var pageModel = await _productService.GetProductPageDTO(productId, cancellation);
+            return View(pageModel);
         }
+
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
     }
 }

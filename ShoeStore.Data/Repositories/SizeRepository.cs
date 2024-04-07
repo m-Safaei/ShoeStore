@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoeStore.Data.AppDbContext;
+using ShoeStore.Domain.DTOs.SiteSide.Product;
 using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.IRepositories;
 
@@ -33,8 +34,16 @@ public class SizeRepository : ISizeRepository
         await _context.SaveChangesAsync();
     }
 
-    public void UpdateColor(Size size)
+    public void UpdateSize(Size size)
     {
         _context.Sizes.Update(size);
+    }
+
+    public async Task<ICollection<SizeDTO>?> GetSizeDTOsByProductId(int productId , CancellationToken cancellation)
+    {
+        var sizeIds = await _context.ProductItems.Where(p=> p.ProductId == productId && !p.IsDelete)
+                .Select(p=> p.SizeId).Distinct().ToListAsync(cancellation);
+        return await _context.Sizes.Where(p => sizeIds.Contains(p.Id) && !p.IsDelete)
+                .Select(p=> new SizeDTO() { SizeNumber=p.SizeNumber}).ToListAsync(cancellation);
     }
 }

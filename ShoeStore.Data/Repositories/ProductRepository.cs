@@ -28,6 +28,11 @@ public class ProductRepository : IProductRepository
         return await _context.Products.FirstOrDefaultAsync(p => p.Id == Id && !p.IsDelete);
     }
 
+    public async Task<Product?> GetProductByIdAsync(int Id,CancellationToken cancellation)
+    {
+        return await _context.Products.FirstOrDefaultAsync(p => p.Id == Id && !p.IsDelete);
+    }
+
     public async Task SaveChangesAsync(CancellationToken cancellation)
     {
         await _context.SaveChangesAsync();
