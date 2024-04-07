@@ -1,4 +1,6 @@
-﻿using ShoeStore.Data.AppDbContext;
+﻿using Microsoft.EntityFrameworkCore;
+using ShoeStore.Data.AppDbContext;
+using ShoeStore.Domain.Entities.Role;
 using ShoeStore.Domain.IRepositories;
 
 namespace ShoeStore.Data.Repositories;
@@ -7,7 +9,7 @@ public class RoleRepository : IRoleRepository
 {
 
     #region Ctor
-    
+
     private readonly ShoeStoreDbContext _context;
 
     public RoleRepository(ShoeStoreDbContext context)
@@ -16,5 +18,18 @@ public class RoleRepository : IRoleRepository
     }
 
     #endregion
+
+    public async Task<List<Role>> GetUserRolesByUserIdAsync(int userId, CancellationToken cancellation)
+    {
+        return await _context.UserRoles.Where(p => p.UserId == userId)
+                                       .Select(p => p.Role)
+                                       .ToListAsync(cancellation);
+    }
+
+    public List<Role> GetUserRolesByUserId(int userId)
+    {
+        return _context.UserRoles.Where(p => p.UserId == userId)
+                                 .Select(p => p.Role).ToList();
+    }
 }
 

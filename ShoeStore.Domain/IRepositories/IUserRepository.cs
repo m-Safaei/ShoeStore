@@ -11,5 +11,9 @@ public interface IUserRepository
 
     Task SaveChangeAsync(CancellationToken cancellation);
     Task<UserDto?> GetUserByMobileAsync(string mobile, CancellationToken cancellation);
+
+    Task<User?> GetUserByIdAsync(int userId, CancellationToken cancellation);
+
+    User? GetUserById(int userId);
 }
 
