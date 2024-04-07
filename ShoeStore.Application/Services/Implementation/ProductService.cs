@@ -15,21 +15,14 @@ public class ProductService : IProductService
         _productItemRepository = productItemRepository;
     }
 
-    public async Task<Product?> GetProductByIdAsync(int Id)
+    public async Task<Product?> GetProductByIdAsync(int Id,CancellationToken cancellation)
     {
         return await _productRepository.GetProductByIdAsync(Id);
     }
-
-    public Task<Product?> GetProductByIdAsync(int Id, CancellationToken cancellation)
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task<ProductItem?> GetProductItemByIdAsync(int Id, CancellationToken cancellation)
     {
         return await _productItemRepository.GetProductItemByIdAsync(Id);
     }
-
     public async Task<ProductPageDTO?> GetProductPageDTO(int productId, CancellationToken cancellation)
     {
         var product = await GetProductByIdAsync(productId, cancellation);

@@ -34,8 +34,6 @@ public class ShoeStoreDbContext: DbContext
 
     public DbSet<ContactUs> ContactUs { get; set; } 
 
-    
-
     #endregion
 
     #region Model Creating

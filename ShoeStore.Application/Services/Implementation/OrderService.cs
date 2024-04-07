@@ -47,6 +47,12 @@ public class OrderService : IOrderService
         };
         _orderRepository.AddOrderItem(orderItem);
     }
+    public void AddOneMoreProductToTheShopCart(int orderid, int productid)
+    {
+        OrderItem orderItem = _orderRepository.GetOrderItem(orderid,productid);
+        orderItem.Count =orderItem.Count+1;
+        _orderRepository.UpdateOrderDetail(orderItem);
+    }
 
 
 }

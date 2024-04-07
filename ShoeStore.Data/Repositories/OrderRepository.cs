@@ -1,6 +1,5 @@
 ﻿using ShoeStore.Data.AppDbContext;
 using ShoeStore.Domain.Entities.Order;
-using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.IRepositories;
 namespace ShoeStore.Data.Repositories;
 
@@ -13,6 +12,7 @@ public class OrderRepository : IOrderRepository
         _dbContext = dbContext;
     }
     #endregion
+    #region Order
     public void AddOrderToTheCart(Order order)
     {
         _dbContext.Orders.Add(order);
@@ -31,6 +31,9 @@ public class OrderRepository : IOrderRepository
     {
         return _dbContext.Orders.SingleOrDefault(p=>p.UserId==userId);
     }
+    #endregion
+
+    #region OrderItem
     public bool IsExistOrderItemFromUserFromToday(int OrderId,int productId)
     {
         return _dbContext.orderItems.Any(p => p.ProductId == productId && p.OrderId == OrderId);
@@ -40,5 +43,15 @@ public class OrderRepository : IOrderRepository
         _dbContext.orderItems.Add(orderItem);
         SaveChanges();
     }
+   public void UpdateOrderDetail(OrderItem orderItem)
+    {
+        _dbContext.orderItems.Update(orderItem);
+        SaveChanges();
+    }
+   public OrderItem GetOrderItem(int orderid, int productid)
+    {
+    return    _dbContext.orderItems.SingleOrDefault(p => p.OrderId == orderid && p.ProductId == productid);
+    }
+    #endregion
 
 }

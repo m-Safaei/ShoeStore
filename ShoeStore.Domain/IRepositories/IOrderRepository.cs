@@ -15,6 +15,8 @@ public interface IOrderRepository
     #region orderItem
     bool IsExistOrderItemFromUserFromToday(int OrderId, int productId);
     void AddOrderItem(OrderItem orderItem);
+    void UpdateOrderDetail(OrderItem orderItem);
+    OrderItem GetOrderItem(int orderid,int productid);
     #endregion
 
 
