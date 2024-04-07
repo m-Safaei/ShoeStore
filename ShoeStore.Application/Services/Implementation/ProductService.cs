@@ -40,7 +40,6 @@ public class ProductService : IProductService
             Name = product.Name,
             Description = product.Description,
             ProductCategoryId = product.ProductCategoryId,
-            ProductImages = product.ProductImages,
         };
     }
 
