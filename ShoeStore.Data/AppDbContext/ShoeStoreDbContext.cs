@@ -28,6 +28,7 @@ public class ShoeStoreDbContext: DbContext
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductItem> ProductItems { get; set; }
     public DbSet<ProductCategory> ProductCategories { get; set; }
+    public DbSet<ProductFeature> ProductFeatures { get; set; }
     public DbSet<Size> Sizes { get; set; }
 
     public DbSet<Order> Orders { get; set; }

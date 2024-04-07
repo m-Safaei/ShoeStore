@@ -9,10 +9,15 @@ public class ProductService : IProductService
 {
     private readonly IProductRepository _productRepository;
     private readonly IProductItemRepository _productItemRepository;
-    public ProductService(IProductRepository productRepository, IProductItemRepository productItemRepository)
+    private readonly IProductFeatureRepository _productFeatureRepository;
+    private readonly ISizeRepository _sizeRepository;
+    public ProductService(IProductRepository productRepository, IProductItemRepository productItemRepository, 
+                            IProductFeatureRepository productFeatureRepository, ISizeRepository sizeRepository)
     {
         _productRepository = productRepository;
         _productItemRepository = productItemRepository;
+        _productFeatureRepository = productFeatureRepository;
+        _sizeRepository = sizeRepository;
     }
 
     public async Task<Product?> GetProductByIdAsync(int Id)
@@ -20,9 +25,9 @@ public class ProductService : IProductService
         return await _productRepository.GetProductByIdAsync(Id);
     }
 
-    public Task<Product?> GetProductByIdAsync(int Id, CancellationToken cancellation)
+    public async Task<Product?> GetProductByIdAsync(int Id, CancellationToken cancellation)
     {
-        throw new NotImplementedException();
+        return await _productRepository.GetProductByIdAsync(Id,cancellation);
     }
 
     public async Task<ProductItem?> GetProductItemByIdAsync(int Id, CancellationToken cancellation)
@@ -40,6 +45,11 @@ public class ProductService : IProductService
             Name = product.Name,
             Description = product.Description,
             ProductCategoryId = product.ProductCategoryId,
+            Price = product.Price,
+            DiscountPercentage = product.DiscountPercentage,
+            ProductImage = product.ProductImage,
+            ProductFeatureDTOs = await _productFeatureRepository.GetProductFeatureDTOsByProductId(productId,cancellation),
+            SizeDTOs = await _sizeRepository.GetSizeDTOsByProductId(productId,cancellation)
         };
     }
 

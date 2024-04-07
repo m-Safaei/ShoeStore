@@ -1,0 +1,1417 @@
+﻿@model ShoeStore.Domain.DTOs.SiteSide.Product.ProductPageDTO
+
+<body class="theme-color-1 rtl">
+
+
+    <!-- loader start -->
+    @*     <div class="loader_skeleton">
+    <header>
+    <div class="top-header d-none d-sm-block">
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-6">
+    <div class="header-contact">
+    <ul>
+    <li>خوش آمدید به فروشگاه مالتی کارت</li>
+    <li><i class="fa fa-phone" aria-hidden="true"></i>شماره تماس : 125-520-6520-550</li>
+    </ul>
+    </div>
+    </div>
+    <div class="col-lg-6 text-end">
+    <ul class="header-dropdown">
+    <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+    </li>
+    <li class="onhover-dropdown mobile-account">
+    <i class="fa fa-user" aria-hidden="true"></i> حساب کاربری
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="container">
+    <div class="row">
+    <div class="col-sm-12">
+    <div class="main-menu">
+    <div class="menu-left">
+    <div class="navbar">
+    <a href="javascript:void(0)">
+    <div class="bar-style"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
+    </div>
+    </a>
+    </div>
+    <div class="brand-logo">
+    <a href="index.html"><img src="../assets/images/icon/logo.png" class="img-fluid blur-up lazyload" alt=""></a>
+    </div>
+    </div>
+    <div class="menu-right pull-right">
+    <div>
+    <nav>
+    <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
+    <ul class="sm pixelstrap sm-horizontal">
+    <li>
+    <div class="mobile-back text-start ltr">برگشت<i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
+    </li>
+    <li>
+    <a href="index.html">خانه</a>
+    </li>
+    <li>
+    <a href="#">ویژگی <div class="lable-nav">جدید</div></a>
+    </li>
+    <li>
+    <a href="#">فروشگاه</a>
+    </li>
+    <li>
+    <a href="#">محصول</a>
+    </li>
+    <li>
+    <a href="#">صفحات</a>
+    </li>
+    <li><a href="#">وبلاگ</a>
+    </li>
+    </ul>
+    </nav>
+    </div>
+    <div>
+    <div class="icon-nav d-none d-sm-block">
+    <ul>
+    <li class="onhover-div mobile-search">
+    <div><img src="../assets/images/icon/search.png" onclick="openSearch()" class="img-fluid blur-up lazyload" alt=""> <i class="ti-search" onclick="openSearch()"></i></div>
+    </li>
+    <li class="onhover-div mobile-setting">
+    <div><img src="../assets/images/icon/setting.png" class="img-fluid blur-up lazyload" alt=""> <i class="ti-settings"></i></div>
+    </li>
+    <li class="onhover-div mobile-cart">
+    <div><img src="../assets/images/icon/cart.png" class="img-fluid blur-up lazyload" alt=""> <i class="ti-shopping-cart"></i></div>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </header>
+    <div class="breadcrumb-section">
+    <div class="container">
+    <div class="row">
+    <div class="col-sm-6">
+    <div class="page-title">
+    <h2>محصول</h2>
+    </div>
+    </div>
+    <div class="col-sm-6">
+    <nav aria-label="breadcrumb" class="theme-breadcrumb">
+    <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html">خانه</a></li>
+    <li class="breadcrumb-item active" aria-current="page">محصول</li>
+    </ol>
+    </nav>
+    </div>
+    </div>
+    </div>
+    </div>
+    <section class="section-b-space">
+    <div class="collection-wrapper product-page">
+    <div class="container">
+    <div class="row">
+    <div class="col-12">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-lg-3 col-sm-10 col-xs-12 order-up">
+    <div class="main-product sm-img"></div>
+    </div>
+    <div class="col-lg-1 col-sm-2 col-xs-12">
+    <div class="row vertical-product">
+    <div class="col-sm-12 col-4">
+    <div class="sm-product"></div>
+    </div>
+    <div class="col-sm-12 col-4">
+    <div class="sm-product"></div>
+    </div>
+    <div class="col-sm-12 col-4">
+    <div class="sm-product"></div>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4">
+    <div class="product-right">
+    <h2></h2>
+    <h4></h4>
+    <h3></h3>
+    <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    </ul>
+    <div class="btn-group">
+    <div class="btn-ldr"></div>
+    <div class="btn-ldr"></div>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4">
+    <div class="product-right product-form-box">
+    <h2></h2>
+    <h4></h4>
+    <h3></h3>
+    <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    </ul>
+    <div class="btn-group">
+    <div class="btn-ldr"></div>
+    <div class="btn-ldr"></div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <section class="tab-product m-0">
+    <div class="row">
+    <div class="col-sm-12 col-lg-12">
+    <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    </ul>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    </div>
+    </div>
+    </section>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    </div> *@
+    <!-- loader end -->
+    <!-- section start -->
+    <section>
+        <div class="collection-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-10 col-xs-12">
+                        <div class="product-right-slick">
+                            @if(Model.ProductImage!= null)
+                            {
+                                <div><img src="../assets/images/pro3/@Model.ProductImage" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
+                            } else
+                            {
+                                <div><img src="../assets/images/pro3/default.png" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
+                            }
+
+                            
+
+                            
+                            @* <div><img src="../assets/images/pro3/2.jpg" alt="" class="img-fluid blur-up lazyload image_zoom_cls-1"></div>
+                            <div><img src="../assets/images/pro3/27.jpg" alt="" class="img-fluid blur-up lazyload image_zoom_cls-2"></div>
+                            <div><img src="../assets/images/pro3/27.jpg" alt="" class="img-fluid blur-up lazyload image_zoom_cls-3"></div> *@
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-sm-2 col-xs-12">
+                        <div class="row">
+                            <div class="col-12 p-0">
+                                <div class="slider-right-nav">
+                                    @* <div><img src="../assets/images/pro3/@Model.ProductImage" alt="" class="img-fluid blur-up lazyload"></div>
+                                    <div><img src="../assets/images/pro3/2.jpg" alt="" class="img-fluid blur-up lazyload"></div>
+                                    <div><img src="../assets/images/pro3/27.jpg" alt="" class="img-fluid blur-up lazyload"></div>
+                                    <div><img src="../assets/images/pro3/27.jpg" alt="" class="img-fluid blur-up lazyload"></div> *@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="product-right product-description-box">
+
+                            <h2>@Model.Name</h2>
+                            <div class="border-product">
+                                <h6 class="product-title">جزئیات محصول </h6>
+                                <p>@Model.Description</p>
+                            </div>
+                            <div class="single-product-tables border-product detail-section">
+                                <table>
+                                    <tbody>
+                                        @if (Model.ProductFeatureDTOs != null && Model.ProductFeatureDTOs.Any())
+                                        {
+                                            @foreach (var feature in Model.ProductFeatureDTOs)
+                                            {
+                                                <tr>
+                                                    <td>@feature.FeatureTitle : </td>
+                                                    <td>@feature.FeatureDescription</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="border-product">
+                                <h6 class="product-title">آن را به اشتراک بگذارید</h6>
+                                <div class="product-icon">
+                                    <ul class="product-social">
+                                        <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="product-right product-form-box">
+                            @if (Model.DiscountPercentage > 0)
+                            {
+                                <h4><del>@Model.Price</del><span>تخفیف</span></h4>
+                                <h3>@Model.Price * (100 - @Model.DiscountPercentage)</h3>
+                            }
+
+                            <div id="selectSize" class="addeffect-section product-description border-product">
+
+                                <h6 class="product-title">اندازه را انتخاب کنید</h6>
+                                <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">@Model.Name</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body"><img src="../assets/images/size-chart.jpg" alt="" class="img-fluid blur-up lazyload"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h6 class="error-message">اندازه را انتخاب کنید</h6>
+                                <div class="size-box">
+                                    <ul>
+                                        @if(Model.SizeDTOs!=null && Model.SizeDTOs.Any())
+                                        {
+                                            @foreach(var size in Model.SizeDTOs)
+                                            {
+                                                <li><a href="javascript:void(0)">@size.SizeNumber</a></li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                                <h6 class="product-title">تعداد </h6>
+                                <div class="qty-box">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend"><button type="button" class="btn quantity-left-minus" data-type="minus" data-field=""><i class="ti-angle-right"></i></button> </span>
+                                        <input type="text" name="quantity" class="form-control input-number" value="1">
+                                        <span class="input-group-prepend"><button type="button" class="btn quantity-right-plus" data-type="plus" data-field=""><i class="ti-angle-left"></i></button></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-buttons">
+                                <a href="javascript:void(0)" id="cartEffect" class="btn btn-solid hover-solid btn-animation">اضافه کردن به سبد</a> <a href="#" class="btn btn-solid">علاقه مندی</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section ends -->
+    <!-- product-tab starts -->
+    <section class="tab-product m-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="top-home-tab" data-bs-toggle="tab" href="#top-home" role="tab" aria-selected="true"><i class="icofont icofont-ui-home"></i>جزئیات </a>
+                            <div class="material-border"></div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-top-tab" data-bs-toggle="tab" href="#top-profile" role="tab" aria-selected="false"><i class="icofont icofont-man-in-glasses"></i>مشخصات </a>
+                            <div class="material-border"></div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-top-tab" data-bs-toggle="tab" href="#top-contact" role="tab" aria-selected="false"><i class="icofont icofont-contacts"></i>ویدیو </a>
+                            <div class="material-border"></div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="review-top-tab" data-bs-toggle="tab" href="#top-review" role="tab" aria-selected="false"><i class="icofont icofont-contacts"></i>نظر بنویسید </a>
+                            <div class="material-border"></div>
+                        </li>
+                    </ul>
+                    <div class="tab-content nav-material" id="top-tabContent">
+                        <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
+                            <div class="product-tab-discription">
+                                <p>@Model.Description</p>
+                                @* <div class="part">
+                                    <p>این مدل یک بلوز سفید از مجموعه استایلیست ما پوشیده است، تصویر را برای ماکتی از ظاهر بلوز واقعی مشاهده کنید. روی آن متنی به زبان شکسته مشکی نوشته شده است که در رنگ سفید عالی به نظر می رسد.</p>
+                                </div>
+                                <div class="part">
+                                    <h5 class="inner-title">پارچه:</h5>
+                                    <p>این مدل یک بلوز سفید از مجموعه استایلیست ما پوشیده است، تصویر را برای ماکتی از ظاهر بلوز واقعی مشاهده کنید. روی آن متنی به زبان شکسته مشکی نوشته شده است که در رنگ سفید عالی به نظر می رسد.</p>
+                                </div>
+                                <div class="part">
+                                    <h5 class="inner-title">اندازه و تناسب:</h5>
+                                    <p>مدل (قد 5'8 اینچ) سایز   پوشیده است</p>
+                                </div>
+                                <div class="part">
+                                    <h5 class="inner-title">مواد و مراقبت:</h5>
+                                    <p>نوع پارچه : پنبه </p>
+                                    <p>نوع پارچه : پنبه</p>
+                                    <p>نوع پارچه : پنبه</p>
+                                </div> *@
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
+                            @*<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز</p>*@
+                            <div class="single-product-tables">
+                                <table>
+                                    <tbody>
+                                        @if (Model.ProductFeatureDTOs != null && Model.ProductFeatureDTOs.Any())
+                                        {
+                                            @foreach (var feature in Model.ProductFeatureDTOs)
+                                            {
+                                                <tr>
+                                                    <td>@feature.FeatureTitle : </td>
+                                                    <td>@feature.FeatureDescription</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                                @* <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>پارچه </td>
+                                            <td>پلی استر</td>
+                                        </tr>
+                                        <tr>
+                                            <td>مناسب </td>
+                                            <td>تناسب منظم </td>
+                                        </tr>
+                                    </tbody>
+                                </table> *@
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
+                            <div class="">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/BUWzX78Ye_8" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
+                            <form class="theme-form">
+                                <div class="form-row row">
+                                    <div class="col-md-12">
+                                        <div class="media">
+                                            <label>رتبه بندی</label>
+                                            <div class="media-body ms-3">
+                                                <div class="rating three-star"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="name">نام</label>
+                                        <input type="text" class="form-control" id="name" placeholder="نام خود را وارد کنید " required="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email">ایمیل</label>
+                                        <input type="text" class="form-control" id="email" placeholder="ایمیل" required="">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="review">عنوان نظر </label>
+                                        <input type="text" class="form-control" id="review" placeholder="موضوع را وارد کنید " required="">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="review">عنوان نظر </label>
+                                        <textarea class="form-control" placeholder="متن خود را وارد کنید " id="exampleFormControlTextarea1" rows="6"></textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-solid" type="submit">نظر خود را ارسال کنید</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- product-tab ends -->
+    <!-- product section start -->
+    <section class="section-b-space ratio_asos">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 product-related">
+                    <h2>محصولات مرتبط</h2>
+                </div>
+            </div>
+            <div class="row search-product">
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="product-box">
+                        <div class="img-wrapper">
+                            <div class="front">
+                                <a href="#"><img src="../assets/images/pro3/33.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="back">
+                                <a href="#"><img src="../assets/images/pro3/34.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="cart-info cart-wrap">
+                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="اضافه کردن به سبد"><i class="ti-shopping-cart"></i></button> <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-detail">
+                            <div class="rating">
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div>
+                            <a href="product-page(no-sidebar).html">
+                                <h6>پیراهن نخی زیبا</h6>
+                            </a>
+                            <h4>1500.000</h4>
+                            <ul class="color-variant">
+                                <li class="bg-light0"></li>
+                                <li class="bg-light1"></li>
+                                <li class="bg-light2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="product-box">
+                        <div class="img-wrapper">
+                            <div class="front">
+                                <a href="#"><img src="../assets/images/pro3/1.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="back">
+                                <a href="#"><img src="../assets/images/pro3/2.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="cart-info cart-wrap">
+                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="اضافه کردن به سبد"><i class="ti-shopping-cart"></i></button> <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-detail">
+                            <div class="rating">
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div>
+                            <a href="product-page(no-sidebar).html">
+                                <h6>پیراهن نخی زیبا</h6>
+                            </a>
+                            <h4>1500.000</h4>
+                            <ul class="color-variant">
+                                <li class="bg-light0"></li>
+                                <li class="bg-light1"></li>
+                                <li class="bg-light2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="product-box">
+                        <div class="img-wrapper">
+                            <div class="front">
+                                <a href="#"><img src="../assets/images/pro3/27.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="back">
+                                <a href="#"><img src="../assets/images/pro3/28.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="cart-info cart-wrap">
+                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="اضافه کردن به سبد"><i class="ti-shopping-cart"></i></button> <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-detail">
+                            <div class="rating">
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div>
+                            <a href="product-page(no-sidebar).html">
+                                <h6>پیراهن نخی زیبا</h6>
+                            </a>
+                            <h4>1500.000</h4>
+                            <ul class="color-variant">
+                                <li class="bg-light0"></li>
+                                <li class="bg-light1"></li>
+                                <li class="bg-light2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="product-box">
+                        <div class="img-wrapper">
+                            <div class="front">
+                                <a href="#"><img src="../assets/images/pro3/35.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="back">
+                                <a href="#"><img src="../assets/images/pro3/36.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="cart-info cart-wrap">
+                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="اضافه کردن به سبد"><i class="ti-shopping-cart"></i></button> <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-detail">
+                            <div class="rating">
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div>
+                            <a href="product-page(no-sidebar).html">
+                                <h6>پیراهن نخی زیبا</h6>
+                            </a>
+                            <h4>1500.000</h4>
+                            <ul class="color-variant">
+                                <li class="bg-light0"></li>
+                                <li class="bg-light1"></li>
+                                <li class="bg-light2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="product-box">
+                        <div class="img-wrapper">
+                            <div class="front">
+                                <a href="#"><img src="../assets/images/pro3/2.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="back">
+                                <a href="#"><img src="../assets/images/pro3/1.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="cart-info cart-wrap">
+                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="اضافه کردن به سبد"><i class="ti-shopping-cart"></i></button> <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-detail">
+                            <div class="rating">
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div>
+                            <a href="product-page(no-sidebar).html">
+                                <h6>پیراهن نخی زیبا</h6>
+                            </a>
+                            <h4>1500.000</h4>
+                            <ul class="color-variant">
+                                <li class="bg-light0"></li>
+                                <li class="bg-light1"></li>
+                                <li class="bg-light2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="product-box">
+                        <div class="img-wrapper">
+                            <div class="front">
+                                <a href="#"><img src="../assets/images/pro3/28.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="back">
+                                <a href="#"><img src="../assets/images/pro3/27.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                            <div class="cart-info cart-wrap">
+                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="اضافه کردن به سبد"><i class="ti-shopping-cart"></i></button> <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-detail">
+                            <div class="rating">
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div>
+                            <a href="product-page(no-sidebar).html">
+                                <h6>پیراهن نخی زیبا</h6>
+                            </a>
+                            <h4>1500.000</h4>
+                            <ul class="color-variant">
+                                <li class="bg-light0"></li>
+                                <li class="bg-light1"></li>
+                                <li class="bg-light2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- product section end -->
+    <!-- theme setting -->
+    <div class="theme-settings">
+        <ul>
+            <li class="demo-li">
+                <a href="javascript:void(0)" onclick="openSetting()">
+                    <div class="setting-sidebar" id="setting-icon">
+                        <h5>50+ <br>دمو </h5>
+                    </div>
+                </a>
+            </li>
+            <li class="demo-li">
+                <div class="backend-btn"><a target="_blank" href="../back-end/index.html">مدیر</a></div>
+            </li>
+            <li>
+                <div class="dark-btn">تاریک</div>
+            </li>
+
+            <li class="input-picker">
+                <input id="ColorPicker1" type="color" value="#ff4c3b" name="Background">
+            </li>
+        </ul>
+    </div>
+    <div class="scroll-setting-box">
+        <div id="setting_box" class="setting-box">
+            <a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
+            <div class="setting_box_body">
+                <div onclick="closeSetting()">
+                    <div class="sidebar-back text-start">
+                        <i class="fa fa-angle-right  pe-2" aria-hidden="true"></i> برگشت
+                    </div>
+                </div>
+                <div class="setting-body">
+                    <div class="setting-title">
+                        <div>
+                            <img src="../assets/images/icon/logo.png" class="img-fluid" alt="">
+                            <h3>50+ <span>دمو </span> <br> برای هر نوع فروشگاه آنلاین</h3>
+                        </div>
+                    </div>
+                    <div class="setting-contant">
+                        <div class="row demo-section">
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="vegetables-4.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/vegetables-4.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="vegetables-4.html" class="demo-text">
+                                        <h4>
+                                            سبزیجات 4 <span>جدید </span><h4>
+                                            </h4>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="vegetables-5.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/vegetables-5.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="vegetables-5.html" class="demo-text">
+                                        <h4>
+                                            سبزیجات 5  <span>جدید </span><h4>
+                                            </h4>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="gradient.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/gradient.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="gradient.html" class="demo-text">
+                                        <h4>
+                                            شیب <h4>
+                                            </h4>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="index.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/fashion.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="index.html" class="demo-text">
+                                        <h4>مد </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="fashion-2.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/fashion-2.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="fashion-2.html" class="demo-text">
+                                        <h4>مد 2 </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="fashion-3.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/fashion-3.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="fashion-3.html" class="demo-text">
+                                        <h4>مد 3 </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="fashion-4.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/fashion-4.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="fashion-4.html" class="demo-text">
+                                        <h4>مد 4 </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="fashion-5.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/fashion-5.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="fashion-5.html" class="demo-text">
+                                        <h4>مد 5 </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="fashion-6.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/fashion-6.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="fashion-6.html" class="demo-text">
+                                        <h4>مد 6 </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="fashion-7.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/fashion-7.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="fashion-7.html" class="demo-text">
+                                        <h4>مد 7 </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="furniture.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/furniture.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="furniture.html" class="demo-text">
+                                        <h4>مبلمان </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="furniture-2.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/furniture-2.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="furniture-2.html" class="demo-text">
+                                        <h4>مبلمان 2 </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="furniture-3.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/furniture-dark.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="furniture-3.html" class="demo-text">
+                                        <h4>مبلمان تیره </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="electronic-1.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/electronics.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="electronic-1.html" class="demo-text">
+                                        <h4>الکترونیک </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="electronic-2.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/electronics-2.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="electronic-2.html" class="demo-text">
+                                        <h4>الکترونیک 2 </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="electronic-3.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/electronics-3.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="electronic-3.html" class="demo-text">
+                                        <h4>الکترونیک 3 </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="marketplace-demo.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/marketplace.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="marketplace-demo.html" class="demo-text">
+                                        <h4>چند فروشنده </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="marketplace-demo-2.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/marketplace-2.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="marketplace-demo-2.html" class="demo-text">
+                                        <h4>چند فروشنده 2 </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="marketplace-demo-3.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/marketplace-3.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="marketplace-demo-3.html" class="demo-text">
+                                        <h4>چند فروشنده 3 </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="marketplace-demo-4.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/marketplace-4.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="marketplace-demo-4.html" class="demo-text">
+                                        <h4>چند فروشنده 4 </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="vegetables.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/vegetables.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="vegetables.html" class="demo-text">
+                                        <h4>سبزیجات </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="vegetables-2.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/vegetables-2.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="vegetables-2.html" class="demo-text">
+                                        <h4>سبزیجات 2 </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="vegetables-3.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/vegetables-3.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="vegetables-3.html" class="demo-text">
+                                        <h4>سبزیجات 3  </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="jewellery.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/jewellery.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="jewellery.html" class="demo-text">
+                                        <h4>جواهری </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="jewellery-2.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/jewellery-2.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="jewellery-2.html" class="demo-text">
+                                        <h4>جواهری 2 </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="jewellery-3.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/jewellery-3.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="jewellery-3.html" class="demo-text">
+                                        <h4>جواهری 3  </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="bags.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/bag.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="bags.html" class="demo-text">
+                                        <h4>کیف </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="watch.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/watch.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="watch.html" class="demo-text">
+                                        <h4>ساعت </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="medical.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/medical.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="medical.html" class="demo-text">
+                                        <h4>پزشکی </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="perfume.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/perfume.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="perfume.html" class="demo-text">
+                                        <h4>عطر </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="yoga.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/yoga.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="yoga.html" class="demo-text">
+                                        <h4>یوگا </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="christmas.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/christmas.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="christmas.html" class="demo-text">
+                                        <h4>کریسمس </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="bicycle.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/bicycle.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="bicycle.html" class="demo-text">
+                                        <h4>دوچرخه </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="marijuana.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/marijuana.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="marijuana.html" class="demo-text">
+                                        <h4>گیاه </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="gym-product.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/gym.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="gym-product.html" class="demo-text">
+                                        <h4>بازی </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="tools.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/tools.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="tools.html" class="demo-text">
+                                        <h4>ابزار </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="shoes.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/shoes.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="shoes.html" class="demo-text">
+                                        <h4>کفش </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="books.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/books.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="books.html" class="demo-text">
+                                        <h4>کتاب </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="kids.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/kids.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="kids.html" class="demo-text">
+                                        <h4>کودک </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="game.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/game.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="game.html" class="demo-text">
+                                        <h4>بازی </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="beauty.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/beauty.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="beauty.html" class="demo-text">
+                                        <h4>زیبایی </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="left_sidebar-demo.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/left-sidebar.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="left_sidebar-demo.html" class="demo-text">
+                                        <h4>نوار کنار چپ </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="video-slider.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/video-slider.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="video-slider.html" class="demo-text">
+                                        <h4>اسلایدر ویدیو</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="metro.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/metro.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="metro.html" class="demo-text">
+                                        <h4>مترو </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="goggles.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/goggles.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="goggles.html" class="demo-text">
+                                        <h4>عینک </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="flower.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/flower.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="flower.html" class="demo-text">
+                                        <h4>گل </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="light.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/light.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="light.html" class="demo-text">
+                                        <h4>روشنایی </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="nursery.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/nursery.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="nursery.html" class="demo-text">
+                                        <h4>مهد کودک </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="pets.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/pets.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="pets.html" class="demo-text">
+                                        <h4>حیوان خانگی</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="video.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/video.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="video.html" class="demo-text">
+                                        <h4>ویدیو </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="lookbook-demo.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/lookbook.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="lookbook-demo.html" class="demo-text">
+                                        <h4>طرح </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="full-page.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/full-page.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="full-page.html" class="demo-text">
+                                        <h4>تمام صفحه </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="instagram-shop.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/instagram.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="instagram-shop.html" class="demo-text">
+                                        <h4>اینستا گرام </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-6 text-center demo-effects">
+                                <div class="set-position">
+                                    <a href="parallax.html" class="layout-container">
+                                        <img src="../assets/images/landing-page/demo/parallax.jpg" class="img-fluid bg-img bg-top" alt="">
+                                    </a>
+                                    <a href="parallax.html" class="demo-text">
+                                        <h4>منظره </h4>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- theme setting -->
+    <!-- Add to cart modal popup start-->
+    <div class="modal fade bd-example-modal-lg theme-modal cart-modal" id="addtocart" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body modal1">
+                    <div class="container-fluid p-0">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="modal-bg addtocart">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <div class="media">
+                                        <a href="#">
+                                            <img class="img-fluid blur-up lazyload pro-img" src="../assets/images/fashion/product/43.jpg" alt="">
+                                        </a>
+                                        <div class="media-body align-self-center text-center">
+                                            <a href="#">
+                                                <h6>
+                                                    <i class="fa fa-check"></i>ایتم
+                                                    <span>محصولات زیبایی </span>
+                                                    <span> با موفقیت به سبد اضافه شد </span>
+                                                </h6>
+                                            </a>
+                                            <div class="buttons">
+                                                <a href="#" class="view-cart btn btn-solid">سبد خرید شما </a>
+                                                <a href="#" class="checkout btn btn-solid">بررسی</a>
+                                                <a href="#" class="continue btn btn-solid">ادامه خرید </a>
+                                            </div>
+
+                                            <div class="upsell_payment">
+                                                <img src="../assets/images/payment_cart.png" class="img-fluid blur-up lazyload" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-section">
+                                        <div class="col-12 product-upsell text-center">
+                                            <h4>لیست کامل خرید</h4>
+                                        </div>
+                                        <div class="row" id="upsell_product">
+                                            <div class="product-box col-sm-3 col-6">
+                                                <div class="img-wrapper">
+                                                    <div class="front">
+                                                        <a href="#">
+                                                            <img src="../assets/images/fashion/product/1.jpg" class="img-fluid blur-up lazyload mb-1" alt="cotton top">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-detail">
+                                                        <h6><a href="#"><span>ساعت خاص </span></a></h6>
+                                                        <h4><span>125</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box col-sm-3 col-6">
+                                                <div class="img-wrapper">
+                                                    <div class="front">
+                                                        <a href="#">
+                                                            <img src="../assets/images/fashion/product/34.jpg" class="img-fluid blur-up lazyload mb-1" alt="cotton top">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-detail">
+                                                        <h6><a href="#"><span>ساعت خاص </span></a></h6>
+                                                        <h4><span>125</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box col-sm-3 col-6">
+                                                <div class="img-wrapper">
+                                                    <div class="front">
+                                                        <a href="#">
+                                                            <img src="../assets/images/fashion/product/13.jpg" class="img-fluid blur-up lazyload mb-1" alt="cotton top">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-detail">
+                                                        <h6><a href="#"><span>ساعت خاص </span></a></h6>
+                                                        <h4><span>125</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box col-sm-3 col-6">
+                                                <div class="img-wrapper">
+                                                    <div class="front">
+                                                        <a href="#">
+                                                            <img src="../assets/images/fashion/product/19.jpg" class="img-fluid blur-up lazyload mb-1" alt="cotton top">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-detail">
+                                                        <h6><a href="#"><span>ساعت خاص </span></a></h6>
+                                                        <h4><span>125</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add to cart modal popup end-->
+    <!-- tap to top start -->
+    <div class="tap-top">
+        <div><i class="fa fa-angle-double-up"></i></div>
+    </div>
+    <!-- tap to top end -->
+    <!-- sticky cart bottom start -->
+    <div class="sticky-bottom-cart d-sm-block d-none">
+        <div class="container">
+            <div class="cart-content">
+                <div class="product-image">
+                    <img src="../assets/images/pro3/1.jpg" class="img-fluid" alt="">
+                    <div class="content d-lg-block d-none">
+                        <h5>پیراهن صورتی زنانه</h5>
+                        <h6>132.96<del>1459.00</del><span>55% تخفیف </span></h6>
+                    </div>
+                </div>
+                <div class="selection-section">
+                    <div class="form-group mb-0">
+                        <select id="inputState" class="form-control">
+                            <option selected="">انتخاب رنگ : </option>
+                            <option>صورتی </option>
+                            <option>آبی </option>
+                            <option>خاکستری </option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-0">
+                        <select id="inputState" class="form-control">
+                            <option selected="">انتخاب سایز ...</option>
+                            <option>کوچک</option>
+                            <option>متوسط</option>
+                            <option>بزرگ </option>
+                            <option>خیلی بزرگ </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="add-btn">
+                    <a data-bs-toggle="modal" data-bs-target="#addtocart" href="" class="btn btn-solid btn-sm">اضافه کردن به سبد</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- sticky cart bottom end -->
+    <!-- اضافه کردن به سبد notification -->
+    <div class="added-notification">
+        <img src="../assets/images/fashion/pro/1.jpg" class="img-fluid" alt="">
+        <h3>اضافه کردن به سبد</h3>
+    </div>
+    <!-- اضافه کردن به سبد notification -->
+    <!-- latest jquery-->
+    <script src="../assets/js/jquery-3.3.1.min.js"></script>
+
+    <!-- menu js-->
+    <script src="../assets/js/menu.js"></script>
+
+    <!-- lazyload js-->
+    <script src="../assets/js/lazysizes.min.js"></script>
+
+    <!-- slick js-->
+    <script src="../assets/js/slick.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- timer js-->
+    <script src="../assets/js/timer.js"></script>
+
+    <!-- sticky cart bottom js-->
+    <script src="../assets/js/sticky-cart-bottom.js"></script>
+
+    <!-- Bootstrap Notification js-->
+    <script src="../assets/js/bootstrap-notify.min.js"></script>
+
+    <!-- Zoom js-->
+    <script src="../assets/js/jquery.elevatezoom.js"></script>
+
+    <!-- Theme js-->
+    <script src="../assets/js/theme-setting.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script>
+        function openSearch() {
+            document.getElementById("search-overlay").style.display = "block";
+        }
+
+        function closeSearch() {
+            document.getElementById("search-overlay").style.display = "none";
+        }
+    </script>
+</body>
