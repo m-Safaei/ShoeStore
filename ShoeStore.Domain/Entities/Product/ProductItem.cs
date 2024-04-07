@@ -5,11 +5,6 @@ namespace ShoeStore.Domain.Entities.Product;
 
 public class ProductItem : BaseEntity
 {
-    [Required]
-    public int Price { get; set; }
-
-    [Range(0, 100)]
-    public int DiscountPercentage { get; set; }
 
     [Required]
     public int Count { get; set; }
