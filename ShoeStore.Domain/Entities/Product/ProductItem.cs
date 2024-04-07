@@ -14,7 +14,6 @@ public class ProductItem : BaseEntity
     [Required]
     public int Count { get; set; }
 
-    public string? ProductItemImage { get; set; }
     public bool IsDelete { get; set; }
 
     [Required]
