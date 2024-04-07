@@ -1,5 +1,4 @@
 ﻿using ShoeStore.Domain.Common;
-using ShoeStore.Domain.Entities.Color_Size;
 using System.ComponentModel.DataAnnotations;
 
 namespace ShoeStore.Domain.Entities.Product;
@@ -17,10 +16,6 @@ public class ProductItem : BaseEntity
 
     public string? ProductItemImage { get; set; }
     public bool IsDelete { get; set; }
-
-    [Required]
-    public int ColorId { get; set; }
-    public Color? Color { get; set; }
 
     [Required]
     public int SizeId { get; set; }

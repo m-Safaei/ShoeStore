@@ -1,6 +1,5 @@
 ﻿using ShoeStore.Application.Services.Interface;
 using ShoeStore.Domain.DTOs.SiteSide.Product;
-using ShoeStore.Domain.Entities.Color_Size;
 using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.IRepositories;
 
@@ -42,7 +41,6 @@ public class ProductService : IProductService
             Description = product.Description,
             ProductCategoryId = product.ProductCategoryId,
             ProductImages = product.ProductImages,
-            ExistingColors = await _productItemRepository.GetExistingColorsByProductId(productId, cancellation)
         };
     }
 

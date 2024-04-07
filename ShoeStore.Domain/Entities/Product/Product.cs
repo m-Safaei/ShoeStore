@@ -1,5 +1,5 @@
 ﻿using ShoeStore.Domain.Common;
-using ShoeStore.Domain.Entities.Color_Size;
+using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.Entities.ProductCategory;
 using System.ComponentModel.DataAnnotations;
 
