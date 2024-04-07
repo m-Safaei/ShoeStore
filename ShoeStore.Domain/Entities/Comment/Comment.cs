@@ -3,7 +3,7 @@
 
 namespace ShoeStore.Domain.Entities.Comment
 {
-    internal class Comment : BaseEntity
+    public class Comment : BaseEntity
     {
         public int UserId { get; set; }
         public int? ProductId { get; set; }

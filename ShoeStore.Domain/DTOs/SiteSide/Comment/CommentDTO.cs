@@ -1,6 +1,6 @@
 ﻿namespace ShoeStore.Domain.DTOs.SiteSide.Comment
 {
-    internal class CommentDTO
+    public class CommentDTO
     {
         public int UserId { get; set; }
         public int? ProductId { get; set; }
