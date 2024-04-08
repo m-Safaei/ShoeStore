@@ -29,7 +29,7 @@ public class OrderRepository : IOrderRepository
     }
     public Order GetOrderForCart(int userId)
     {
-        return _dbContext.Orders.SingleOrDefault(p=>p.UserId==userId);
+        return _dbContext.Orders.SingleOrDefault(p=>p.UserId==userId&&p.Isfainally==false);
     }
     #endregion
 
@@ -43,7 +43,7 @@ public class OrderRepository : IOrderRepository
         _dbContext.orderItems.Add(orderItem);
         SaveChanges();
     }
-   public void UpdateOrderDetail(OrderItem orderItem)
+   public void UpdateOrderItem(OrderItem orderItem)
     {
         _dbContext.orderItems.Update(orderItem);
         SaveChanges();
@@ -51,6 +51,10 @@ public class OrderRepository : IOrderRepository
    public OrderItem GetOrderItem(int orderid, int productid)
     {
     return    _dbContext.orderItems.SingleOrDefault(p => p.OrderId == orderid && p.ProductId == productid);
+    }
+    public OrderItem GetOrderItemById(int id)
+    {
+        return _dbContext.orderItems.SingleOrDefault(p => p.Id == id);
     }
     #endregion
 

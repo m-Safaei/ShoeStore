@@ -12,6 +12,8 @@ public interface IOrderService
     bool IsExistOrderItemFromUserFromToday(int OrderId, int productId);
     void AddProductToOrderItem(int productId, int orderId, decimal Price);
     void AddOneMoreProductToTheShopCart(int orderid,int productid);
+    void PlusProductToTheOrderItem(int id); 
+    void MinusProductToTheOrderItem(int id);
 
     #endregion
 

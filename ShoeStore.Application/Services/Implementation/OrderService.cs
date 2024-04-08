@@ -51,8 +51,19 @@ public class OrderService : IOrderService
     {
         OrderItem orderItem = _orderRepository.GetOrderItem(orderid,productid);
         orderItem.Count =orderItem.Count+1;
-        _orderRepository.UpdateOrderDetail(orderItem);
+        _orderRepository.UpdateOrderItem(orderItem);
     }
 
-
+    public void PlusProductToTheOrderItem(int id)
+    {
+      OrderItem orderItem =_orderRepository.GetOrderItemById(id);
+      orderItem.Count=orderItem.Count+1;
+        _orderRepository.UpdateOrderItem(orderItem);
+    }
+    public void MinusProductToTheOrderItem(int id)
+    {
+        OrderItem orderItem = _orderRepository.GetOrderItemById(id);
+        orderItem.Count = orderItem.Count - 1;
+        _orderRepository.UpdateOrderItem(orderItem);
+    }
 }
