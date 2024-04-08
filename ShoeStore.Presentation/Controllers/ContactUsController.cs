@@ -26,8 +26,8 @@ public class ContactUsController : Controller
     {
         if(ModelState.IsValid) 
         { 
-        _serivce.AddContactUs(contactUsDTO);
-            return RedirectToAction("Index","Home");
+             _serivce.AddContactUs(contactUsDTO);
+             return RedirectToAction("Index","Home");
         }
         return View(contactUsDTO);
     }
