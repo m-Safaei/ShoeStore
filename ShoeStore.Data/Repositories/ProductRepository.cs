@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoeStore.Data.AppDbContext;
+using ShoeStore.Domain.DTOs.SiteSide.Product;
 using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.IRepositories;
 
@@ -41,5 +42,13 @@ public class ProductRepository : IProductRepository
     public void UpdateProduct(Product product)
     {
         _context.Products.Update(product);
+    }
+
+    public async Task<ICollection<ProductPostDTO>?> GetProductPostDTOsByCategoryId(int categoryId,int count , CancellationToken cancellation)
+    {
+        return await _context.Products.Where(p=> p.ProductCategoryId == categoryId && !p.IsDelete)
+            .Select(p=> new ProductPostDTO() { ProductId=p.Id, Name=p.Name,Price=p.Price,ProductImage=p.ProductImage})
+            .Take(count).ToListAsync(cancellation);
+
     }
 }
