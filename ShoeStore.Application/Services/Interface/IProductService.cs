@@ -10,4 +10,5 @@ public interface IProductService
 
     Task<ProductItem?> GetProductItemByIdAsync(int Id, CancellationToken cancellation);
     Task<ProductPageDTO?> GetProductPageDTO(int productId, CancellationToken cancellation);
+    Task<ICollection<ProductPostDTO>?> GetProductPostDTOsByCategoryId(int categoryId, int count, CancellationToken cancellation);
 }

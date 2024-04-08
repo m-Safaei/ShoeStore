@@ -53,5 +53,10 @@ public class ProductService : IProductService
         };
     }
 
+
+    public async Task<ICollection<ProductPostDTO>?> GetProductPostDTOsByCategoryId(int categoryId,int count, CancellationToken cancellation)
+    {
+        return await _productRepository.GetProductPostDTOsByCategoryId(categoryId, count, cancellation);
+    }
     
 }
