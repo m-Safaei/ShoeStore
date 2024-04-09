@@ -320,7 +320,7 @@
                                 <ul class="onhover-show-div">
                                     @if (User.Identity.IsAuthenticated)
                                     {
-                                        <li><a href="login.html">پروفایل</a></li>
+                                        <li><a asp-controller="User" asp-action="UserProfile">پروفایل</a></li>
                                         <li><a asp-controller="Account" asp-action="Logout">خروج</a></li>
                                     }
                                     else
