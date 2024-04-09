@@ -20,6 +20,8 @@ namespace ShoeStore.Domain.Entities.User
 
         public User User { get; set; }
 
+        public ICollection<Order.Order> Orders { get; set; }
+
         #endregion
 
     }
