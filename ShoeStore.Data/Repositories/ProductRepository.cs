@@ -47,7 +47,7 @@ public class ProductRepository : IProductRepository
     public async Task<ICollection<ProductPostDTO>?> GetProductPostDTOsByCategoryId(int categoryId,int count , CancellationToken cancellation)
     {
         return await _context.Products.Where(p=> p.ProductCategoryId == categoryId && !p.IsDelete)
-            .Select(p=> new ProductPostDTO() { ProductId=p.Id, Name=p.Name,Price=p.Price,ProductImage=p.ProductImage})
+            .Select(p=> new ProductPostDTO() { ProductId=p.Id, Name=p.Name,Price=p.Price,DiscountPercentage = p.DiscountPercentage,ProductImage=p.ProductImage})
             .Take(count).ToListAsync(cancellation);
 
     }
