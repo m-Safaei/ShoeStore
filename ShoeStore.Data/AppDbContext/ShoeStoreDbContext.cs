@@ -39,6 +39,8 @@ public class ShoeStoreDbContext: DbContext
     public DbSet<Role> Roles { get; set; }
     public DbSet<UserRole> UserRoles { get; set; }
 
+    public DbSet<Location> Locations { get; set; }
+
 
 
     #endregion
