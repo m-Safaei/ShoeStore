@@ -6,4 +6,5 @@ public class ProductPostDTO
     public string Name { get; set; }
     public string? ProductImage { get; set; }
     public int Price { get; set; }
+    public int DiscountPercentage { get; set; }
 }
