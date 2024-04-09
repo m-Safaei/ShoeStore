@@ -51,4 +51,20 @@ public class ProductRepository : IProductRepository
             .Take(count).ToListAsync(cancellation);
 
     }
+
+    public async Task<ICollection<ProductPostDTO>?> GetNewProductDTOs(int count,CancellationToken cancellation)
+    {
+        return await _context.Products.Where(p=> !p.IsDelete).OrderByDescending(p=> p.Id).Take(count)
+            .Select(p=> new ProductPostDTO() { ProductId=p.Id,DiscountPercentage=p.DiscountPercentage,Name=p.Name,Price=p.Price,ProductImage=p.ProductImage})
+            .ToListAsync(cancellation);
+    }
+
+    public async Task<ICollection<ProductPostDTO>?> GetOnSaleProductDTOs(int count,CancellationToken cancellation)
+    {
+        return await _context.Products.Where(p => !p.IsDelete && p.DiscountPercentage > 0)
+            .Take(count).Select(p=>new ProductPostDTO() { ProductId=p.Id,Name=p.Name,ProductImage=p.ProductImage,Price=p.Price,DiscountPercentage=p.DiscountPercentage})
+            .ToListAsync(cancellation);
+    }
+
+    
 }

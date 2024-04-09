@@ -24,18 +24,24 @@
                                     }
 
                                 </div>
-                                @* <div class="back">
-                                    <a href="#"><img src="../assets/images/pro3/34.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                </div> *@
+                                <div class="back">
+                                    @if (@item.ProductImage != null)
+                                    {
+                                        <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId"><img src="@item.ProductImage" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId"><img src="../assets/images/pro3/default.png" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                    }
+                                </div>
                                 <div class="cart-info cart-wrap">
-                                    <button data-bs-toggle="modal" data-bs-target="#addtocart" title="اضافه کردن به سبد"><i class="ti-shopping-cart"></i></button> <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
+                                      <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> 
+                                      <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> 
                                 </div>
                             </div>
                             <div class="product-detail">
-                                @* <div class="rating">
-                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                </div> *@
-                                <a href="product-page(no-sidebar).html">
+                                
+                                <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId">
                                     <h6>@item.Name</h6>
                                 </a>
                                 @if (item.DiscountPercentage > 0)
@@ -47,190 +53,13 @@
                                     <h4>@item.Price</h4>
                                 }
 
-                                @* <ul class="color-variant">
-                                    <li class="bg-light0"></li>
-                                    <li class="bg-light1"></li>
-                                    <li class="bg-light2"></li>
-                                </ul> *@
+                                
                             </div>
                         </div>
                     </div>
                 }
             }
-            @* <div class="col-xl-2 col-md-4 col-6">
-                <div class="product-box">
-                    <div class="img-wrapper">
-                        <div class="front">
-                            <a href="#"><img src="../assets/images/pro3/33.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                        </div>
-                        <div class="back">
-                            <a href="#"><img src="../assets/images/pro3/34.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                        </div>
-                        <div class="cart-info cart-wrap">
-                            <button data-bs-toggle="modal" data-bs-target="#addtocart" title="اضافه کردن به سبد"><i class="ti-shopping-cart"></i></button> <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="product-detail">
-                        <div class="rating">
-                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                        </div>
-                        <a href="product-page(no-sidebar).html">
-                            <h6>پیراهن نخی زیبا</h6>
-                        </a>
-                        <h4>1500.000</h4>
-                        <ul class="color-variant">
-                            <li class="bg-light0"></li>
-                            <li class="bg-light1"></li>
-                            <li class="bg-light2"></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-2 col-md-4 col-6">
-                <div class="product-box">
-                    <div class="img-wrapper">
-                        <div class="front">
-                            <a href="#"><img src="../assets/images/pro3/1.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                        </div>
-                        <div class="back">
-                            <a href="#"><img src="../assets/images/pro3/2.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                        </div>
-                        <div class="cart-info cart-wrap">
-                            <button data-bs-toggle="modal" data-bs-target="#addtocart" title="اضافه کردن به سبد"><i class="ti-shopping-cart"></i></button> <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="product-detail">
-                        <div class="rating">
-                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                        </div>
-                        <a href="product-page(no-sidebar).html">
-                            <h6>پیراهن نخی زیبا</h6>
-                        </a>
-                        <h4>1500.000</h4>
-                        <ul class="color-variant">
-                            <li class="bg-light0"></li>
-                            <li class="bg-light1"></li>
-                            <li class="bg-light2"></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-2 col-md-4 col-6">
-                <div class="product-box">
-                    <div class="img-wrapper">
-                        <div class="front">
-                            <a href="#"><img src="../assets/images/pro3/27.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                        </div>
-                        <div class="back">
-                            <a href="#"><img src="../assets/images/pro3/28.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                        </div>
-                        <div class="cart-info cart-wrap">
-                            <button data-bs-toggle="modal" data-bs-target="#addtocart" title="اضافه کردن به سبد"><i class="ti-shopping-cart"></i></button> <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="product-detail">
-                        <div class="rating">
-                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                        </div>
-                        <a href="product-page(no-sidebar).html">
-                            <h6>پیراهن نخی زیبا</h6>
-                        </a>
-                        <h4>1500.000</h4>
-                        <ul class="color-variant">
-                            <li class="bg-light0"></li>
-                            <li class="bg-light1"></li>
-                            <li class="bg-light2"></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-2 col-md-4 col-6">
-                <div class="product-box">
-                    <div class="img-wrapper">
-                        <div class="front">
-                            <a href="#"><img src="../assets/images/pro3/35.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                        </div>
-                        <div class="back">
-                            <a href="#"><img src="../assets/images/pro3/36.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                        </div>
-                        <div class="cart-info cart-wrap">
-                            <button data-bs-toggle="modal" data-bs-target="#addtocart" title="اضافه کردن به سبد"><i class="ti-shopping-cart"></i></button> <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="product-detail">
-                        <div class="rating">
-                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                        </div>
-                        <a href="product-page(no-sidebar).html">
-                            <h6>پیراهن نخی زیبا</h6>
-                        </a>
-                        <h4>1500.000</h4>
-                        <ul class="color-variant">
-                            <li class="bg-light0"></li>
-                            <li class="bg-light1"></li>
-                            <li class="bg-light2"></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-2 col-md-4 col-6">
-                <div class="product-box">
-                    <div class="img-wrapper">
-                        <div class="front">
-                            <a href="#"><img src="../assets/images/pro3/2.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                        </div>
-                        <div class="back">
-                            <a href="#"><img src="../assets/images/pro3/1.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                        </div>
-                        <div class="cart-info cart-wrap">
-                            <button data-bs-toggle="modal" data-bs-target="#addtocart" title="اضافه کردن به سبد"><i class="ti-shopping-cart"></i></button> <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="product-detail">
-                        <div class="rating">
-                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                        </div>
-                        <a href="product-page(no-sidebar).html">
-                            <h6>پیراهن نخی زیبا</h6>
-                        </a>
-                        <h4>1500.000</h4>
-                        <ul class="color-variant">
-                            <li class="bg-light0"></li>
-                            <li class="bg-light1"></li>
-                            <li class="bg-light2"></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-2 col-md-4 col-6">
-                <div class="product-box">
-                    <div class="img-wrapper">
-                        <div class="front">
-                            <a href="#"><img src="../assets/images/pro3/28.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                        </div>
-                        <div class="back">
-                            <a href="#"><img src="../assets/images/pro3/27.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                        </div>
-                        <div class="cart-info cart-wrap">
-                            <button data-bs-toggle="modal" data-bs-target="#addtocart" title="اضافه کردن به سبد"><i class="ti-shopping-cart"></i></button> <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="product-detail">
-                        <div class="rating">
-                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                        </div>
-                        <a href="product-page(no-sidebar).html">
-                            <h6>پیراهن نخی زیبا</h6>
-                        </a>
-                        <h4>1500.000</h4>
-                        <ul class="color-variant">
-                            <li class="bg-light0"></li>
-                            <li class="bg-light1"></li>
-                            <li class="bg-light2"></li>
-                        </ul>
-                    </div>
-                </div>
-            </div> *@
+            
         </div>
     </div>
 </section>
