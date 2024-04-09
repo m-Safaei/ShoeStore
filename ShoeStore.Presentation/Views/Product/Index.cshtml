@@ -1,7 +1,5 @@
 ﻿@model ShoeStore.Domain.DTOs.SiteSide.Product.ProductPageDTO
 
-<body class="theme-color-1 rtl">
-
 
     <!-- section start -->
     <section>
@@ -12,7 +10,7 @@
                         <div class="product-right-slick">
                             @if(Model.ProductImage!= null)
                             {
-                                <div><img src="../assets/images/pro3/@Model.ProductImage" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
+                                <div><img src="@Model.ProductImage" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
                             } else
                             {
                                 <div><img src="../assets/images/pro3/default.png" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
@@ -976,4 +974,3 @@
         <h3>اضافه کردن به سبد</h3>
     </div>
     <!-- اضافه کردن به سبد notification -->
-</body>
