@@ -25,6 +25,8 @@ public class User : BaseEntity
 
      public ICollection<UserRole> UserRoles { get; set; }
 
+     public ICollection<Location> Locations { get; set; }
+
     #endregion
 }
 

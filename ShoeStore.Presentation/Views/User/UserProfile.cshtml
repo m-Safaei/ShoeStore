@@ -1,0 +1,705 @@
+﻿<!-- breadcrumb start -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-title">
+                    <h2>داشبورد</h2>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">خانه</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">داشبورد</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb End -->
+<!--  dashboard section start -->
+<section class="dashboard-section section-b-space user-dashboard-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="dashboard-sidebar">
+                    <div class="profile-top">
+                        <div class="profile-image">
+                            <img src="~/images/avtar.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="profile-detail">
+                            <h5>@User.Identity.Name</h5>
+                            <h6>setin@gmail.com</h6>
+                        </div>
+                    </div>
+                    <div class="faq-tab">
+                        <ul class="nav nav-tabs" id="top-tab" role="tablist">
+                            <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#info" class="nav-link active">اطلاعات حساب</a></li>
+                            <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#address" class="nav-link">آدرس </a></li>
+                            <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#orders" class="nav-link">سفارشات من </a></li>
+                            <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#wishlist" class="nav-link">علاقه مندی ها </a></li>
+                            <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#payment" class="nav-link">کارت های شما</a></li>
+                            <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#security" class="nav-link">امنیت </a> </li>
+                            <li class="nav-item"><a asp-controller="Account" asp-action="Logout" class="nav-link">خروج </a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="faq-content tab-content" id="top-tabContent">
+                    <div class="tab-pane fade show active" id="info">
+                        <div class="counter-section">
+                            <div class="welcome-msg">
+                                <h4>سلام، @User.Identity.Name !</h4>
+                                <p>از داشبورد حساب کاربری خود می توانید یک عکس فوری از فعالیت اخیر حساب خود را مشاهده کرده و اطلاعات حساب خود را به روز کنید. برای مشاهده یا ویرایش اطلاعات پیوند زیر را انتخاب کنید</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="counter-box">
+                                        <img src="~/images/icon/dashboard/sale.png" class="img-fluid">
+                                        <div>
+                                            <h3>25</h3>
+                                            <h5>کل سفارش</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="counter-box">
+                                        <img src="~/images/icon/dashboard/homework.png" class="img-fluid">
+                                        <div>
+                                            <h3>5</h3>
+                                            <h5>درحال انتظار</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="counter-box">
+                                        <img src="~/images/icon/dashboard/order.png" class="img-fluid">
+                                        <div>
+                                            <h3>50</h3>
+                                            <h5>علاقه مندی</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-account box-info">
+                                <div class="box-head">
+                                    <h4>اطلاعات حساب</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="box">
+                                            <div class="box-title">
+                                                <h3>اطلاعات تماس</h3><a href="#">ویرایش </a>
+                                            </div>
+                                            <div class="box-content">
+                                                <h6>@User.Identity.Name</h6>
+                                                <h6>setin@gmail.com</h6>
+                                                <h6><a href="#">تغییر پسورد</a></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="box">
+                                            <div class="box-title">
+                                                <h3>خبرنامه </h3><a href="#">ویرایش </a>
+                                            </div>
+                                            <div class="box-content">
+                                                <p>شما در حال حاضر مشترک هیچ خبرنامه ای نیستید</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box mt-3">
+                                    <div class="box-title">
+                                        <h3>آدرس </h3><a href="#">مدیریت آدرس </a>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <h6>آدرس پیشفرض</h6>
+                                            <address>شما یک آدرس صورتحساب پیش فرض تنظیم نکرده اید<br><a href="#">ویرایش آدرس</a></address>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h6>آدرس پیشفرض </h6>
+                                            <address>شما یک آدرس صورتحساب پیش فرض تنظیم نکرده اید<br><a href="#">ویرایش آدرس</a></address>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="address">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card mt-0">
+                                    <div class="card-body">
+                                        <div class="top-sec">
+                                            <h3>آدرس </h3>
+                                            <a href="#" class="btn btn-sm btn-solid">+ ادرس جدید</a>
+                                        </div>
+                                        <div class="address-book-section">
+                                            <div class="row g-4">
+                                                <div class="select-box active col-xl-4 col-md-6">
+                                                    <div class="address-box">
+                                                        <div class="top">
+                                                            <h6>مارک جکنو <span>خانه </span></h6>
+                                                        </div>
+                                                        <div class="middle">
+                                                            <div class="address">
+                                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                                                <p>60515</p>
+                                                            </div>
+                                                            <div class="number">
+                                                                <p>موبایل :  <span>+91 123 - 456 - 7890</span></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="bottom">
+                                                            <a href="javascript:void(0)" data-bs-target="#edit-address" data-bs-toggle="modal" class="bottom_btn">ویرایش </a>
+                                                            <a href="#" class="bottom_btn">حذف </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="select-box col-xl-4 col-md-6">
+                                                    <div class="address-box">
+                                                        <div class="top">
+                                                            <h6>مارک جکنو <span>دفتر </span></h6>
+                                                        </div>
+                                                        <div class="middle">
+                                                            <div class="address">
+                                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                                                <p>60515</p>
+                                                            </div>
+                                                            <div class="number">
+                                                                <p>موبایل :  <span>+91 123 - 456 - 7890</span></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="bottom">
+                                                            <a href="javascript:void(0)" data-bs-target="#edit-address" data-bs-toggle="modal" class="bottom_btn">ویرایش </a>
+                                                            <a href="#" class="bottom_btn">حذف </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="orders">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card dashboard-table mt-0">
+                                    <div class="card-body table-responsive-sm">
+                                        <div class="top-sec">
+                                            <h3>سفارشات من </h3>
+                                        </div>
+                                        <div class="table-responsive-xl">
+                                            <table class="table cart-table order-table">
+                                                <thead>
+                                                    <tr class="table-head">
+                                                        <th scope="col">تصویر</th>
+                                                        <th scope="col">شماره سفارش </th>
+                                                        <th scope="col">جزئیات محصول</th>
+                                                        <th scope="col">وضعیت </th>
+                                                        <th scope="col">قیمت </th>
+                                                        <th scope="col">بازدید </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="~/images/pro3/1.jpg" class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <span class="mt-0">#125021</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="fs-6">تی شرت پولو بنفش</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge rounded-pill bg-success custom-badge">ارسال شد</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="theme-color fs-6">149.54</span>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <i class="fa fa-eye text-theme"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="~/images/pro3/2.jpg" class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <span class="mt-0">#125367</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="fs-6">تی شرت پولو بنفش</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge rounded-pill bg-danger custom-badge">در انتظار</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="theme-color fs-6">149.54</span>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <i class="fa fa-eye text-theme"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="~/images/pro3/27.jpg" class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <p>#125948</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="fs-6">تی شرت پولو بنفش</p>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge rounded-pill bg-success custom-badge">ارسال شد</span>
+                                                        </td>
+                                                        <td>
+                                                            <p class="theme-color fs-6">149.54</p>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <i class="fa fa-eye text-theme"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="~/images/pro3/28.jpg" class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <p>#127569</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="fs-6">تی شرت پولو بنفش</p>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge rounded-pill bg-success custom-badge">ارسال شد</span>
+                                                        </td>
+                                                        <td>
+                                                            <p class="theme-color fs-6">149.54</p>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <i class="fa fa-eye text-theme"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="~/images/pro3/33.jpg" class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <p>#125753</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="fs-6">تی شرت پولو بنفش</p>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge rounded-pill bg-secondary custom-badge">لغو شده</span>
+                                                        </td>
+                                                        <td>
+                                                            <p class="theme-color fs-6">149.54</p>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <i class="fa fa-eye text-theme"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="~/images/pro3/34.jpg" class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <span>#125021</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="fs-6">تی شرت پولو بنفش</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge rounded-pill bg-secondary custom-badge">لغو شده</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="theme-color fs-6">149.54</span>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <i class="fa fa-eye text-theme"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="wishlist">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card dashboard-table mt-0">
+                                    <div class="card-body table-responsive-sm">
+                                        <div class="top-sec">
+                                            <h3>علاقه مندی ها </h3>
+                                        </div>
+                                        <div class="table-responsive-xl">
+                                            <table class="table cart-table wishlist-table">
+                                                <thead>
+                                                    <tr class="table-head">
+                                                        <th scope="col">تصویر</th>
+                                                        <th scope="col">شماره سفارش </th>
+                                                        <th scope="col">جزئیات محصول</th>
+                                                        <th scope="col">قیمت </th>
+                                                        <th scope="col">عملیات</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="~/images/pro3/1.jpg" class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <span class="mt-0">#125021</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>تی شرت پولو بنفش</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="theme-color fs-6">149.54</span>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)" class="btn btn-xs btn-solid">
+                                                                خرید کردن
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="~/images/pro3/2.jpg" class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <span class="mt-0">#125367</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>تی شرت پولو بنفش</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="theme-color fs-6">149.54</span>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)" class="btn btn-xs btn-solid">
+                                                                خرید کردن
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="~/images/pro3/27.jpg" class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <span>#125948</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>تی شرت پولو بنفش</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="theme-color fs-6">149.54</span>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)" class="btn btn-xs btn-solid">
+                                                                خرید کردن
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="~/images/pro3/28.jpg" class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <span>#127569</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>تی شرت پولو بنفش</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="theme-color fs-6">149.54</span>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)" class="btn btn-xs btn-solid">
+                                                                خرید کردن
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="~/images/pro3/33.jpg" class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <span>#125753</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>تی شرت پولو بنفش</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="theme-color fs-6">149.54</span>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)" class="btn btn-xs btn-solid">
+                                                                خرید کردن
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="~/images/pro3/34.jpg" class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <span>#125021</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>تی شرت پولو بنفش</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="theme-color fs-6">149.54</span>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)" class="btn btn-xs btn-solid">
+                                                                خرید کردن
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="payment">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card mt-0">
+                                    <div class="card-body">
+                                        <div class="top-sec">
+                                            <h3>کارت های شما</h3>
+                                            <a href="#" class="btn btn-sm btn-solid">+ ادرس جدید</a>
+                                        </div>
+                                        <div class="address-book-section">
+                                            <div class="row g-4">
+                                                <div class="select-box active col-xl-4 col-md-6">
+                                                    <div class="address-box">
+                                                        <div class="bank-logo">
+                                                            <img src="~/images/bank-logo.png" class="bank-logo">
+                                                            <img src="~/images/visa.png" class="network-logo">
+                                                        </div>
+                                                        <div class="card-number">
+                                                            <h6>شماره کارت</h6>
+                                                            <h5>6262 6126 2112 1515</h5>
+                                                        </div>
+                                                        <div class="name-validity">
+                                                            <div class="left">
+                                                                <h6>نام کارت </h6>
+                                                                <h5>مارک جکنو</h5>
+                                                            </div>
+                                                            <div class="right">
+                                                                <h6>اعتبار</h6>
+                                                                <h5>XX/XX</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="bottom">
+                                                            <a href="javascript:void(0)" data-bs-target="#edit-address" data-bs-toggle="modal" class="bottom_btn">ویرایش </a>
+                                                            <a href="#" class="bottom_btn">حذف </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="select-box col-xl-4 col-md-6">
+                                                    <div class="address-box">
+                                                        <div class="bank-logo">
+                                                            <img src="~/images/bank-logo1.png" class="bank-logo">
+                                                            <img src="~/images/visa.png" class="network-logo">
+                                                        </div>
+                                                        <div class="card-number">
+                                                            <h6>شماره کارت</h6>
+                                                            <h5>6262 6126 2112 1515</h5>
+                                                        </div>
+                                                        <div class="name-validity">
+                                                            <div class="left">
+                                                                <h6>نام کارت </h6>
+                                                                <h5>مارک جکنو</h5>
+                                                            </div>
+                                                            <div class="right">
+                                                                <h6>اعتبار</h6>
+                                                                <h5>XX/XX</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="bottom">
+                                                            <a href="javascript:void(0)" data-bs-target="#edit-address" data-bs-toggle="modal" class="bottom_btn">ویرایش </a>
+                                                            <a href="#" class="bottom_btn">حذف </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="security">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card mt-0">
+                                    <div class="card-body">
+                                        <div class="dashboard-box">
+                                            <div class="dashboard-title">
+                                                <h4>تنظیمات </h4>
+                                            </div>
+                                            <div class="dashboard-detail">
+                                                <div class="account-setting">
+                                                    <h5>اطلاعیه</h5>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-check">
+                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked="">
+                                                                <label class="form-check-label" for="exampleRadios1">
+                                                                    اجازه اعلان‌های دسک‌تاپ
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                                                <label class="form-check-label" for="exampleRadios2">
+                                                                    اعلان ها را فعال کنید
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                                                                <label class="form-check-label" for="exampleRadios3">
+                                                                    دریافت اعلان برای فعالیت خودم
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4">
+                                                                <label class="form-check-label" for="exampleRadios4">
+                                                                    دی ان اس
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="account-setting">
+                                                    <h5>غیرفعال کردن حساب</h5>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-check">
+                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios1" id="exampleRadios4" value="option4" checked="">
+                                                                <label class="form-check-label" for="exampleRadios4">
+                                                                    من یک نگرانی از حریم خصوصی دارم
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios1" id="exampleRadios5" value="option5">
+                                                                <label class="form-check-label" for="exampleRadios5">
+                                                                    این موقتی است
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios1" id="exampleRadios6" value="option6">
+                                                                <label class="form-check-label" for="exampleRadios6">
+                                                                    دیگر
+                                                                </label>
+                                                            </div>
+                                                            <button type="button" class="btn btn-solid btn-xs">غیر فعال کردن اکانت</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="account-setting">
+                                                    <h5>حذف حساب کاربری</h5>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-check">
+                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios3" id="exampleRadios7" value="option7" checked="">
+                                                                <label class="form-check-label" for="exampleRadios7">
+                                                                    دیگر قابل استفاده نیست
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios3" id="exampleRadios8" value="option8">
+                                                                <label class="form-check-label" for="exampleRadios8">
+                                                                    می‌خواهید حساب دیگری را روشن کنید
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios3" id="exampleRadios9" value="option9">
+                                                                <label class="form-check-label" for="exampleRadios9">
+                                                                    دیگر
+                                                                </label>
+                                                            </div>
+                                                            <button type="button" class="btn btn-solid btn-xs">حذف حساب کاربری</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--  dashboard section end -->
