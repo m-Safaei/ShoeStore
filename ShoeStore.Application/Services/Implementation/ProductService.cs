@@ -58,5 +58,18 @@ public class ProductService : IProductService
     {
         return await _productRepository.GetProductPostDTOsByCategoryId(categoryId, count, cancellation);
     }
-    
+
+
+    public async Task<ICollection<ProductPostDTO>?> GetNewProductDTOs(int count, CancellationToken cancellation)
+    {
+        return await _productRepository.GetNewProductDTOs(count, cancellation);
+    }
+
+
+    public async Task<ICollection<ProductPostDTO>?> GetOnSaleProductDTOs(int count, CancellationToken cancellation)
+    {
+        return await _productRepository.GetOnSaleProductDTOs(count,cancellation);
+    }
+
+
 }

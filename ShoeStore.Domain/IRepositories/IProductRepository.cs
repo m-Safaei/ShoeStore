@@ -12,4 +12,6 @@ public interface IProductRepository
     void UpdateProduct(Product product);
     Task SaveChangesAsync(CancellationToken cancellation);
     Task<ICollection<ProductPostDTO>?> GetProductPostDTOsByCategoryId(int categoryId, int count, CancellationToken cancellation);
+    Task<ICollection<ProductPostDTO>?> GetNewProductDTOs(int count, CancellationToken cancellation);
+    Task<ICollection<ProductPostDTO>?> GetOnSaleProductDTOs(int count, CancellationToken cancellation);
 }

@@ -35,7 +35,7 @@
                                 @* <div class="rating">
                                     <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                 </div> *@
-                                <a href="product-page(no-sidebar).html">
+                                <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId">
                                     <h6>@item.Name</h6>
                                 </a>
                                 @if (item.DiscountPercentage > 0)

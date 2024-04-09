@@ -1,0 +1,67 @@
+﻿@model ICollection<ShoeStore.Domain.DTOs.SiteSide.Product.ProductPostDTO>
+
+
+<section class="section-b-space pt-0 ratio_asos">
+    <div class="container">
+        <div class="title3">
+
+            <h2 class="title-inner3">محصولات حراج</h2>
+            <div class="line"></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="product-4 product-m no-arrow">
+
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <div class="product-box">
+                                <div class="img-block">
+                                    <div class="front">
+                                        @if (@item.ProductImage != null)
+                                        {
+                                            <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId"><img src="@item.ProductImage" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId"><img src="../assets/images/pro3/default.png" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                        }
+                                    </div>
+                                    <div class="back">
+                            <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId"><img src="@item.ProductImage" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            </div>
+                                    <div class="cart-info">
+                                        @* <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
+                                <i class="ti-shopping-cart"></i>
+                                </button> *@
+                                        <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
+                                        <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
+                                        @* <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a> *@
+                                    </div>
+                                </div>
+                                <div class="product-detail">
+                                    @* <div class="rating">
+                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div> *@
+                                    <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId">
+                                        <h6>@item.Name</h6>
+                                    </a>
+                                    @if (item.DiscountPercentage > 0)
+                                    {
+                                        <h4>@(item.Price * (100 - item.DiscountPercentage)) <del>@item.Price</del></h4>
+                                    }
+                                    else
+                                    {
+                                        <h4>@item.Price</h4>
+                                    }
+
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
