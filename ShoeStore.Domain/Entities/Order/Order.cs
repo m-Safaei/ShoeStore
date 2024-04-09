@@ -11,13 +11,11 @@ public class Order:BaseEntity
     public int OrderItemId { get; set; }
     public bool Isfainally { get; set; }
 
-    public int? LocationId { get; set; }
     #endregion
     #region Navigations
     public User.User User { get; set; }
     public List<OrderItem> Items { get; set;}
-
-    public Location Location { get; set; }
+    
     #endregion
 
 }
