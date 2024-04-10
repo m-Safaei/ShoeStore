@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoeStore.Data.AppDbContext;
+using ShoeStore.Domain.DTOs.AdminSide.Role;
 using ShoeStore.Domain.Entities.Role;
 using ShoeStore.Domain.IRepositories;
 
@@ -30,6 +31,17 @@ public class RoleRepository : IRoleRepository
     {
         return _context.UserRoles.Where(p => p.UserId == userId)
                                  .Select(p => p.Role).ToList();
+    }
+
+    public async Task<List<RoleDto>> GetLitOfRoles(CancellationToken cancellation)
+    {
+        return await _context.Roles.Where(p => !p.IsDelete)
+                                    .Select(p => new RoleDto()
+                                    {
+                                        RoleTitle = p.RoleTitle,
+                                        RoleUniqueName = p.RoleUniqueName,
+                                    })
+                                    .ToListAsync(cancellation);
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using ShoeStore.Application.Services.Interface;
+using ShoeStore.Domain.DTOs.AdminSide.Role;
 using ShoeStore.Domain.Entities.Role;
 using ShoeStore.Domain.IRepositories;
 
@@ -47,6 +48,11 @@ public class RoleService : IRoleService
         }
 
         return false;
+    }
+
+    public async Task<List<RoleDto>> GetLitOfRoles(CancellationToken cancellation)
+    {
+        return await _roleRepository.GetLitOfRoles(cancellation);
     }
 }
 
