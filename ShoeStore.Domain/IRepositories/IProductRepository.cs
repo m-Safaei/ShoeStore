@@ -14,4 +14,8 @@ public interface IProductRepository
     Task<ICollection<ProductPostDTO>?> GetProductPostDTOsByCategoryId(int categoryId, int count, CancellationToken cancellation);
     Task<ICollection<ProductPostDTO>?> GetNewProductDTOs(int count, CancellationToken cancellation);
     Task<ICollection<ProductPostDTO>?> GetOnSaleProductDTOs(int count, CancellationToken cancellation);
+    Task<(ICollection<ProductPostDTO>?, int TotalCount)> GetProductDTOsAndCountForCategoryPageByChildCategory(int childCategoryId
+        , int pageNumber, string order, CancellationToken cancellation);
+    Task<(ICollection<ProductPostDTO>?, int TotalCount)> GetProductDTOsAndCountForCategoryPageByParentCategory(int parentCategoryId
+        , int pageNumber, string order, CancellationToken cancellation);
 }

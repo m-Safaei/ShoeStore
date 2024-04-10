@@ -12,4 +12,6 @@ public interface IProductCategoryRepository
     Task SaveChangesAsync(CancellationToken cancellation);
     Task<ICollection<CategoryDTO>> GetCategoriesByParentId(int parentId, CancellationToken cancellation);
     Task<ICollection<ParentCategoryDTO>> GetParentCategories(CancellationToken cancellation);
+    Task<bool?> IsParentCategory(int categoryId, CancellationToken cancellation);
+    Task<string?> GetCategoryNameById(int categoryId, CancellationToken cancellation);
 }
