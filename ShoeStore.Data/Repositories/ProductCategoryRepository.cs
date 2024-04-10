@@ -69,4 +69,9 @@ public class ProductCategoryRepository : IProductCategoryRepository
         if (category == null) return null;
         return category.ParentId == null;
     }
+
+    public async Task<string?> GetCategoryNameById(int categoryId,CancellationToken cancellation)
+    {
+        return await _context.ProductCategories.Where(p=>p.Id==categoryId && !p.IsDelete).Select(p=> p.Title).FirstOrDefaultAsync(cancellation);
+    }
 }

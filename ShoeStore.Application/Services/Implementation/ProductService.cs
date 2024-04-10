@@ -102,6 +102,8 @@ public class ProductService : IProductService
         var producDTOsAndCount = await GetProductDTOsAndCountForCategoryPage(categoryId, pageNumber,order, cancellation);
         if (producDTOsAndCount.Item1 == null) return null;
 
-        return new CategoryPageDTO() { ProductPostDTOs = producDTOsAndCount.Item1, PageNumber=pageNumber,Order=order,TotalCount=producDTOsAndCount.TotalCount,CategoryId=categoryId};
+        return new CategoryPageDTO() { ProductPostDTOs = producDTOsAndCount.Item1, PageNumber=pageNumber
+            ,Order=order,TotalCount=producDTOsAndCount.TotalCount,CategoryId=categoryId
+            ,CategoryName=await _productCategoryRepository.GetCategoryNameById(categoryId,cancellation)};
     }
 }
