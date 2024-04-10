@@ -1,0 +1,152 @@
+﻿@model ShoeStore.Domain.DTOs.SiteSide.ProductCategory.CategoryPageDTO;
+
+
+<section class="section-b-space ratio_asos">
+    <div class="collection-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="collection-content col">
+                    <div class="page-main-content">
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <div class="collection-product-wrapper">
+                                    <div class="product-top-filter">
+                                        <div class="container-fluid p-0">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="product-filter-content">
+                                                        <div class="search-count">
+                                                            <h5>نمایش محصولات @((Model.PageNumber - 1) * 12 + 1)-@(Model.PageNumber * 12) </h5>
+                                                        </div>
+                                                        @* <div class="collection-view">
+                                                        <ul>
+                                                        <li><i class="fa fa-th grid-layout-view"></i></li>
+                                                        <li>
+                                                        <i class="fa fa-list-ul list-layout-view"></i>
+                                                        </li>
+                                                        </ul>
+                                                        </div> *@
+                                                        @* <div class="collection-grid-view">
+                                                        <ul>
+                                                        <li><img src="../assets/images/icon/2.png" alt="" class="product-2-layout-view"></li>
+                                                        <li><img src="../assets/images/icon/3.png" alt="" class="product-3-layout-view"></li>
+                                                        <li><img src="../assets/images/icon/4.png" alt="" class="product-4-layout-view"></li>
+                                                        <li><img src="../assets/images/icon/6.png" alt="" class="product-6-layout-view"></li>
+                                                        </ul>
+                                                        </div> *@
+                                                        @* <div class="product-page-per-view">
+                                                        <select>
+                                                        <option value="High to low">24  محصول در صفحه    </option>
+                                                        <option value="Low to High">50  محصول در صفحه    </option>
+                                                        <option value="Low to High">100  محصول در صفحه    </option>
+                                                        </select>
+                                                        </div> *@
+
+                                                        <div class="product-page-filter">
+                                                            <form class="" asp-action="Index" asp-controller="Category" asp-route-categoryId="@Model.CategoryId">
+                                                                <select asp-for="Order">
+                                                                    <option value="New"> مرتب سازی براساس جدیدترین </option>
+                                                                    <option value="Cheap">مرتب سازی بر اساس ارزان ترین </option>
+                                                                    <option value="Expensive">مرتب سازی براساس گران ترین </option>
+                                                                </select>
+                                                                <button type="submit" class="btn btn-solid m-1"> اعمال</button>
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-wrapper-grid">
+                                        <div class="row margin-res">
+                                            @foreach (var item in Model.ProductPostDTOs)
+                                            {
+                                                <div class="col-xl-3 col-6 col-grid-box">
+                                                    <div class="product-box">
+                                                        <div class="img-wrapper">
+                                                            @if (item.ProductImage != null)
+                                                            {
+                                                                <div class="front">
+                                                                    <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" class="bg-size blur-up lazyloaded" style="background-image: url(&quot;../assets/images/pro3/35.jpg&quot;); background-size: cover; background-position: center center; display: block;"><img src="@item.ProductImage" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
+                                                                </div>
+                                                                <div class="back">
+                                                                    <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" class="bg-size blur-up lazyloaded" style="background-image: url(&quot;../assets/images/pro3/36.jpg&quot;); background-size: cover; background-position: center center; display: block;"><img src="@item.ProductImage" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="back">
+                                                                    <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" class="bg-size blur-up lazyloaded" style="background-image: url(&quot;../assets/images/pro3/36.jpg&quot;); background-size: cover; background-position: center center; display: block;"><img src="../assets/images/pro3/default.png" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
+                                                                </div>
+                                                            }
+
+                                                            <div class="cart-info cart-wrap">
+                                                                <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-detail">
+                                                            <div>
+
+                                                                <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId">
+                                                                    <h6>@item.Name</h6>
+                                                                </a>
+                                                                @if (item.DiscountPercentage > 0)
+                                                                {
+                                                                    <h4>@(item.Price * (100 - item.DiscountPercentage)) <del>@item.Price</del></h4>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <h4>@item.Price</h4>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <div class="product-pagination">
+                                        <div class="theme-paggination-block">
+                                            <div class="container-fluid p-0">
+                                                <div class="row">
+                                                    <div class="col-xl-6 col-md-6 col-sm-12">
+                                                        <nav aria-label="Page navigation">
+                                                            <ul class="pagination">
+                                                                <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span> <span class="sr-only">قبلی</span></a></li>
+                                                                @for (int i = 1; i <= ((Model.TotalCount / 12) + 1); i++)
+                                                                {
+                                                                    if (Model.PageNumber == i)
+                                                                    {
+                                                                        <li class="page-item active"><a class="page-link">@i</a></li>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Category" asp-route-categoryId="@Model.CategoryId" asp-route-pageNumber="@i" asp-route-order="@Model.Order">@i</a></li>
+                                                                    }
+                                                                }
+                                                                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span> <span class="sr-only">بعدی</span></a></li>
+
+                                                            </ul>
+                                                        </nav>
+                                                    </div>
+                                                    <div class="col-xl-6 col-md-6 col-sm-12">
+                                                        <div class="product-search-count-bottom">
+                                                            <h5>نمایش محصولات @((Model.PageNumber - 1) * 12 + 1)-@(Model.PageNumber * 12) </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
