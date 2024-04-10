@@ -33,7 +33,7 @@ public class OrderRepository : IOrderRepository
     }
     public bool IsExistOrderItemFromUserFromToday(int OrderId,int productId)
     {
-        return _dbContext.orderItems.Any(p => p.ProductId == productId && p.OrderId == OrderId);
+        return _dbContext.orderItems.Any(p => p.ProductItemId == productId && p.OrderId == OrderId);
     }
     public void AddOrderItem(OrderItem orderItem)
     {
