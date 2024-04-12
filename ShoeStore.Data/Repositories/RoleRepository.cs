@@ -38,8 +38,10 @@ public class RoleRepository : IRoleRepository
         return await _context.Roles.Where(p => !p.IsDelete)
                                     .Select(p => new RoleDto()
                                     {
+                                        RoleId = p.Id,
                                         RoleTitle = p.RoleTitle,
                                         RoleUniqueName = p.RoleUniqueName,
+                                        CreateDate = p.CreateDate
                                     })
                                     .ToListAsync(cancellation);
     }

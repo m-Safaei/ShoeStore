@@ -52,110 +52,27 @@
                                         <th>
                                             <button type="button" class="btn btn-primary add-row delete_all">حذف </button>
                                         </th>
-                                        <th>نام </th>
-                                        <th>وضعیت </th>
+                                        <th>عنوان نقش </th>
+                                        <th>عنوان Unique </th>
                                         <th>ایجاد شده در</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    <tr data-row-id="1">
+                                @foreach (var role in Model)
+                                {
+                                    <tr data-row-id="@role.RoleId">
                                         <td>
-                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault" data-id="1">
+                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault" data-id="@role.RoleId">
                                         </td>
 
-                                        <td>لیست محصولات	</td>
+                                        <td>@role.RoleTitle </td>
+                                        <td>@role.RoleUniqueName </td>
 
-                                        <td class="order-warning">
-                                            <span>منتظر</span>
-                                        </td>
-
-                                        <td class="list-date">1400-04-18 ساعت 00:00</td>
+                                        <td class="list-date">@role.CreateDate</td>
                                     </tr>
-
-                                    <tr data-row-id="2">
-                                        <td>
-                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault1" data-id="2">
-                                        </td>
-
-                                        <td>محصول دیجیتال	</td>
-
-                                        <td class="order-success">
-                                            <span>موفقیت</span>
-                                        </td>
-
-                                        <td class="list-date">1400-04-18 ساعت 00:00</td>
-                                    </tr>
-
-                                    <tr data-row-id="3">
-                                        <td>
-                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault2" data-id="3">
-                                        </td>
-
-                                        <td>محصول دیجیتال	</td>
-
-                                        <td class="order-warning">
-                                            <span>منتظر</span>
-                                        </td>
-
-                                        <td class="list-date">1400-04-18 ساعت 00:00</td>
-                                    </tr>
-
-                                    <tr data-row-id="4">
-                                        <td>
-                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault3" data-id="4">
-                                        </td>
-
-                                        <td>محصول دیجیتال	</td>
-
-                                        <td class="order-pending">
-                                            <span>منتظر </span>
-                                        </td>
-
-                                        <td class="list-date">1400-04-18 ساعت 00:00</td>
-                                    </tr>
-
-                                    <tr data-row-id="5">
-                                        <td>
-                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault4" data-id="5">
-                                        </td>
-
-                                        <td>محصول دیجیتال	</td>
-
-                                        <td class="order-success">
-                                            <span>موفقیت</span>
-                                        </td>
-
-                                        <td class="list-date">1400-04-18 ساعت 00:00</td>
-                                    </tr>
-
-                                    <tr data-row-id="6">
-                                        <td>
-                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault5" data-id="6">
-                                        </td>
-
-                                        <td>محصول دیجیتال	</td>
-
-                                        <td class="order-pending">
-                                            <span>منتظر </span>
-                                        </td>
-
-                                        <td class="list-date">1400-04-18 ساعت 00:00</td>
-                                    </tr>
-
-                                    <tr data-row-id="7">
-                                        <td>
-                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault6" data-id="7">
-                                        </td>
-
-                                        <td>محصول دیجیتال	</td>
-
-                                        <td class="order-success">
-                                            <span>موفقیت</span>
-                                        </td>
-
-                                        <td class="list-date">1400-04-18 ساعت 00:00</td>
-                                    </tr>
+                                }
+                                
                                 </tbody>
                             </table>
                         </div>
