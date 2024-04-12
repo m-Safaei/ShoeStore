@@ -16,5 +16,11 @@ public interface IRoleRepository
     Task AddRole(Role role, CancellationToken cancellation);
 
     Task SaveChanges(CancellationToken cancellation);
+
+    Task<Role?> GetRoleById(int roleId, CancellationToken cancellation);
+
+    Task<bool> DoesExistAnyRoleByRoleUniqueName(string roleUniqueName,int roleId, CancellationToken cancellation);
+
+    void UpdateRole(Role role);
 }
 

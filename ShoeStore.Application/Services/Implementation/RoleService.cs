@@ -74,5 +74,41 @@ public class RoleService : IRoleService
 
         return true;
     }
+
+    public async Task<EditRoleDto?> FillEditRoleDto(int roleId, CancellationToken cancellation)
+    {
+        // Get Role by Id
+        var role = await _roleRepository.GetRoleById(roleId, cancellation);
+        if (role == null) return null;
+
+        return new EditRoleDto()
+        {
+            RoleId = roleId,
+            RoleTitle = role.RoleTitle,
+            RoleUniqueName = role.RoleUniqueName,
+        };
+
+    }
+
+    public async Task<bool> EditRole(EditRoleDto role, CancellationToken cancellation)
+    {
+        //Get old Role by Id
+        var oldRole = await _roleRepository.GetRoleById(role.RoleId, cancellation);
+        if (oldRole == null) return false;
+        //Does Exist any Role By This UniqueName
+        bool doesExistRoleUniqueName = await _roleRepository.DoesExistAnyRoleByRoleUniqueName(
+                                                                                   role.RoleUniqueName,
+                                                                                   role.RoleId,
+                                                                                   cancellation);
+        if (doesExistRoleUniqueName) return false;
+
+        oldRole.RoleTitle = role.RoleTitle;
+        oldRole.RoleUniqueName = role.RoleUniqueName;
+        _roleRepository.UpdateRole(oldRole);
+
+        await _roleRepository.SaveChanges(cancellation);
+        return true;
+
+    }
 }
 

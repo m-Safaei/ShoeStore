@@ -52,14 +52,32 @@ public class RoleRepository : IRoleRepository
             .AnyAsync(p => !p.IsDelete && p.RoleUniqueName.Equals(roleUniqueName), cancellation);
     }
 
-    public async Task AddRole(Role role,CancellationToken cancellation)
+    public async Task AddRole(Role role, CancellationToken cancellation)
     {
-        await _context.Roles.AddAsync(role,cancellation);
+        await _context.Roles.AddAsync(role, cancellation);
     }
 
     public async Task SaveChanges(CancellationToken cancellation)
     {
         await _context.SaveChangesAsync(cancellation);
+    }
+
+    public async Task<Role?> GetRoleById(int roleId, CancellationToken cancellation)
+    {
+        return await _context.Roles
+            .FirstOrDefaultAsync(p => !p.IsDelete && p.Id == roleId, cancellation);
+    }
+
+    public async Task<bool> DoesExistAnyRoleByRoleUniqueName(string roleUniqueName,int roleId, CancellationToken cancellation)
+    {
+        return await _context.Roles.AnyAsync(p => !p.IsDelete &&
+                                                  p.Id != roleId &&
+                                                  p.RoleUniqueName.Equals(roleUniqueName), cancellation);
+    }
+
+    public void UpdateRole(Role role)
+    {
+        _context.Roles.Update(role);
     }
 }
 

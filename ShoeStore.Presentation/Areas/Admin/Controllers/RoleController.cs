@@ -54,8 +54,28 @@ public class RoleController : AdminBaseController
 
     #region Edit Role
 
+    public async Task<IActionResult> EditRole(int roleId, CancellationToken cancellation = default)
+    {
+        var model =await _roleService.FillEditRoleDto(roleId, cancellation);
+        if (model == null) return NotFound();
 
+        return View(model);
+    }
 
+    [HttpPost, ValidateAntiForgeryToken]
+    public async Task<IActionResult> EditRole(EditRoleDto role, CancellationToken cancellation = default)
+    {
+        if (ModelState.IsValid)
+        {
+            bool res = await _roleService.EditRole(role, cancellation);
+            if (res)
+            {
+                return RedirectToAction(nameof(ListOfRoles));
+            }
+            TempData["CreateRoleError"] = "Duplicate RoleUniqueName";
+        }
+        return View(role);
+    }
     #endregion
 
     #region Delete Role

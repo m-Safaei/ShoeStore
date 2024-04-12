@@ -14,5 +14,9 @@ public interface IRoleService
     Task<List<RoleDto>> GetLitOfRoles(CancellationToken cancellation);
 
     Task<bool> CreateNewRole(CreateRoleDto newRole, CancellationToken cancellation);
+
+    Task<EditRoleDto?> FillEditRoleDto(int roleId, CancellationToken cancellation);
+
+    Task<bool> EditRole(EditRoleDto role, CancellationToken cancellation);
 }
 
