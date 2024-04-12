@@ -41,9 +41,7 @@ public class SizeRepository : ISizeRepository
 
     public async Task<ICollection<SizeDTO>?> GetSizeDTOsByProductId(int productId , CancellationToken cancellation)
     {
-        var sizeIds = await _context.ProductItems.Where(p=> p.ProductId == productId && !p.IsDelete)
-                .Select(p=> p.SizeId).Distinct().ToListAsync(cancellation);
-        return await _context.Sizes.Where(p => sizeIds.Contains(p.Id) && !p.IsDelete)
-                .Select(p=> new SizeDTO() { SizeNumber=p.SizeNumber}).ToListAsync(cancellation);
+        return await _context.ProductItems.Where(p=> p.ProductId == productId && !p.IsDelete && p.Count>1)
+                .Select(p=> new SizeDTO() { SizeNumber = p.Size.SizeNumber,ProductItemId=p.Id }).ToListAsync(cancellation);
     }
 }
