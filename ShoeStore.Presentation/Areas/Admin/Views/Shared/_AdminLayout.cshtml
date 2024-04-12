@@ -7,31 +7,32 @@
     <meta name="description" content="Multikart admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Multikart admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="assets/images/dashboard/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="assets/images/dashboard/favicon.png" type="image/x-icon">
+    <link rel="icon" href="~/assets/images/dashboard/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="~/assets/images/dashboard/favicon.png" type="image/x-icon">
     <title>قالب مدیریتی مالتی کارت </title>
 
     <!-- Google font-->
     <!-- Font Awesome-->
-    <link rel="stylesheet" type="text/css" href="assets/css/vendors/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/font-awesome.css">
 
     <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="assets/css/vendors/flag-icon.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/flag-icon.css">
 
     <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="assets/css/vendors/icofont.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/icofont.css">
 
     <!-- Prism css-->
-    <link rel="stylesheet" type="text/css" href="assets/css/vendors/prism.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/prism.css">
 
     <!-- Chartist css -->
-    <link rel="stylesheet" type="text/css" href="assets/css/vendors/chartist.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/chartist.css">
 
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="assets/css/vendors/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/bootstrap.css">
 
     <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <style type="text/css">
         .jqstooltip {
             position: absolute;
@@ -69,7 +70,7 @@
                 <div class="main-header-left d-lg-none w-auto">
                     <div class="logo-wrapper">
                         <a href="index.html">
-                            <img class="blur-up lazyloaded d-block d-lg-none" src="assets/images/dashboard/multikart-logo-black.png" alt="">
+                            <img class="blur-up lazyloaded d-block d-lg-none" src="~/assets/images/dashboard/multikart-logo-black.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -179,7 +180,7 @@
                         </li>
                         <li class="onhover-dropdown">
                             <div class="media align-items-center">
-                                <img class="align-self-center pull-right img-50 blur-up lazyloaded" src="assets/images/dashboard/user3.jpg" alt="header-user">
+                                <img class="align-self-center pull-right img-50 blur-up lazyloaded" src="~/assets/images/dashboard/user3.jpg" alt="header-user">
                                 <div class="dotted-animation">
                                     <span class="animate-circle"></span>
                                     <span class="main-circle"></span>
@@ -229,14 +230,14 @@
                 <div class="main-header-left d-none d-lg-block">
                     <div class="logo-wrapper">
                         <a href="index.html">
-                            <img class="d-none d-lg-block blur-up lazyloaded" src="assets/images/dashboard/multikart-logo.png" alt="">
+                            <img class="d-none d-lg-block blur-up lazyloaded" src="~/assets/images/dashboard/multikart-logo.png" alt="">
                         </a>
                     </div>
                 </div>
                 <div class="sidebar custom-scrollbar">
                     <a href="javascript:void(0)" class="sidebar-back d-lg-none d-block"><i class="fa fa-times" aria-hidden="true"></i></a>
                     <div class="sidebar-user">
-                        <img class="img-60" src="assets/images/dashboard/user3.jpg" alt="#">
+                        <img class="img-60" src="~/assets/images/dashboard/user3.jpg" alt="#">
                         <div>
                             <h6 class="f-14">@User.Identity.Name </h6>
                             <p>ادمین</p>
@@ -244,12 +245,34 @@
                     </div>
                     <ul class="sidebar-menu">
                         <li class="active">
-                            <a class="sidebar-header active" href="index.html">
+                            <a class="sidebar-header active" asp-area="Admin" asp-controller="Home" asp-action="Index">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                                 <span>داشبورد </span>
                             </a>
                         </li>
+                        <li>
+                            <a class="sidebar-header" href="javascript:void(0)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
 
+                                <span>مدیریت نقش‌ها </span>
+                                <i class="fa fa-angle-left  pull-right"></i>
+                            </a>
+
+                            <ul class="sidebar-submenu">
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Role" asp-action="ListOfRoles">
+                                        <i class="fa fa-circle"></i>
+                                        <span>لیست نقش‌ها</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Role" asp-action="CreateRole">
+                                        <i class="fa fa-circle"></i>
+                                        <span>افزودن نقش</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li>
                             <a class="sidebar-header" href="javascript:void(0)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
@@ -500,37 +523,6 @@
                         </li>
 
                         <li>
-                            <a class="sidebar-header" href="javascript:void(0)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chrome"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
-                                <span>بومی سازی</span>
-                                <i class="fa fa-angle-left  pull-right"></i>
-                            </a>
-                            <ul class="sidebar-submenu">
-                                <li>
-                                    <a href="translations.html">
-                                        <i class="fa fa-circle"></i>ترجمه ها
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="currency-rates.html">
-                                        <i class="fa fa-circle"></i>نرخ ارز
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="taxes.html">
-                                        <i class="fa fa-circle"></i>مالیات
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a class="sidebar-header" href="support-ticket.html">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span>تیکت پشتیبانی</span>
-                            </a>
-                        </li>
-
-                        <li>
                             <a class="sidebar-header" href="reports.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg><span>گزارش ها</span>
                             </a>
@@ -590,7 +582,7 @@
                             <div class="people-list friend-list">
                                 <ul class="list">
                                     <li class="clearfix">
-                                        <img class="rounded-circle user-image blur-up lazyloaded" src="assets/images/dashboard/user.jpg" alt="">
+                                        <img class="rounded-circle user-image blur-up lazyloaded" src="~/assets/images/dashboard/user.jpg" alt="">
                                         <div class="status-circle online"></div>
                                         <div class="about">
                                             <div class="name">اریکا هیوز</div>
@@ -598,7 +590,7 @@
                                         </div>
                                     </li>
                                     <li class="clearfix">
-                                        <img class="rounded-circle user-image blur-up lazyloaded" src="assets/images/dashboard/user1.jpg" alt="">
+                                        <img class="rounded-circle user-image blur-up lazyloaded" src="~/assets/images/dashboard/user1.jpg" alt="">
                                         <div class="status-circle away"></div>
                                         <div class="about">
                                             <div class="name">اریکا هیوز</div>
@@ -606,7 +598,7 @@
                                         </div>
                                     </li>
                                     <li class="clearfix">
-                                        <img class="rounded-circle user-image blur-up lazyloaded" src="assets/images/dashboard/user2.jpg" alt="">
+                                        <img class="rounded-circle user-image blur-up lazyloaded" src="~/assets/images/dashboard/user2.jpg" alt="">
                                         <div class="status-circle online"></div>
                                         <div class="about">
                                             <div class="name">اریکا هیوز</div>
@@ -614,7 +606,7 @@
                                         </div>
                                     </li>
                                     <li class="clearfix">
-                                        <img class="rounded-circle user-image blur-up lazyloaded" src="assets/images/dashboard/user3.jpg" alt="">
+                                        <img class="rounded-circle user-image blur-up lazyloaded" src="~/assets/images/dashboard/user3.jpg" alt="">
                                         <div class="status-circle online"></div>
                                         <div class="about">
                                             <div class="name">عین چاوز</div>
@@ -622,7 +614,7 @@
                                         </div>
                                     </li>
                                     <li class="clearfix">
-                                        <img class="rounded-circle user-image blur-up lazyloaded" src="assets/images/dashboard/user3.jpg" alt="">
+                                        <img class="rounded-circle user-image blur-up lazyloaded" src="~/assets/images/dashboard/user3.jpg" alt="">
                                         <div class="status-circle offline"></div>
                                         <div class="about">
                                             <div class="name">عین چاوز</div>
@@ -630,7 +622,7 @@
                                         </div>
                                     </li>
                                     <li class="clearfix">
-                                        <img class="rounded-circle user-image blur-up lazyloaded" src="assets/images/dashboard/user5.jpg" alt="">
+                                        <img class="rounded-circle user-image blur-up lazyloaded" src="~/assets/images/dashboard/user5.jpg" alt="">
                                         <div class="status-circle away"></div>
                                         <div class="about">
                                             <div class="name">عین چاوز</div>
@@ -638,7 +630,7 @@
                                         </div>
                                     </li>
                                     <li class="clearfix">
-                                        <img class="rounded-circle user-image blur-up lazyloaded" src="assets/images/dashboard/designer.jpg" alt="">
+                                        <img class="rounded-circle user-image blur-up lazyloaded" src="~/assets/images/dashboard/designer.jpg" alt="">
                                         <div class="status-circle online"></div>
                                         <div class="about">
                                             <div class="name">عین چاوز</div>
@@ -652,7 +644,6 @@
                 </div>
             </div>
             <!-- Right sidebar Ends-->
-
             @RenderBody()
 
             <!-- footer start-->
@@ -673,65 +664,68 @@
     </div>
 
     <!-- latest jquery-->
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="~/assets/js/jquery-3.3.1.min.js"></script>
 
     <!-- Bootstrap js-->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
 
     <!-- feather icon js-->
-    <script src="assets/js/icons/feather-icon/feather.min.js"></script>
-    <script src="assets/js/icons/feather-icon/feather-icon.js"></script>
+    <script src="~/assets/js/icons/feather-icon/feather.min.js"></script>
+    <script src="~/assets/js/icons/feather-icon/feather-icon.js"></script>
 
     <!-- Sidebar jquery-->
-    <script src="assets/js/sidebar-menu.js"></script>
+    <script src="~/assets/js/sidebar-menu.js"></script>
 
     <!--chartist js-->
-    <script src="assets/js/chart/chartist/chartist.js"></script>
+    <script src="~/assets/js/chart/chartist/chartist.js"></script>
 
     <!--chartjs js-->
-    <script src="assets/js/chart/chartjs/chart.min.js"></script>
+    <script src="~/assets/js/chart/chartjs/chart.min.js"></script>
 
     <!-- lazyload js-->
-    <script src="assets/js/lazysizes.min.js"></script>
+    <script src="~/assets/js/lazysizes.min.js"></script>
 
     <!--copycode js-->
-    <script src="assets/js/prism/prism.min.js"></script>
-    <script src="assets/js/clipboard/clipboard.min.js"></script>
-    <script src="assets/js/custom-card/custom-card.js"></script>
+    <script src="~/assets/js/prism/prism.min.js"></script>
+    <script src="~/assets/js/clipboard/clipboard.min.js"></script>
+    <script src="~/assets/js/custom-card/custom-card.js"></script>
 
     <!--counter js-->
-    <script src="assets/js/counter/jquery.waypoints.min.js"></script>
-    <script src="assets/js/counter/jquery.counterup.min.js"></script>
-    <script src="assets/js/counter/counter-custom.js"></script>
+    <script src="~/assets/js/counter/jquery.waypoints.min.js"></script>
+    <script src="~/assets/js/counter/jquery.counterup.min.js"></script>
+    <script src="~/assets/js/counter/counter-custom.js"></script>
 
     <!--peity chart js-->
-    <script src="assets/js/chart/peity-chart/peity.jquery.js"></script>
+    <script src="~/assets/js/chart/peity-chart/peity.jquery.js"></script>
 
     <!-- Apex Chart Js -->
-    <script src="/js/chart/apex/apexcharts.js"></script>
+    <script src="~/js/chart/apex/apexcharts.js"></script>
 
     <!--sparkline chart js-->
-    <script src="assets/js/chart/sparkline/sparkline.js"></script>
+    <script src="~/assets/js/chart/sparkline/sparkline.js"></script>
 
     <!--Customizer admin-->
-    <script src="assets/js/admin-customizer.js"></script>
-    <ul class="custom-theme"><li class="demo-li"><a href="~/front-end/index.html" target="_blank">سایت</a></li><li class="btn-dark-setting">تیره</li></ul>
+    <script src="~/assets/js/admin-customizer.js"></script>
+    <ul class="custom-theme"><li class="demo-li"><a href="front-end/index.html" target="_blank">سایت</a></li><li class="btn-dark-setting">تیره</li></ul>
 
     <!--dashboard custom js-->
-    <script src="assets/js/dashboard/default.js"></script>
+    <script src="~/assets/js/dashboard/default.js"></script>
 
     <!--right sidebar js-->
-    <script src="assets/js/chat-menu.js"></script>
+    <script src="~/assets/js/chat-menu.js"></script>
 
     <!--height equal js-->
-    <script src="assets/js/height-equal.js"></script>
+    <script src="~/assets/js/height-equal.js"></script>
 
     <!-- lazyload js-->
-    <script src="assets/js/lazysizes.min.js"></script>
+    <script src="~/assets/js/lazysizes.min.js"></script>
 
     <!--script admin-->
-    <script src="assets/js/admin-script.js"></script>
-
+    <script src="~/assets/js/admin-script.js"></script>
+    <!-- Table Row Delete js -->
+    <script src="~/assets/js/table-row-delete.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <partial name="_Notification" />
 
 </body>
 </html>

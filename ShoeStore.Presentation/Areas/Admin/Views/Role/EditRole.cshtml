@@ -1,0 +1,62 @@
+﻿@model ShoeStore.Domain.DTOs.AdminSide.Role.EditRoleDto
+
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            ویرایش نقش
+                            <small>پنل مدیریت مالتی کارت</small>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item">
+                            <a asp-area="Admin" asp-controller="Home" asp-action="Index">
+                                <i data-feather="home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">مدیریت نقش‌ها </li>
+                        <li class="breadcrumb-item active">ویرایش نقش</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form asp-area="Admin" asp-controller="Role" asp-action="EditRole" method="post" class="needs-validation">
+                            <input type="hidden" asp-for="RoleId"/>
+                            <div class="form-group row">
+                                <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span>عنوان نقش </label>
+                                <div class="col-md-7">
+                                    <input asp-for="RoleTitle" class="form-control" id="validationCustom0" type="text" required="">
+                                    <span style="color: red; position: relative;" asp-validation-for="RoleTitle"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span>Role Unique Name </label>
+                                <div class="col-md-7">
+                                    <input asp-for="RoleUniqueName" class="form-control" id="validationCustom0" type="text" required="">
+                                    <span style="color: red; position: relative;" asp-validation-for="RoleUniqueName"></span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary d-block">ذخیره</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>

@@ -1,0 +1,71 @@
+﻿@if (TempData["InfoMessage"] != null)
+{
+    <script>
+        Toastify({
+
+            text: "کاربری با شماره موبایل وارد شده در سیستم وجود دارد",
+
+            duration: 4000,
+            gravity: "bottom",
+            close: true
+
+        }).showToast();
+    </script>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        Toastify({
+            text: "عملیات باموفقیت انجام شد",
+            duration: 4000,
+            close: true,
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)"
+            }
+        }).showToast();
+    </script>
+}
+
+@if (TempData["NotFoundUser"] != null)
+{
+    <script>
+        Toastify({
+
+            text: "کاربری با مشخصات وارد شده یافت نشد",
+
+            duration: 4000,
+            gravity: "bottom",
+            close: true
+
+        }).showToast();
+    </script>
+}
+@if (TempData["WrongPassword"] != null)
+{
+    <script>
+        Toastify({
+
+            text: "پسورد وارد شده اشتباه است",
+
+            duration: 4000,
+            gravity: "bottom",
+            close: true
+
+        }).showToast();
+    </script>
+}
+
+@if (TempData["CreateRoleError"] != null)
+{
+    <script>
+        Toastify({
+
+            text: "Role Unique Name وارد شده تکراری است",
+
+            duration: 4000,
+            gravity: "bottom",
+            close: true
+
+        }).showToast();
+    </script>
+}
