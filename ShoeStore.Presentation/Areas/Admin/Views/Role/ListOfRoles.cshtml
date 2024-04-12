@@ -1,5 +1,168 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<ShoeStore.Domain.DTOs.AdminSide.Role.RoleDto>
+
+
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            لیست منو
+                            <small>پنل مدیریت مالتی کارت</small>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item">
+                            <a href="~/index.html">
+                                <i data-feather="home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">منو </li>
+                        <li class="breadcrumb-item active">لیست منو</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <form class="form-inline search-form search-box">
+                            <div class="form-group">
+                                <input class="form-control-plaintext" type="search" placeholder="جستجو...">
+                            </div>
+                        </form>
+
+                        <a href="~/create-menu.html" class="btn btn-primary mt-md-0 mt-2">درج منو</a>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive table-desi">
+                            <table class="all-package coupon-table table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <button type="button" class="btn btn-primary add-row delete_all">حذف </button>
+                                        </th>
+                                        <th>نام </th>
+                                        <th>وضعیت </th>
+                                        <th>ایجاد شده در</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr data-row-id="1">
+                                        <td>
+                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault" data-id="1">
+                                        </td>
+
+                                        <td>لیست محصولات	</td>
+
+                                        <td class="order-warning">
+                                            <span>منتظر</span>
+                                        </td>
+
+                                        <td class="list-date">1400-04-18 ساعت 00:00</td>
+                                    </tr>
+
+                                    <tr data-row-id="2">
+                                        <td>
+                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault1" data-id="2">
+                                        </td>
+
+                                        <td>محصول دیجیتال	</td>
+
+                                        <td class="order-success">
+                                            <span>موفقیت</span>
+                                        </td>
+
+                                        <td class="list-date">1400-04-18 ساعت 00:00</td>
+                                    </tr>
+
+                                    <tr data-row-id="3">
+                                        <td>
+                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault2" data-id="3">
+                                        </td>
+
+                                        <td>محصول دیجیتال	</td>
+
+                                        <td class="order-warning">
+                                            <span>منتظر</span>
+                                        </td>
+
+                                        <td class="list-date">1400-04-18 ساعت 00:00</td>
+                                    </tr>
+
+                                    <tr data-row-id="4">
+                                        <td>
+                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault3" data-id="4">
+                                        </td>
+
+                                        <td>محصول دیجیتال	</td>
+
+                                        <td class="order-pending">
+                                            <span>منتظر </span>
+                                        </td>
+
+                                        <td class="list-date">1400-04-18 ساعت 00:00</td>
+                                    </tr>
+
+                                    <tr data-row-id="5">
+                                        <td>
+                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault4" data-id="5">
+                                        </td>
+
+                                        <td>محصول دیجیتال	</td>
+
+                                        <td class="order-success">
+                                            <span>موفقیت</span>
+                                        </td>
+
+                                        <td class="list-date">1400-04-18 ساعت 00:00</td>
+                                    </tr>
+
+                                    <tr data-row-id="6">
+                                        <td>
+                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault5" data-id="6">
+                                        </td>
+
+                                        <td>محصول دیجیتال	</td>
+
+                                        <td class="order-pending">
+                                            <span>منتظر </span>
+                                        </td>
+
+                                        <td class="list-date">1400-04-18 ساعت 00:00</td>
+                                    </tr>
+
+                                    <tr data-row-id="7">
+                                        <td>
+                                            <input class="checkbox_animated check-it" type="checkbox" value="" id="flexCheckDefault6" data-id="7">
+                                        </td>
+
+                                        <td>محصول دیجیتال	</td>
+
+                                        <td class="order-success">
+                                            <span>موفقیت</span>
+                                        </td>
+
+                                        <td class="list-date">1400-04-18 ساعت 00:00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
