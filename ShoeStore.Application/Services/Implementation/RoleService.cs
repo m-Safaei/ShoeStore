@@ -21,9 +21,9 @@ public class RoleService : IRoleService
 
     #endregion
 
-    public async Task<List<Role>> GetUserRolesByUserIdAsync(int userId,CancellationToken cancellation)
+    public async Task<List<Role>> GetUserRolesByUserIdAsync(int userId, CancellationToken cancellation)
     {
-        return await _roleRepository.GetUserRolesByUserIdAsync(userId,cancellation);
+        return await _roleRepository.GetUserRolesByUserIdAsync(userId, cancellation);
     }
 
     public List<Role> GetUserRolesByUserId(int userId)
@@ -31,13 +31,13 @@ public class RoleService : IRoleService
         return _roleRepository.GetUserRolesByUserId(userId);
     }
 
-    public  bool IsUserAdmin(int userId)
+    public bool IsUserAdmin(int userId)
     {
-        var user =  _userRepository.GetUserById(userId);
+        var user = _userRepository.GetUserById(userId);
 
-        if(user.SuperAdmin) return true;
+        if (user.SuperAdmin) return true;
 
-        var userRoles =  GetUserRolesByUserId(userId);
+        var userRoles = GetUserRolesByUserId(userId);
 
         foreach (var role in userRoles)
         {
@@ -53,6 +53,26 @@ public class RoleService : IRoleService
     public async Task<List<RoleDto>> GetLitOfRoles(CancellationToken cancellation)
     {
         return await _roleRepository.GetLitOfRoles(cancellation);
+    }
+
+    public async Task<bool> CreateNewRole(CreateRoleDto newRole, CancellationToken cancellation)
+    {
+        //Does exist any Role by RoleUniqueName
+        bool doesExistRoleUniqueName =
+            await _roleRepository.DoesExistAnyRoleByRoleUniqueName(newRole.RoleUniqueName.Trim().ToLower(), cancellation);
+        if (doesExistRoleUniqueName) return false;
+
+        //Fill Role Entity
+        Role role = new Role()
+        {
+            RoleTitle = newRole.RoleTitle,
+            RoleUniqueName = newRole.RoleUniqueName.Trim().ToLower(),
+        };
+
+        await _roleRepository.AddRole(role, cancellation);
+        await _roleRepository.SaveChanges(cancellation);
+
+        return true;
     }
 }
 

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ShoeStore.Domain.DTOs.AdminSide.Role.RoleDto>
+﻿@using ShoeStore.Application.Utilities
+@model IEnumerable<ShoeStore.Domain.DTOs.AdminSide.Role.RoleDto>
 
 
 <div class="page-body">
@@ -9,7 +10,7 @@
                 <div class="col-lg-6">
                     <div class="page-header-left">
                         <h3>
-                            لیست منو
+                            لیست نقش‌ها
                             <small>پنل مدیریت مالتی کارت</small>
                         </h3>
                     </div>
@@ -17,12 +18,12 @@
                 <div class="col-lg-6">
                     <ol class="breadcrumb pull-right">
                         <li class="breadcrumb-item">
-                            <a href="~/index.html">
+                            <a asp-area="Admin" asp-controller="Home" asp-action="Index">
                                 <i data-feather="home"></i>
                             </a>
                         </li>
-                        <li class="breadcrumb-item">منو </li>
-                        <li class="breadcrumb-item active">لیست منو</li>
+                        <li class="breadcrumb-item">مدیریت نقش‌ها </li>
+                        <li class="breadcrumb-item active">لیست نقش‌ها</li>
                     </ol>
                 </div>
             </div>
@@ -41,7 +42,7 @@
                             </div>
                         </form>
 
-                        <a href="~/create-menu.html" class="btn btn-primary mt-md-0 mt-2">درج منو</a>
+                        <a asp-area="Admin" asp-controller="Role" asp-action="CreateRole" class="btn btn-primary mt-md-0 mt-2">افزودن نقش</a>
                     </div>
 
                     <div class="card-body">
@@ -53,7 +54,7 @@
                                             <button type="button" class="btn btn-primary add-row delete_all">حذف </button>
                                         </th>
                                         <th>عنوان نقش </th>
-                                        <th>عنوان Unique </th>
+                                        <th>Role Unique Name </th>
                                         <th>ایجاد شده در</th>
                                     </tr>
                                 </thead>
@@ -69,7 +70,7 @@
                                         <td>@role.RoleTitle </td>
                                         <td>@role.RoleUniqueName </td>
 
-                                        <td class="list-date">@role.CreateDate</td>
+                                        <td class="list-date">@role.CreateDate.ToShamsi()</td>
                                     </tr>
                                 }
                                 

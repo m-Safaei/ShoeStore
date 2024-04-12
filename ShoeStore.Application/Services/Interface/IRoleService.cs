@@ -12,5 +12,7 @@ public interface IRoleService
     List<Role> GetUserRolesByUserId(int userId);
 
     Task<List<RoleDto>> GetLitOfRoles(CancellationToken cancellation);
+
+    Task<bool> CreateNewRole(CreateRoleDto newRole, CancellationToken cancellation);
 }
 

@@ -45,5 +45,21 @@ public class RoleRepository : IRoleRepository
                                     })
                                     .ToListAsync(cancellation);
     }
+
+    public async Task<bool> DoesExistAnyRoleByRoleUniqueName(string roleUniqueName, CancellationToken cancellation)
+    {
+        return await _context.Roles
+            .AnyAsync(p => !p.IsDelete && p.RoleUniqueName.Equals(roleUniqueName), cancellation);
+    }
+
+    public async Task AddRole(Role role,CancellationToken cancellation)
+    {
+        await _context.Roles.AddAsync(role,cancellation);
+    }
+
+    public async Task SaveChanges(CancellationToken cancellation)
+    {
+        await _context.SaveChangesAsync(cancellation);
+    }
 }
 
