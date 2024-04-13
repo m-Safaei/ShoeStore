@@ -30,10 +30,11 @@ public class OrderController : Controller
         {
           return NotFound();
         }
-        //int _userId:int =
+       
         
 
         Product _product = await _productService.GetProductByIdAsync(_id, cancellationToken);
+        ProductItem productItem=
         
         if (_orderService.IsExistOrderForUserInToday(_userId))
         {
