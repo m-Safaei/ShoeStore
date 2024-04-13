@@ -20,6 +20,8 @@ public class UserRepository : IUserRepository
 
     #endregion
 
+    #region General Methods
+
     public async Task<bool> DoesExistUserByMobile(string mobile, CancellationToken cancellation)
     {
         return await _context.Users.AnyAsync(p => p.Mobile == mobile, cancellation);
@@ -40,13 +42,13 @@ public class UserRepository : IUserRepository
     public async Task<UserDto?> GetUserByMobileAsync(string mobile, CancellationToken cancellation)
     {
         return await _context.Users.Select(p => new UserDto()
-        {
-            Id = p.Id,
-            FirstName = p.FirstName,
-            LastName = p.LastName,
-            Mobile = p.Mobile,
-            Password = p.Password
-        })
+            {
+                Id = p.Id,
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                Mobile = p.Mobile,
+                Password = p.Password
+            })
             .SingleOrDefaultAsync(p => p.Mobile == mobile, cancellation);
     }
 
@@ -59,5 +61,14 @@ public class UserRepository : IUserRepository
     {
         return _context.Users.Find(userId);
     }
+
+    #endregion
+
+    #region Admin Side Methods
+
+    
+
+    #endregion
+
 }
 
