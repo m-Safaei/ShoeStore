@@ -1,4 +1,5 @@
-﻿using ShoeStore.Domain.DTOs.SiteSide.Account;
+﻿using ShoeStore.Domain.DTOs.AdminSide.User;
+using ShoeStore.Domain.DTOs.SiteSide.Account;
 using ShoeStore.Domain.Entities.User;
 
 namespace ShoeStore.Domain.IRepositories;
@@ -15,5 +16,11 @@ public interface IUserRepository
     Task<User?> GetUserByIdAsync(int userId, CancellationToken cancellation);
 
     User? GetUserById(int userId);
+
+    #region Admin Side Methods
+
+    Task<List<ListOfUsersDto>> ListOfUsers(CancellationToken cancellation);
+
+    #endregion
 }
 

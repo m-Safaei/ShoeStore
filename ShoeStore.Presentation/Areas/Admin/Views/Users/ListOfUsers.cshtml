@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ShoeStore.Domain.DTOs.AdminSide.User.ListOfUsersDto>
+
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            لیست کاربران
+                            <small>پنل مدیریت مالتی کارت</small>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item">
+                            <a asp-area="Admin" asp-controller="Home" asp-action="Index">
+                                <i data-feather="home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">کاربران</li>
+                        <li class="breadcrumb-item active">لیست کاربران</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <form class="form-inline search-form search-box">
+                    <div class="form-group">
+                        <input class="form-control-plaintext" type="search" placeholder="جستجو..."><span class="d-sm-none mobile-search"><i data-feather="search"></i></span>
+                    </div>
+                </form>
+
+                <a href="create-vendors.html" class="btn btn-primary mt-md-0 mt-2">درج کاربر</a>
+            </div>
+            <div class="card-body vendor-table">
+                <table class="display" id="basic-1">
+                    <thead>
+                        <tr>
+                            <th>کاربر</th>
+                            <th>شماره موبایل</th>
+                            <th>تاریخ ثبت نام </th>
+                            <th>نقش </th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="d-flex vendor-list">
+                                <img src="~/assets/images/team/2.jpg" alt="" class="img-fluid img-40 rounded-circle blur-up lazyloaded">
+                                <span>@user.FirstName @user.LastName</span>
+                            </div>
+                        </td>
+                        <td>@user.Mobile</td>
+                        <td>@user.CreateDate</td>
+                        <td>مشتری</td>
+                        <td>
+                            <div>
+                                <i class="fa fa-edit me-2 font-success"></i>
+                                <i class="fa fa-trash font-danger"></i>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>

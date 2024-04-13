@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoeStore.Data.AppDbContext;
+using ShoeStore.Domain.DTOs.AdminSide.User;
 using ShoeStore.Domain.DTOs.SiteSide.Account;
 using ShoeStore.Domain.Entities.User;
 using ShoeStore.Domain.IRepositories;
@@ -42,13 +43,13 @@ public class UserRepository : IUserRepository
     public async Task<UserDto?> GetUserByMobileAsync(string mobile, CancellationToken cancellation)
     {
         return await _context.Users.Select(p => new UserDto()
-            {
-                Id = p.Id,
-                FirstName = p.FirstName,
-                LastName = p.LastName,
-                Mobile = p.Mobile,
-                Password = p.Password
-            })
+        {
+            Id = p.Id,
+            FirstName = p.FirstName,
+            LastName = p.LastName,
+            Mobile = p.Mobile,
+            Password = p.Password
+        })
             .SingleOrDefaultAsync(p => p.Mobile == mobile, cancellation);
     }
 
@@ -66,7 +67,20 @@ public class UserRepository : IUserRepository
 
     #region Admin Side Methods
 
-    
+    public async Task<List<ListOfUsersDto>> ListOfUsers(CancellationToken cancellation)
+    {
+        return await _context.Users.Where(p => !p.IsDelete)
+                                    .OrderByDescending(p => p.CreateDate)
+                                    .Select(p=>new ListOfUsersDto()
+                                    {
+                                        Id = p.Id,
+                                        FirstName = p.FirstName,
+                                        LastName = p.LastName,
+                                        Mobile = p.Mobile,
+                                        CreateDate = p.CreateDate,
+                                    })
+                                    .ToListAsync(cancellation);
+    }
 
     #endregion
 
