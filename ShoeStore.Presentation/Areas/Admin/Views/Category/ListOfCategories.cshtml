@@ -42,7 +42,7 @@
                             </div>
                         </form>
 
-                        <button type="button" class="btn btn-primary add-row mt-md-0 mt-2">درج دسته بندی</button>
+                        <a type="button" class="btn btn-primary add-row mt-md-0 mt-2" asp-action="CreateCategory" asp-area="Admin" asp-controller="Category">درج دسته بندی</a>
                     </div>
 
                     <div class="card-body">
@@ -96,7 +96,8 @@
                                                     <a href="javascript:void(0)">
                                                         <i class="fa fa-trash" title="حذف"></i>
                                                     </a>
-                                                    <button type="button" class="btn btn-primary add-row mt-md-0 mt-2">درج زیر دسته بندی</button>
+                                                    <a type="button" class="btn btn-primary add-row mt-md-0 mt-2" asp-action="CreateCategory" asp-area="Admin" 
+                                                        asp-controller="Category" asp-route-parentId="@item.ParentCategoryId" asp-route-parentName="@item.ParentCategoryName">درج زیر دسته بندی</a>
                                                 </td>
                                             </tr>
                                         }

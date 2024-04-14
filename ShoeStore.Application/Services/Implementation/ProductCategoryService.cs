@@ -1,6 +1,7 @@
 ﻿using ShoeStore.Application.Services.Interface;
 using ShoeStore.Domain.DTOs.AdminSide.Category;
 using ShoeStore.Domain.DTOs.SiteSide.ProductCategory;
+using ShoeStore.Domain.Entities.ProductCategory;
 using ShoeStore.Domain.IRepositories;
 
 namespace ShoeStore.Application.Services.Implementation;
@@ -29,7 +30,7 @@ public class ProductCategoryService : IProductCategoryService
     }
 
 
-    //تو اینترفیس اضافه کن
+    
     public async Task<ICollection<CategoryListDTO>?> GetDTOsForListOfCategories(CancellationToken cancellation)
     {
         var categories = await _productCategoryRepository.GetListOfProductCategorisAsync(cancellation);
@@ -49,5 +50,18 @@ public class ProductCategoryService : IProductCategoryService
         }
 
         return returnModel;
+    }
+
+
+    public async Task CreateCategory(CreateCategoryDTO categoryDTO , CancellationToken cancellation)
+    {
+        ProductCategory productCategory = new()
+        {
+            CreateDate = DateTime.Now,
+            ParentId = categoryDTO.ParentId,
+            Title = categoryDTO.CategoryName
+        };
+        _productCategoryRepository.AddProductCategory(productCategory);
+        await _productCategoryRepository.SaveChangesAsync(cancellation);
     }
 }
