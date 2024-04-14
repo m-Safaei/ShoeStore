@@ -57,7 +57,23 @@ namespace ShoeStore.Presentation.Areas.Admin.Controllers
         {
             var res = await _categoryService.DeleteCategory(categoryId, cancellation);
             if (res) return RedirectToAction(nameof(ListOfCategories));
-            else return Redirect("NotFound");
+            else return RedirectToAction(nameof(DeleteCategory),categoryId);
+        }
+
+
+        public async Task<IActionResult> EditCategory(int categoryId, CancellationToken cancellation=default)
+        {
+            var model = await _categoryService.GetEditCategoryDTOById(categoryId, cancellation);
+            return View(model);
+        }
+
+
+        [HttpPost,ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditCategory(EditCategoryDTO category, CancellationToken cancellation = default)
+        {
+            var res = await _categoryService.EditCategory(category, cancellation);
+            if (res) return RedirectToAction(nameof(ListOfCategories));
+            else return View(category);
         }
     }
 }

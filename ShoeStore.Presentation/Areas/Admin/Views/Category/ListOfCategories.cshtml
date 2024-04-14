@@ -75,7 +75,7 @@
                                                             {
                                                                 <div>
                                                                     <h5>@childCategory.Name</h5>
-                                                                    <a href="javascript:void(0)">
+                                                                    <a asp-action="EditCategory" asp-area="Admin" asp-controller="Category" asp-route-categoryId="@childCategory.Id">
                                                                         <i class="fa fa-edit" title="ویرایش"></i>
                                                                     </a>
 
@@ -89,7 +89,7 @@
                                                 </td>
 
                                                 <td>
-                                                    <a href="javascript:void(0)">
+                                                    <a asp-action="EditCategory" asp-area="Admin" asp-controller="Category" asp-route-categoryId="@item.ParentCategoryId">
                                                         <i class="fa fa-edit" title="ویرایش"></i>
                                                     </a>
 

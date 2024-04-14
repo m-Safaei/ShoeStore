@@ -98,4 +98,14 @@ public class ProductCategoryService : IProductCategoryService
     {
         return await _productCategoryRepository.GetEditCategoryDTOById(categoryId, cancellation);
     }
+
+    public async Task<bool> EditCategory(EditCategoryDTO categryDTO,CancellationToken cancellation)
+    {
+        var category = await _productCategoryRepository.GetProductCategoryByIdAsync(categryDTO.Id, cancellation);
+        if(category==null) return false;
+        category.Title=categryDTO.Name;
+        _productCategoryRepository.UpdateProductCategory(category);
+        await _productCategoryRepository.SaveChangesAsync(cancellation);
+        return true;
+    }
 }

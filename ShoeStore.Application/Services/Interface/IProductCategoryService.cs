@@ -11,4 +11,5 @@ public interface IProductCategoryService
     Task CreateCategory(CreateCategoryDTO categoryDTO, CancellationToken cancellation);
     Task<bool> DeleteCategory(int categoryId, CancellationToken cancellation);
     Task<EditCategoryDTO?> GetEditCategoryDTOById(int categoryId, CancellationToken cancellation);
+    Task<bool> EditCategory(EditCategoryDTO categryDTO, CancellationToken cancellation);
 }
