@@ -43,5 +43,21 @@ namespace ShoeStore.Presentation.Areas.Admin.Controllers
             }
             return View(categoryDTO);
         }
+
+
+        public async Task<IActionResult> DeleteCategory(int categoryId,CancellationToken cancellation=default)
+        {
+            var model = await _categoryService.GetEditCategoryDTOById(categoryId, cancellation);
+            return View(model);
+        }
+
+
+        [HttpPost,ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteCategoryRecord(int categoryId, CancellationToken cancellation = default)
+        {
+            var res = await _categoryService.DeleteCategory(categoryId, cancellation);
+            if (res) return RedirectToAction(nameof(ListOfCategories));
+            else return Redirect("NotFound");
+        }
     }
 }

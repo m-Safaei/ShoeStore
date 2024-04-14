@@ -36,11 +36,11 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <form class="form-inline search-form search-box">
+                        @* <form class="form-inline search-form search-box">
                             <div class="form-group">
                                 <input class="form-control-plaintext" type="search" placeholder="جستجو...">
                             </div>
-                        </form>
+                        </form> *@
 
                         <a type="button" class="btn btn-primary add-row mt-md-0 mt-2" asp-action="CreateCategory" asp-area="Admin" asp-controller="Category">درج دسته بندی</a>
                     </div>
@@ -79,7 +79,7 @@
                                                                         <i class="fa fa-edit" title="ویرایش"></i>
                                                                     </a>
 
-                                                                    <a href="javascript:void(0)">
+                                                                    <a asp-action="DeleteCategory" asp-area="Admin" asp-controller="Category" asp-route-categoryId="@childCategory.Id">
                                                                         <i class="fa fa-trash" title="حذف"></i>
                                                                     </a>
                                                                 </div>
@@ -93,7 +93,7 @@
                                                         <i class="fa fa-edit" title="ویرایش"></i>
                                                     </a>
 
-                                                    <a href="javascript:void(0)">
+                                                    <a asp-action="DeleteCategory" asp-area="Admin" asp-controller="Category" asp-route-categoryId="@item.ParentCategoryId">
                                                         <i class="fa fa-trash" title="حذف"></i>
                                                     </a>
                                                     <a type="button" class="btn btn-primary add-row mt-md-0 mt-2" asp-action="CreateCategory" asp-area="Admin" 

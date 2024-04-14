@@ -9,4 +9,6 @@ public interface IProductCategoryService
     Task<ICollection<ParentCategoryDTO>> GetParentWithChildCategory(CancellationToken cancellation);
     Task<ICollection<CategoryListDTO>?> GetDTOsForListOfCategories(CancellationToken cancellation);
     Task CreateCategory(CreateCategoryDTO categoryDTO, CancellationToken cancellation);
+    Task<bool> DeleteCategory(int categoryId, CancellationToken cancellation);
+    Task<EditCategoryDTO?> GetEditCategoryDTOById(int categoryId, CancellationToken cancellation);
 }
