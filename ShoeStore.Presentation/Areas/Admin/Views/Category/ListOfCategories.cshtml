@@ -1,0 +1,117 @@
+﻿@model ICollection<ShoeStore.Domain.DTOs.AdminSide.Category.CategoryListDTO>
+
+
+
+
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            دسته بندی
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item">
+                            <a asp-action="Index" asp-controller="Home" asp-area="Admin">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">محصولات </li>
+                        <li class="breadcrumb-item active">دسته بندی </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <form class="form-inline search-form search-box">
+                            <div class="form-group">
+                                <input class="form-control-plaintext" type="search" placeholder="جستجو...">
+                            </div>
+                        </form>
+
+                        <button type="button" class="btn btn-primary add-row mt-md-0 mt-2">درج دسته بندی</button>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive table-desi">
+                            <table class="table all-package table-category " id="editableTable">
+                                <thead>
+                                    <tr>
+
+                                        <th>نام دسته بندی </th>
+
+
+                                        <th>زیر دسته بندی ها</th>
+                                        <th>عملیات</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @if (Model != null && Model.Any())
+                                    {
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td data-field="name">@item.ParentCategoryName</td>
+
+                                                <td data-field="name">
+                                                    <div>
+                                                        @if (item.ChildCategories != null && item.ChildCategories.Any())
+                                                        {
+                                                            @foreach (var childCategory in item.ChildCategories)
+                                                            {
+                                                                <div>
+                                                                    <h5>@childCategory.Name</h5>
+                                                                    <a href="javascript:void(0)">
+                                                                        <i class="fa fa-edit" title="ویرایش"></i>
+                                                                    </a>
+
+                                                                    <a href="javascript:void(0)">
+                                                                        <i class="fa fa-trash" title="حذف"></i>
+                                                                    </a>
+                                                                </div>
+                                                            }
+                                                        }
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <a href="javascript:void(0)">
+                                                        <i class="fa fa-edit" title="ویرایش"></i>
+                                                    </a>
+
+                                                    <a href="javascript:void(0)">
+                                                        <i class="fa fa-trash" title="حذف"></i>
+                                                    </a>
+                                                    <button type="button" class="btn btn-primary add-row mt-md-0 mt-2">درج زیر دسته بندی</button>
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    }
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
