@@ -90,7 +90,7 @@ public class ProductRepository : IProductRepository
 
         int totalCount = await products.CountAsync();
 
-        return (await products.Skip((pageNumber - 1) * 12).Take(pageNumber * 12)
+        return (await products.Skip((pageNumber - 1) * 12).Take(12)
             .Select(p=> new ProductPostDTO() { ProductId=p.Id,Name=p.Name,ProductImage=p.ProductImage,Price=p.Price,DiscountPercentage=p.DiscountPercentage})
             .ToListAsync(cancellation),totalCount);
 
@@ -123,7 +123,7 @@ public class ProductRepository : IProductRepository
 
         int totalCount = await products.CountAsync(cancellation);
 
-        return (await products.Skip((pageNumber - 1) * 12).Take(pageNumber * 12)
+        return (await products.Skip((pageNumber - 1) * 12).Take(12)
             .Select(p => new ProductPostDTO() { ProductId = p.Id, Name = p.Name, ProductImage = p.ProductImage, Price = p.Price, DiscountPercentage = p.DiscountPercentage })
             .ToListAsync(cancellation),totalCount);
     }
