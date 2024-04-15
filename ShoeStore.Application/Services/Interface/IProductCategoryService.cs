@@ -12,4 +12,5 @@ public interface IProductCategoryService
     Task<bool> DeleteCategory(int categoryId, CancellationToken cancellation);
     Task<EditCategoryDTO?> GetEditCategoryDTOById(int categoryId, CancellationToken cancellation);
     Task<bool> EditCategory(EditCategoryDTO categryDTO, CancellationToken cancellation);
+    Task<ICollection<ChildCategoryListDTO>?> GetChildCategories(CancellationToken cancellation);
 }

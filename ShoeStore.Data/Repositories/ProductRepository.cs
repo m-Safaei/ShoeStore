@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoeStore.Data.AppDbContext;
+using ShoeStore.Domain.DTOs.AdminSide.Product;
 using ShoeStore.Domain.DTOs.SiteSide.Product;
 using ShoeStore.Domain.DTOs.SiteSide.ProductCategory;
 using ShoeStore.Domain.Entities.Product;
@@ -126,5 +127,19 @@ public class ProductRepository : IProductRepository
         return (await products.Skip((pageNumber - 1) * 12).Take(12)
             .Select(p => new ProductPostDTO() { ProductId = p.Id, Name = p.Name, ProductImage = p.ProductImage, Price = p.Price, DiscountPercentage = p.DiscountPercentage })
             .ToListAsync(cancellation),totalCount);
+    }
+
+
+    public async Task<ICollection<ProductListDTO>?> GetProductListDTOs(CancellationToken cancellation)
+    {
+        return await _context.Products.Where(p => !p.IsDelete)
+            .Select(p => new ProductListDTO() { ProductId = p.Id, Name = p.Name, Price = p.Price, DiscountPercentage = p.DiscountPercentage, ProductCategoryName = p.ProductCategory.Title, ProductImage=p.ProductImage })
+            .ToListAsync(cancellation);
+    }
+
+
+    public async Task<int> GetProductIdByProduct(Product product, CancellationToken cancellation)
+    {
+        return await _context.Products.Where(p => p.Name == product.Name && p.CreateDate == product.CreateDate && !p.IsDelete).Select(p=> p.Id).SingleOrDefaultAsync();
     }
 }

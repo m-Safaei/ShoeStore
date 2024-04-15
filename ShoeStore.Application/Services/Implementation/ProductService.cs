@@ -1,4 +1,6 @@
 ﻿using ShoeStore.Application.Services.Interface;
+using ShoeStore.Application.Utilities;
+using ShoeStore.Domain.DTOs.AdminSide.Product;
 using ShoeStore.Domain.DTOs.SiteSide.Product;
 using ShoeStore.Domain.DTOs.SiteSide.ProductCategory;
 using ShoeStore.Domain.Entities.Product;
@@ -13,7 +15,7 @@ public class ProductService : IProductService
     private readonly IProductFeatureRepository _productFeatureRepository;
     private readonly ISizeRepository _sizeRepository;
     private readonly IProductCategoryRepository _productCategoryRepository;
-    public ProductService(IProductRepository productRepository, IProductItemRepository productItemRepository, 
+    public ProductService(IProductRepository productRepository, IProductItemRepository productItemRepository,
                             IProductFeatureRepository productFeatureRepository, ISizeRepository sizeRepository
                             , IProductCategoryRepository productCategoryRepository)
     {
@@ -21,7 +23,7 @@ public class ProductService : IProductService
         _productItemRepository = productItemRepository;
         _productFeatureRepository = productFeatureRepository;
         _sizeRepository = sizeRepository;
-        _productCategoryRepository= productCategoryRepository;
+        _productCategoryRepository = productCategoryRepository;
     }
 
     public async Task<Product?> GetProductByIdAsync(int Id)
@@ -31,7 +33,7 @@ public class ProductService : IProductService
 
     public async Task<Product?> GetProductByIdAsync(int Id, CancellationToken cancellation)
     {
-        return await _productRepository.GetProductByIdAsync(Id,cancellation);
+        return await _productRepository.GetProductByIdAsync(Id, cancellation);
     }
 
     public async Task<ProductItem?> GetProductItemByIdAsync(int Id, CancellationToken cancellation)
@@ -52,13 +54,13 @@ public class ProductService : IProductService
             Price = product.Price,
             DiscountPercentage = product.DiscountPercentage,
             ProductImage = product.ProductImage,
-            ProductFeatureDTOs = await _productFeatureRepository.GetProductFeatureDTOsByProductId(productId,cancellation),
-            SizeDTOs = await _sizeRepository.GetSizeDTOsByProductId(productId,cancellation)
+            ProductFeatureDTOs = await _productFeatureRepository.GetProductFeatureDTOsByProductId(productId, cancellation),
+            SizeDTOs = await _sizeRepository.GetSizeDTOsByProductId(productId, cancellation)
         };
     }
 
 
-    public async Task<ICollection<ProductPostDTO>?> GetProductPostDTOsByCategoryId(int categoryId,int count, CancellationToken cancellation)
+    public async Task<ICollection<ProductPostDTO>?> GetProductPostDTOsByCategoryId(int categoryId, int count, CancellationToken cancellation)
     {
         return await _productRepository.GetProductPostDTOsByCategoryId(categoryId, count, cancellation);
     }
@@ -72,23 +74,23 @@ public class ProductService : IProductService
 
     public async Task<ICollection<ProductPostDTO>?> GetOnSaleProductDTOs(int count, CancellationToken cancellation)
     {
-        return await _productRepository.GetOnSaleProductDTOs(count,cancellation);
+        return await _productRepository.GetOnSaleProductDTOs(count, cancellation);
     }
 
 
-    public async Task<(ICollection<ProductPostDTO>?,int TotalCount)> GetProductDTOsAndCountForCategoryPage(int categoryId
-        ,int pageNumber,string order,CancellationToken cancellation)
+    public async Task<(ICollection<ProductPostDTO>?, int TotalCount)> GetProductDTOsAndCountForCategoryPage(int categoryId
+        , int pageNumber, string order, CancellationToken cancellation)
     {
         if (pageNumber < 1) pageNumber = 1;
 
         var isParentCategory = await _productCategoryRepository.IsParentCategory(categoryId, cancellation);
 
-        if (isParentCategory == null) return (null,0);
+        if (isParentCategory == null) return (null, 0);
 
-        if (isParentCategory==true)
+        if (isParentCategory == true)
         {
-            return await _productRepository.GetProductDTOsAndCountForCategoryPageByParentCategory(categoryId 
-                    , pageNumber, order,cancellation);
+            return await _productRepository.GetProductDTOsAndCountForCategoryPageByParentCategory(categoryId
+                    , pageNumber, order, cancellation);
         }
         else
         {
@@ -99,11 +101,51 @@ public class ProductService : IProductService
 
     public async Task<CategoryPageDTO?> GetCategoryPageDTO(int categoryId, int pageNumber, string order, CancellationToken cancellation)
     {
-        var producDTOsAndCount = await GetProductDTOsAndCountForCategoryPage(categoryId, pageNumber,order, cancellation);
+        var producDTOsAndCount = await GetProductDTOsAndCountForCategoryPage(categoryId, pageNumber, order, cancellation);
         if (producDTOsAndCount.Item1 == null) return null;
 
-        return new CategoryPageDTO() { ProductPostDTOs = producDTOsAndCount.Item1, PageNumber=pageNumber
-            ,Order=order,TotalCount=producDTOsAndCount.TotalCount,CategoryId=categoryId
-            ,CategoryName=await _productCategoryRepository.GetCategoryNameById(categoryId,cancellation)};
+        return new CategoryPageDTO()
+        {
+            ProductPostDTOs = producDTOsAndCount.Item1,
+            PageNumber = pageNumber
+            ,
+            Order = order,
+            TotalCount = producDTOsAndCount.TotalCount,
+            CategoryId = categoryId
+            ,
+            CategoryName = await _productCategoryRepository.GetCategoryNameById(categoryId, cancellation)
+        };
+    }
+
+
+    public async Task<ICollection<ProductListDTO>?> GetProductListDTOs(CancellationToken cancellation)
+    {
+        return await _productRepository.GetProductListDTOs(cancellation);
+    }
+
+
+    public async Task<int> CreateProduct(CreateProductDTO model, CancellationToken cancellation)
+    {
+        Product product = new()
+        {
+            CreateDate = DateTime.Now,
+            Name = model.Name,
+            ProductCategoryId = model.ProductCategoryId,
+            Description = model.Description,
+            Price = model.Price,
+            DiscountPercentage = model.DiscountPercentage,
+        };
+
+        if (model.ProductImageFile != null)
+        {
+            product.ProductImage = NameGenerator.GenerateUniqCode() + Path.GetExtension(model.ProductImageFile.FileName);
+            string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/ProductImage", product.ProductImage);
+            using(var stream = new FileStream(imagePath, FileMode.Create)) { model.ProductImageFile.CopyTo(stream);}
+        }
+
+        _productRepository.AddProduct(product);
+        await _productRepository.SaveChangesAsync(cancellation);
+
+        return await _productRepository.GetProductIdByProduct(product, cancellation);
     }
 }

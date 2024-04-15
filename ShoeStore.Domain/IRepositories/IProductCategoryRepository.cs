@@ -14,6 +14,7 @@ public interface IProductCategoryRepository
     Task<ICollection<CategoryDTO>> GetCategoryDTOsByParentId(int parentId, CancellationToken cancellation);
     Task<ICollection<ProductCategory>?> GetCategoriesByParentId(int parentId, CancellationToken cancellation);
     Task<ICollection<ParentCategoryDTO>> GetParentCategories(CancellationToken cancellation);
+    Task<ICollection<ChildCategoryListDTO>?> GetChildCategories(CancellationToken cancellation);
     Task<bool?> IsParentCategory(int categoryId, CancellationToken cancellation);
     Task<string?> GetCategoryNameById(int categoryId, CancellationToken cancellation);
     Task<EditCategoryDTO?> GetEditCategoryDTOById(int categoryId, CancellationToken cancellation);

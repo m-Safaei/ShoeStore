@@ -68,6 +68,18 @@ public class ProductCategoryRepository : IProductCategoryRepository
     }
 
 
+    public async Task<ICollection<ChildCategoryListDTO>?> GetChildCategories(CancellationToken cancellation)
+    {
+        return await _context.ProductCategories.Where(p => p.ParentId != null && !p.IsDelete)
+            .Select(p => new ChildCategoryListDTO()
+            {
+                Id = p.Id,
+                Name = p.Title,
+            })
+            .ToListAsync(cancellation);
+    }
+
+
     public async Task<bool?> IsParentCategory(int categoryId, CancellationToken cancellation)
     {
         var category = await _context.ProductCategories.Where(p => p.Id == categoryId && !p.IsDelete)

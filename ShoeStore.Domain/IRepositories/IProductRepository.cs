@@ -1,4 +1,5 @@
-﻿using ShoeStore.Domain.DTOs.SiteSide.Product;
+﻿using ShoeStore.Domain.DTOs.AdminSide.Product;
+using ShoeStore.Domain.DTOs.SiteSide.Product;
 using ShoeStore.Domain.Entities.Product;
 
 namespace ShoeStore.Domain.IRepositories;
@@ -18,4 +19,6 @@ public interface IProductRepository
         , int pageNumber, string order, CancellationToken cancellation);
     Task<(ICollection<ProductPostDTO>?, int TotalCount)> GetProductDTOsAndCountForCategoryPageByParentCategory(int parentCategoryId
         , int pageNumber, string order, CancellationToken cancellation);
+    Task<ICollection<ProductListDTO>?> GetProductListDTOs(CancellationToken cancellation);
+    Task<int> GetProductIdByProduct(Product product, CancellationToken cancellation);
 }

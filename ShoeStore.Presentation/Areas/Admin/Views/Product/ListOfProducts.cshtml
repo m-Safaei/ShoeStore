@@ -1,0 +1,94 @@
+﻿@model ICollection<ShoeStore.Domain.DTOs.AdminSide.Product.ProductListDTO>
+
+
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            محصولات
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">
+                                <i data-feather="home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">محصولات</li>
+                        <li class="breadcrumb-item active">لیست محصولات</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <!-- <div class="card-header">
+                        <h5>Manage Order</h5>
+                    </div> -->
+                    <div class="card-body order-datatable">
+                        <a type="button" class="btn btn-primary add-row mt-md-0 mt-2 mb-5" href="/Admin/Product/CreateProduct">درج محصول</a>
+                        <table class="display" id="basic-1">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>نام محصول</th>
+                                    <th>تصویر</th>
+                                    <th>دسته بندی</th>
+                                    <th>قیمت</th>
+                                    <th>تخفیف</th>
+                                    @* <th>عملیات</th> *@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null && Model.Any())
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.ProductId</td>
+                                            <td>@item.Name</td>
+                                            @if (item.ProductImage != null)
+                                            {
+                                                <td><img src="/images/ProductImage/@item.ProductImage" alt="" class="img-fluid img-30 blur-up lazyloaded"></td>
+                                            }
+                                            else
+                                            {
+                                                <td><img src="/assets/images/pro3/default.png" alt="" class="img-fluid img-30 blur-up lazyloaded"></td>
+                                            }
+                                            <td>@item.ProductCategoryName</td>
+                                            <td>@item.Price</td>
+                                            <td>@item.DiscountPercentage %</td>
+                                        </tr>
+                                    }
+                                }
+                                @* <tr>
+                                    <td>#51242</td>
+                                    <td><img src="assets/images/electronics/product/14.jpg" alt="" class="img-fluid img-30 blur-up lazyloaded"></td>
+                                    <td>
+                                        <span class="badge badge-warning">پرداخت درب محل</span>
+                                    </td>
+                                    <td>مستر کارت </td>
+                                    <td><span class="badge badge-warning">پردازش </span></td>
+                                    <td>10 مهر 1401</td>
+                                    <td>8791</td>
+                                </tr> *@
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>

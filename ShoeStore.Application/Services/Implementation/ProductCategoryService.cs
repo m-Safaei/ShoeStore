@@ -108,4 +108,10 @@ public class ProductCategoryService : IProductCategoryService
         await _productCategoryRepository.SaveChangesAsync(cancellation);
         return true;
     }
+
+
+    public async Task<ICollection<ChildCategoryListDTO>?> GetChildCategories(CancellationToken cancellation)
+    {
+        return await _productCategoryRepository.GetChildCategories(cancellation);
+    }
 }
