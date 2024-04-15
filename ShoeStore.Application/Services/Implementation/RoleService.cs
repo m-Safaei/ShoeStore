@@ -97,13 +97,13 @@ public class RoleService : IRoleService
         if (oldRole == null) return false;
         //Does Exist any Role By This UniqueName
         bool doesExistRoleUniqueName = await _roleRepository.DoesExistAnyRoleByRoleUniqueName(
-                                                                                   role.RoleUniqueName,
+                                                                                   role.RoleUniqueName.Trim().ToLower(),
                                                                                    role.RoleId,
                                                                                    cancellation);
         if (doesExistRoleUniqueName) return false;
 
         oldRole.RoleTitle = role.RoleTitle;
-        oldRole.RoleUniqueName = role.RoleUniqueName;
+        oldRole.RoleUniqueName = role.RoleUniqueName.Trim().ToLower();
         _roleRepository.UpdateRole(oldRole);
 
         await _roleRepository.SaveChanges(cancellation);

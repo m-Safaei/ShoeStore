@@ -30,6 +30,9 @@
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/bootstrap.css">
 
+    <!-- Datatable css-->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/vendors/datatables.css">
+
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
@@ -275,6 +278,25 @@
                         </li>
                         <li>
                             <a class="sidebar-header" href="javascript:void(0)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                                <span>کاربران </span>
+                                <i class="fa fa-angle-left  pull-right"></i>
+                            </a>
+                            <ul class="sidebar-submenu">
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Users" asp-action="ListOfUsers">
+                                        <i class="fa fa-circle"></i>لیست کاربران
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="create-user.html">
+                                        <i class="fa fa-circle"></i>درج کاربر
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="sidebar-header" href="javascript:void(0)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                                 <span>محصولات </span>
                                 <i class="fa fa-angle-left  pull-right"></i>
@@ -488,25 +510,7 @@
                             </ul>
                         </li>
 
-                        <li>
-                            <a class="sidebar-header" href="javascript:void(0)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
-                                <span>کاربران </span>
-                                <i class="fa fa-angle-left  pull-right"></i>
-                            </a>
-                            <ul class="sidebar-submenu">
-                                <li>
-                                    <a href="user-list.html">
-                                        <i class="fa fa-circle"></i>لیست کاربران
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="create-user.html">
-                                        <i class="fa fa-circle"></i>درج کاربر
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+
 
                         <li>
                             <a class="sidebar-header" href="javascript:void(0)">
@@ -713,6 +717,10 @@
     <!--Customizer admin-->
     <script src="~/assets/js/admin-customizer.js"></script>
     <ul class="custom-theme"><li class="demo-li"><a href="front-end/index.html" target="_blank">سایت</a></li><li class="btn-dark-setting">تیره</li></ul>
+
+    <!-- Datatables js-->
+    <script src="~/assets/js/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/js/datatables/custom-basic.js"></script>
 
     <!--dashboard custom js-->
     <script src="~/assets/js/dashboard/default.js"></script>

@@ -1,5 +1,6 @@
 ﻿using ShoeStore.Application.Services.Interface;
 using ShoeStore.Application.Utilities;
+using ShoeStore.Domain.DTOs.AdminSide.User;
 using ShoeStore.Domain.DTOs.SiteSide.Account;
 using ShoeStore.Domain.Entities.User;
 using ShoeStore.Domain.IRepositories;
@@ -19,6 +20,8 @@ public class UserService : IUserService
     }
 
     #endregion
+
+    #region General Methods
 
     public async Task<bool> DoesExistUserByMobile(string mobile, CancellationToken cancellation)
     {
@@ -63,5 +66,17 @@ public class UserService : IUserService
     {
         return await _userRepository.GetUserByMobileAsync(mobile, cancellation);
     }
+
+    #endregion
+
+    #region Admin Side Methods
+
+    public async Task<List<ListOfUsersDto>> ListOfUsers(CancellationToken cancellation)
+    {
+        return await _userRepository.ListOfUsers(cancellation);
+    }
+
+    #endregion
+
 }
 

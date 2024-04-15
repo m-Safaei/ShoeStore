@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\UserSide\" />
+    <Compile Remove="DTOs\UserSide\**" />
+    <EmbeddedResource Remove="DTOs\UserSide\**" />
+    <None Remove="DTOs\UserSide\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Enums\" />
   </ItemGroup>
 

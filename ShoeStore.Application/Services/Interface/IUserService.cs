@@ -1,4 +1,5 @@
-﻿using ShoeStore.Domain.DTOs.SiteSide.Account;
+﻿using ShoeStore.Domain.DTOs.AdminSide.User;
+using ShoeStore.Domain.DTOs.SiteSide.Account;
 using ShoeStore.Domain.Entities.User;
 
 namespace ShoeStore.Application.Services.Interface;
@@ -14,5 +15,7 @@ public interface IUserService
     Task<bool> RegisterUser(UserRegisterDto userDto, CancellationToken cancellation);
 
     Task<UserDto?> GetUserByMobileAsync(string mobile, CancellationToken cancellation);
+
+    Task<List<ListOfUsersDto>> ListOfUsers(CancellationToken cancellation);
 }
 

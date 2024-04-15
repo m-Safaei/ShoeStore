@@ -1,11 +1,11 @@
-﻿namespace ShoeStore.Domain.DTOs.SiteSide.Account;
+﻿namespace ShoeStore.Domain.DTOs.AdminSide.User;
 
-public record UserDto
+public record ListOfUsersDto
 {
     public int Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Mobile { get; set; }
-    public string Password { get; set; }
+    public DateTime CreateDate { get; set; }
 }
 
