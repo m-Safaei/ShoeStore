@@ -148,4 +148,15 @@ public class ProductService : IProductService
 
         return await _productRepository.GetProductIdByProduct(product, cancellation);
     }
+
+
+    public async Task<ProductDetailsDTO?> GetProductDetailsDTO(int productId, CancellationToken cancellation)
+    {
+        return await _productRepository.GetProductDetailsDTO(productId, cancellation);
+    }
+
+    public async Task<ICollection<SizeAdminSideDTO>?> GetAvailableSizeDTOs(int productId, CancellationToken cancellation)
+    {
+        return await _sizeRepository.GetAvailableSizeDTOs(productId,cancellation);
+    }
 }

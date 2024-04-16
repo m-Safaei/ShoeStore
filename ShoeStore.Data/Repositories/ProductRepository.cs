@@ -2,7 +2,6 @@
 using ShoeStore.Data.AppDbContext;
 using ShoeStore.Domain.DTOs.AdminSide.Product;
 using ShoeStore.Domain.DTOs.SiteSide.Product;
-using ShoeStore.Domain.DTOs.SiteSide.ProductCategory;
 using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.IRepositories;
 
@@ -141,5 +140,24 @@ public class ProductRepository : IProductRepository
     public async Task<int> GetProductIdByProduct(Product product, CancellationToken cancellation)
     {
         return await _context.Products.Where(p => p.Name == product.Name && p.CreateDate == product.CreateDate && !p.IsDelete).Select(p=> p.Id).SingleOrDefaultAsync();
+    }
+
+
+    public async Task<ProductDetailsDTO?> GetProductDetailsDTO(int productId, CancellationToken cancellation)
+    {
+        var model = await _context.Products.Where(p => p.Id == productId && !p.IsDelete)
+            .Select(p => new ProductDetailsDTO() { ProductId = p.Id, ProductName = p.Name, Description = p.Description, Price = p.Price, DiscountPercentage = p.DiscountPercentage, ProductCategoryId = p.ProductCategoryId, ProductCategoryName = p.ProductCategory.Title, ProductImage = p.ProductImage, })
+            .SingleOrDefaultAsync(cancellation);
+
+        if(model == null) { return null; }
+
+        model.ProductItemDTOs = await _context.ProductItems.Where(p => p.ProductId == model.ProductId && !p.IsDelete)
+            .Select(p=> new ProductItemAdminSideDTO() { Id=p.Id,Count=p.Count,ProductId=p.ProductId,SizeId=p.SizeId, SizeNumber = p.Size.SizeNumber})
+            .ToListAsync(cancellation);
+        model.ProductFeatureDTOs = await _context.ProductFeatures.Where(p => p.ProductId == model.ProductId)
+            .Select(p => new ProductFeatureAdminSideDTO() { Id = p.Id, FeatureTitle = p.FeatureTitle, FeatureDescription = p.FeatureDescription, ProductId = p.ProductId })
+            .ToListAsync(cancellation);
+
+        return model;
     }
 }

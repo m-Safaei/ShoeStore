@@ -21,4 +21,5 @@ public interface IProductRepository
         , int pageNumber, string order, CancellationToken cancellation);
     Task<ICollection<ProductListDTO>?> GetProductListDTOs(CancellationToken cancellation);
     Task<int> GetProductIdByProduct(Product product, CancellationToken cancellation);
+    Task<ProductDetailsDTO?> GetProductDetailsDTO(int productId, CancellationToken cancellation);
 }

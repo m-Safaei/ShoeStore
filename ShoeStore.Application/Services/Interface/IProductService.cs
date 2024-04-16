@@ -20,4 +20,6 @@ public interface IProductService
     Task<CategoryPageDTO?> GetCategoryPageDTO(int categoryId, int pageNumber, string order, CancellationToken cancellation);
     Task<ICollection<ProductListDTO>?> GetProductListDTOs(CancellationToken cancellation);
     Task<int> CreateProduct(CreateProductDTO model, CancellationToken cancellation);
+    Task<ProductDetailsDTO?> GetProductDetailsDTO(int productId, CancellationToken cancellation);
+    Task<ICollection<SizeAdminSideDTO>?> GetAvailableSizeDTOs(int productId, CancellationToken cancellation);
 }

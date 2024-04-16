@@ -36,7 +36,7 @@ namespace ShoeStore.Presentation.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var productId = await _productService.CreateProduct(model, cancellation);
-                RedirectToAction(nameof(ProductDetails), productId);
+                return RedirectToAction(nameof(ProductDetails),new {productId=productId});
             }
             return View(model);
         }
@@ -44,8 +44,15 @@ namespace ShoeStore.Presentation.Areas.Admin.Controllers
 
         public async Task<IActionResult> ProductDetails(int productId , CancellationToken cancellation=default)
         {
-            //GetProduct By Id
-            return View();
+            var model = await _productService.GetProductDetailsDTO(productId, cancellation);
+
+            if (model == null) return Redirect("NotFound");
+
+            var sizes = await _productService.GetAvailableSizeDTOs(productId ,cancellation);
+
+            ViewData["Sizes"] = new SelectList(sizes, "Id", "SizeNumber");
+
+            return View(model);
         }
     }
 }
