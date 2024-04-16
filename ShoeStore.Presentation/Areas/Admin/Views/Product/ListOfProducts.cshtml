@@ -55,21 +55,26 @@
                                 {
                                     foreach (var item in Model)
                                     {
+                                        
                                         <tr>
+                                            
                                             <td>@item.ProductId</td>
-                                            <td>@item.Name</td>
-                                            @if (item.ProductImage != null)
-                                            {
+                                            <td><a style="color:mediumblue" asp-action="ProductDetails" asp-area="Admin" asp-controller="Product" asp-route-productId="@item.ProductId">@item.Name</a></td>
+                                                @if (item.ProductImage != null)
+                                                {
                                                 <td><img src="/images/ProductImage/@item.ProductImage" alt="" class="img-fluid img-30 blur-up lazyloaded"></td>
-                                            }
-                                            else
-                                            {
+                                                }
+                                                else
+                                                {
                                                 <td><img src="/assets/images/pro3/default.png" alt="" class="img-fluid img-30 blur-up lazyloaded"></td>
-                                            }
+                                                }
                                             <td>@item.ProductCategoryName</td>
                                             <td>@item.Price</td>
                                             <td>@item.DiscountPercentage %</td>
+                                            
                                         </tr>
+                                        
+                                        
                                     }
                                 }
                                 @* <tr>
