@@ -2,6 +2,7 @@
 using ShoeStore.Data.AppDbContext;
 using ShoeStore.Domain.DTOs.AdminSide.User;
 using ShoeStore.Domain.DTOs.SiteSide.Account;
+using ShoeStore.Domain.Entities.Role;
 using ShoeStore.Domain.Entities.User;
 using ShoeStore.Domain.IRepositories;
 
@@ -63,6 +64,10 @@ public class UserRepository : IUserRepository
         return _context.Users.Find(userId);
     }
 
+    public void UpdateUser(User user)
+    {
+        _context.Users.Update(user);
+    }
     #endregion
 
     #region Admin Side Methods
@@ -71,17 +76,34 @@ public class UserRepository : IUserRepository
     {
         return await _context.Users.Where(p => !p.IsDelete)
                                     .OrderByDescending(p => p.CreateDate)
-                                    .Select(p=>new ListOfUsersDto()
+                                    .Select(p => new ListOfUsersDto()
                                     {
                                         Id = p.Id,
                                         FirstName = p.FirstName,
                                         LastName = p.LastName,
                                         Mobile = p.Mobile,
                                         CreateDate = p.CreateDate,
+                                        UserAvatar = p.UserAvatar,
                                     })
                                     .ToListAsync(cancellation);
     }
 
+    public async Task<List<int>> GetListOfUserRolesIdByUserId(int userId, CancellationToken cancellation)
+    {
+        return await _context.UserRoles.Where(p => p.UserId == userId)
+                                       .Select(p => p.RoleId)
+                                       .ToListAsync(cancellation);
+    }
+
+    public async Task<List<UserRole>> GetListOfUserRolesByUserId(int userId, CancellationToken cancellation)
+    {
+        return await _context.UserRoles.Where(p => p.UserId == userId).ToListAsync(cancellation);
+    }
+
+    public void DeleteRangeOfUserRoles(List<UserRole> userRoles)
+    {
+        _context.UserRoles.RemoveRange(userRoles);
+    }
     #endregion
 
 }

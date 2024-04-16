@@ -55,6 +55,11 @@ public class RoleService : IRoleService
         return await _roleRepository.GetLitOfRoles(cancellation);
     }
 
+    public async Task<List<RoleListDto>> ListOfRoles(CancellationToken cancellation)
+    {
+        return await _roleRepository.ListOfRoles(cancellation);
+    }
+
     public async Task<bool> CreateNewRole(CreateRoleDto newRole, CancellationToken cancellation)
     {
         //Does exist any Role by RoleUniqueName

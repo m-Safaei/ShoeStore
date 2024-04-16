@@ -7,5 +7,6 @@ public record ListOfUsersDto
     public string LastName { get; set; }
     public string Mobile { get; set; }
     public DateTime CreateDate { get; set; }
+    public string? UserAvatar { get; set; }
 }
 
