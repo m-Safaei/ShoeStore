@@ -160,6 +160,60 @@ public class UserService : IUserService
         await _userRepository.SaveChangeAsync(cancellation);
         return true;
     }
+
+    public async Task<bool> AddUserAdminSide(AddUserAdminSideDto userDto, List<int>? selectedRoles, CancellationToken cancellation)
+    {
+        //Check if User Exist
+        if (await DoesExistUserByMobile(userDto.Mobile, cancellation))
+        {
+            return false;
+        }
+
+        //Fill Entity
+        User user = FillUserEntityAdminSide(userDto);
+
+        if (userDto.UserAvatar != null)
+        {
+            //Save New Image
+            user.UserAvatar = NameGenerator.GenerateUniqCode() + Path.GetExtension(userDto.UserAvatar.FileName);
+            string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/UserAvatar", user.UserAvatar);
+            using (var stream = new FileStream(imagePath, FileMode.Create))
+            {
+                userDto.UserAvatar.CopyTo(stream);
+            }
+        }
+
+        //Add User
+        await AddUserAsync(user, cancellation);
+        // Add User roles
+        if (selectedRoles != null && selectedRoles.Any())
+        {
+            foreach (var roleId in selectedRoles)
+            {
+                UserRole userRole = new()
+                {
+                    UserId = user.Id,
+                    RoleId = roleId,
+                };
+                await _roleRepository.AddUserSelectedRole(userRole, cancellation);
+            }
+        }
+        await _userRepository.SaveChangeAsync(cancellation);
+        return true;
+    }
+
+    public User FillUserEntityAdminSide(AddUserAdminSideDto userDto)
+    {
+        //Object mapping 
+        User user = new()
+        {
+            FirstName = userDto.FirstName,
+            LastName = userDto.LastName,
+            Mobile = userDto.Mobile.Trim(),
+            Password = PasswordHasher.EncodePasswordMd5(userDto.Password)
+        };
+        return user;
+    }
     #endregion
 
 }

@@ -35,15 +35,29 @@ public class UsersController : AdminBaseController
 
     #region Add User
 
-    public IActionResult AddUser()
+    public async Task<IActionResult> AddUser(CancellationToken cancellation)
     {
+        ViewData["Roles"] = await _roleService.ListOfRoles(cancellation);
         return View();
     }
 
     [HttpPost, ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddUser(AddUserAdminSideDto user,CancellationToken cancellation)
+    public async Task<IActionResult> AddUser(AddUserAdminSideDto model, List<int>? selectedRoles, CancellationToken cancellation)
     {
-        return View(user);
+        if (ModelState.IsValid)
+        {
+            var res = await _userService.AddUserAdminSide(model, selectedRoles, cancellation);
+            if (res)
+            {
+                TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
+
+                return RedirectToAction(nameof(ListOfUsers));
+            }
+            TempData["InfoMessage"] = "کاربری با شماره موبایل وارد شده در سیستم وجود دارد.";
+        }
+
+        ViewData["Roles"] = await _roleService.ListOfRoles(cancellation);
+        return View(model);
     }
 
     #endregion
