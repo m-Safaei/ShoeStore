@@ -8,6 +8,7 @@ public interface IProductCategoryRepository
 {
     Task<List<ProductCategory>> GetListOfProductCategorisAsync(CancellationToken cancellation);
     Task<ProductCategory?> GetProductCategoryByIdAsync(int Id,CancellationToken cancellation);
+    Task<int> GetProductCategoryIdByNameAsync(string categoryName, CancellationToken cancellation);
     void AddProductCategory(ProductCategory productCategory);
     void UpdateProductCategory(ProductCategory productCategory);
     Task SaveChangesAsync(CancellationToken cancellation);

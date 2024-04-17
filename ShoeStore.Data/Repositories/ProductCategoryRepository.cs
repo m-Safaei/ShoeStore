@@ -30,6 +30,12 @@ public class ProductCategoryRepository : IProductCategoryRepository
         return await _context.ProductCategories.FirstOrDefaultAsync(p => p.Id == Id && !p.IsDelete);
     }
 
+    public async Task<int> GetProductCategoryIdByNameAsync(string categoryName,CancellationToken cancellation)
+    {
+        return await _context.ProductCategories.Where(p => p.Title==categoryName && !p.IsDelete)
+            .Select(p=> p.Id).FirstOrDefaultAsync(cancellation);
+    }
+
     public async Task SaveChangesAsync(CancellationToken cancellation)
     {
         await _context.SaveChangesAsync(cancellation);

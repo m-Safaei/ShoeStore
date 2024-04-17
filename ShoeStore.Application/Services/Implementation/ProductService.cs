@@ -100,7 +100,7 @@ public class ProductService : IProductService
         }
     }
 
-    public async Task<CategoryPageDTO?> GetCategoryPageDTO(int categoryId, int pageNumber, string order, CancellationToken cancellation)
+    public async Task<CategoryPageDTO?> GetCategoryPageDTOById(int categoryId, int pageNumber, string order, CancellationToken cancellation)
     {
         var producDTOsAndCount = await GetProductDTOsAndCountForCategoryPage(categoryId, pageNumber, order, cancellation);
         if (producDTOsAndCount.Item1 == null) return null;
@@ -108,14 +108,20 @@ public class ProductService : IProductService
         return new CategoryPageDTO()
         {
             ProductPostDTOs = producDTOsAndCount.Item1,
-            PageNumber = pageNumber
-            ,
+            PageNumber = pageNumber,
             Order = order,
             TotalCount = producDTOsAndCount.TotalCount,
-            CategoryId = categoryId
-            ,
+            CategoryId = categoryId,
             CategoryName = await _productCategoryRepository.GetCategoryNameById(categoryId, cancellation)
         };
+    }
+
+
+    public async Task<CategoryPageDTO?> GetCategoryPageDTOByName(string categoryName, int pageNumber, string order, CancellationToken cancellation)
+    {
+        var categoryId = await _productCategoryRepository.GetProductCategoryIdByNameAsync(categoryName, cancellation);
+        if (categoryId == 0) return null;
+        return await GetCategoryPageDTOById(categoryId, pageNumber, order, cancellation);
     }
 
 
