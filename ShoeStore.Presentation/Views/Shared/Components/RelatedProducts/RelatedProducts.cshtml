@@ -47,7 +47,7 @@
                                 @if (item.DiscountPercentage > 0)
                                 {
                                     <h5><del>@item.Price</del></h5>
-                                    <h4>@(item.Price * (100-item.DiscountPercentage))</h4>
+                                    <h4>@((item.Price * (100-item.DiscountPercentage))/100)</h4>
                                 } else
                                 {
                                     <h4>@item.Price</h4>

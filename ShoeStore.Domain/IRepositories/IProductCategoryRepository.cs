@@ -1,4 +1,5 @@
 ﻿using ShoeStore.Domain.DTOs.AdminSide.Category;
+using ShoeStore.Domain.DTOs.SiteSide.Product;
 using ShoeStore.Domain.DTOs.SiteSide.ProductCategory;
 using ShoeStore.Domain.Entities.ProductCategory;
 
@@ -19,4 +20,5 @@ public interface IProductCategoryRepository
     Task<bool?> IsParentCategory(int categoryId, CancellationToken cancellation);
     Task<string?> GetCategoryNameById(int categoryId, CancellationToken cancellation);
     Task<EditCategoryDTO?> GetEditCategoryDTOById(int categoryId, CancellationToken cancellation);
+    Task<ProductPageBreadCrumbDTO?> GetBreadCrumbDTO(int childCategoryId, CancellationToken cancellation);
 }
