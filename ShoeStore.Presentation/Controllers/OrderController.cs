@@ -5,6 +5,7 @@ using ShoeStore.Application.Services.Interface;
 using ShoeStore.Domain.Entities.Order;
 using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.Entities.User;
+using ShoeStore.Domain.IRepositories;
 
 namespace ShoeStore.Presentation.Controllers;
 #endregion
@@ -14,7 +15,7 @@ public class OrderController : Controller
     #region ctor
     public readonly IUserService _userService; 
     public readonly IProductService _productService;
-    public readonly IOrderService _orderService;
+    public readonly IOrderService _orderService;  
     public OrderController (IUserService userService, IProductService productService,IOrderService orderService)
     {
         _userService = userService;
@@ -33,8 +34,7 @@ public class OrderController : Controller
        
         
 
-        Product _product = await _productService.GetProductByIdAsync(_id, cancellationToken);
-        ProductItem productItem=
+       // Product _product = await _productService.GetProductByIdAsync(_id, cancellationToken);
         
         if (_orderService.IsExistOrderForUserInToday(_userId))
         {

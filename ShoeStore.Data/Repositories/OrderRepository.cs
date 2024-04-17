@@ -36,7 +36,8 @@ public class OrderRepository : IOrderRepository
     #region OrderItem
     public bool IsExistOrderItemFromUserFromToday(int OrderId,int productId)
     {
-        return _dbContext.orderItems.Any(p => p.ProductId == productId && p.OrderId == OrderId);
+      //  return _dbContext.orderItems.Any(p => p.ProductId == productId && p.OrderId == OrderId);
+        return _dbContext.orderItems.Any(p =>  p.OrderId == OrderId);
     }
     public void AddOrderItem(OrderItem orderItem)
     {
@@ -50,7 +51,8 @@ public class OrderRepository : IOrderRepository
     }
    public OrderItem GetOrderItem(int orderid, int productid)
     {
-    return    _dbContext.orderItems.SingleOrDefault(p => p.OrderId == orderid && p.ProductId == productid);
+   return    _dbContext.orderItems.SingleOrDefault(p => p.OrderId == orderid && p.ProductId == productid);
+        return _dbContext.orderItems.SingleOrDefault(p => p.OrderId == orderid) ;
     }
     public OrderItem GetOrderItemById(int id)
     {

@@ -40,7 +40,7 @@ public class OrderService : IOrderService
     {
         OrderItem orderItem = new OrderItem()
         {
-            ProductId = productId,
+           // ProductId = productId,
             OrderId = orderId,
             Price = Price,
             Count = 1
