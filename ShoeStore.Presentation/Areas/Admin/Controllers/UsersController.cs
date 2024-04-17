@@ -65,5 +65,24 @@ public class UsersController : AdminBaseController
     }
 
     #endregion
+
+    #region Delete User
+
+    public async Task<IActionResult> DeleteUser(int userId, CancellationToken cancellation)
+    {
+        var res = await _userService.DeleteUser(userId, cancellation);
+        if (res)
+        {
+            TempData["SuccessMessage"] = "Success";
+        }
+        else
+        {
+            TempData["ErrorMessage"] = "failed";
+        }
+
+        return RedirectToAction(nameof(ListOfUsers));
+    }
+
+    #endregion
 }
 

@@ -21,5 +21,6 @@ public interface IUserService
     Task<EditUserAdminSideDto?> FillEditUserAdminSideDto(int userId, CancellationToken cancellation);
 
     Task<bool> EditUserAdminSide(EditUserAdminSideDto model, List<int>? selectedRoles, CancellationToken cancellation);
+    Task<bool> DeleteUser(int userId, CancellationToken cancellation);
 }
 

@@ -50,12 +50,13 @@
                             <th>تاریخ ثبت نام </th>
                             <th>نقش </th>
                             <th>عملیات</th>
+                            <th>عملیات</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var user in Model)
                         {
-                            <tr>
+                            <tr data-row-id="@user.Id">
                                 <td>
                                     <div class="d-flex vendor-list">
                                         @if (string.IsNullOrEmpty(user.UserAvatar))
@@ -86,7 +87,7 @@
                                 {
                                     <td>ندارد</td>
                                 }
-                                
+
                                 <td>
                                     <div>
                                         <a asp-area="Admin"
@@ -94,6 +95,9 @@
                                            asp-action="EditUser"
                                            asp-route-id="@user.Id" class="btn btn-warning">ویرایش</a>
                                     </div>
+                                </td>
+                                <td>
+                                    <a data-id="@user.Id" asp-area="Admin" asp-controller="Users" asp-action="DeleteUser" asp-route-userId="@user.Id" class="btn btn-primary add-row remove-row">حذف </a>
                                 </td>
                             </tr>
                         }
@@ -105,3 +109,4 @@
     </div>
     <!-- Container-fluid Ends-->
 </div>
+

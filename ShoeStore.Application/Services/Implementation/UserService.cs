@@ -5,6 +5,7 @@ using ShoeStore.Domain.DTOs.SiteSide.Account;
 using ShoeStore.Domain.Entities.Role;
 using ShoeStore.Domain.Entities.User;
 using ShoeStore.Domain.IRepositories;
+using System.Reflection;
 
 namespace ShoeStore.Application.Services.Implementation;
 
@@ -144,6 +145,18 @@ public class UserService : IUserService
         }
 
         _userRepository.UpdateUser(originUser);
+        await _userRepository.SaveChangeAsync(cancellation);
+        return true;
+    }
+
+    public async Task<bool> DeleteUser(int userId, CancellationToken cancellation)
+    {
+        // Get user by id
+        var user = await _userRepository.GetUserByIdAsync(userId, cancellation);
+        if (user == null || user.IsDelete) return false;
+
+        user.IsDelete = true;
+        _userRepository.UpdateUser(user);
         await _userRepository.SaveChangeAsync(cancellation);
         return true;
     }
