@@ -22,4 +22,8 @@ public interface IProductService
     Task<int> CreateProduct(CreateProductDTO model, CancellationToken cancellation);
     Task<ProductDetailsDTO?> GetProductDetailsDTO(int productId, CancellationToken cancellation);
     Task<ICollection<SizeAdminSideDTO>?> GetAvailableSizeDTOs(int productId, CancellationToken cancellation);
+    Task<bool> AddProductFeauture(int productId, string featureTitle, string featureDescription, CancellationToken cancellation);
+    Task<bool> RemoveProductFeature(int productFeatureId, CancellationToken cancellation);
+    Task<bool> AddProductItem(int productId, int sizeId, int count, CancellationToken cancellation);
+    Task<bool> RemoveProductItem(int productItemId, CancellationToken cancellation);
 }

@@ -159,4 +159,60 @@ public class ProductService : IProductService
     {
         return await _sizeRepository.GetAvailableSizeDTOs(productId,cancellation);
     }
+
+
+    public async Task<bool> AddProductFeauture(int productId, string featureTitle, string featureDescription, CancellationToken cancellation)
+    {
+        var productExists = await _productRepository.ProductExistsById(productId, cancellation);
+        if (!productExists) return false;
+        ProductFeature productFeature = new()
+        {
+            CreateDate = DateTime.Now,
+            FeatureTitle = featureTitle,
+            FeatureDescription = featureDescription,
+            ProductId = productId,
+        };
+        _productFeatureRepository.AddProductFeature(productFeature);
+        await _productFeatureRepository.SaveChangesAsync(cancellation);
+        return true;
+    }
+
+
+    public async Task<bool> RemoveProductFeature(int productFeatureId,CancellationToken cancellation)
+    {
+        var productFeature = await _productFeatureRepository.GetProductFeatureById(productFeatureId, cancellation);
+        if (productFeature == null) return false;
+        _productFeatureRepository.RemoveProductFeature(productFeature);
+        await _productFeatureRepository.SaveChangesAsync(cancellation);
+        return true;
+
+    }
+
+
+    public async Task<bool> AddProductItem(int productId,int sizeId,int count,CancellationToken cancellation)
+    {
+        var productExists = await _productRepository.ProductExistsById(productId, cancellation);
+        if(!productExists) return false;
+        ProductItem productItem = new()
+        {
+            CreateDate = DateTime.Now,
+            ProductId = productId,
+            SizeId = sizeId,
+            Count = count,
+        };
+        _productItemRepository.AddProductItem(productItem);
+        await _productItemRepository.SaveChangesAsync(cancellation);
+        return true;
+    }
+
+
+    public async Task<bool> RemoveProductItem(int productItemId,CancellationToken cancellation)
+    {
+        var productItem = await _productItemRepository.GetProductItemByIdAsync(productItemId, cancellation);
+        if (productItem == null) return false;
+        productItem.IsDelete = true;
+        _productItemRepository.UpdateProductItem(productItem);
+        await _productItemRepository.SaveChangesAsync(cancellation);
+        return true;
+    }
 }

@@ -160,4 +160,11 @@ public class ProductRepository : IProductRepository
 
         return model;
     }
+
+
+    public async Task<bool> ProductExistsById(int productId,CancellationToken cancellation)
+    {
+        return await _context.Products.Where(p => p.Id == productId && !p.IsDelete).SingleOrDefaultAsync(cancellation) != null;
+    }
+
 }

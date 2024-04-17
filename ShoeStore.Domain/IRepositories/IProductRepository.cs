@@ -22,4 +22,5 @@ public interface IProductRepository
     Task<ICollection<ProductListDTO>?> GetProductListDTOs(CancellationToken cancellation);
     Task<int> GetProductIdByProduct(Product product, CancellationToken cancellation);
     Task<ProductDetailsDTO?> GetProductDetailsDTO(int productId, CancellationToken cancellation);
+    Task<bool> ProductExistsById(int productId, CancellationToken cancellation);
 }
