@@ -10,4 +10,5 @@ public interface IProductFeatureRepository
     void RemoveProductFeature(ProductFeature productFeature);
     void AddProductFeature(ProductFeature productFeature);
     Task SaveChangesAsync(CancellationToken cancellation);
+    Task<ICollection<ProductFeature>?> GetProductFeaturesByProductId(int productId, CancellationToken cancellation);
 }

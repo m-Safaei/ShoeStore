@@ -28,4 +28,5 @@ public interface IProductService
     Task<bool> RemoveProductItem(int productItemId, CancellationToken cancellation);
     Task<CreateProductDTO?> GetCreateProductDTOById(int productId, CancellationToken cancellation);
     Task<bool> EditProduct(CreateProductDTO productDTO, CancellationToken cancellation);
+    Task<bool> RemoveProductAndItsItemsAndFeatures(int productId, CancellationToken cancellation);
 }

@@ -141,7 +141,7 @@ public class ProductService : IProductService
         {
             product.ProductImage = NameGenerator.GenerateUniqCode() + Path.GetExtension(model.ProductImageFile.FileName);
             string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/ProductImage", product.ProductImage);
-            using(var stream = new FileStream(imagePath, FileMode.Create)) { model.ProductImageFile.CopyTo(stream);}
+            using (var stream = new FileStream(imagePath, FileMode.Create)) { model.ProductImageFile.CopyTo(stream); }
         }
 
         _productRepository.AddProduct(product);
@@ -158,7 +158,7 @@ public class ProductService : IProductService
 
     public async Task<ICollection<SizeAdminSideDTO>?> GetAvailableSizeDTOs(int productId, CancellationToken cancellation)
     {
-        return await _sizeRepository.GetAvailableSizeDTOs(productId,cancellation);
+        return await _sizeRepository.GetAvailableSizeDTOs(productId, cancellation);
     }
 
 
@@ -179,7 +179,7 @@ public class ProductService : IProductService
     }
 
 
-    public async Task<bool> RemoveProductFeature(int productFeatureId,CancellationToken cancellation)
+    public async Task<bool> RemoveProductFeature(int productFeatureId, CancellationToken cancellation)
     {
         var productFeature = await _productFeatureRepository.GetProductFeatureById(productFeatureId, cancellation);
         if (productFeature == null) return false;
@@ -190,10 +190,10 @@ public class ProductService : IProductService
     }
 
 
-    public async Task<bool> AddProductItem(int productId,int sizeId,int count,CancellationToken cancellation)
+    public async Task<bool> AddProductItem(int productId, int sizeId, int count, CancellationToken cancellation)
     {
         var productExists = await _productRepository.ProductExistsById(productId, cancellation);
-        if(!productExists) return false;
+        if (!productExists) return false;
         ProductItem productItem = new()
         {
             CreateDate = DateTime.Now,
@@ -207,7 +207,7 @@ public class ProductService : IProductService
     }
 
 
-    public async Task<bool> RemoveProductItem(int productItemId,CancellationToken cancellation)
+    public async Task<bool> RemoveProductItem(int productItemId, CancellationToken cancellation)
     {
         var productItem = await _productItemRepository.GetProductItemByIdAsync(productItemId, cancellation);
         if (productItem == null) return false;
@@ -218,13 +218,13 @@ public class ProductService : IProductService
     }
 
 
-    public async Task<CreateProductDTO?> GetCreateProductDTOById(int productId,CancellationToken cancellation)
+    public async Task<CreateProductDTO?> GetCreateProductDTOById(int productId, CancellationToken cancellation)
     {
         return await _productRepository.GetCreateProductDTOById(productId, cancellation);
     }
 
 
-    public async Task<bool> EditProduct(CreateProductDTO productDTO,CancellationToken cancellation)
+    public async Task<bool> EditProduct(CreateProductDTO productDTO, CancellationToken cancellation)
     {
         var product = await _productRepository.GetProductByIdAsync(productDTO.Id, cancellation);
         if (product == null) return false;
@@ -234,7 +234,7 @@ public class ProductService : IProductService
         product.Price = productDTO.Price;
         product.DiscountPercentage = productDTO.DiscountPercentage;
         product.ProductCategoryId = productDTO.ProductCategoryId;
-        if(productDTO.ProductImageFile != null)
+        if (productDTO.ProductImageFile != null)
         {
             product.ProductImage = NameGenerator.GenerateUniqCode() + Path.GetExtension(productDTO.ProductImageFile.FileName);
             string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/ProductImage", product.ProductImage);
@@ -244,5 +244,38 @@ public class ProductService : IProductService
         _productRepository.UpdateProduct(product);
         await _productRepository.SaveChangesAsync(cancellation);
         return true;
+    }
+
+
+    public async Task<bool> RemoveProductAndItsItemsAndFeatures(int productId, CancellationToken cancellation)
+    {
+        var product = await _productRepository.GetProductByIdAsync(productId, cancellation);
+        if (product == null) return false;
+        product.IsDelete = true;
+        _productRepository.UpdateProduct(product);
+
+        var productItems = await _productItemRepository.GetListOfProductItemsByProductId(productId, cancellation);
+        if (productItems != null)
+        {
+            foreach (var item in productItems)
+            {
+                item.IsDelete = true;
+                _productItemRepository.UpdateProductItem(item);
+            }
+        }
+
+        var productFeatures = await _productFeatureRepository.GetProductFeaturesByProductId(productId, cancellation);
+        if (productFeatures != null)
+        {
+            foreach(var item in productFeatures)
+            {
+                _productFeatureRepository.RemoveProductFeature(item);
+            }
+        }
+
+        await _productRepository.SaveChangesAsync(cancellation);
+
+        return true;
+
     }
 }

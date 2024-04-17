@@ -39,4 +39,9 @@ public class ProductFeatureRepository : IProductFeatureRepository
     {
         await _context.SaveChangesAsync(cancellation);
     }
+
+    public async Task<ICollection<ProductFeature>?> GetProductFeaturesByProductId(int productId,CancellationToken cancellation)
+    {
+        return await _context.ProductFeatures.Where(p => p.ProductId == productId).ToListAsync(cancellation);
+    }
 }

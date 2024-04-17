@@ -9,4 +9,5 @@ public interface IProductItemRepository
     void AddProductItem(ProductItem productItem);
     void UpdateProductItem(ProductItem productItem);
     Task SaveChangesAsync(CancellationToken cancellation);
+    Task<ICollection<ProductItem>?> GetListOfProductItemsByProductId(int productId, CancellationToken cancellation);
 }
