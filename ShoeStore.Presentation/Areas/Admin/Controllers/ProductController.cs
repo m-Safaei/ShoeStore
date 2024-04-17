@@ -60,9 +60,14 @@ namespace ShoeStore.Presentation.Areas.Admin.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> AddProductFeature(int productId, string featureTitle, string featureDescription, CancellationToken cancellation = default)
         {
-            var res = await _productService.AddProductFeauture(productId, featureTitle, featureDescription, cancellation);
-            if (res) return RedirectToAction(nameof(ProductDetails), new { productId = productId });
-            return Redirect("NotFound");
+            if(ModelState.IsValid)
+            {
+                var res = await _productService.AddProductFeauture(productId, featureTitle, featureDescription, cancellation);
+                if (res) return RedirectToAction(nameof(ProductDetails), new { productId = productId });
+                return Redirect("NotFound");
+            }
+            
+            return RedirectToAction(nameof(ProductDetails), new { productId = productId });
         }
 
 
@@ -77,9 +82,14 @@ namespace ShoeStore.Presentation.Areas.Admin.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> AddProductItem(int productId, int sizeId, int count, CancellationToken cancellation = default)
         {
-            var res = await _productService.AddProductItem(productId, sizeId, count, cancellation);
-            if (res) return RedirectToAction(nameof(ProductDetails), new { productId = productId });
-            return Redirect("NotFound");
+            if(ModelState.IsValid)
+            {
+                var res = await _productService.AddProductItem(productId, sizeId, count, cancellation);
+                if (res) return RedirectToAction(nameof(ProductDetails), new { productId = productId });
+                return Redirect("NotFound");
+            }
+            
+            return RedirectToAction(nameof(ProductDetails), new { productId = productId });
         }
 
 
@@ -104,9 +114,14 @@ namespace ShoeStore.Presentation.Areas.Admin.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> EditProduct(CreateProductDTO productDTO, CancellationToken cancellation = default)
         {
-            var res = await _productService.EditProduct(productDTO, cancellation);
-            if (res) return RedirectToAction(nameof(ProductDetails), new { productId = productDTO.Id });
-            return Redirect("NotFound");
+            if (ModelState.IsValid)
+            {
+                var res = await _productService.EditProduct(productDTO, cancellation);
+                if (res) return RedirectToAction(nameof(ProductDetails), new { productId = productDTO.Id });
+                return Redirect("NotFound");
+            }
+
+            return View(productDTO);
         }
 
 
