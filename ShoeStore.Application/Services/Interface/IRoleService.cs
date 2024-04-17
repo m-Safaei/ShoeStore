@@ -20,5 +20,8 @@ public interface IRoleService
     Task<bool> EditRole(EditRoleDto role, CancellationToken cancellation);
 
     Task<List<RoleListDto>> ListOfRoles(CancellationToken cancellation);
+
+    Task<bool> DeleteRole(int roleId, CancellationToken cancellation);
+
 }
 

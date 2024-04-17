@@ -22,5 +22,7 @@ public interface IUserService
 
     Task<bool> EditUserAdminSide(EditUserAdminSideDto model, List<int>? selectedRoles, CancellationToken cancellation);
     Task<bool> DeleteUser(int userId, CancellationToken cancellation);
+
+    Task<bool> AddUserAdminSide(AddUserAdminSideDto userDto, List<int>? selectedRoles, CancellationToken cancellation);
 }
 
