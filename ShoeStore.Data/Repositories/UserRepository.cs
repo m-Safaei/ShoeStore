@@ -14,10 +14,12 @@ public class UserRepository : IUserRepository
     #region Ctor
 
     private readonly ShoeStoreDbContext _context;
+    private readonly IRoleRepository _roleRepository;
 
-    public UserRepository(ShoeStoreDbContext context)
+    public UserRepository(ShoeStoreDbContext context, IRoleRepository roleRepository)
     {
         _context = context;
+        _roleRepository = roleRepository;
     }
 
     #endregion
@@ -74,18 +76,39 @@ public class UserRepository : IUserRepository
 
     public async Task<List<ListOfUsersDto>> ListOfUsers(CancellationToken cancellation)
     {
-        return await _context.Users.Where(p => !p.IsDelete)
-                                    .OrderByDescending(p => p.CreateDate)
-                                    .Select(p => new ListOfUsersDto()
-                                    {
-                                        Id = p.Id,
-                                        FirstName = p.FirstName,
-                                        LastName = p.LastName,
-                                        Mobile = p.Mobile,
-                                        CreateDate = p.CreateDate,
-                                        UserAvatar = p.UserAvatar,
-                                    })
-                                    .ToListAsync(cancellation);
+        var users = await _context.Users.Where(p => !p.IsDelete)
+            .OrderByDescending(p => p.CreateDate)
+            .Select(p => new ListOfUsersDto()
+            {
+                Id = p.Id,
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                Mobile = p.Mobile,
+                CreateDate = p.CreateDate,
+                UserAvatar = p.UserAvatar,
+            })
+            .ToListAsync(cancellation);
+
+        
+        foreach (var user in users)
+        {
+            List<int>? roleIds = _context.UserRoles.Where(p => p.UserId == user.Id)
+                                                   .Select(p => p.RoleId).ToList();
+
+            List<string> roleTitles = new List<string>();
+
+            if (roleIds!=null&& roleIds.Any())
+            {
+                foreach (var roleId in roleIds)
+                {
+                    string roleTitle = await _roleRepository.GetRoleTitleById(roleId, cancellation);
+                    roleTitles.Add(roleTitle);
+                }
+            }
+            user.RoleTitles = roleTitles;
+        }
+
+        return users;
     }
 
     public async Task<List<int>> GetListOfUserRolesIdByUserId(int userId, CancellationToken cancellation)

@@ -26,5 +26,7 @@ public interface IRoleRepository
     Task<List<RoleListDto>> ListOfRoles(CancellationToken cancellation);
 
     Task AddUserSelectedRole(UserRole userRole, CancellationToken cancellation);
+
+    Task<string> GetRoleTitleById(int roleId, CancellationToken cancellation);
 }
 

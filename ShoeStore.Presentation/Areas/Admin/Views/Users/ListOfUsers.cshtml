@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ShoeStore.Domain.DTOs.AdminSide.User.ListOfUsersDto>
+﻿@using ShoeStore.Domain.DTOs.AdminSide.Role
+@model IEnumerable<ShoeStore.Domain.DTOs.AdminSide.User.ListOfUsersDto>
 
 <div class="page-body">
     <!-- Container-fluid starts-->
@@ -72,7 +73,20 @@
                                 </td>
                                 <td>@user.Mobile</td>
                                 <td>@user.CreateDate</td>
-                                <td>مشتری</td>
+                                @if (user.RoleTitles != null && user.RoleTitles.Any())
+                                {
+                                    <td>
+                                        @foreach (var roleTitle in user.RoleTitles)
+                                        {
+                                            <p>@roleTitle,</p>
+                                        }
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>ندارد</td>
+                                }
+                                
                                 <td>
                                     <div>
                                         <a asp-area="Admin"

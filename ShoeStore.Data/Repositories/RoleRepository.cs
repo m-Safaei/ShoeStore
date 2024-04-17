@@ -57,6 +57,12 @@ public class RoleRepository : IRoleRepository
                                    .ToListAsync(cancellation);
     }
 
+    public async Task<string> GetRoleTitleById(int roleId, CancellationToken cancellation)
+    {
+        return await _context.Roles.Where(p => !p.IsDelete && p.Id == roleId).Select(p => p.RoleTitle)
+            .SingleOrDefaultAsync(cancellation);
+    }
+
     public async Task<bool> DoesExistAnyRoleByRoleUniqueName(string roleUniqueName, CancellationToken cancellation)
     {
         return await _context.Roles
