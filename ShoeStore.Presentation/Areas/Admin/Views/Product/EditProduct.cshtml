@@ -1,0 +1,129 @@
+﻿@model ShoeStore.Domain.DTOs.AdminSide.Product.CreateProductDTO
+
+
+
+
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            ویرایش محصول
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">محصولات </li>
+                        <li class="breadcrumb-item active">ویرایش محصول</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row product-adding">
+
+                            <div class="col-xl-7">
+                                @if (Model.OldProductImage != null)
+                                {
+                                    <img src="/images/ProductImage/@Model.OldProductImage" alt="" class="img-fluid image_zoom_1 blur-up lazyloaded m-4">
+                                }
+                                else
+                                {
+                                    <img src="/images/ProductImage/default.png" alt="" class="img-fluid image_zoom_1 blur-up lazyloaded m-4">
+                                }
+                                <form class="needs-validation add-product-form" novalidate="" asp-action="EditProduct" asp-area="Admin" asp-controller="Product" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" asp-for="Id" value="@Model.Id"/>
+                                    <div class="form">
+                                        <div class="form-group mb-3 row">
+                                            <label class="col-xl-3 col-sm-4">اضافه کردن تصویر :</label>
+                                            <div class="col-xl-5">
+                                                <div class="add-product">
+
+                                                    <div class="row">
+
+                                                        <div class="col-xl-3 xl-50 col-sm-6 col-3">
+
+                                                            <ul class="file-upload-product">
+
+                                                                <li>
+                                                                    <div class="box-input-file"><input class="upload" type="file" asp-for="ProductImageFile"><i class="fa fa-plus"></i></div>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form">
+
+                                        <div class="form-group mb-3 row">
+                                            <label for="validationCustom01" class="col-xl-3 col-sm-4 mb-0">نام محصول : </label>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input class="form-control" id="validationCustom01" type="text" required="" asp-for="Name">
+                                            </div>
+                                            @* <div class="valid-feedback">عالی بود ! </div> *@
+                                        </div>
+                                        <div class="form-group mb-3 row">
+                                            <label for="validationCustom02" class="col-xl-3 col-sm-4 mb-0">قیمت : </label>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input class="form-control" id="validationCustom02" type="number" required="" asp-for="Price">
+                                            </div>
+                                            @* <div class="valid-feedback">عالی بود ! </div> *@
+                                        </div>
+                                        <div class="form-group mb-3 row">
+                                            <label for="validationCustom02" class="col-xl-3 col-sm-4 mb-0">تخفیف : </label>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input class="form-control" id="validationCustom02" type="number" required="" asp-for="DiscountPercentage">
+                                            </div>
+                                            @* <div class="valid-feedback">عالی بود ! </div> *@
+                                        </div>
+
+                                    </div>
+                                    <div class="form">
+                                        <div class="form-group row">
+                                            <label for="exampleFormControlSelect1" class="col-xl-3 col-sm-4 mb-0">انتخاب دسته بندی : </label>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <select class="form-control digits" id="exampleFormControlSelect1" asp-items="@ViewBag.Categories" asp-for="ProductCategoryId">
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-form-label">اضافه کردن توضیحات :</label>
+                                            <textarea class="m-5" asp-for="Description" rows="4" cols="12"></textarea>
+
+                                            <div class="offset-xl-3 offset-sm-4 mt-4">
+                                                <button type="submit" class="btn btn-primary">ثبت</button>
+                                                <a asp-action="ProductDetails" asp-area="Admin" asp-controller="Product" asp-route-productId="@Model.Id" class="btn btn-light">بازگشت</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+

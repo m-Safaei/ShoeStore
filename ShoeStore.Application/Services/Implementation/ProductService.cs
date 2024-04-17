@@ -5,6 +5,7 @@ using ShoeStore.Domain.DTOs.SiteSide.Product;
 using ShoeStore.Domain.DTOs.SiteSide.ProductCategory;
 using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.IRepositories;
+using System.Reflection;
 
 namespace ShoeStore.Application.Services.Implementation;
 
@@ -213,6 +214,35 @@ public class ProductService : IProductService
         productItem.IsDelete = true;
         _productItemRepository.UpdateProductItem(productItem);
         await _productItemRepository.SaveChangesAsync(cancellation);
+        return true;
+    }
+
+
+    public async Task<CreateProductDTO?> GetCreateProductDTOById(int productId,CancellationToken cancellation)
+    {
+        return await _productRepository.GetCreateProductDTOById(productId, cancellation);
+    }
+
+
+    public async Task<bool> EditProduct(CreateProductDTO productDTO,CancellationToken cancellation)
+    {
+        var product = await _productRepository.GetProductByIdAsync(productDTO.Id, cancellation);
+        if (product == null) return false;
+
+        product.Name = productDTO.Name;
+        product.Description = productDTO.Description;
+        product.Price = productDTO.Price;
+        product.DiscountPercentage = productDTO.DiscountPercentage;
+        product.ProductCategoryId = productDTO.ProductCategoryId;
+        if(productDTO.ProductImageFile != null)
+        {
+            product.ProductImage = NameGenerator.GenerateUniqCode() + Path.GetExtension(productDTO.ProductImageFile.FileName);
+            string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/ProductImage", product.ProductImage);
+            using (var stream = new FileStream(imagePath, FileMode.Create)) { productDTO.ProductImageFile.CopyTo(stream); }
+        }
+
+        _productRepository.UpdateProduct(product);
+        await _productRepository.SaveChangesAsync(cancellation);
         return true;
     }
 }

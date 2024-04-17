@@ -89,5 +89,24 @@ namespace ShoeStore.Presentation.Areas.Admin.Controllers
             if(res) return RedirectToAction(nameof(ProductDetails), new { productId = productId });
             return Redirect("NotFound");
         }
+
+
+        public async Task<IActionResult> EditProduct(int productId,CancellationToken cancellation=default)
+        {
+            var model = await _productService.GetCreateProductDTOById(productId, cancellation);
+            if (model == null) return Redirect("NotFound");
+            var categories = await _categoryService.GetChildCategories(cancellation);
+            ViewData["Categories"] = new SelectList(categories, "Id", "Name");
+            return View(model);
+        }
+
+
+        [HttpPost,ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditProduct(CreateProductDTO productDTO,CancellationToken cancellation=default)
+        {
+            var res = await _productService.EditProduct(productDTO, cancellation);
+            if(res) return RedirectToAction(nameof(ProductDetails), new { productId = productDTO.Id });
+            return Redirect("NotFound");
+        }
     }
 }
