@@ -1,4 +1,5 @@
-﻿<!-- breadcrumb start -->
+﻿@model ShoeStore.Domain.DTOs.SiteSide.Account.UserProfileDto
+<!-- breadcrumb start -->
 <div class="breadcrumb-section">
     <div class="container">
         <div class="row">
@@ -27,11 +28,19 @@
                 <div class="dashboard-sidebar">
                     <div class="profile-top">
                         <div class="profile-image">
-                            <img src="~/images/avtar.jpg" alt="" class="img-fluid">
+                            @if (Model.UserAvatar != null)
+                            {
+                                <img src="/images/UserAvatar/@Model.UserAvatar" alt="" class="img-fluid">
+                            }
+                            else
+                            {
+                                <img src="/images/Defult.jpg" alt="" class="img-fluid">
+                            }
+                            
                         </div>
                         <div class="profile-detail">
                             <h5>@User.Identity.Name</h5>
-                            <h6>setin@gmail.com</h6>
+                            <h6>@Model.Mobile</h6>
                         </div>
                     </div>
                     <div class="faq-tab">
@@ -41,7 +50,7 @@
                             <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#orders" class="nav-link">سفارشات من </a></li>
                             <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#wishlist" class="nav-link">علاقه مندی ها </a></li>
                             <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#payment" class="nav-link">کارت های شما</a></li>
-                            <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#security" class="nav-link">امنیت </a> </li>
+                            <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#security" class="nav-link">حذف حساب کاربری </a> </li>
                             <li class="nav-item"><a asp-controller="Account" asp-action="Logout" class="nav-link">خروج </a> </li>
                         </ul>
                     </div>
@@ -96,18 +105,8 @@
                                             </div>
                                             <div class="box-content">
                                                 <h6>@User.Identity.Name</h6>
-                                                <h6>setin@gmail.com</h6>
+                                                <h6>@Model.Mobile</h6>
                                                 <h6><a href="#">تغییر پسورد</a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="box">
-                                            <div class="box-title">
-                                                <h3>خبرنامه </h3><a href="#">ویرایش </a>
-                                            </div>
-                                            <div class="box-content">
-                                                <p>شما در حال حاضر مشترک هیچ خبرنامه ای نیستید</p>
                                             </div>
                                         </div>
                                     </div>
@@ -587,106 +586,6 @@
                                                         <div class="bottom">
                                                             <a href="javascript:void(0)" data-bs-target="#edit-address" data-bs-toggle="modal" class="bottom_btn">ویرایش </a>
                                                             <a href="#" class="bottom_btn">حذف </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="security">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card mt-0">
-                                    <div class="card-body">
-                                        <div class="dashboard-box">
-                                            <div class="dashboard-title">
-                                                <h4>تنظیمات </h4>
-                                            </div>
-                                            <div class="dashboard-detail">
-                                                <div class="account-setting">
-                                                    <h5>اطلاعیه</h5>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="form-check">
-                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked="">
-                                                                <label class="form-check-label" for="exampleRadios1">
-                                                                    اجازه اعلان‌های دسک‌تاپ
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                                                <label class="form-check-label" for="exampleRadios2">
-                                                                    اعلان ها را فعال کنید
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
-                                                                <label class="form-check-label" for="exampleRadios3">
-                                                                    دریافت اعلان برای فعالیت خودم
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4">
-                                                                <label class="form-check-label" for="exampleRadios4">
-                                                                    دی ان اس
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="account-setting">
-                                                    <h5>غیرفعال کردن حساب</h5>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="form-check">
-                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios1" id="exampleRadios4" value="option4" checked="">
-                                                                <label class="form-check-label" for="exampleRadios4">
-                                                                    من یک نگرانی از حریم خصوصی دارم
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios1" id="exampleRadios5" value="option5">
-                                                                <label class="form-check-label" for="exampleRadios5">
-                                                                    این موقتی است
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios1" id="exampleRadios6" value="option6">
-                                                                <label class="form-check-label" for="exampleRadios6">
-                                                                    دیگر
-                                                                </label>
-                                                            </div>
-                                                            <button type="button" class="btn btn-solid btn-xs">غیر فعال کردن اکانت</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="account-setting">
-                                                    <h5>حذف حساب کاربری</h5>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="form-check">
-                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios3" id="exampleRadios7" value="option7" checked="">
-                                                                <label class="form-check-label" for="exampleRadios7">
-                                                                    دیگر قابل استفاده نیست
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios3" id="exampleRadios8" value="option8">
-                                                                <label class="form-check-label" for="exampleRadios8">
-                                                                    می‌خواهید حساب دیگری را روشن کنید
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="radio_animated form-check-input" type="radio" name="exampleRadios3" id="exampleRadios9" value="option9">
-                                                                <label class="form-check-label" for="exampleRadios9">
-                                                                    دیگر
-                                                                </label>
-                                                            </div>
-                                                            <button type="button" class="btn btn-solid btn-xs">حذف حساب کاربری</button>
                                                         </div>
                                                     </div>
                                                 </div>

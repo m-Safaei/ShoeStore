@@ -71,6 +71,11 @@ public class UserService : IUserService
         return await _userRepository.GetUserByMobileAsync(mobile, cancellation);
     }
 
+    public async Task<UserProfileDto?> GetUserProfileById(int id)
+    {
+        return await _userRepository.GetUserProfileById(id);
+    }
+
     #endregion
 
     #region Admin Side Methods

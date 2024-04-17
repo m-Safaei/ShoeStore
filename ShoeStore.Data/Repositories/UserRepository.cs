@@ -70,6 +70,17 @@ public class UserRepository : IUserRepository
     {
         _context.Users.Update(user);
     }
+
+    public async Task<UserProfileDto?> GetUserProfileById(int id)
+    {
+        return await _context.Users.Where(p => !p.IsDelete && p.Id == id)
+                                    .Select(p => new UserProfileDto()
+                                    {
+                                        Mobile = p.Mobile,
+                                        UserAvatar = p.UserAvatar
+                                    })
+                                    .SingleOrDefaultAsync();
+    }
     #endregion
 
     #region Admin Side Methods
@@ -89,7 +100,7 @@ public class UserRepository : IUserRepository
             })
             .ToListAsync(cancellation);
 
-        
+
         foreach (var user in users)
         {
             List<int>? roleIds = _context.UserRoles.Where(p => p.UserId == user.Id)
@@ -97,7 +108,7 @@ public class UserRepository : IUserRepository
 
             List<string> roleTitles = new List<string>();
 
-            if (roleIds!=null&& roleIds.Any())
+            if (roleIds != null && roleIds.Any())
             {
                 foreach (var roleId in roleIds)
                 {
