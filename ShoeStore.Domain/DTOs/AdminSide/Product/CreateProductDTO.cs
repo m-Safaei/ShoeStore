@@ -7,7 +7,7 @@ public class CreateProductDTO
 {
     public int Id { get; set; }
     public string Name { get; set; }
-    public string Description { get; set; }
+    public string? Description { get; set; }
     public IFormFile? ProductImageFile { get; set; }
     public string? OldProductImage {  get; set; }
 
