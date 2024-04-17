@@ -21,15 +21,24 @@
                                     <div class="front">
                                         @if (@item.ProductImage != null)
                                         {
-                                            <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId"><img src="@item.ProductImage" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId"><img src="/images/ProductImage/@item.ProductImage" class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                         }
                                         else
                                         {
-                                            <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId"><img src="../assets/images/pro3/default.png" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId"><img src="/images/ProductImage/default.png" class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                         }
                                     </div>
                                     <div class="back">
-                            <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId"><img src="@item.ProductImage" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                        @if (@item.ProductImage != null)
+                                        {
+                                            <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId"><img src="/images/ProductImage/@item.ProductImage" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            
+                                        }
+                                        else
+                                        {
+                                            <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId"><img src="/images/ProductImage/default.png" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                        }
+
                             </div>
                                     <div class="cart-info">
                                         @* <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">

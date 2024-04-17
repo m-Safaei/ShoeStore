@@ -10,11 +10,11 @@
                     <div class="product-right-slick">
                         @if (Model.ProductImage != null)
                         {
-                            <div><img src="@Model.ProductImage" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
+                            <div><img src="/images/ProductImage/@Model.ProductImage" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
                         }
                         else
                         {
-                            <div><img src="../assets/images/pro3/default.png" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
+                            <div><img src="/images/ProductImage/default.png" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
                         }
                     </div>
                 </div>
