@@ -33,6 +33,21 @@ public class UsersController : AdminBaseController
 
     #endregion
 
+    #region Add User
+
+    public IActionResult AddUser()
+    {
+        return View();
+    }
+
+    [HttpPost, ValidateAntiForgeryToken]
+    public async Task<IActionResult> AddUser(AddUserAdminSideDto user,CancellationToken cancellation)
+    {
+        return View(user);
+    }
+
+    #endregion
+
     #region Edit User
 
     public async Task<IActionResult> EditUser(int id, CancellationToken cancellation = default)

@@ -2,6 +2,7 @@
 using ShoeStore.Domain.DTOs.AdminSide.Role;
 using ShoeStore.Domain.Entities.Role;
 using ShoeStore.Domain.IRepositories;
+using System.Data;
 
 namespace ShoeStore.Application.Services.Implementation;
 
@@ -114,6 +115,18 @@ public class RoleService : IRoleService
         await _roleRepository.SaveChanges(cancellation);
         return true;
 
+    }
+
+    public async Task<bool> DeleteRole(int roleId, CancellationToken cancellation)
+    {
+        //Get Role by Id
+        var role = await _roleRepository.GetRoleById(roleId, cancellation);
+        if (role == null || role.IsDelete) return false;
+
+        role.IsDelete = true;
+        _roleRepository.UpdateRole(role);
+        await _roleRepository.SaveChanges(cancellation);
+        return true;
     }
 }
 

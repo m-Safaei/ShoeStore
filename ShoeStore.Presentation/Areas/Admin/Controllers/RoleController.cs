@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShoeStore.Application.Services.Implementation;
 using ShoeStore.Application.Services.Interface;
 using ShoeStore.Domain.DTOs.AdminSide.Role;
 
@@ -80,7 +81,20 @@ public class RoleController : AdminBaseController
 
     #region Delete Role
 
+    public async Task<IActionResult> DeleteRole(int roleId, CancellationToken cancellation)
+    {
+        var res = await _roleService.DeleteRole(roleId, cancellation);
+        if (res)
+        {
+            TempData["SuccessMessage"] = "Success";
+        }
+        else
+        {
+            TempData["ErrorMessage"] = "failed";
+        }
 
+        return RedirectToAction(nameof(ListOfRoles));
+    }
 
     #endregion
 }
