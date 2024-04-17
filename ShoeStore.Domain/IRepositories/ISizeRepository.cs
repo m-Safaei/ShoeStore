@@ -6,11 +6,15 @@ namespace ShoeStore.Domain.IRepositories;
 
 public interface ISizeRepository
 {
-    Task<List<Size>> GetListOfSizesAsync(CancellationToken cancellation);
+    Task<List<Size>?> GetListOfSizesAsync(CancellationToken cancellation);
     Task<Size?> GetSizeByIdAsync(int Id, CancellationToken cancellation);
     void AddSize(Size size);
     void UpdateSize(Size size);
     Task SaveChangesAsync(CancellationToken cancellation);
     Task<ICollection<SizeDTO>?> GetSizeDTOsByProductId(int productId, CancellationToken cancellation);
     Task<ICollection<SizeAdminSideDTO>?> GetAvailableSizeDTOs(int productId, CancellationToken cancellation);
+    Task<ICollection<SizeAdminSideDTO>?> GetListOfSizeDTOs(CancellationToken cancellation);
+    Task<bool> SizeExistsWithSizeNumber(float sizeNumber, CancellationToken cancellation);
+    Task<bool> AnotherSizeExistsWithSizeNumber(float sizeNumber, int sizeId, CancellationToken cancellation);
+    Task<SizeAdminSideDTO?> GetSizeAdminSideDTOById(int sizeId, CancellationToken cancellation);
 }
