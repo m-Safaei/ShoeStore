@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ShoeStore.Domain.DTOs.AdminSide.User.ListOfUsersDto>
+﻿@using ShoeStore.Domain.DTOs.AdminSide.Role
+@model IEnumerable<ShoeStore.Domain.DTOs.AdminSide.User.ListOfUsersDto>
 
 <div class="page-body">
     <!-- Container-fluid starts-->
@@ -49,34 +50,63 @@
                             <th>تاریخ ثبت نام </th>
                             <th>نقش </th>
                             <th>عملیات</th>
+                            <th>عملیات</th>
                         </tr>
                     </thead>
-                <tbody>
-                @foreach (var user in Model)
-                {
-                    <tr>
-                        <td>
-                            <div class="d-flex vendor-list">
-                                <img src="~/assets/images/team/2.jpg" alt="" class="img-fluid img-40 rounded-circle blur-up lazyloaded">
-                                <span>@user.FirstName @user.LastName</span>
-                            </div>
-                        </td>
-                        <td>@user.Mobile</td>
-                        <td>@user.CreateDate</td>
-                        <td>مشتری</td>
-                        <td>
-                            <div>
-                                <i class="fa fa-edit me-2 font-success"></i>
-                                <i class="fa fa-trash font-danger"></i>
-                            </div>
-                        </td>
-                    </tr>
-                }
-                
-                </tbody>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr data-row-id="@user.Id">
+                                <td>
+                                    <div class="d-flex vendor-list">
+                                        @if (string.IsNullOrEmpty(user.UserAvatar))
+                                        {
+                                            <img src="/images/Defult.jpg" alt="" class="img-fluid img-40 rounded-circle blur-up lazyloaded">
+
+                                        }
+                                        else
+                                        {
+                                            <img src="/images/UserAvatar/@user.UserAvatar" alt="" class="img-fluid img-40 rounded-circle blur-up lazyloaded">
+
+                                        }
+                                        <span>@user.FirstName @user.LastName</span>
+                                    </div>
+                                </td>
+                                <td>@user.Mobile</td>
+                                <td>@user.CreateDate</td>
+                                @if (user.RoleTitles != null && user.RoleTitles.Any())
+                                {
+                                    <td>
+                                        @foreach (var roleTitle in user.RoleTitles)
+                                        {
+                                            <p>@roleTitle,</p>
+                                        }
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>ندارد</td>
+                                }
+
+                                <td>
+                                    <div>
+                                        <a asp-area="Admin"
+                                           asp-controller="Users"
+                                           asp-action="EditUser"
+                                           asp-route-id="@user.Id" class="btn btn-warning">ویرایش</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a data-id="@user.Id" asp-area="Admin" asp-controller="Users" asp-action="DeleteUser" asp-route-userId="@user.Id" class="btn btn-primary add-row remove-row">حذف </a>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
                 </table>
             </div>
         </div>
     </div>
     <!-- Container-fluid Ends-->
 </div>
+

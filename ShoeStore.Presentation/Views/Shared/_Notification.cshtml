@@ -54,3 +54,17 @@
         }).showToast();
     </script>
 }
+@if (TempData["ErrorMessage"] != null)
+{
+    <script>
+        Toastify({
+
+            text: "عملیات ناموفق",
+
+            duration: 4000,
+            gravity: "bottom",
+            close: true
+
+        }).showToast();
+    </script>
+}

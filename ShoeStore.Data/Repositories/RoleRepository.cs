@@ -46,6 +46,23 @@ public class RoleRepository : IRoleRepository
                                     .ToListAsync(cancellation);
     }
 
+    public async Task<List<RoleListDto>> ListOfRoles(CancellationToken cancellation)
+    {
+        return await _context.Roles.Where(p => !p.IsDelete)
+                                   .Select(p => new RoleListDto()
+                                   {
+                                       RoleId = p.Id,
+                                       RoleTitle = p.RoleTitle,
+                                   })
+                                   .ToListAsync(cancellation);
+    }
+
+    public async Task<string> GetRoleTitleById(int roleId, CancellationToken cancellation)
+    {
+        return await _context.Roles.Where(p => !p.IsDelete && p.Id == roleId).Select(p => p.RoleTitle)
+            .SingleOrDefaultAsync(cancellation);
+    }
+
     public async Task<bool> DoesExistAnyRoleByRoleUniqueName(string roleUniqueName, CancellationToken cancellation)
     {
         return await _context.Roles
@@ -68,7 +85,7 @@ public class RoleRepository : IRoleRepository
             .FirstOrDefaultAsync(p => !p.IsDelete && p.Id == roleId, cancellation);
     }
 
-    public async Task<bool> DoesExistAnyRoleByRoleUniqueName(string roleUniqueName,int roleId, CancellationToken cancellation)
+    public async Task<bool> DoesExistAnyRoleByRoleUniqueName(string roleUniqueName, int roleId, CancellationToken cancellation)
     {
         return await _context.Roles.AnyAsync(p => !p.IsDelete &&
                                                   p.Id != roleId &&
@@ -78,6 +95,11 @@ public class RoleRepository : IRoleRepository
     public void UpdateRole(Role role)
     {
         _context.Roles.Update(role);
+    }
+
+    public async Task AddUserSelectedRole(UserRole userRole, CancellationToken cancellation)
+    {
+        await _context.UserRoles.AddAsync(userRole, cancellation);
     }
 }
 

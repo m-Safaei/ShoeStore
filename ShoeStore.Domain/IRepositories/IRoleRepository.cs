@@ -22,5 +22,11 @@ public interface IRoleRepository
     Task<bool> DoesExistAnyRoleByRoleUniqueName(string roleUniqueName,int roleId, CancellationToken cancellation);
 
     void UpdateRole(Role role);
+
+    Task<List<RoleListDto>> ListOfRoles(CancellationToken cancellation);
+
+    Task AddUserSelectedRole(UserRole userRole, CancellationToken cancellation);
+
+    Task<string> GetRoleTitleById(int roleId, CancellationToken cancellation);
 }
 
