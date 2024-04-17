@@ -17,5 +17,12 @@ public interface IUserService
     Task<UserDto?> GetUserByMobileAsync(string mobile, CancellationToken cancellation);
 
     Task<List<ListOfUsersDto>> ListOfUsers(CancellationToken cancellation);
+
+    Task<EditUserAdminSideDto?> FillEditUserAdminSideDto(int userId, CancellationToken cancellation);
+
+    Task<bool> EditUserAdminSide(EditUserAdminSideDto model, List<int>? selectedRoles, CancellationToken cancellation);
+    Task<bool> DeleteUser(int userId, CancellationToken cancellation);
+
+    Task<bool> AddUserAdminSide(AddUserAdminSideDto userDto, List<int>? selectedRoles, CancellationToken cancellation);
 }
 

@@ -1,0 +1,164 @@
+﻿@model ShoeStore.Domain.DTOs.AdminSide.User.EditUserAdminSideDto
+
+@{
+    List<ShoeStore.Domain.DTOs.AdminSide.Role.RoleListDto> roles = ViewData["Roles"] as List<ShoeStore.Domain.DTOs.AdminSide.Role.RoleListDto>;
+}
+
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            ویرایش کاربر
+                            <small>پنل مدیریت مالتی کارت</small>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">
+                                <i data-feather="home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">کاربران  </li>
+                        <li class="breadcrumb-item active">ویرایش کاربر </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card tab2-card">
+                    <div class="card-body">
+                        <ul class="nav nav-tabs tab-coupon" id="myTab" role="tablist">
+                            <li class="nav-item"><a class="nav-link active show" id="account-tab" data-bs-toggle="tab" href="#account" role="tab" aria-controls="account" aria-selected="true" data-original-title="" title="">حساب کاربری</a></li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab">
+                                <form asp-area="Admin" asp-controller="Users" asp-action="EditUser" method="post" enctype="multipart/form-data" class="needs-validation user-add" novalidate="">
+                                    <input type="hidden" asp-for="Id" />
+                                    <input type="hidden" asp-for="UserOriginalAvatar" />
+                                    <h4>اطلاعات کاربر @Model.FirstName @Model.LastName</h4>
+                                    <div class="form-group row">
+                                        <div>
+                                            @if (string.IsNullOrEmpty(Model.UserOriginalAvatar))
+                                            {
+                                                <img style="margin: 20px; width: 200px; height: 200px" id="imgAvatar" src="/images/Defult.jpg" alt="" />
+                                            }
+                                            else
+                                            {
+                                                <img style="margin: 20px; width: 200px; height: 200px" id="imgAvatar" src="/images/UserAvatar/@Model.UserOriginalAvatar" alt="" />
+                                            }
+
+                                        </div>
+                                        <div class="col-xl-8 col-md-7">
+                                            <label for="validationCustom0" class="col-xl-3 col-md-4">انتخاب عکس </label>
+                                            <input asp-for="UserAvatar" class="form-control upload" type="file" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span> نام </label>
+                                        <div class="col-xl-8 col-md-7">
+                                            <input asp-for="FirstName" class="form-control" id="validationCustom0" type="text" required="">
+                                            <span style="color: red; position: relative;" asp-validation-for="FirstName"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="validationCustom1" class="col-xl-3 col-md-4"><span>*</span> نام خانوادگی </label>
+                                        <div class="col-xl-8 col-md-7">
+                                            <input asp-for="LastName" class="form-control" id="validationCustom1" type="text" required="">
+                                            <span style="color: red; position: relative;" asp-validation-for="LastName"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span> موبایل </label>
+                                        <div class="col-xl-8 col-md-7">
+                                            <input asp-for="Mobile" class="form-control" id="validationCustom2" type="text" required="">
+                                            <span style="color: red; position: relative;" asp-validation-for="Mobile"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="permission-block">
+                                        <div class="attribute-blocks">
+                                            <h5 class="f-w-600 mb-3">نقش‌ها</h5>
+                                            @if (roles != null && roles.Any())
+                                            {
+                                                foreach (var role in roles)
+                                                {
+                                                    if (Model.CurrentUserRolesId != null && Model.CurrentUserRolesId.Any(id => id == role.RoleId))
+                                                    {
+                                                        <div class="row">
+                                                            <div class="col-xl-3 col-sm-4">
+                                                                <label>@role.RoleTitle </label>
+                                                            </div>
+                                                            <div class="col-xl-9 col-sm-8">
+                                                                <div class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">
+                                                                    <input class="form-check-input" id="edo-ani1" type="checkbox" name="selectedRoles" value="@role.RoleId" checked>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="row">
+                                                            <div class="col-xl-3 col-sm-4">
+                                                                <label>@role.RoleTitle </label>
+                                                            </div>
+                                                            <div class="col-xl-9 col-sm-8">
+                                                                <div class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">
+                                                                    <input class="form-check-input" id="edo-ani1" type="checkbox" name="selectedRoles" value="@role.RoleId">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                        
+                                                }
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <div class="pull-right">
+                                        <button type="submit" class="btn btn-primary">ذخیره</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+
+@section scripts
+{
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#UserAvatar").change(function () {
+            readURL(this);
+        });
+    </script>
+}

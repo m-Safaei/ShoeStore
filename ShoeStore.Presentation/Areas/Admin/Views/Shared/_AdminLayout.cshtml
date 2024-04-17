@@ -289,7 +289,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="create-user.html">
+                                    <a asp-area="Admin" asp-controller="Users" asp-action="AddUser">
                                         <i class="fa fa-circle"></i>درج کاربر
                                     </a>
                                 </li>
@@ -679,7 +679,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <partial name="_Notification" />
 
-    @RenderSection("scripts",false)
+    @await RenderSectionAsync("scripts", false)
 
 </body>
 </html>
