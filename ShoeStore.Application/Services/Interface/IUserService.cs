@@ -24,5 +24,7 @@ public interface IUserService
     Task<bool> DeleteUser(int userId, CancellationToken cancellation);
 
     Task<bool> AddUserAdminSide(AddUserAdminSideDto userDto, List<int>? selectedRoles, CancellationToken cancellation);
+
+    Task<UserProfileDto?> GetUserProfileById(int id);
 }
 

@@ -19,6 +19,7 @@ public interface IUserRepository
     User? GetUserById(int userId);
 
     void UpdateUser(User user);
+    Task<UserProfileDto?> GetUserProfileById(int id);
 
     #region Admin Side Methods
 
