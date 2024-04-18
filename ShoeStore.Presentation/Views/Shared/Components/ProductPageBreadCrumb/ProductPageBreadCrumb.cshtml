@@ -1,0 +1,29 @@
+﻿@model ShoeStore.Domain.DTOs.SiteSide.Product.ProductPageBreadCrumbDTO
+
+
+
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-title">
+                    <h2>محصول</h2>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        @if(Model != null)
+                        {
+                            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">خانه</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a asp-action="Index" asp-controller="Category" asp-route-categoryId="@Model.ParentCategory.Id">@Model.ParentCategory.Title</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a asp-action="Index" asp-controller="Category" asp-route-categoryId="@Model.ChildCategory.Id">@Model.ChildCategory.Title</a></li>
+
+                        }
+                        
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

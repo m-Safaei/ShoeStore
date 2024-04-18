@@ -1,6 +1,8 @@
 ﻿@model ShoeStore.Domain.DTOs.SiteSide.Product.ProductPageDTO
 
 
+
+@await Component.InvokeAsync("ProductPageBreadCrumb", new { childCategoryId = Model.ProductCategoryId});
 <!-- section start -->
 <section>
     <div class="collection-wrapper">
@@ -10,11 +12,11 @@
                     <div class="product-right-slick">
                         @if (Model.ProductImage != null)
                         {
-                            <div><img src="@Model.ProductImage" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
+                            <div><img src="/images/ProductImage/@Model.ProductImage" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
                         }
                         else
                         {
-                            <div><img src="../assets/images/pro3/default.png" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
+                            <div><img src="/images/ProductImage/default.png" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
                         }
                     </div>
                 </div>
@@ -74,7 +76,7 @@
                         @if (Model.DiscountPercentage > 0)
                         {
                             <h4><del>@Model.Price</del><span>تخفیف</span></h4>
-                            <h3>@(Model.Price * (100 - Model.DiscountPercentage))</h3>
+                            <h3>@((Model.Price * (100 - Model.DiscountPercentage))/100)</h3>
                         }
                         else
                         {

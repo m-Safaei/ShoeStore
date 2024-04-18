@@ -19,6 +19,7 @@ namespace ShoeStore.Presentation.Controllers
             if(pageModel == null) { return RedirectToAction(nameof(ProductNotFound)); }
 
             ViewData["Sizes"] = new SelectList(pageModel.SizeDTOs, "ProductItemId", "SizeNumber");
+            
 
             return View(pageModel);
         }

@@ -71,9 +71,13 @@ namespace ShoeStore.Presentation.Areas.Admin.Controllers
         [HttpPost,ValidateAntiForgeryToken]
         public async Task<IActionResult> EditCategory(EditCategoryDTO category, CancellationToken cancellation = default)
         {
-            var res = await _categoryService.EditCategory(category, cancellation);
-            if (res) return RedirectToAction(nameof(ListOfCategories));
-            else return View(category);
+            if(ModelState.IsValid)
+            {
+                var res = await _categoryService.EditCategory(category, cancellation);
+                if (res) return RedirectToAction(nameof(ListOfCategories));
+            }
+            
+            return View(category);
         }
     }
 }

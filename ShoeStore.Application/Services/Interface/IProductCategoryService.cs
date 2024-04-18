@@ -1,4 +1,5 @@
 ﻿using ShoeStore.Domain.DTOs.AdminSide.Category;
+using ShoeStore.Domain.DTOs.SiteSide.Product;
 using ShoeStore.Domain.DTOs.SiteSide.ProductCategory;
 
 namespace ShoeStore.Application.Services.Interface;
@@ -12,4 +13,6 @@ public interface IProductCategoryService
     Task<bool> DeleteCategory(int categoryId, CancellationToken cancellation);
     Task<EditCategoryDTO?> GetEditCategoryDTOById(int categoryId, CancellationToken cancellation);
     Task<bool> EditCategory(EditCategoryDTO categryDTO, CancellationToken cancellation);
+    Task<ICollection<ChildCategoryListDTO>?> GetChildCategories(CancellationToken cancellation);
+    Task<ProductPageBreadCrumbDTO?> GetProductPageBreadCrumbDTO(int childCategoryId, CancellationToken cancellation);
 }

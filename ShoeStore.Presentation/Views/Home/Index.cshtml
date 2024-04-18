@@ -14,7 +14,7 @@
                             <div class="slider-contain">
                                 <div>
                                     <h4>پیشنهاد ویژه</h4>
-                                    <h1>کفش مردانه</h1><a href="#" class="btn btn-solid black-btn">خرید کنید </a>
+                                    <h1>کفش مردانه</h1><a asp-action="ProductListByCategoryName" asp-controller="Category" asp-route-categoryName="مردانه" class="btn btn-solid black-btn">خرید کنید </a>
                                 </div>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                             <div class="slider-contain">
                                 <div>
                                     <h4>پیشنهاد ویژه</h4>
-                                    <h1>کفش مردانه</h1><a href="#" class="btn btn-solid black-btn">خرید کنید </a>
+                                    <h1>کفش زنانه</h1><a asp-action="ProductListByCategoryName" asp-controller="Category" asp-route-categoryName="زنانه" class="btn btn-solid black-btn">خرید کنید </a>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                             <div class="slider-contain">
                                 <div>
                                     <h4>پیشنهاد ویژه</h4>
-                                    <h1>کفش مردانه</h1><a href="#" class="btn btn-solid black-btn">خرید کنید </a>
+                                    <h1>کفش بچگانه</h1><a asp-action="ProductListByCategoryName" asp-controller="Category" asp-route-categoryName="بچگانه" class="btn btn-solid black-btn">خرید کنید </a>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                             <div class="category-image"><img src="~/images/icon/cat1.png" alt=""></div>
                         </a>
                         <div class="category-details">
-                            <a href="#">
+                            <a asp-action="ProductListByCategoryName" asp-controller="Category" asp-route-categoryName="کفش ورزشی">
                                 <h5>کفش ورزشی</h5>
                             </a>
                         </div>
@@ -80,7 +80,7 @@
                             <div class="category-image"><img src="~/images/icon/cat2.png" alt=""></div>
                         </a>
                         <div class="category-details">
-                            <a href="#">
+                            <a asp-action="ProductListByCategoryName" asp-controller="Category" asp-route-categoryName="کفش راحتی">
                                 <h5>کفش راحتی</h5>
                             </a>
                         </div>
@@ -90,7 +90,7 @@
                             <div class="category-image"><img src="~/images/icon/cat3.png" alt=""></div>
                         </a>
                         <div class="category-details">
-                            <a href="#">
+                            <a asp-action="ProductListByCategoryName" asp-controller="Category" asp-route-categoryName="کفش رسمی">
                                 <h5>کفش رسمی</h5>
                             </a>
                         </div>
@@ -100,8 +100,8 @@
                             <div class="category-image"><img src="~/images/icon/cat4.png" alt=""></div>
                         </a>
                         <div class="category-details">
-                            <a href="#">
-                                <h5>فلت </h5>
+                            <a asp-action="ProductListByCategoryName" asp-controller="Category" asp-route-categoryName="فلت">
+                                <h5>فلت</h5>
                             </a>
                         </div>
                     </div>
@@ -110,8 +110,8 @@
                             <div class="category-image"><img src="~/images/icon/cat5.png" alt=""></div>
                         </a>
                         <div class="category-details">
-                            <a href="#">
-                                <h5>فلت </h5>
+                            <a asp-action="ProductListByCategoryName" asp-controller="Category" asp-route-categoryName="فلت">
+                                <h5>فلت</h5>
                             </a>
                         </div>
                     </div>
@@ -120,8 +120,8 @@
                             <div class="category-image"><img src="~/images/icon/cat6.png" alt=""></div>
                         </a>
                         <div class="category-details">
-                            <a href="#">
-                                <h5>فلت </h5>
+                            <a asp-action="ProductListByCategoryName" asp-controller="Category" asp-route-categoryName="فلت">
+                                <h5>فلت</h5>
                             </a>
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                             <div class="category-image"><img src="~/images/icon/cat2.png" alt=""></div>
                         </a>
                         <div class="category-details">
-                            <a href="#">
+                            <a asp-action="ProductListByCategoryName" asp-controller="Category" asp-route-categoryName="کفش راحتی">
                                 <h5>کفش راحتی</h5>
                             </a>
                         </div>
@@ -140,7 +140,7 @@
                             <div class="category-image"><img src="~/images/icon/cat3.png" alt=""></div>
                         </a>
                         <div class="category-details">
-                            <a href="#">
+                            <a asp-action="ProductListByCategoryName" asp-controller="Category" asp-route-categoryName="کفش راحتی">
                                 <h5>کفش راحتی</h5>
                             </a>
                         </div>
@@ -226,7 +226,7 @@
                         <img src="~/images/shoes/cat1.jpg" class="img-fluid blur-up lazyload bg-img" alt="">
                     </div>
                     <div class="category-box">
-                        <a href="#">
+                        <a asp-action="ProductListByCategoryName" asp-controller="Category" asp-route-categoryName="مردانه">
                             <h2>مردانه </h2>
                         </a>
                     </div>
@@ -238,7 +238,7 @@
                         <img src="~/images/shoes/cat2.jpg" class="img-fluid blur-up lazyload bg-img" alt="">
                     </div>
                     <div class="category-box">
-                        <a href="#">
+                        <a asp-action="ProductListByCategoryName" asp-controller="Category" asp-route-categoryName="زنانه">
                             <h2>زنانه  </h2>
                         </a>
                     </div>
@@ -250,7 +250,7 @@
                         <img src="~/images/shoes/cat3.jpg" class="img-fluid blur-up lazyload bg-img" alt="">
                     </div>
                     <div class="category-box">
-                        <a href="#">
+                        <a asp-action="ProductListByCategoryName" asp-controller="Category" asp-route-categoryName="بچگانه">
                             <h2>بچگانه</h2>
                         </a>
                     </div>
@@ -260,581 +260,7 @@
     </div>
 </section>
 <!-- category 2 end -->
-<!-- category 3 -->
-@* <section class="p-0">
-    <div class="container">
-        <div class="row background">
-            <div class="col">
-                <a href="#">
-                    <div class="contain-bg">
-                        <h4 data-hover="size 06">سایز 6 </h4>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#">
-                    <div class="contain-bg">
-                        <h4>سایز 7</h4>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#">
-                    <div class="contain-bg">
-                        <h4>سایز 8</h4>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#">
-                    <div class="contain-bg">
-                        <h4>سایز 9</h4>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#">
-                    <div class="contain-bg">
-                        <h4>سایز 10</h4>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</section> *@
-<!-- category 3 end-->
-<!-- slider tab  -->
-@* <section class="section-b-space ratio_asos">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="theme-tab">
-                    <ul class="tabs tab-title2">
-                        <li class="current"><a href="tab-1">محصولات با حرکت سریع</a></li>
-                        <li class=""><a href="tab-2">معامله ویژه</a></li>
-                        <li class=""><a href="tab-3">روندهای هفته</a></li>
-                    </ul>
-                    <div class="tab-content-cls">
-                        <div id="tab-1" class="tab-content active default">
-                            <div class="product-4 product-m no-arrow">
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/5.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/1.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.00 <del>1600.00</del></h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="lable-wrapper"><span class="lable1">جدید  </span> <span class="lable2">30% تخفیف </span></div>
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/6.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/2.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.000</h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/7.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/3.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.000</h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/8.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/4.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.000</h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="lable-wrapper"><span class="lable1">جدید  </span> <span class="lable2">30% تخفیف </span></div>
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/4.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/2.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.000</h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="tab-2" class="tab-content">
-                            <div class="product-4 product-m no-arrow">
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/7.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/3.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.000</h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/8.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/4.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.000</h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="lable-wrapper"><span class="lable1">جدید  </span> <span class="lable2">30% تخفیف </span></div>
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/4.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/2.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.000</h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/5.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/1.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.00 <del>1600.00</del></h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="lable-wrapper"><span class="lable1">جدید  </span> <span class="lable2">30% تخفیف </span></div>
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/6.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/2.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.000</h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="tab-3" class="tab-content">
-                            <div class="product-4 product-m no-arrow">
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/8.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/4.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.000</h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="lable-wrapper"><span class="lable1">جدید  </span> <span class="lable2">30% تخفیف </span></div>
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/6.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/2.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.000</h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/7.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/3.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.000</h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/5.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/1.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.00 <del>1600.00</del></h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-box">
-                                    <div class="img-block">
-                                        <div class="lable-wrapper"><span class="lable1">جدید  </span> <span class="lable2">30% تخفیف </span></div>
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/4.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img src="~/images/pro/2.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info">
-                                            <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
-                                                <i class="ti-shopping-cart"></i>
-                                            </button>
-                                            <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
-                                            <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                        </div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>پیراهن نخی زیبا</h6>
-                                        </a>
-                                        <h4>1500.000</h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> *@
-<!-- slider tab end -->
+
 <!-- blog section -->
 <section class="blog blog-bg section-b-space ratio2_3 slick-default-margin">
     <div class="container">

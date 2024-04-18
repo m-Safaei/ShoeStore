@@ -1,5 +1,6 @@
 ﻿using ShoeStore.Application.Services.Interface;
 using ShoeStore.Domain.DTOs.AdminSide.Category;
+using ShoeStore.Domain.DTOs.SiteSide.Product;
 using ShoeStore.Domain.DTOs.SiteSide.ProductCategory;
 using ShoeStore.Domain.Entities.ProductCategory;
 using ShoeStore.Domain.IRepositories;
@@ -107,5 +108,17 @@ public class ProductCategoryService : IProductCategoryService
         _productCategoryRepository.UpdateProductCategory(category);
         await _productCategoryRepository.SaveChangesAsync(cancellation);
         return true;
+    }
+
+
+    public async Task<ICollection<ChildCategoryListDTO>?> GetChildCategories(CancellationToken cancellation)
+    {
+        return await _productCategoryRepository.GetChildCategories(cancellation);
+    }
+
+
+    public async Task<ProductPageBreadCrumbDTO?> GetProductPageBreadCrumbDTO(int childCategoryId,CancellationToken cancellation)
+    {
+        return await _productCategoryRepository.GetBreadCrumbDTO(childCategoryId, cancellation);
     }
 }

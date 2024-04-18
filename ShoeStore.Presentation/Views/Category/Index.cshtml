@@ -69,16 +69,19 @@
                                                             @if (item.ProductImage != null)
                                                             {
                                                                 <div class="front">
-                                                                    <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" class="bg-size blur-up lazyloaded" style="background-image: url(&quot;../assets/images/pro3/35.jpg&quot;); background-size: cover; background-position: center center; display: block;"><img src="@item.ProductImage" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
+                                                                    <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" class="bg-size blur-up lazyloaded" style="background-image: url(&quot;../assets/images/pro3/35.jpg&quot;); background-size: cover; background-position: center center; display: block;"><img src="/images/ProductImage/@item.ProductImage" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
                                                                 </div>
                                                                 <div class="back">
-                                                                    <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" class="bg-size blur-up lazyloaded" style="background-image: url(&quot;../assets/images/pro3/36.jpg&quot;); background-size: cover; background-position: center center; display: block;"><img src="@item.ProductImage" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
+                                                                    <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" class="bg-size blur-up lazyloaded" style="background-image: url(&quot;../assets/images/pro3/36.jpg&quot;); background-size: cover; background-position: center center; display: block;"><img src="/images/ProductImage/@item.ProductImage" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
                                                                 </div>
                                                             }
                                                             else
                                                             {
+                                                                <div class="front">
+                                                                    <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" class="bg-size blur-up lazyloaded" style="background-image: url(&quot;../assets/images/pro3/35.jpg&quot;); background-size: cover; background-position: center center; display: block;"><img src="/images/ProductImage/default.png" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
+                                                                </div>
                                                                 <div class="back">
-                                                                    <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" class="bg-size blur-up lazyloaded" style="background-image: url(&quot;../assets/images/pro3/36.jpg&quot;); background-size: cover; background-position: center center; display: block;"><img src="../assets/images/pro3/default.png" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
+                                                                    <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" class="bg-size blur-up lazyloaded" style="background-image: url(&quot;../assets/images/pro3/36.jpg&quot;); background-size: cover; background-position: center center; display: block;"><img src="/images/ProductImage/default.png" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
                                                                 </div>
                                                             }
 
