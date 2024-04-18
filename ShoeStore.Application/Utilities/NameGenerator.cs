@@ -7,4 +7,3 @@ public class NameGenerator
         return Guid.NewGuid().ToString().Replace("-", "");
     }
 }
-
