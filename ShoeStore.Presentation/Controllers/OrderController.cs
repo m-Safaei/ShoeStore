@@ -24,28 +24,29 @@ public class OrderController : Controller
     }
     #endregion     
     int _userId = 4;
-    int _id =2;
+    int _id =6;
     public async Task<IActionResult> AddToShopCart(int? Id,CancellationToken cancellationToken=default)
     {
         if (_id == null)
         {
           return NotFound();
         }
-       
+    
         
-
-       // Product _product = await _productService.GetProductByIdAsync(_id, cancellationToken);
+        ProductItem productItem=await _productService.GetProductItemByIdAsync(_id, cancellationToken);
+        Product _product = await _productService.GetProductByIdAsync(productItem.Id, cancellationToken);
+     
         
         if (_orderService.IsExistOrderForUserInToday(_userId))
         {
             Order order = _orderService.GetOrderForCart(_userId);
-            if (_orderService.IsExistOrderItemFromUserFromToday(order.Id, _product.Id))
+            if (_orderService.IsExistOrderItemFromUserFromToday(order.Id, productItem.ProductId))
             {
-                _orderService.AddOneMoreProductToTheShopCart(order.Id,_product.Id);
+                _orderService.AddOneMoreProductToTheShopCart(order.Id, productItem.ProductId);
             }
             else
             {
-               _orderService.AddProductToOrderItem(_product.Id, order.Id,_product.Price);
+               _orderService.AddProductToOrderItem(productItem.ProductId, order.Id,_product.Price);
             }
         }
         else
