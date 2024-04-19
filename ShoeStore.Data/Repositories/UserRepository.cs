@@ -76,6 +76,7 @@ public class UserRepository : IUserRepository
         return await _context.Users.Where(p => !p.IsDelete && p.Id == id)
                                     .Select(p => new UserProfileDto()
                                     {
+                                        Id = p.Id,
                                         Mobile = p.Mobile,
                                         UserAvatar = p.UserAvatar
                                     })

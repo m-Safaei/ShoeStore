@@ -76,6 +76,49 @@ public class UserService : IUserService
         return await _userRepository.GetUserProfileById(id);
     }
 
+    public async Task<EditProfileSiteSideDto?> FillEditProfileSiteSideDto(int userId, CancellationToken cancellation)
+    {
+        // Get user by id
+        var user = await _userRepository.GetUserByIdAsync(userId, cancellation);
+        if (user == null) return null;
+
+        //Fill Dto
+        EditProfileSiteSideDto model = new()
+        {
+            Id = userId,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Mobile = user.Mobile,
+            UserOriginalAvatar = user.UserAvatar
+        };
+        return model;
+    }
+
+    public async Task<bool> EditProfileSiteSide(EditProfileSiteSideDto model, CancellationToken cancellation)
+    {
+        // Get user by id
+        var user = await _userRepository.GetUserByIdAsync(model.Id, cancellation);
+        if (user == null) return false;
+        // Update Properties
+        user.FirstName = model.FirstName;
+        user.LastName = model.LastName;
+        user.Mobile = model.Mobile;
+        user.Password = PasswordHasher.EncodePasswordMd5(model.Password);
+        if (model.UserAvatar != null)
+        {
+            //Save New Image
+            user.UserAvatar = NameGenerator.GenerateUniqCode() + Path.GetExtension(model.UserAvatar.FileName);
+            string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/UserAvatar", user.UserAvatar);
+            using (var stream = new FileStream(imagePath, FileMode.Create))
+            {
+                model.UserAvatar.CopyTo(stream);
+            }
+        }
+        _userRepository.UpdateUser(user);
+        await _userRepository.SaveChangeAsync(cancellation);
+        return true;
+
+    }
     #endregion
 
     #region Admin Side Methods
