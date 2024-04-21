@@ -1,0 +1,16 @@
+﻿@model ShoeStore.Domain.DTOs.AdminSide.User.AdminAvatarDto
+<div class="sidebar-user">
+    @if (string.IsNullOrEmpty(Model.UserAvatar))
+    {
+        <img class="img-60" src="/images/Defult.jpg" alt="#">
+    }
+    else
+    {
+
+        <img class="img-60" src="/images/UserAvatar/@Model.UserAvatar" alt="#">
+    }
+    <div>
+        <h6 class="f-14">@User.Identity.Name </h6>
+        <p>ادمین</p>
+    </div>
+</div>

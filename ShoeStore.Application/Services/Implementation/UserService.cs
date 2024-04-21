@@ -310,6 +310,18 @@ public class UserService : IUserService
         };
         return user;
     }
+
+    public async Task<AdminAvatarDto?> GetAdminAvatar(int id,CancellationToken cancellation)
+    {
+        var user = await _userRepository.GetUserByIdAsync(id, cancellation);
+        if (user == null) return null;
+        AdminAvatarDto avatar = new()
+        {
+            UserAvatar = user.UserAvatar
+        };
+
+        return avatar;
+    }
     #endregion
 
 }
