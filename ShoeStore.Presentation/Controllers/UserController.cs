@@ -41,7 +41,7 @@ namespace ShoeStore.Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (model.Password != null && model.RePassword != null)
+                if (!string.IsNullOrEmpty(model.Password) && !string.IsNullOrEmpty(model.RePassword))
                 {
                     var res = await _userService.EditProfileSiteSide(model, cancellation);
                     if (res)

@@ -30,5 +30,7 @@ public interface IUserService
     Task<EditProfileSiteSideDto?> FillEditProfileSiteSideDto(int userId, CancellationToken cancellation);
 
     Task<bool> EditProfileSiteSide(EditProfileSiteSideDto model, CancellationToken cancellation);
+
+    Task<bool> EditAdminProfile(EditUserAdminSideDto model, List<int>? selectedRoles, CancellationToken cancellation);
 }
 

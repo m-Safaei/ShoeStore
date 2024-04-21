@@ -43,7 +43,7 @@
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab">
-                                <form asp-area="Admin" asp-controller="Users" asp-action="EditUser" method="post" enctype="multipart/form-data" class="needs-validation user-add" novalidate="">
+                                <form asp-area="Admin" asp-controller="Users" asp-action="EditAdminProfile" method="post" enctype="multipart/form-data" class="needs-validation user-add" novalidate="">
                                     <input type="hidden" asp-for="Id" />
                                     <input type="hidden" asp-for="UserOriginalAvatar" />
                                     <h4>اطلاعات کاربر @Model.FirstName @Model.LastName</h4>
@@ -85,7 +85,20 @@
                                             <span style="color: red; position: relative;" asp-validation-for="Mobile"></span>
                                         </div>
                                     </div>
-
+                                    <div class="form-group row">
+                                        <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span> پسورد </label>
+                                        <div class="col-xl-8 col-md-7">
+                                            <input asp-for="Password" class="form-control" id="validationCustom2" type="password" required>
+                                            <span style="color: red; position: relative;" asp-validation-for="Password"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>  تکرار پسورد  </label>
+                                        <div class="col-xl-8 col-md-7">
+                                            <input asp-for="RePassword" class="form-control" id="validationCustom2" type="password" required>
+                                            <span style="color: red; position: relative;" asp-validation-for="RePassword"></span>
+                                        </div>
+                                    </div>
                                     <div class="permission-block">
                                         <div class="attribute-blocks">
                                             <h5 class="f-w-600 mb-3">نقش‌ها</h5>
@@ -119,14 +132,14 @@
                                                             </div>
                                                         </div>
                                                     }
-                                                        
+
                                                 }
                                             }
 
                                         </div>
                                     </div>
                                     <div class="pull-right">
-                                        <a asp-area="Admin" asp-controller="Users" asp-action="ListOfUsers" class="btn btn-primary">لغو</a>
+                                        <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="btn btn-primary">لغو</a>
 
                                         <button type="submit" class="btn btn-success">ذخیره</button>
                                     </div>

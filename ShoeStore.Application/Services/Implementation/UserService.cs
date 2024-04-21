@@ -197,6 +197,54 @@ public class UserService : IUserService
         return true;
     }
 
+    public async Task<bool> EditAdminProfile(EditUserAdminSideDto model, List<int>? selectedRoles, CancellationToken cancellation)
+    {
+        // Get user by id
+        var originUser = await _userRepository.GetUserByIdAsync(model.Id, cancellation);
+        if (originUser == null) return false;
+
+        // Update Properties
+        originUser.Mobile = model.Mobile;
+        originUser.FirstName = model.FirstName;
+        originUser.LastName = model.LastName;
+        originUser.Password = PasswordHasher.EncodePasswordMd5(model.Password);
+        if (model.UserAvatar != null)
+        {
+            //Save New Image
+            originUser.UserAvatar = NameGenerator.GenerateUniqCode() + Path.GetExtension(model.UserAvatar.FileName);
+            string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/UserAvatar", originUser.UserAvatar);
+            using (var stream = new FileStream(imagePath, FileMode.Create))
+            {
+                model.UserAvatar.CopyTo(stream);
+            }
+        }
+
+        List<UserRole> userRoles = await _userRepository.GetListOfUserRolesByUserId(model.Id, cancellation);
+
+
+        if (userRoles != null && userRoles.Any())
+        {
+            _userRepository.DeleteRangeOfUserRoles(userRoles);
+        }
+        // Update User roles
+        if (selectedRoles != null && selectedRoles.Any())
+        {
+            foreach (var roleId in selectedRoles)
+            {
+                UserRole userRole = new()
+                {
+                    UserId = model.Id,
+                    RoleId = roleId,
+                };
+                await _roleRepository.AddUserSelectedRole(userRole, cancellation);
+            }
+        }
+
+        _userRepository.UpdateUser(originUser);
+        await _userRepository.SaveChangeAsync(cancellation);
+        return true;
+    }
+
     public async Task<bool> DeleteUser(int userId, CancellationToken cancellation)
     {
         // Get user by id
