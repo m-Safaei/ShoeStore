@@ -35,7 +35,7 @@
                 <div class="card">
                     <div class="card-body">
                         <form asp-area="Admin" asp-controller="Role" asp-action="EditRole" method="post" class="needs-validation">
-                            <input type="hidden" asp-for="RoleId"/>
+                            <input type="hidden" asp-for="RoleId" />
                             <div class="form-group row">
                                 <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span>عنوان نقش </label>
                                 <div class="col-md-7">
@@ -50,8 +50,11 @@
                                     <span style="color: red; position: relative;" asp-validation-for="RoleUniqueName"></span>
                                 </div>
                             </div>
+                            <div style="display: flex;flex-direction: row">
+                                <a asp-area="Admin" asp-controller="Role" asp-action="ListOfRoles" class="btn btn-primary" style="margin-left: 20px">لغو</a>
+                                <button type="submit" class="btn btn-success d-block">ذخیره</button>
 
-                            <button type="submit" class="btn btn-primary d-block">ذخیره</button>
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -42,7 +42,7 @@ public class RoleService : IRoleService
 
         foreach (var role in userRoles)
         {
-            if (role.RoleUniqueName == "Admin")
+            if (role.RoleUniqueName.ToLower() == "admin")
             {
                 return true;
             }

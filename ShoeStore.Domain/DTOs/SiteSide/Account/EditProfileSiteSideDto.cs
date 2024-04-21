@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
-namespace ShoeStore.Domain.DTOs.AdminSide.User;
-
-public record EditUserAdminSideDto
+namespace ShoeStore.Domain.DTOs.SiteSide.Account;
+public record EditProfileSiteSideDto
 {
     public int Id { get; set; }
 
@@ -27,8 +26,5 @@ public record EditUserAdminSideDto
     public string? UserOriginalAvatar { get; set; }
 
     public IFormFile? UserAvatar { get; set; }
-
-    public List<int>? CurrentUserRolesId { get; set; }
-
 }
 

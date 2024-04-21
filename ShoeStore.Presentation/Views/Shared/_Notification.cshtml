@@ -68,3 +68,17 @@
         }).showToast();
     </script>
 }
+@if (TempData["PasswordField"] != null)
+{
+    <script>
+        Toastify({
+
+            text: "فیلد پسورد الزامی است",
+
+            duration: 4000,
+            gravity: "bottom",
+            close: true
+
+        }).showToast();
+    </script>
+}

@@ -415,7 +415,7 @@
     @RenderBody()
 
 
-    
+
     <!-- footer -->
     <footer>
         <div class="white-layout">
@@ -639,7 +639,6 @@
         </div>
     </div>
     <!-- Add to cart bar end-->
-
     <!-- Quick-view modal popup start-->
     <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -701,7 +700,7 @@
             </li>
         </ul>
     </div>
-<!-- theme setting -->
+    <!-- theme setting -->
     <!-- tap to top start -->
     <div class="tap-top">
         <div><i class="fa fa-angle-double-up"></i></div>
@@ -733,6 +732,7 @@
     <script src="~/js/script.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <partial name="_Notification" />
+    @await RenderSectionAsync("scripts", false)
     <script>
 
         function openSearch() {

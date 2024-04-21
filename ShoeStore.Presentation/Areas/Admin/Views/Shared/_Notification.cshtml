@@ -54,13 +54,26 @@
         }).showToast();
     </script>
 }
-
-@if (TempData["CreateRoleError"] != null)
+@if (TempData["ErrorMessage"] != null)
 {
     <script>
         Toastify({
 
-            text: "Role Unique Name وارد شده تکراری است",
+            text: "عملیات ناموفق",
+
+            duration: 4000,
+            gravity: "bottom",
+            close: true
+
+        }).showToast();
+    </script>
+}
+@if (TempData["PasswordField"] != null)
+{
+    <script>
+        Toastify({
+
+            text: "فیلد پسورد الزامی است",
 
             duration: 4000,
             gravity: "bottom",

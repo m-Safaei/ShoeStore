@@ -26,5 +26,13 @@ public interface IUserService
     Task<bool> AddUserAdminSide(AddUserAdminSideDto userDto, List<int>? selectedRoles, CancellationToken cancellation);
 
     Task<UserProfileDto?> GetUserProfileById(int id);
+
+    Task<EditProfileSiteSideDto?> FillEditProfileSiteSideDto(int userId, CancellationToken cancellation);
+
+    Task<bool> EditProfileSiteSide(EditProfileSiteSideDto model, CancellationToken cancellation);
+
+    Task<bool> EditAdminProfile(EditUserAdminSideDto model, List<int>? selectedRoles, CancellationToken cancellation);
+
+    Task<AdminAvatarDto?> GetAdminAvatar(int id, CancellationToken cancellation);
 }
 

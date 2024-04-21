@@ -11,7 +11,7 @@
             <div class="col-sm-6">
                 <nav aria-label="breadcrumb" class="theme-breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">خانه</a></li>
+                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">خانه</a></li>
                         <li class="breadcrumb-item active" aria-current="page">داشبورد</li>
                     </ol>
                 </nav>
@@ -101,12 +101,12 @@
                                     <div class="col-sm-6">
                                         <div class="box">
                                             <div class="box-title">
-                                                <h3>اطلاعات تماس</h3><a href="#">ویرایش </a>
+                                                <h3>اطلاعات تماس</h3><a asp-controller="User" asp-action="EditProfile" asp-route-id="@Model.Id">ویرایش </a>
                                             </div>
                                             <div class="box-content">
                                                 <h6>@User.Identity.Name</h6>
                                                 <h6>@Model.Mobile</h6>
-                                                <h6><a href="#">تغییر پسورد</a></h6>
+                                                <h6><a asp-controller="User" asp-action="EditProfile" asp-route-id="@Model.Id">تغییر پسورد</a></h6>
                                             </div>
                                         </div>
                                     </div>
