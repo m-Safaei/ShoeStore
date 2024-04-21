@@ -77,6 +77,10 @@ public class UsersController : AdminBaseController
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> EditUser(EditUserAdminSideDto model, List<int>? selectedRoles, CancellationToken cancellation)
     {
+        if (model.CurrentUserRolesId == null || !model.CurrentUserRolesId.Any())
+        {
+            model.CurrentUserRolesId = selectedRoles;
+        }
         if (ModelState.IsValid)
         {
             var res = await _userService.EditUserAdminSide(model, selectedRoles, cancellation);
