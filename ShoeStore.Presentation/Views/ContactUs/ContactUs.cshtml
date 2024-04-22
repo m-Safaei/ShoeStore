@@ -15,7 +15,7 @@
                     <div class="contact-right">
                         <ul>
                             <li>
-                                <div class="contact-icon"><img src="../assets/images/icon/phone.png" alt="عکس محصول ">
+                                <div class="contact-icon">
                                     <h6>تماس با ما </h6>
                                 </div>
                                 <div class="media-body">
@@ -33,23 +33,15 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="contact-icon"><img src="../assets/images/icon/email.png" alt="عکس محصول ">
-                                    <h6>آدرس </h6>
+                                <div class="contact-icon">
+                                    <h6>ایمیل </h6>
                                 </div>
                                 <div class="media-body">
                                     <p>Support@Shopcart.com</p>
                                     <p>info@shopcart.com</p>
                                 </div>
                             </li>
-                            <li>
-                                <div class="contact-icon"><i class="fa fa-fax" aria-hidden="true"></i>
-                                    <h6>فکس</h6>
-                                </div>
-                                <div class="media-body">
-                                    <p>Support@Shopcart.com</p>
-                                    <p>info@shopcart.com</p>
-                                </div>
-                            </li>
+                          
                         </ul>
                     </div>
                 </div>
@@ -59,27 +51,27 @@
                     <form asp-action="ContactUs" asp-controller="ContactUs" method="post">
                         <div class="form-row row">
                             <div class="col-md-6">
-                                <label for="name">نام کوچک</label>
-                                <input type="text"  class="form-control" asp-for ="FirstName" id="name" placeholder="نام خود را وارد کنید " required="">
+                                <label for="name">نام </label>
+                                <input type="text"  class="form-control" asp-for ="FirstName" id="name" placeholder=" " required="">
                             </div>
                             <div class="col-md-6">
                                 <label for="email">نام خانوادگی </label>
-                                <input type="text" class="form-control" asp-for = "LastName" id="last-name" placeholder="ایمیل" required="">
+                                <input type="text" class="form-control" asp-for = "LastName" id="last-name" placeholder="" required="">
                             </div>
                             <div class="col-md-6">
-                                <label for="review">شماره تلفن</label>
-                                <input type="text" class="form-control" asp-for ="Mobile" id="review" placeholder="شماره تلفن را وارد کنید" required="">
+                                <label for="review">موبایل</label>
+                                <input type="number" class="form-control" asp-for ="Mobile" id="review" placeholder="" required="">
                             </div>
                             <div class="col-md-6">
                                 <label for="email">ایمیل</label>
-                                <input type="email" class="form-control" asp-for ="Email" id="email" placeholder="ایمیل" required="">
+                                <input type="email" class="form-control" asp-for ="Email" id="email" placeholder="" required="">
                             </div>
                             <div class="col-md-12">
-                                <label for="review">پیام خود را وارد کنید</label>
-                                <textarea class="form-control" asp-for="Messege" placeholder="پیام خود را وارد کنید" id="exampleFormControlTextarea1" rows="6"></textarea>
+                                <label for="review">پیام </label>
+                                <textarea class="form-control" asp-for="Messege" placeholder="" id="exampleFormControlTextarea1" rows="6"></textarea>
                             </div>
                             <div class="col-md-12">
-                                <button class="btn btn-solid" type="submit">ارسال پیام شما </button>
+                                <button class="btn btn-solid" type="submit">ارسال  </button>
                             </div>
                         </div>
                     </form>

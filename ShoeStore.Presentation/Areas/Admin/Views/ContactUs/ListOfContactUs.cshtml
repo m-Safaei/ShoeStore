@@ -1,0 +1,93 @@
+﻿@using ShoeStore.Application.Utilities
+@model List<ShoeStore.Domain.DTOs.SiteSide.ContactUs.ContactUsAdminDTO>
+
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">
+                                <i data-feather="home"></i>
+                            </a>
+                        </li>
+
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <form class="form-inline search-form search-box">
+                    <div class="form-group">
+                        <input class="form-control-plaintext" type="search" placeholder="جستجو..."><span class="d-sm-none mobile-search"><i data-feather="search"></i></span>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="card-body vendor-table">
+                <table class="display" id="basic-1">
+                    <thead>
+                        <tr>
+                            <th>نام</th>
+                            <th>نام خانوادگی</th>
+                            <th> موبایل</th>
+                            <th>تاریخ </th>
+                            <th>پیام </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex vendor-list">
+                                        <img src="assets/images/team/2.jpg" alt="" class="img-fluid img-40 rounded-circle blur-up lazyloaded">
+                                        <span>@item.FirstName</span>
+                                    </div>
+                                </td>
+                                <td>@item.LastName</td>
+                                <td>@item.Mobile</td>
+                                <td>@item.CreateDate.ToShamsi()</td>
+                                <td>
+
+
+
+                                    <a asp-controller="ContactUs" asp-area="Admin" asp-action="ContactUsDetail" asp-route-Id="@item.Id" class="btn btn-success ">نمایش پیام </a>
+
+
+
+
+
+                                </td>
+
+                                <td>
+                                    <div>
+
+                                        <i class="fa fa-trash font-danger"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>

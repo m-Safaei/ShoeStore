@@ -1,0 +1,107 @@
+﻿@model ShoeStore.Domain.DTOs.SiteSide.ContactUs.ContactUsDetailAdminDTO
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                       
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                      
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row product-adding">
+                          
+                            <div class="col-xl-7">
+                                <form class="needs-validation add-product-form" novalidate="">
+                                    <div class="form">
+                                        <div class="form-group mb-3 row">
+                                            <label for="validationCustom01" class="col-xl-3 col-sm-4 mb-0"> نام   </label>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input class="form-control" asp-for="FirstName" id="validationCustom01" type="text" readonly required="">
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="form-group mb-3 row">
+                                            <label for="validationCustom02" class="col-xl-3 col-sm-4 mb-0"> نام خانوادگی   </label>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input class="form-control"asp-for="LastName" id="validationCustom02" type="text" readonly required="">
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="form-group mb-3 row">
+                                            <label for="validationCustomUsername" class="col-xl-3 col-sm-4 mb-0">  ایمیل </label>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input class="form-control" asp-for="Email" id="validationCustomUsername" type="email" readonly required="">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form">
+                                        <div class="form-group row">
+                                            <label for="exampleFormControlSelect1" class="col-xl-3 col-sm-4 mb-0">تلفن </label>
+                                            <div class="col-xl-8 col-sm-7">
+                                                <input class="form-control digits" asp-for="Mobile" readonly  id="exampleFormControlSelect1" />
+                                                  
+                                               
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="form-group row">
+                                            <label class="col-xl-3 col-sm-4"></label>
+                                            
+                                                <textarea id="editor1" asp-for="Messege" name="editor1" readonly cols="10" rows="4"></textarea>
+                                            
+                                            <div class="offset-xl-3 offset-sm-4 mt-4">
+                                                <a asp-area="Admin"asp-action="ListOfContactUs" asp-controller="ContactUs" type="submit" class="btn btn-primary">بازگشت</a>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+
+  @section scripts{
+
+
+    <!-- touchspin js-->
+    <script src="assets/js/touchspin/vendors.min.js"></script>
+    <script src="assets/js/touchspin/touchspin.js"></script>
+    <script src="assets/js/touchspin/input-groups.min.js"></script>
+
+    <!-- form validation js-->
+    <script src="assets/js/dashboard/form-validation-custom.js"></script>
+
+    <!-- ckeditor js-->
+    <script src="assets/js/editor/ckeditor/ckeditor.js"></script>
+    <script src="assets/js/editor/ckeditor/ckeditor.custom.js"></script>
+
+    <!-- Zoom js-->
+    <script src="assets/js/jquery.elevatezoom.js"></script>
+    <script src="assets/js/zoom-scripts.js"></script>
+
+
+  }                                             
+                                              
