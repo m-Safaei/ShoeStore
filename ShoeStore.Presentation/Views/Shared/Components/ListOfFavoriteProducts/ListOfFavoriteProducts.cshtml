@@ -1,0 +1,56 @@
+﻿@using ShoeStore.Application.Utilities
+@model List<ShoeStore.Domain.DTOs.SiteSide.FavoriteProduct.FavoriteProductDto>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card dashboard-table mt-0">
+            <div class="card-body table-responsive-sm">
+                <div class="top-sec">
+                    <h3>علاقه مندی ها </h3>
+                </div>
+                <div class="table-responsive-xl">
+                    <table class="table cart-table wishlist-table">
+                        <thead>
+                            <tr class="table-head">
+                                <th scope="col">تصویر</th>
+                                <th scope="col">نام محصول </th>
+                                <th scope="col">قیمت </th>
+                                <th scope="col">عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var product in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)">
+                                            <img src="/images/ProductImage/@product.Image" class="blur-up lazyloaded" alt="">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <span class="mt-0">@product.Name</span>
+                                    </td>
+                                    <td>
+                                        <span class="theme-color fs-6">@product.Price</span>
+                                    </td>
+                                    <td>
+                                        <a asp-controller="FavoriteProduct" asp-action="DeleteFavoriteProduct" asp-route-productId="@product.Id" asp-route-userId="@User.GetUserId()" class="btn btn-xs btn-solid">
+                                            حذف
+                                        </a>
+
+                                        <a href="javascript:void(0)" class="btn btn-xs btn-solid">
+                                            افزودن به سبد خرید
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

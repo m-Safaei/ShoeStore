@@ -1,4 +1,6 @@
-﻿@model ICollection<ShoeStore.Domain.DTOs.SiteSide.Product.ProductPostDTO>
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using ShoeStore.Application.Utilities
+@model ICollection<ShoeStore.Domain.DTOs.SiteSide.Product.ProductPostDTO>
 
 
 <section class="section-b-space ratio_asos">
@@ -35,8 +37,8 @@
                                     }
                                 </div>
                                 <div class="cart-info cart-wrap">
-                                      <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a> 
-                                      <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> 
+                                    <a asp-controller="FavoriteProduct" asp-action="AddFavoriteProduct" asp-route-productId="@item.ProductId" asp-route-userId="@User.GetUserId()" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
+                                    <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a> 
                                 </div>
                             </div>
                             <div class="product-detail">

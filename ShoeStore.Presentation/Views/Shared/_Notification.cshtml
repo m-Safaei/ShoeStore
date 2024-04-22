@@ -82,3 +82,30 @@
         }).showToast();
     </script>
 }
+@if (TempData["ErrorForAddFavoriteProduct"] != null)
+{
+    <script>
+        Toastify({
+
+            text: "محصول موردنظر در لیست علاقه مندی موجود است",
+
+            duration: 4000,
+            gravity: "bottom",
+            close: true
+
+        }).showToast();
+    </script>
+}
+@if (TempData["successAddFavoriteProduct"] != null)
+{
+    <script>
+        Toastify({
+            text: "محصول به لیست علاقه مندی اضافه شد",
+            duration: 4000,
+            close: true,
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)"
+            }
+        }).showToast();
+    </script>
+}

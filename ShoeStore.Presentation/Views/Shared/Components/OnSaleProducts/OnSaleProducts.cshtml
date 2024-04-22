@@ -1,4 +1,5 @@
-﻿@model ICollection<ShoeStore.Domain.DTOs.SiteSide.Product.ProductPostDTO>
+﻿@using ShoeStore.Application.Utilities
+@model ICollection<ShoeStore.Domain.DTOs.SiteSide.Product.ProductPostDTO>
 
 
 <section class="section-b-space pt-0 ratio_asos">
@@ -44,7 +45,7 @@
                                         @* <button tabindex="0" onclick="openCart()" title="اضافه کردن به سبد">
                                 <i class="ti-shopping-cart"></i>
                                 </button> *@
-                                        <a href="javascript:void(0)" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
+                                        <a asp-controller="FavoriteProduct" asp-action="AddFavoriteProduct" asp-route-productId="@item.ProductId" asp-route-userId="@User.GetUserId()" title="اضافه کردن به علاقه مندی"><i class="ti-heart" aria-hidden="true"></i></a>
                                         <a asp-action="Index" asp-controller="Product" asp-route-productId="@item.ProductId" data-bs-toggle="modal" data-bs-target="#quick-view" title="دیدن سریع"><i class="ti-search" aria-hidden="true"></i></a>
                                         @* <a href="compare.html" title="مقایسه "><i class="ti-reload" aria-hidden="true"></i></a> *@
                                     </div>
