@@ -12,8 +12,8 @@ using ShoeStore.Data.AppDbContext;
 namespace ShoeStore.Data.Migrations
 {
     [DbContext(typeof(ShoeStoreDbContext))]
-    [Migration("20240417185424_Delete-Email-Field-From-User-Table")]
-    partial class DeleteEmailFieldFromUserTable
+    [Migration("20240418164127_add-all-entity")]
+    partial class addallentity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -135,7 +135,6 @@ namespace ShoeStore.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("DiscountPercentage")
