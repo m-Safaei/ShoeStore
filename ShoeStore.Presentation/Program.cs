@@ -34,6 +34,9 @@ namespace ShoeStore.Presentation
             builder.Services.AddScoped<IRoleService, RoleService>();
             builder.Services.AddScoped<ISizeService, SizeService>();
 
+            builder.Services.AddScoped<IFavoriteProductRepository, FavoriteProductRepository>();
+            builder.Services.AddScoped<IFavoriteProductService, FavoriteProductService>();
+
             #region Context
 
             builder.Services.AddDbContext<ShoeStoreDbContext>(options =>
