@@ -17,11 +17,11 @@ public class ProductService : IProductService
 
     public async Task<Product?> GetProductByIdAsync(int Id,CancellationToken cancellation)
     {
-        return await _productRepository.GetProductByIdAsync(Id);
+        return await _productRepository.GetProductByIdAsync(Id,cancellation);
     }
     public async Task<ProductItem?> GetProductItemByIdAsync(int Id, CancellationToken cancellation)
     {
-        return await _productItemRepository.GetProductItemByIdAsync(Id);
+        return await _productItemRepository.GetProductItemByIdAsync(Id, cancellation);
     }
     public async Task<ProductPageDTO?> GetProductPageDTO(int productId, CancellationToken cancellation)
     {
