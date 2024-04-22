@@ -9,4 +9,7 @@ public interface IContactUsService
     Task<List<ContactUsAdminDTO>> GetListOfContactUs(CancellationToken cancellation);
     Task<ContactUsDetailAdminDTO?> FillContactUsAdminDetailDTO(int Id,CancellationToken cancellationToken);
 
+    Task ChangeMessageState(int id, CancellationToken cancellation);
+
+    Task<bool> DeleteContactUs(int id, CancellationToken cancellation);
 }

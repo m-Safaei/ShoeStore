@@ -24,10 +24,29 @@ namespace ShoeStore.Presentation.Areas.Admin.Controllers
         {
             var detail = await _service.FillContactUsAdminDetailDTO(Id, cancellationToken);
 
+            //Change Message State
+            if (detail != null)
+            {
+                await _service.ChangeMessageState(Id, cancellationToken);
+            }
+
             return View(detail);
         }
 
+        public async Task<IActionResult> DeleteContactUs(int id, CancellationToken cancellation)
+        {
+            var res = await _service.DeleteContactUs(id, cancellation);
+            if (res)
+            {
+                TempData["SuccessMessage"] = "Success";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "failed";
+            }
 
+            return RedirectToAction(nameof(ListOfContactUs));
+        }
 
     }
 }

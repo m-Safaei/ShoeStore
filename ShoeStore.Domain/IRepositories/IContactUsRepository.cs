@@ -9,4 +9,6 @@ public interface IContactUsRepository
     void SaveChange();
     Task<List<ContactUsAdminDTO>> GetListOfContactUs(CancellationToken cancellation);
     Task<ContactUs?> GetCotnactUsByIdAsync(int Id,CancellationToken cancellationToken);
+    void UpdateContactUs(ContactUs contactUs);
+    void DeleteContactUs(ContactUs contact);
 }

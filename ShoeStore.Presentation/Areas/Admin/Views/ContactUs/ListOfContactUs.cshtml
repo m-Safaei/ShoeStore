@@ -40,11 +40,12 @@
                 <table class="display" id="basic-1">
                     <thead>
                         <tr>
-                            <th>نام</th>
-                            <th>نام خانوادگی</th>
+                            <th>نام کاربر</th>
                             <th> موبایل</th>
                             <th>تاریخ </th>
                             <th>پیام </th>
+                            <th>وضعیت </th>
+                            <th>حذف </th>
 
                         </tr>
                     </thead>
@@ -54,30 +55,34 @@
                         {
                             <tr>
                                 <td>
-                                    <div class="d-flex vendor-list">
-                                        <img src="assets/images/team/2.jpg" alt="" class="img-fluid img-40 rounded-circle blur-up lazyloaded">
-                                        <span>@item.FirstName</span>
-                                    </div>
+                                    <div class="d-flex vendor-list">@item.FirstName @item.LastName</div>
+                                    
                                 </td>
-                                <td>@item.LastName</td>
                                 <td>@item.Mobile</td>
                                 <td>@item.CreateDate.ToShamsi()</td>
                                 <td>
-
-
-
                                     <a asp-controller="ContactUs" asp-area="Admin" asp-action="ContactUsDetail" asp-route-Id="@item.Id" class="btn btn-success ">نمایش پیام </a>
 
-
-
-
-
                                 </td>
-
+                                @if (item.IsSeen)
+                                {
+                                    <td class="order-success">
+                                        <span style="color: green">دیده شده</span>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="order-warning">
+                                        <span style="color: red">دیده نشده </span>
+                                    </td>
+                                }
+                                
                                 <td>
                                     <div>
-
-                                        <i class="fa fa-trash font-danger"></i>
+                                        <a asp-area="Admin" asp-controller="ContactUs" asp-action="DeleteContactUs" asp-route-id="@item.Id">
+                                            <i class="fa fa-trash font-danger"></i>
+                                        </a>
+                                        
                                     </div>
                                 </td>
                             </tr>

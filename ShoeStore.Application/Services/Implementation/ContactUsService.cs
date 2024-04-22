@@ -7,8 +7,8 @@ namespace ShoeStore.Application.Services.Implementation;
 
 public class ContactUsService : IContactUsService
 {
-	#region Ctor
-	private readonly IContactUsRepository _contactUsRepository;
+    #region Ctor
+    private readonly IContactUsRepository _contactUsRepository;
     public ContactUsService(IContactUsRepository contactUsRepository)
     {
         _contactUsRepository = contactUsRepository;
@@ -19,7 +19,7 @@ public class ContactUsService : IContactUsService
     {
         ContactUs contact = new ContactUs()
         {
-            
+
             FirstName = contactUs.FirstName,
             LastName = contactUs.LastName,
             Email = contactUs.Email,
@@ -31,30 +31,52 @@ public class ContactUsService : IContactUsService
         _contactUsRepository.SaveChange();
     }
 
-  
+
 
     public async Task<List<ContactUsAdminDTO>> GetListOfContactUs(CancellationToken cancellation)
     {
         return await _contactUsRepository.GetListOfContactUs(cancellation);
     }
 
-   public async Task<ContactUsDetailAdminDTO?> FillContactUsAdminDetailDTO(int Id,CancellationToken cancellationToken)
+    public async Task<ContactUsDetailAdminDTO?> FillContactUsAdminDetailDTO(int Id, CancellationToken cancellationToken)
     {
-        var contact = await _contactUsRepository.GetCotnactUsByIdAsync(Id,cancellationToken);  
+        var contact = await _contactUsRepository.GetCotnactUsByIdAsync(Id, cancellationToken);
         if (contact == null) return null;
-        
+
 
         ContactUsDetailAdminDTO detail = new ContactUsDetailAdminDTO()
         {
-            FirstName =contact.FirstName,
+            FirstName = contact.FirstName,
             LastName = contact.LastName,
             Email = contact.Email,
             Mobile = contact.Mobile,
-            Messege= contact.Messege,
+            Messege = contact.Messege,
+
         };
         return detail;
     }
 
+    public async Task ChangeMessageState(int id, CancellationToken cancellation)
+    {
+        var contact = await _contactUsRepository.GetCotnactUsByIdAsync(id, cancellation);
 
+        if (!contact.IsSeen)
+        {
+            contact.IsSeen = true;
+            _contactUsRepository.UpdateContactUs(contact);
+            _contactUsRepository.SaveChange();
+        }
+
+    }
+
+    public async Task<bool> DeleteContactUs(int id, CancellationToken cancellation)
+    {
+        var contact = await _contactUsRepository.GetCotnactUsByIdAsync(id, cancellation);
+        if (contact == null) return false;
+
+        _contactUsRepository.DeleteContactUs(contact);
+        _contactUsRepository.SaveChange();
+        return true;
+    }
 
 }

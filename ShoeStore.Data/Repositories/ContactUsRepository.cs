@@ -38,13 +38,23 @@ public class ContactUsRepository : IContactUsRepository
             Mobile = p.Mobile,
             CreateDate = p.CreateDate,
             Messege = p.Messege,
+            IsSeen = p.IsSeen,
         })
-            .ToListAsync();
+            .ToListAsync(cancellation);
     }
 
     public async Task<ContactUs?> GetCotnactUsByIdAsync(int Id, CancellationToken cancellationToken)
     {
-        return await _context.ContactUs.FindAsync(Id);
+        return await _context.ContactUs.FindAsync(Id,cancellationToken);
     }
 
+    public void UpdateContactUs(ContactUs contactUs)
+    {
+        _context.ContactUs.Update(contactUs);
+    }
+
+    public void DeleteContactUs(ContactUs contact)
+    {
+        _context.ContactUs.Remove(contact);
+    }
 }

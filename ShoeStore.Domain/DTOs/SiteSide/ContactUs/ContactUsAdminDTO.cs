@@ -8,5 +8,6 @@ public class ContactUsAdminDTO
     public string Mobile { get; set; }
     public DateTime CreateDate { get; set; }
     public string Messege { get; set; }
+    public bool IsSeen { get; set; }
 
 }
