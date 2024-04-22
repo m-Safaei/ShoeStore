@@ -4,7 +4,7 @@ using ShoeStore.Domain.Entities.ProductCategory;
 using ShoeStore.Domain.Entities.Order;
 
 using ShoeStore.Domain.Entities.ContactUs;
-
+using ShoeStore.Domain.Entities.FavoriteProduct;
 using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.Entities.Role;
 using ShoeStore.Domain.Entities.User;
@@ -41,7 +41,7 @@ public class ShoeStoreDbContext: DbContext
 
     public DbSet<Location> Locations { get; set; }
 
-
+    public DbSet<FavoriteProduct> FavoriteProducts { get; set; }
 
     #endregion
 
