@@ -23,7 +23,8 @@ public class OrderController : Controller
     #endregion     
     int _userId = 4;
     int _id =6;
-    public async Task<IActionResult> AddToShopCart(int? Id,CancellationToken cancellationToken=default)
+    #region Add to Cart
+    public async Task<IActionResult> AddToShopCart(int? Id, CancellationToken cancellationToken = default)
     {
         #region Model State Validation
         if (_id == null)
@@ -32,7 +33,7 @@ public class OrderController : Controller
         }
         #endregion
         //Get ProductItem By ProductItemID
-        ProductItem productItem=await _productService.GetProductItemByIdAsync(_id, cancellationToken);
+        ProductItem productItem = await _productService.GetProductItemByIdAsync(_id, cancellationToken);
         //Get Produc By ProductItemID
         Product _product = await _productService.GetProductByIdAsync(_id, cancellationToken);
         #region Initial Order
@@ -46,7 +47,7 @@ public class OrderController : Controller
             }
             else
             {
-               _orderService.AddProductToOrderItem(productItem.Id, order.Id,10);
+                _orderService.AddProductToOrderItem(productItem.Id, order.Id, 10);
             }
         }
         else
@@ -55,10 +56,12 @@ public class OrderController : Controller
             _orderService.AddProductToOrderItem(productItem.Id, OrderId, 10);
         }
         #endregion
-    
+       
         return View();
 
     }
+    #endregion
+    #region Plus Product OrderItem
     public async Task<IActionResult> PlusProductOrderItem(int id)
     {
         int OrderItemID = 1;
@@ -69,6 +72,9 @@ public class OrderController : Controller
         _orderService.PlusProductToTheOrderItem(OrderItemID);
         return View();
     }
+
+    #endregion
+    #region Minus Product OrderItem
     public async Task<IActionResult> MinusProductOrderItem(int id)
     {
         int OrderItemID = 1;
@@ -79,9 +85,12 @@ public class OrderController : Controller
         _orderService.MinusProductToTheOrderItem(OrderItemID);
         return View();
     }
+
+    #endregion
     //public async Task<IActionResult> ShopCart()
     //{
     //    Order order=_orderService.GetOrderForCart(_userId);
 
     //}
+   
 }
