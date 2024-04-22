@@ -27,7 +27,9 @@ public class ContactUsController : Controller
         if(ModelState.IsValid) 
         { 
              _serivce.AddContactUs(contactUsDTO);
-             return RedirectToAction("Index","Home");
+
+             TempData["SuccessMessage"] = "Success";
+            return RedirectToAction("Index","Home");
         }
         return View(contactUsDTO);
     }
