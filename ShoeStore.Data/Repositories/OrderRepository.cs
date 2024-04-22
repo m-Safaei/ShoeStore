@@ -29,7 +29,7 @@ public class OrderRepository : IOrderRepository
     }
     public Order GetOrderForCart(int userId)
     {
-        return _dbContext.Orders.SingleOrDefault(p=>p.UserId==userId&&p.Isfainally==true);
+        return _dbContext.Orders.SingleOrDefault(p=>p.UserId==userId&&p.Isfainally==false);
     }
     #endregion
 

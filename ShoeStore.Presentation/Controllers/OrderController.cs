@@ -1,11 +1,9 @@
 ﻿#region MyRegion
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoeStore.Application.Services.Interface;
 using ShoeStore.Domain.Entities.Order;
 using ShoeStore.Domain.Entities.Product;
-using ShoeStore.Domain.Entities.User;
-using ShoeStore.Domain.IRepositories;
+using ShoeStore.Application.Utilities;
 
 namespace ShoeStore.Presentation.Controllers;
 #endregion
@@ -27,16 +25,18 @@ public class OrderController : Controller
     int _id =6;
     public async Task<IActionResult> AddToShopCart(int? Id,CancellationToken cancellationToken=default)
     {
+        #region Model State Validation
         if (_id == null)
         {
-          return NotFound();
+            return NotFound();
         }
-    
-        
+        #endregion
+        //Get ProductItem By ProductItemID
         ProductItem productItem=await _productService.GetProductItemByIdAsync(_id, cancellationToken);
-        Product _product = await _productService.GetProductByIdAsync(productItem.Id, cancellationToken);
-     
-        
+        //Get Produc By ProductItemID
+        Product _product = await _productService.GetProductByIdAsync(_id, cancellationToken);
+        #region Initial Order
+        // Is Exit Any Order For Current User Today
         if (_orderService.IsExistOrderForUserInToday(_userId))
         {
             Order order = _orderService.GetOrderForCart(_userId);
@@ -46,13 +46,16 @@ public class OrderController : Controller
             }
             else
             {
-               _orderService.AddProductToOrderItem(productItem.ProductId, order.Id,_product.Price);
+               _orderService.AddProductToOrderItem(productItem.Id, order.Id,10);
             }
         }
         else
         {
             int OrderId = _orderService.AddOrderToTheShopCart(_userId);
+            _orderService.AddProductToOrderItem(productItem.Id, OrderId, 10);
         }
+        #endregion
+    
         return View();
 
     }
