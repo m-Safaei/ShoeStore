@@ -24,10 +24,12 @@ public class ContactUsController : Controller
     [HttpPost, ValidateAntiForgeryToken]
     public IActionResult ContactUs(ContactUsDTO contactUsDTO)
     {
-        if(ModelState .IsValid) 
+        if(ModelState.IsValid) 
         { 
-        _serivce.AddContactUs(contactUsDTO);
-            return RedirectToAction("Index");
+             _serivce.AddContactUs(contactUsDTO);
+
+             TempData["SuccessMessage"] = "Success";
+            return RedirectToAction("Index","Home");
         }
         return View(contactUsDTO);
     }

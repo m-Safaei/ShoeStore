@@ -14,13 +14,13 @@
                     @foreach (var parentCategory in Model)
                     {
                         <li>
-                            <a href="#">@parentCategory.Title</a>
+                            <a asp-action="Index" asp-controller="Category" asp-route-categoryId="@parentCategory.Id">@parentCategory.Title</a>
                             <ul>
                                 @if (parentCategory.ChildCategories != null && parentCategory.ChildCategories.Any()){
                                     @foreach (var childCategory in parentCategory.ChildCategories)
                                     {
-                        
-                                        <li><a href="category-page(modern).html">@childCategory.Title </a></li>
+
+                                        <li><a asp-action="Index" asp-controller="Category" asp-route-categoryId="@childCategory.Id">@childCategory.Title </a></li>
                         
                                     }
                                 }

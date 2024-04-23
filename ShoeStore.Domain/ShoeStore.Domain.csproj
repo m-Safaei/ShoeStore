@@ -7,9 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\AdminSide\" />
-    <Folder Include="DTOs\UserSide\" />
+    <Compile Remove="DTOs\UserSide\**" />
+    <EmbeddedResource Remove="DTOs\UserSide\**" />
+    <None Remove="DTOs\UserSide\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Enums\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
   </ItemGroup>
 
 </Project>

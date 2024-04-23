@@ -10,10 +10,12 @@ public class Order:BaseEntity
     public int UserId { get; set; }
     public int OrderItemId { get; set; }
     public bool Isfainally { get; set; }
+
     #endregion
     #region Navigations
     public User.User User { get; set; }
     public List<OrderItem> Items { get; set;}
+    
     #endregion
 
 }

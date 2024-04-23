@@ -81,6 +81,11 @@ public class AccountController : Controller
     [HttpGet("Login")]
     public IActionResult Login(string? ReturnUrl)
     {
+        if (User.Identity.IsAuthenticated)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
         UserLoginDto returnModel = new UserLoginDto();
         if (!string.IsNullOrEmpty(ReturnUrl))
         {
@@ -98,7 +103,7 @@ public class AccountController : Controller
 
             if (user != null)
             {
-                var password = PasswordHelper.EncodePasswordMd5(userDto.Password);
+                var password = PasswordHasher.EncodePasswordMd5(userDto.Password);
 
                 if (user.Password == password)
                 {

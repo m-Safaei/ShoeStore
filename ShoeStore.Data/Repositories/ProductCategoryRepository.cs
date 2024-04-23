@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoeStore.Data.AppDbContext;
+using ShoeStore.Domain.DTOs.AdminSide.Category;
+using ShoeStore.Domain.DTOs.SiteSide.Product;
 using ShoeStore.Domain.DTOs.SiteSide.ProductCategory;
 using ShoeStore.Domain.Entities.ProductCategory;
 using ShoeStore.Domain.IRepositories;
@@ -29,6 +31,12 @@ public class ProductCategoryRepository : IProductCategoryRepository
         return await _context.ProductCategories.FirstOrDefaultAsync(p => p.Id == Id && !p.IsDelete);
     }
 
+    public async Task<int> GetProductCategoryIdByNameAsync(string categoryName,CancellationToken cancellation)
+    {
+        return await _context.ProductCategories.Where(p => p.Title==categoryName && !p.IsDelete)
+            .Select(p=> p.Id).FirstOrDefaultAsync(cancellation);
+    }
+
     public async Task SaveChangesAsync(CancellationToken cancellation)
     {
         await _context.SaveChangesAsync(cancellation);
@@ -39,9 +47,9 @@ public class ProductCategoryRepository : IProductCategoryRepository
         _context.ProductCategories.Update(productCategory);
     }
 
-    public async Task<ICollection<CategoryDTO>> GetCategoriesByParentId(int parentId, CancellationToken cancellation)
+    public async Task<ICollection<CategoryDTO>> GetCategoryDTOsByParentId(int parentId, CancellationToken cancellation)
     {
-        return await _context.ProductCategories.Where(p => p.ParentId == parentId)
+        return await _context.ProductCategories.Where(p => p.ParentId == parentId && !p.IsDelete)
             .Select(p => new CategoryDTO()
             {
                 Id = p.Id,
@@ -50,14 +58,64 @@ public class ProductCategoryRepository : IProductCategoryRepository
             .ToListAsync(cancellation);
     }
 
+    public async Task<ICollection<ProductCategory>?> GetCategoriesByParentId(int parentId , CancellationToken cancellation)
+    {
+        return await _context.ProductCategories.Where(p => p.ParentId == parentId && !p.IsDelete).ToListAsync(cancellation);
+    }
+
     public async Task<ICollection<ParentCategoryDTO>> GetParentCategories(CancellationToken cancellation)
     {
-        return await _context.ProductCategories.Where(p => p.ParentId == null)
+        return await _context.ProductCategories.Where(p => p.ParentId == null && !p.IsDelete)
             .Select(p => new ParentCategoryDTO()
             {
                 Id = p.Id,
                 Title = p.Title,
             })
             .ToListAsync(cancellation);
+    }
+
+
+    public async Task<ICollection<ChildCategoryListDTO>?> GetChildCategories(CancellationToken cancellation)
+    {
+        return await _context.ProductCategories.Where(p => p.ParentId != null && !p.IsDelete)
+            .Select(p => new ChildCategoryListDTO()
+            {
+                Id = p.Id,
+                Name = p.Title,
+            })
+            .ToListAsync(cancellation);
+    }
+
+
+    public async Task<bool?> IsParentCategory(int categoryId, CancellationToken cancellation)
+    {
+        var category = await _context.ProductCategories.Where(p => p.Id == categoryId && !p.IsDelete)
+            .SingleOrDefaultAsync(cancellation);
+        if (category == null) return null;
+        return category.ParentId == null;
+    }
+
+    public async Task<string?> GetCategoryNameById(int categoryId,CancellationToken cancellation)
+    {
+        return await _context.ProductCategories.Where(p=>p.Id==categoryId && !p.IsDelete).Select(p=> p.Title).FirstOrDefaultAsync(cancellation);
+    }
+
+
+    public async Task<EditCategoryDTO?> GetEditCategoryDTOById(int categoryId,CancellationToken cancellation)
+    {
+        return await _context.ProductCategories.Where(p => p.Id == categoryId && !p.IsDelete)
+            .Select(p => new EditCategoryDTO() { Id = p.Id, Name = p.Title, ParentId = p.ParentId ,CreateDate=p.CreateDate}).SingleOrDefaultAsync(cancellation);
+    }
+
+
+    public async Task<ProductPageBreadCrumbDTO?> GetBreadCrumbDTO(int childCategoryId,CancellationToken cancellation)
+    {
+        ProductPageBreadCrumbDTO model = new();
+        var childCategory = await _context.ProductCategories.FirstOrDefaultAsync(p => p.Id == childCategoryId && !p.IsDelete,cancellation);
+        if (childCategory == null) return null;
+        model.ChildCategory = new CategoryDTO() { Id = childCategory.Id, Title = childCategory.Title };
+        model.ParentCategory = await _context.ProductCategories.Where(p => p.Id == childCategory.ParentId && !p.IsDelete).Select(p => new CategoryDTO() { Id = p.Id, Title = p.Title }).FirstOrDefaultAsync(cancellation);
+        if(model.ParentCategory == null) return null;
+        return model;
     }
 }

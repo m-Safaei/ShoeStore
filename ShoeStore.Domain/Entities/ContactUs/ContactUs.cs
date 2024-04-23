@@ -10,5 +10,6 @@ public class ContactUs : BaseEntity
     public string Mobile { get; set; }
     public string Email { get; set; }
     public string Messege { get; set; }
+    public bool IsSeen { get; set; }
 
 }

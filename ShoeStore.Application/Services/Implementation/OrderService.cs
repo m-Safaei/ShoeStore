@@ -36,11 +36,15 @@ public class OrderService : IOrderService
     {
         return _orderRepository.IsExistOrderItemFromUserFromToday(OrderId,productId);
     }
-    public void AddProductToOrderItem(int productId, int orderId, decimal Price)
+    public void AddProductToOrderItem(int productItemId, int orderId, decimal Price)
     {
         OrderItem orderItem = new OrderItem()
         {
+
            // ProductId = productId,
+
+            ProductItemId = productItemId,
+
             OrderId = orderId,
             Price = Price,
             Count = 1

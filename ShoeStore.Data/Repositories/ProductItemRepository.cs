@@ -37,4 +37,10 @@ public class ProductItemRepository : IProductItemRepository
     {
         _context.ProductItems.Update(productItem);
     }
+
+
+    public async Task<ICollection<ProductItem>?> GetListOfProductItemsByProductId(int productId,CancellationToken cancellation)
+    {
+        return await _context.ProductItems.Where(p=> p.ProductId == productId && !p.IsDelete).ToListAsync(cancellation);
+    }
 }
