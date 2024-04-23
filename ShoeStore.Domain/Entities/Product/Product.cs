@@ -15,5 +15,6 @@ public class Product : BaseEntity
     public bool IsDelete { get; set; }
     public int ProductCategoryId { get; set; }
     public ProductCategory.ProductCategory? ProductCategory { get; set; }
+    public List<ProductItem>? ProductItems { get; set; }
     public List<ProductFeature>? ProductFeatures { get; set; }
 }
