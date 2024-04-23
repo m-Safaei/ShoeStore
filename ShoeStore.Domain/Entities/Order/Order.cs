@@ -8,13 +8,12 @@ public class Order:BaseEntity
 {
     #region Entites
     public int UserId { get; set; }
-    public int OrderItemId { get; set; }
     public bool Isfainally { get; set; }
 
     #endregion
     #region Navigations
     public User.User User { get; set; }
-    public List<OrderItem> Items { get; set;}
+    public List<OrderItem> OrderItems { get; set;}
     
     #endregion
 
