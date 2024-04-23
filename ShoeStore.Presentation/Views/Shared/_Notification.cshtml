@@ -60,7 +60,7 @@
     <script>
         Toastify({
 
-            text: "عملیات ناموفق",
+            text: "@(new HtmlString(TempData["ErrorMessage"] as string))",
 
             duration: 4000,
             gravity: "bottom",
@@ -74,7 +74,7 @@
     <script>
         Toastify({
 
-            text: "فیلد پسورد الزامی است",
+            text: "@(new HtmlString(TempData["PasswordField"] as string))",
 
             duration: 4000,
             gravity: "bottom",

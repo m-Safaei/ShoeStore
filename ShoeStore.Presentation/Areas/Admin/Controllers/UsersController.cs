@@ -86,11 +86,11 @@ public class UsersController : AdminBaseController
             var res = await _userService.EditUserAdminSide(model, selectedRoles, cancellation);
             if (res)
             {
-                TempData["SuccessMessage"] = "Success";
+                TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
                 return RedirectToAction(nameof(ListOfUsers));
             }
 
-            TempData["ErrorMessage"] = "failed";
+            TempData["ErrorMessage"] = "عملیات ناموفق";
         }
 
         ViewData["Roles"] = await _roleService.ListOfRoles(cancellation);
@@ -106,11 +106,11 @@ public class UsersController : AdminBaseController
         var res = await _userService.DeleteUser(userId, cancellation);
         if (res)
         {
-            TempData["SuccessMessage"] = "Success";
+            TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
         }
         else
         {
-            TempData["ErrorMessage"] = "failed";
+            TempData["ErrorMessage"] = "عملیات ناموفق";
         }
 
         return RedirectToAction(nameof(ListOfUsers));
@@ -146,17 +146,17 @@ public class UsersController : AdminBaseController
                 var res = await _userService.EditAdminProfile(model, selectedRoles, cancellation);
                 if (res)
                 {
-                    TempData["SuccessMessage"] = "Success";
+                    TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
                     return RedirectToAction("Index", "Home");
                 }
 
-                TempData["ErrorMessage"] = "failed";
+                TempData["ErrorMessage"] = "عملیات ناموفق";
 
             }
         }
         else
         {
-            TempData["PasswordField"] = "Password is compulsory";
+            TempData["PasswordField"] = "فیلد پسورد الزامی است";
         }
 
         ViewData["Roles"] = await _roleService.ListOfRoles(cancellation);

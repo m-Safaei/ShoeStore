@@ -28,7 +28,7 @@ public class ContactUsController : Controller
         { 
              _serivce.AddContactUs(contactUsDTO);
 
-             TempData["SuccessMessage"] = "Success";
+             TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
             return RedirectToAction("Index","Home");
         }
         return View(contactUsDTO);

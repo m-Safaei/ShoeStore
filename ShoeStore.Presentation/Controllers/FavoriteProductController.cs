@@ -44,11 +44,11 @@ public class FavoriteProductController : Controller
         var res = await _favoriteProductService.DeleteFavoriteProduct(productId, userId, cancellation);
         if (res)
         {
-            TempData["SuccessMessage"] = "Success";
+            TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
         }
         else
         {
-            TempData["ErrorMessage"] = "failed";
+            TempData["ErrorMessage"] = "عملیات ناموفق";
         }
 
         return RedirectToAction("UserProfile", "User");

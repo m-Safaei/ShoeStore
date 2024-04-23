@@ -46,13 +46,13 @@ namespace ShoeStore.Presentation.Controllers
                     var res = await _userService.EditProfileSiteSide(model, cancellation);
                     if (res)
                     {
-                        TempData["SuccessMessage"] = "Success";
+                        TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
                         return RedirectToAction(nameof(UserProfile));
                     }
-                    TempData["ErrorMessage"] = "failed";
+                    TempData["ErrorMessage"] = "عملیات ناموفق";
                 }
 
-                TempData["PasswordField"] = "Password is compulsory";
+                TempData["PasswordField"] = "فیلد پسورد الزامی است";
             }
             return View(model);
         }
