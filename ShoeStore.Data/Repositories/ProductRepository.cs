@@ -174,4 +174,9 @@ public class ProductRepository : IProductRepository
             .Select(p=> new CreateProductDTO() { Id=p.Id,Name=p.Name,OldProductImage=p.ProductImage,ProductCategoryId=p.ProductCategoryId,Price=p.Price,DiscountPercentage=p.DiscountPercentage,Description=p.Description})
             .SingleOrDefaultAsync(cancellation);
     }
+
+    public async Task<Product?> GetProductByProductItemId(int id , CancellationToken cancellation)
+    {
+        return await _context.ProductItems.Where(p => p.Id == id && !p.IsDelete).Select(p => p.Product).SingleOrDefaultAsync(cancellation);
+    }
 }

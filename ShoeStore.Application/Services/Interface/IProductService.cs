@@ -8,7 +8,6 @@ namespace ShoeStore.Application.Services.Interface;
 public interface IProductService
 {
     Task<Product?> GetProductByIdAsync(int Id, CancellationToken cancellation);
-    Task<Product?> GetProductByIdAsync(int Id);
 
     Task<ProductItem?> GetProductItemByIdAsync(int Id, CancellationToken cancellation);
     Task<ProductPageDTO?> GetProductPageDTO(int productId, CancellationToken cancellation);
@@ -30,4 +29,5 @@ public interface IProductService
     Task<CreateProductDTO?> GetCreateProductDTOById(int productId, CancellationToken cancellation);
     Task<bool> EditProduct(CreateProductDTO productDTO, CancellationToken cancellation);
     Task<bool> RemoveProductAndItsItemsAndFeatures(int productId, CancellationToken cancellation);
+    Task<Product?> GetProductByProductItemId(int id, CancellationToken cancellation);
 }

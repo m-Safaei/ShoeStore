@@ -23,11 +23,6 @@ public class ProductItemRepository : IProductItemRepository
         return await _context.ProductItems.Where(p => !p.IsDelete).ToListAsync();
     }
 
-    public async Task<ProductItem?> GetProductItemByIdAsync(int Id)
-    {
-        return await _context.ProductItems.FirstOrDefaultAsync(p => p.Id == Id && !p.IsDelete);
-    }
-
     public async Task SaveChangesAsync(CancellationToken cancellation)
     {
         await _context.SaveChangesAsync();
@@ -44,8 +39,8 @@ public class ProductItemRepository : IProductItemRepository
         return await _context.ProductItems.Where(p=> p.ProductId == productId && !p.IsDelete).ToListAsync(cancellation);
     }
 
-    public Task<ProductItem?> GetProductItemByIdAsync(int id, CancellationToken cancellation)
+    public async Task<ProductItem?> GetProductItemByIdAsync(int id, CancellationToken cancellation)
     {
-        throw new NotImplementedException();
+        return await _context.ProductItems.FirstOrDefaultAsync(p => p.Id == id && !p.IsDelete);
     }
 }
