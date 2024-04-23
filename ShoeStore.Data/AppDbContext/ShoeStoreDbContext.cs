@@ -36,12 +36,14 @@ public class ShoeStoreDbContext: DbContext
 
     public DbSet<ContactUs> ContactUs { get; set; } 
 
+
     public DbSet<Role> Roles { get; set; }
     public DbSet<UserRole> UserRoles { get; set; }
 
     public DbSet<Location> Locations { get; set; }
 
     public DbSet<FavoriteProduct> FavoriteProducts { get; set; }
+
 
     #endregion
 

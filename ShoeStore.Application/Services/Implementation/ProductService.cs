@@ -27,21 +27,15 @@ public class ProductService : IProductService
         _productCategoryRepository = productCategoryRepository;
     }
 
-    public async Task<Product?> GetProductByIdAsync(int Id)
+    public async Task<Product?> GetProductByIdAsync(int Id,CancellationToken cancellation)
     {
-        return await _productRepository.GetProductByIdAsync(Id);
-    }
-
-    public async Task<Product?> GetProductByIdAsync(int Id, CancellationToken cancellation)
-    {
-        return await _productRepository.GetProductByIdAsync(Id, cancellation);
+        return await _productRepository.GetProductByIdAsync(Id,cancellation);
     }
 
     public async Task<ProductItem?> GetProductItemByIdAsync(int Id, CancellationToken cancellation)
     {
         return await _productItemRepository.GetProductItemByIdAsync(Id, cancellation);
     }
-
     public async Task<ProductPageDTO?> GetProductPageDTO(int productId, CancellationToken cancellation)
     {
         var product = await GetProductByIdAsync(productId, cancellation);

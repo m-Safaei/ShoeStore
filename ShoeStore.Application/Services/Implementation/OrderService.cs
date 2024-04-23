@@ -40,13 +40,34 @@ public class OrderService : IOrderService
     {
         OrderItem orderItem = new OrderItem()
         {
+
+           // ProductId = productId,
+
             ProductItemId = productItemId,
+
             OrderId = orderId,
             Price = Price,
             Count = 1
         };
         _orderRepository.AddOrderItem(orderItem);
     }
+    public void AddOneMoreProductToTheShopCart(int orderid, int productid)
+    {
+        OrderItem orderItem = _orderRepository.GetOrderItem(orderid,productid);
+        orderItem.Count =orderItem.Count+1;
+        _orderRepository.UpdateOrderItem(orderItem);
+    }
 
-
+    public void PlusProductToTheOrderItem(int id)
+    {
+      OrderItem orderItem =_orderRepository.GetOrderItemById(id);
+      orderItem.Count=orderItem.Count+1;
+        _orderRepository.UpdateOrderItem(orderItem);
+    }
+    public void MinusProductToTheOrderItem(int id)
+    {
+        OrderItem orderItem = _orderRepository.GetOrderItemById(id);
+        orderItem.Count = orderItem.Count - 1;
+        _orderRepository.UpdateOrderItem(orderItem);
+    }
 }
