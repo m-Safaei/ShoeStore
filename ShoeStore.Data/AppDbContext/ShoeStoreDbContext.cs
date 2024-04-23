@@ -4,8 +4,9 @@ using ShoeStore.Domain.Entities.ProductCategory;
 using ShoeStore.Domain.Entities.Order;
 
 using ShoeStore.Domain.Entities.ContactUs;
-
+using ShoeStore.Domain.Entities.FavoriteProduct;
 using ShoeStore.Domain.Entities.Product;
+using ShoeStore.Domain.Entities.Role;
 using ShoeStore.Domain.Entities.User;
 
 namespace ShoeStore.Data.AppDbContext;
@@ -27,12 +28,22 @@ public class ShoeStoreDbContext: DbContext
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductItem> ProductItems { get; set; }
     public DbSet<ProductCategory> ProductCategories { get; set; }
+    public DbSet<ProductFeature> ProductFeatures { get; set; }
     public DbSet<Size> Sizes { get; set; }
 
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderItem> orderItems { get; set; }
 
     public DbSet<ContactUs> ContactUs { get; set; } 
+
+
+    public DbSet<Role> Roles { get; set; }
+    public DbSet<UserRole> UserRoles { get; set; }
+
+    public DbSet<Location> Locations { get; set; }
+
+    public DbSet<FavoriteProduct> FavoriteProducts { get; set; }
+
 
     #endregion
 

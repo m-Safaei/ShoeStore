@@ -1,6 +1,6 @@
 ﻿namespace ShoeStore.Domain.DTOs.SiteSide.Account;
 
-public class UserDto
+public record UserDto
 {
     public int Id { get; set; }
     public string FirstName { get; set; }

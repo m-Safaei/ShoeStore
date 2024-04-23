@@ -26,10 +26,21 @@ namespace ShoeStore.Presentation
             builder.Services.AddScoped<IProductCategoryService, ProductCategoryService>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IProductItemRepository, ProductItemRepository>();
+            builder.Services.AddScoped<IProductFeatureRepository, ProductFeatureRepository>();
+            builder.Services.AddScoped<ISizeRepository, SizeRepository>();
             builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<IHomeService, HomeService>();
+
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();    
+
+            builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+            builder.Services.AddScoped<IRoleService, RoleService>();
+            builder.Services.AddScoped<ISizeService, SizeService>();
+
+            builder.Services.AddScoped<IFavoriteProductRepository, FavoriteProductRepository>();
+            builder.Services.AddScoped<IFavoriteProductService, FavoriteProductService>();
+
 
             #region Context
 

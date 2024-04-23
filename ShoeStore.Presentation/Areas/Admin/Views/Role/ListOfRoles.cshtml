@@ -1,0 +1,89 @@
+﻿@using ShoeStore.Application.Utilities
+@model IEnumerable<ShoeStore.Domain.DTOs.AdminSide.Role.RoleDto>
+
+
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            لیست نقش‌ها
+                            <small>پنل مدیریت مالتی کارت</small>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item">
+                            <a asp-area="Admin" asp-controller="Home" asp-action="Index">
+                                <i data-feather="home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">مدیریت نقش‌ها </li>
+                        <li class="breadcrumb-item active">لیست نقش‌ها</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <form class="form-inline search-form search-box">
+                            <div class="form-group">
+                                <input class="form-control-plaintext" type="search" placeholder="جستجو...">
+                            </div>
+                        </form>
+
+                        <a asp-area="Admin" asp-controller="Role" asp-action="CreateRole" class="btn btn-primary mt-md-0 mt-2">افزودن نقش</a>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive table-desi">
+                            <table class="all-package coupon-table table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            حذف
+                                        </th>
+                                        <th>عنوان نقش </th>
+                                        <th>Role Unique Name </th>
+                                        <th>ایجاد شده در</th>
+                                        <th>عملیات</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var role in Model)
+                                    {
+                                        <tr data-row-id="@role.RoleId">
+                                            <td>
+                                                <a data-id="@role.RoleId" asp-area="Admin" asp-controller="Role" asp-action="DeleteRole" asp-route-roleId="@role.RoleId" class="btn btn-primary add-row remove-row">حذف </a>
+                                            </td>
+
+                                            <td>@role.RoleTitle </td>
+                                            <td>@role.RoleUniqueName </td>
+                                            <td class="list-date">@role.CreateDate.ToShamsi()</td>
+                                            <td>
+                                                <a class="btn btn-warning" asp-area="Admin" asp-controller="Role" asp-action="EditRole" asp-route-roleId="@role.RoleId">ویرایش</a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>

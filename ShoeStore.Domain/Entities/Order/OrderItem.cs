@@ -15,6 +15,8 @@ public class OrderItem:BaseEntity
     #region Navigations
 
     public Order Order { get; set; }
+
     public List<ProductItem>? ProductItems { get; set; }
+
     #endregion
 }
