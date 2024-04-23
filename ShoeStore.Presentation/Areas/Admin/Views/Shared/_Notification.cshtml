@@ -1,9 +1,11 @@
-﻿@if (TempData["InfoMessage"] != null)
+﻿@using Microsoft.AspNetCore.Html
+
+@if (TempData["InfoMessage"] != null)
 {
     <script>
         Toastify({
 
-            text: "کاربری با شماره موبایل وارد شده در سیستم وجود دارد",
+            text: "@(new HtmlString(TempData["InfoMessage"] as string))",
 
             duration: 4000,
             gravity: "bottom",
@@ -16,7 +18,7 @@
 {
     <script>
         Toastify({
-            text: "عملیات باموفقیت انجام شد",
+            text: "@(new HtmlString(TempData["SuccessMessage"] as string))",
             duration: 4000,
             close: true,
             style: {
@@ -31,7 +33,7 @@
     <script>
         Toastify({
 
-            text: "کاربری با مشخصات وارد شده یافت نشد",
+            text: "@(new HtmlString(TempData["NotFoundUser"] as string))",
 
             duration: 4000,
             gravity: "bottom",
@@ -45,7 +47,7 @@
     <script>
         Toastify({
 
-            text: "پسورد وارد شده اشتباه است",
+            text: "@(new HtmlString(TempData["WrongPassword"] as string))",
 
             duration: 4000,
             gravity: "bottom",
@@ -59,7 +61,7 @@
     <script>
         Toastify({
 
-            text: "عملیات ناموفق",
+            text: "@(new HtmlString(TempData["ErrorMessage"] as string))",
 
             duration: 4000,
             gravity: "bottom",
@@ -73,7 +75,21 @@
     <script>
         Toastify({
 
-            text: "فیلد پسورد الزامی است",
+            text: "@(new HtmlString(TempData["PasswordField"] as string))",
+
+            duration: 4000,
+            gravity: "bottom",
+            close: true
+
+        }).showToast();
+    </script>
+}
+@if (TempData["CreateRoleError"] != null)
+{
+    <script>
+        Toastify({
+
+            text: "@(new HtmlString(TempData["CreateRoleError"] as string))",
 
             duration: 4000,
             gravity: "bottom",

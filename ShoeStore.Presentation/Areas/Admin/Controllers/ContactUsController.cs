@@ -38,11 +38,11 @@ namespace ShoeStore.Presentation.Areas.Admin.Controllers
             var res = await _service.DeleteContactUs(id, cancellation);
             if (res)
             {
-                TempData["SuccessMessage"] = "Success";
+                TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
             }
             else
             {
-                TempData["ErrorMessage"] = "failed";
+                TempData["ErrorMessage"] = "عملیات ناموفق";
             }
 
             return RedirectToAction(nameof(ListOfContactUs));

@@ -46,7 +46,7 @@ public class RoleController : AdminBaseController
                 return RedirectToAction(nameof(ListOfRoles));
             }
 
-            TempData["CreateRoleError"] = "Duplicate RoleUniqueName";
+            TempData["CreateRoleError"] = "نقش وارد شده تکراری است";
         }
         return View(role);
     }
@@ -73,7 +73,7 @@ public class RoleController : AdminBaseController
             {
                 return RedirectToAction(nameof(ListOfRoles));
             }
-            TempData["CreateRoleError"] = "Duplicate RoleUniqueName";
+            TempData["CreateRoleError"] = "نقش وارد شده تکراری است";
         }
         return View(role);
     }
@@ -86,11 +86,11 @@ public class RoleController : AdminBaseController
         var res = await _roleService.DeleteRole(roleId, cancellation);
         if (res)
         {
-            TempData["SuccessMessage"] = "Success";
+            TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
         }
         else
         {
-            TempData["ErrorMessage"] = "failed";
+            TempData["ErrorMessage"] = "عملیات ناموفق";
         }
 
         return RedirectToAction(nameof(ListOfRoles));

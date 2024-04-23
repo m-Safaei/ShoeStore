@@ -44,10 +44,11 @@ public class FavoriteProductRepository : IFavoriteProductRepository
         return favoriteProducts;
     }
 
-    public async Task<bool> DoesExistFavoriteProduct(int? productId, int userId, CancellationToken cancellation)
+    public async Task<bool> DoesExistFavoriteProduct(int? userId, int productId, CancellationToken cancellation)
     {
         return await _context.FavoriteProducts
-                             .AnyAsync(p => p.UserId == userId && p.ProductId == productId, cancellation);
+            .AsNoTracking()
+            .AnyAsync(p => p.UserId == userId && p.ProductId == productId, cancellation);
     }
 
     public async Task AddFavoriteProduct(FavoriteProduct favoriteProduct, CancellationToken cancellation)

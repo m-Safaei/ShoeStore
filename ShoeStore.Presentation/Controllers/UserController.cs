@@ -46,16 +46,33 @@ namespace ShoeStore.Presentation.Controllers
                     var res = await _userService.EditProfileSiteSide(model, cancellation);
                     if (res)
                     {
-                        TempData["SuccessMessage"] = "Success";
+                        TempData["SuccessMessage"] = "عملیات باموفقیت انجام شد";
                         return RedirectToAction(nameof(UserProfile));
                     }
-                    TempData["ErrorMessage"] = "failed";
+                    TempData["ErrorMessage"] = "عملیات ناموفق";
                 }
 
-                TempData["PasswordField"] = "Password is compulsory";
+                TempData["PasswordField"] = "فیلد پسورد الزامی است";
             }
             return View(model);
         }
+        #endregion
+
+        #region Delete Account
+
+        public async Task<IActionResult> DeleteAccount(int userId,CancellationToken cancellation)
+        {
+            var res =await _userService.DeleteUser(userId, cancellation);
+            if (res)
+            {
+                TempData["DeletedAccount"] = "حساب کاربری شما حذف شد";
+                return RedirectToAction("Logout","Account");
+            }
+
+            TempData["ErrorMessage"] = "عملیات ناموفق";
+            return RedirectToAction(nameof(UserProfile));
+        }
+
         #endregion
     }
 }
