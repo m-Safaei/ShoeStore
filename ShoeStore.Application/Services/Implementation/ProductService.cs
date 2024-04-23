@@ -32,6 +32,11 @@ public class ProductService : IProductService
         return await _productRepository.GetProductByIdAsync(Id,cancellation);
     }
 
+    public Task<Product?> GetProductByIdAsync(int Id)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<ProductItem?> GetProductItemByIdAsync(int Id, CancellationToken cancellation)
     {
         return await _productItemRepository.GetProductItemByIdAsync(Id, cancellation);

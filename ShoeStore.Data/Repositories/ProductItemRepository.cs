@@ -43,4 +43,9 @@ public class ProductItemRepository : IProductItemRepository
     {
         return await _context.ProductItems.Where(p=> p.ProductId == productId && !p.IsDelete).ToListAsync(cancellation);
     }
+
+    public Task<ProductItem?> GetProductItemByIdAsync(int id, CancellationToken cancellation)
+    {
+        throw new NotImplementedException();
+    }
 }

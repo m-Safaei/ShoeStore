@@ -21,7 +21,7 @@ public class FavoriteProductController : Controller
 
     public async Task<IActionResult> AddFavoriteProduct(int? userId, int productId, CancellationToken cancellation)
     {
-        if (userId != null)
+        if (userId != null && userId != 0)
         {
             var res = await _favoriteProductService.AddFavoriteProduct(userId, productId, cancellation);
             if (!res)
