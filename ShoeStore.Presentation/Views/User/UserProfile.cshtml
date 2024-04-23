@@ -1,4 +1,5 @@
-﻿@model ShoeStore.Domain.DTOs.SiteSide.Account.UserProfileDto
+﻿@using ShoeStore.Application.Utilities
+@model ShoeStore.Domain.DTOs.SiteSide.Account.UserProfileDto
 <!-- breadcrumb start -->
 <div class="breadcrumb-section">
     <div class="container">
@@ -50,7 +51,7 @@
                             <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#orders" class="nav-link">سفارشات من </a></li>
                             <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#wishlist" class="nav-link">علاقه مندی ها </a></li>
                             <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#payment" class="nav-link">کارت های شما</a></li>
-                            <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#security" class="nav-link">حذف حساب کاربری </a> </li>
+                            <li class="nav-item"><a asp-controller="User" asp-action="DeleteAccount" asp-route-userId="@User.GetUserId()" class="nav-link">حذف حساب کاربری </a> </li>
                             <li class="nav-item"><a asp-controller="Account" asp-action="Logout" class="nav-link">خروج </a> </li>
                         </ul>
                     </div>

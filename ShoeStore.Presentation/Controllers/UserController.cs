@@ -57,5 +57,22 @@ namespace ShoeStore.Presentation.Controllers
             return View(model);
         }
         #endregion
+
+        #region Delete Account
+
+        public async Task<IActionResult> DeleteAccount(int userId,CancellationToken cancellation)
+        {
+            var res =await _userService.DeleteUser(userId, cancellation);
+            if (res)
+            {
+                TempData["DeletedAccount"] = "حساب کاربری شما حذف شد";
+                return RedirectToAction("Logout","Account");
+            }
+
+            TempData["ErrorMessage"] = "عملیات ناموفق";
+            return RedirectToAction(nameof(UserProfile));
+        }
+
+        #endregion
     }
 }
