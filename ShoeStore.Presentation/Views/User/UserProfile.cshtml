@@ -51,7 +51,8 @@
                             <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#orders" class="nav-link">سفارشات من </a></li>
                             <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#wishlist" class="nav-link">علاقه مندی ها </a></li>
                             <li class="nav-item"><a data-bs-toggle="tab" data-bs-target="#payment" class="nav-link">کارت های شما</a></li>
-                            <li class="nav-item"><a asp-controller="User" asp-action="DeleteAccount" asp-route-userId="@User.GetUserId()" class="nav-link">حذف حساب کاربری </a> </li>
+@*                             <li class="nav-item"><a asp-controller="User" asp-action="DeleteAccount" asp-route-userId="@User.GetUserId()" class="nav-link">حذف حساب کاربری </a> </li>
+ *@                            <li class="nav-item"><a onclick="DeleteAjax(@Model.Id,'@Url.Action("DeleteAccount", "User", new { userId = User.GetUserId() })')" class="nav-link">حذف حساب کاربری </a> </li>
                             <li class="nav-item"><a asp-controller="Account" asp-action="Logout" class="nav-link">خروج </a> </li>
                         </ul>
                     </div>
@@ -447,3 +448,38 @@
     </div>
 </section>
 <!--  dashboard section end -->
+
+@section scripts{
+    <script>
+        function DeleteAjax(removeElementId, url) {
+            Swal.fire({
+                title: 'هشدار ',
+                text: "آیا از حذف حساب کاربری خود مطمئن هستید؟",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله',
+                cancelButtonText: 'خیر',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.get(url).then(res => {
+                        location.reload();
+                        if (removeElementId !== null &&
+                            removeElementId !== undefined &&
+                            removeElementId !== '' &&
+                            res.status === "Success") {
+                            console.log("Success");
+                        } else if (removeElementId !== null &&
+                            removeElementId !== undefined &&
+                            removeElementId !== '' &&
+                            res.status === "Danger") {
+                            console.log("Error");
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+    <script src="/js/sweetalert/sweetalert.js"></script>
+}

@@ -6,6 +6,7 @@ using ShoeStore.Data.AppDbContext;
 using ShoeStore.Data.Repositories;
 using ShoeStore.Domain.IRepositories;
 using System;
+using ShoeStore.IOC;
 
 namespace ShoeStore.Presentation
 {
@@ -18,28 +19,12 @@ namespace ShoeStore.Presentation
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddScoped<IUserService, UserService>();
-            builder.Services.AddScoped<IUserRepository, UserRepository>();
-            builder.Services.AddScoped<IContactUsRepository, ContactUsRepository>();
-            builder.Services.AddScoped<IContactUsService, ContactUsService>();
-            builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
-            builder.Services.AddScoped<IProductCategoryService, ProductCategoryService>();
-            builder.Services.AddScoped<IProductRepository, ProductRepository>();
-            builder.Services.AddScoped<IProductItemRepository, ProductItemRepository>();
-            builder.Services.AddScoped<IProductFeatureRepository, ProductFeatureRepository>();
-            builder.Services.AddScoped<ISizeRepository, SizeRepository>();
-            builder.Services.AddScoped<IProductService, ProductService>();
-            builder.Services.AddScoped<IHomeService, HomeService>();
 
-            builder.Services.AddScoped<IOrderService, OrderService>();
-            builder.Services.AddScoped<IOrderRepository, OrderRepository>();    
+            #region IOC
 
-            builder.Services.AddScoped<IRoleRepository, RoleRepository>();
-            builder.Services.AddScoped<IRoleService, RoleService>();
-            builder.Services.AddScoped<ISizeService, SizeService>();
+            RegisterServices(builder.Services);
 
-            builder.Services.AddScoped<IFavoriteProductRepository, FavoriteProductRepository>();
-            builder.Services.AddScoped<IFavoriteProductService, FavoriteProductService>();
+            #endregion
 
 
             #region Context
@@ -97,6 +82,11 @@ namespace ShoeStore.Presentation
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
+        }
+
+        public static void RegisterServices(IServiceCollection services)
+        {
+            DependencyContainer.RegisterServices(services);
         }
     }
 }
