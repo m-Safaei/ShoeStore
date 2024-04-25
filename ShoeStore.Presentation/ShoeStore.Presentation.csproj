@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShoeStore.Data\ShoeStore.Data.csproj" />
+    <ProjectReference Include="..\ShoeStore.IOC\ShoeStore.IOC.csproj" />
   </ItemGroup>
 
   <ItemGroup>
