@@ -4,6 +4,7 @@ using ShoeStore.Domain.Entities.Color_Size;
 using ShoeStore.Domain.Entities.ContactUs;
 using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.Entities.User;
+using ShoeStore.Domain.Entities.Comment;
 
 namespace ShoeStore.Data.AppDbContext;
 
@@ -27,6 +28,7 @@ public class ShoeStoreDbContext: DbContext
     public DbSet<Color> Colors { get; set; }
     public DbSet<Size> Sizes { get; set; }
     public DbSet<ContactUs> ContactUs { get; set; } 
+    public DbSet<Comment> Comment { get; set; } 
 
     
 
