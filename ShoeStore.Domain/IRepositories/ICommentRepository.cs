@@ -5,10 +5,9 @@ namespace ShoeStore.Domain.IRepositories
     public interface ICommentRepository
     {
         void AddNewComment(Comment newComment);
-        void AddBlogComment(int BlogId, int pageId);
-        void AddProductComment(int ProductId, int pageId);
-        void DeleteComment(List<Comment> comment);
-        void SaveChange();
+        void AddProductComment(Comment newComment, int productId);
+        void AddBlogComment(Comment newComment, int blogId);
+        void DeleteComment(Comment commentId);
 
     }
 }

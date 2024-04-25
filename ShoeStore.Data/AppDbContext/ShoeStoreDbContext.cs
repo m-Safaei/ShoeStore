@@ -8,6 +8,7 @@ using ShoeStore.Domain.Entities.FavoriteProduct;
 using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.Entities.Role;
 using ShoeStore.Domain.Entities.User;
+using ShoeStore.Domain.Entities.Comment;
 
 namespace ShoeStore.Data.AppDbContext;
 
@@ -35,6 +36,7 @@ public class ShoeStoreDbContext: DbContext
     public DbSet<OrderItem> orderItems { get; set; }
 
     public DbSet<ContactUs> ContactUs { get; set; } 
+    public DbSet<Comment> Comment { get; set; } 
 
 
     public DbSet<Role> Roles { get; set; }

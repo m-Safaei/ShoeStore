@@ -27,7 +27,6 @@ namespace ShoeStore.Application.Services.Implementation
             };
 
             _commentRepository.AddNewComment(newComment);
-            _commentRepository.SaveChange();
 
         }
 
