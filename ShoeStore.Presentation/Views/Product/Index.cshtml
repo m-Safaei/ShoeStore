@@ -84,7 +84,7 @@
                         }
 
 
-                        <form asp-action="TestForAddToShopCart" asp-controller="Product" method="post">
+                        <form asp-action="AddToShopCart" asp-controller="Order" method="post">
 
                             <div id="selectSize" class="addeffect-section product-description border-product">
 
@@ -124,9 +124,9 @@
                             <div class="product-buttons">
                                 @if (Model.SizeDTOs != null && Model.SizeDTOs.Any())
                                 {
-                                    <button type="submit" href="javascript:void(0)" id="cartEffect" class="btn btn-solid hover-solid btn-animation">اضافه کردن به سبد</button>
+                                    <button type="submit"  asp-all-route-Count="count"  href="javascript:void(0)" id="cartEffect" class="btn btn-solid hover-solid btn-animation">اضافه کردن به سبد</button>
                                 } 
-                                <a asp-action="TestForAddToFavorite" asp-controller="Product" asp-route-productId="@Model.ProductId" class="btn btn-solid">علاقه مندی</a>
+                                <a asp-action="TestForAddToFavorite" asp-controller="Product" asp-route-productId="productItemId" class="btn btn-solid">علاقه مندی</a>
                             </div>
                         </form>
 

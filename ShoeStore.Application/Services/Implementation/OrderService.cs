@@ -1,5 +1,6 @@
 ﻿#region Using
 using ShoeStore.Application.Services.Interface;
+using ShoeStore.Domain.DTOs.SiteSide.Order;
 using ShoeStore.Domain.Entities.Order;
 using ShoeStore.Domain.IRepositories;
 namespace ShoeStore.Application.Services.Implementation;
@@ -18,7 +19,7 @@ public class OrderService : IOrderService
         Order order = new Order()
         {
             Isfainally = false,
-            UserId=userId
+           UserId = userId,
         };
        _orderRepository.AddOrderToTheCart(order);
         return userId;
@@ -36,18 +37,14 @@ public class OrderService : IOrderService
     {
         return _orderRepository.IsExistOrderItemFromUserFromToday(OrderId,productId);
     }
-    public void AddProductToOrderItem(int productItemId, int orderId, decimal Price)
+    public void AddProductToOrderItem(int productItemId, int orderId, decimal Price,int count)
     {
         OrderItem orderItem = new OrderItem()
         {
-
-           // ProductId = productId,
-
             ProductItemId = productItemId,
-
             OrderId = orderId,
             Price = Price,
-            Count = 1
+            Count = count,
         };
         _orderRepository.AddOrderItem(orderItem);
     }
@@ -69,5 +66,23 @@ public class OrderService : IOrderService
         OrderItem orderItem = _orderRepository.GetOrderItemById(id);
         orderItem.Count = orderItem.Count - 1;
         _orderRepository.UpdateOrderItem(orderItem);
+    }
+   public Order GetOrderByOrderItemId(int OrderItemId)
+    {
+      return  _orderRepository.GetOrderByOrderItemId(OrderItemId);
+    }
+    public async Task<bool> IsOrderInLastStepOfShoping(int orderid, int Userid)
+    {
+        return await _orderRepository.IsOrderInLastStepOfShoping(orderid,Userid);
+    }
+    public async Task RemoveProductFromShopCart(int orderItemid)
+    {
+        OrderItem orderItem = _orderRepository.GetOrderItemById(orderItemid);
+         await _orderRepository.RemoveProductFromShopCart(orderItem);
+    }
+    public async Task<InvoiceSiteSideViewModel> FillInvoiceSiteSideViewModel(int userId)
+    {
+      return   await  _orderRepository.FillInvoiceSiteSideViewModel(userId);
+
     }
 }

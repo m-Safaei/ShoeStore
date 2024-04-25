@@ -5,6 +5,7 @@ using ShoeStore.Domain.Entities.Order;
 using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Application.Utilities;
 using Microsoft.AspNetCore.Authorization;
+using ShoeStore.Domain.IRepositories;
 
 namespace ShoeStore.Presentation.Controllers;
 #endregion
@@ -14,52 +15,55 @@ public class OrderController : Controller
     #region ctor
     public readonly IUserService _userService; 
     public readonly IProductService _productService;
-    public readonly IOrderService _orderService;  
-    public OrderController (IUserService userService, IProductService productService,IOrderService orderService)
+    public readonly IOrderService _orderService;
+    public readonly IProductItemRepository _productItemRepository;
+    public OrderController (IUserService userService, IProductService productService,IOrderService orderService,IProductItemRepository productItemRepository)
     {
         _userService = userService;
         _productService = productService;
         _orderService = orderService;
+        _productItemRepository = productItemRepository;
     }
     #endregion     
-     
-    int _id =6;
     [Authorize]
     #region Add to Cart
-    public async Task<IActionResult> AddToShopCart(int? Id, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> AddToShopCart(int productItemId,int Count, CancellationToken cancellationToken = default)
     {
         #region Model State Validation
-        if (_id == null)
+        if (productItemId == null)
         {
             return NotFound();
         }
         #endregion
         #region Get UserId
-         var UserId =User.GetUserId();
+         int UserId =User.GetUserId();
         #endregion
-      
-        //Get ProductItem By ProductItemID
-        ProductItem productItem = await _productService.GetProductItemByIdAsync(_id, cancellationToken);
+
         //Get Produc By ProductItemID
-        Product _product = await _productService.GetProductByIdAsync(_id, cancellationToken);
+        //Product _product = await _productService.GetProductByIdAsync(ProductId, cancellationToken);
+        //Get ProductItem By ProductItemID
+        Product product =await _productService.GetProductByProductItemId(productItemId, cancellationToken);
+       // var productItems = 1;
+
         #region Initial Order
         // Is Exit Any Order For Current User Today
         if (_orderService.IsExistOrderForUserInToday(UserId))
         {
             Order order = _orderService.GetOrderForCart(UserId);
-            if (_orderService.IsExistOrderItemFromUserFromToday(order.Id, productItem.ProductId))
+            if (_orderService.IsExistOrderItemFromUserFromToday(order.Id, product.Id))
             {
-                _orderService.AddOneMoreProductToTheShopCart(order.Id, productItem.ProductId);
+                _orderService.AddOneMoreProductToTheShopCart(order.Id, product.Id);
             }
             else
             {
-                _orderService.AddProductToOrderItem(productItem.Id, order.Id, 10);
+                _orderService.AddProductToOrderItem(productItemId, order.Id,product.Price, Count);
             }
         }
         else
         {
-            int OrderId = _orderService.AddOrderToTheShopCart(UserId);
-            _orderService.AddProductToOrderItem(productItem.Id, OrderId, 10);
+            int Orderid = _orderService.AddOrderToTheShopCart(User.GetUserId());
+            var order = _orderService.GetOrderForCart(Orderid);
+            _orderService.AddProductToOrderItem(productItemId, order.Id,product.Price, Count);
         }
         #endregion
        
@@ -70,12 +74,18 @@ public class OrderController : Controller
     #region Plus Product OrderItem
     public async Task<IActionResult> PlusProductOrderItem(int id)
     {
-        int OrderItemID = 1;
+        
+        int OrderItemID = 2;
         //if (id==null)
         //{
         //    return NotFound();
         //}
-        _orderService.PlusProductToTheOrderItem(OrderItemID);
+        Order order = _orderService.GetOrderByOrderItemId(OrderItemID);
+        if (await  _orderService.IsOrderInLastStepOfShoping(order.Id, User.GetUserId()))
+        {
+            _orderService.PlusProductToTheOrderItem(OrderItemID);
+        }
+
         return View();
     }
 
@@ -88,15 +98,39 @@ public class OrderController : Controller
         //{
         //    return NotFound();
         //}
-        _orderService.MinusProductToTheOrderItem(OrderItemID);
+        Order order = _orderService.GetOrderByOrderItemId(OrderItemID);
+        if (await _orderService.IsOrderInLastStepOfShoping(order.Id, User.GetUserId()))
+        {
+            _orderService.MinusProductToTheOrderItem(OrderItemID);
+        }
         return View();
     }
 
     #endregion
-    //public async Task<IActionResult> ShopCart()
-    //{
-    //    Order order=_orderService.GetOrderForCart(_userId);
+    #region Delete Product From ShopCart
+    public async Task<IActionResult> RemoveProductFromShopCart(int id)
+    {
+       
+        if (id == 0)
+        {
+            return NotFound();
+        }
+       await _orderService.RemoveProductFromShopCart(id);
+        return View();
+    }
+    #endregion
+    #region ShopCart
+    public async Task<IActionResult> ShopCart()
+    {
+        //Get Last Order User
+         var order =await _orderService.FillInvoiceSiteSideViewModel(User.GetUserId());
+        if (order == null)
+        {
+            User.GetUserId();
+        }
+        return View(order);
+    }
+    #endregion
 
-    //}
-   
+
 }
