@@ -128,7 +128,7 @@
                                 {
                                     <button type="submit"  asp-all-route-Count="count"  href="javascript:void(0)" id="cartEffect" class="btn btn-solid hover-solid btn-animation">اضافه کردن به سبد</button>
                                 } 
-                                <a asp-action="TestForAddToFavorite" asp-controller="Product" asp-route-productId="productItemId" class="btn btn-solid">علاقه مندی</a>
+                                <a asp-controller="FavoriteProduct" asp-action="AddFavoriteProduct" asp-route-productId="@Model.ProductId" asp-route-userId="@User.GetUserId()" class="btn btn-solid">علاقه مندی</a>
                             </div>
                         </form>
 
