@@ -75,7 +75,7 @@ namespace ShoeStore.Data.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -100,9 +100,6 @@ namespace ShoeStore.Data.Migrations
 
                     b.Property<bool>("Isfainally")
                         .HasColumnType("bit");
-
-                    b.Property<int>("OrderItemId")
-                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -144,9 +141,7 @@ namespace ShoeStore.Data.Migrations
 
                     b.HasIndex("OrderId");
 
-
                     b.HasIndex("ProductItemId");
-
 
                     b.ToTable("orderItems");
                 });
@@ -447,9 +442,7 @@ namespace ShoeStore.Data.Migrations
 
                     b.HasOne("ShoeStore.Domain.Entities.User.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Product");
 
@@ -470,14 +463,13 @@ namespace ShoeStore.Data.Migrations
             modelBuilder.Entity("ShoeStore.Domain.Entities.Order.OrderItem", b =>
                 {
                     b.HasOne("ShoeStore.Domain.Entities.Order.Order", "Order")
-                        .WithMany("Items")
+                        .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-
                     b.HasOne("ShoeStore.Domain.Entities.Product.ProductItem", "ProductItem")
-                        .WithMany()
+                        .WithMany("OrderItems")
                         .HasForeignKey("ProductItemId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -485,7 +477,6 @@ namespace ShoeStore.Data.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("ProductItem");
-
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Product", b =>
@@ -512,14 +503,8 @@ namespace ShoeStore.Data.Migrations
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.ProductItem", b =>
                 {
-
-                    b.HasOne("ShoeStore.Domain.Entities.Order.OrderItem", null)
-                        .WithMany("ProductItems")
-                        .HasForeignKey("OrderItemId");
-
-
                     b.HasOne("ShoeStore.Domain.Entities.Product.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -556,9 +541,6 @@ namespace ShoeStore.Data.Migrations
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.User.Location", b =>
                 {
-
-                    b.Navigation("ProductItems");
-
                     b.HasOne("ShoeStore.Domain.Entities.User.User", "User")
                         .WithMany("Locations")
                         .HasForeignKey("UserId")
@@ -570,13 +552,19 @@ namespace ShoeStore.Data.Migrations
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Order.Order", b =>
                 {
-                    b.Navigation("Items");
-
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Product", b =>
                 {
                     b.Navigation("ProductFeatures");
+
+                    b.Navigation("ProductItems");
+                });
+
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Product.ProductItem", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Size", b =>

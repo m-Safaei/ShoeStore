@@ -1,0 +1,84 @@
+﻿@model ShoeStore.Domain.DTOs.SiteSide.Order.InvoiceSiteSideViewModel
+<section class="cart-section section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 table-responsive-xs">
+                <table class="table cart-table">
+                    <thead>
+                        <tr class="table-head">
+                            <th scope="col">تصویر</th>
+                            <th scope="col">اسم محصول</th>
+                            <th scope="col">قیمت</th>
+                            <th scope="col">تعداد</th>
+                            <th scope="col">عملیات </th>
+                            <th scope="col">جمع </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.InvoiceOrderItem)
+                        {
+                              <tr>
+                            <td>
+                                <a href="#"><img src="@item.Product.ProductImage" alt=""></a>
+                            </td>
+                            <td>
+                                <a href="#">@item.Product.ProductTitle</a>
+                                <div class="mobile-cart-content row">
+                                    <div class="col">
+                                        <div class="qty-box">
+                                            <div class="input-group">
+                                                <input type="text" name="quantity" class="form-control input-number" value="1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h2 class="td-color">@item.Product.Price</h2>
+                                    </div>
+                                    <div class="col">
+                                        <h2 class="td-color">
+                                            <a href="#" class="icon"><i class="ti-close"></i></a>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <h2>163.00</h2>
+                            </td>
+                            <td>
+                                <div class="qty-box">
+                                    <div class="input-group">
+                                        <input type="number" name="quantity" class="form-control input-number" value="1">
+                                    </div>
+                                </div>
+                            </td>
+                            <td><a href="#" class="icon"><i class="ti-close"></i></a></td>
+                            <td>
+                                <h2 class="td-color">14539.00</h2>
+                            </td>
+                        </tr> 
+                        }
+                     
+                    </tbody>
+
+                </table>
+                <div class="table-responsive-md">
+                    <table class="table cart-table ">
+                        <tfoot>
+                            <tr>
+                                <td>قیمت کل :</td>
+                                <td>
+                                    <h2>16935.00</h2>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row cart-buttons">
+            <div class="col-6"><a href="#" class="btn btn-solid">ادامه خرید</a></div>
+            <div class="col-6"><a href="#" class="btn btn-solid">بررسی</a></div>
+        </div>
+    </div>
+</section>
+<!--section end-->

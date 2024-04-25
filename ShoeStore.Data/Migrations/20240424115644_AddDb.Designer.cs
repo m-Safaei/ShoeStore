@@ -12,8 +12,8 @@ using ShoeStore.Data.AppDbContext;
 namespace ShoeStore.Data.Migrations
 {
     [DbContext(typeof(ShoeStoreDbContext))]
-    [Migration("20240422091239_Add-IsSeen-Field")]
-    partial class AddIsSeenField
+    [Migration("20240424115644_AddDb")]
+    partial class AddDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,6 +64,32 @@ namespace ShoeStore.Data.Migrations
                     b.ToTable("ContactUs");
                 });
 
+            modelBuilder.Entity("ShoeStore.Domain.Entities.FavoriteProduct.FavoriteProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FavoriteProducts");
+                });
+
             modelBuilder.Entity("ShoeStore.Domain.Entities.Order.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -77,9 +103,6 @@ namespace ShoeStore.Data.Migrations
 
                     b.Property<bool>("Isfainally")
                         .HasColumnType("bit");
-
-                    b.Property<int>("OrderItemId")
-                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -412,6 +435,23 @@ namespace ShoeStore.Data.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("ShoeStore.Domain.Entities.FavoriteProduct.FavoriteProduct", b =>
+                {
+                    b.HasOne("ShoeStore.Domain.Entities.Product.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ShoeStore.Domain.Entities.User.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("ShoeStore.Domain.Entities.Order.Order", b =>
                 {
                     b.HasOne("ShoeStore.Domain.Entities.User.User", "User")
@@ -426,13 +466,13 @@ namespace ShoeStore.Data.Migrations
             modelBuilder.Entity("ShoeStore.Domain.Entities.Order.OrderItem", b =>
                 {
                     b.HasOne("ShoeStore.Domain.Entities.Order.Order", "Order")
-                        .WithMany("Items")
+                        .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("ShoeStore.Domain.Entities.Product.ProductItem", "ProductItem")
-                        .WithMany()
+                        .WithMany("OrderItems")
                         .HasForeignKey("ProductItemId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -515,7 +555,7 @@ namespace ShoeStore.Data.Migrations
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Order.Order", b =>
                 {
-                    b.Navigation("Items");
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Product", b =>
@@ -523,6 +563,11 @@ namespace ShoeStore.Data.Migrations
                     b.Navigation("ProductFeatures");
 
                     b.Navigation("ProductItems");
+                });
+
+            modelBuilder.Entity("ShoeStore.Domain.Entities.Product.ProductItem", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.Product.Size", b =>
