@@ -9,9 +9,13 @@ public class OrderService : IOrderService
 {
     #region ctor
     public readonly IOrderRepository _orderRepository;
-    public OrderService(IOrderRepository orderRepository)
+    public readonly IProductRepository _productRepository;
+    public readonly ISizeRepository _sizeRepository;
+    public OrderService(IOrderRepository orderRepository, IProductRepository productRepository,ISizeRepository sizeRepository)
     {
         _orderRepository = orderRepository;
+        _productRepository = productRepository;
+        _sizeRepository = sizeRepository;
     }
     #endregion
     public int AddOrderToTheShopCart(int userId)
@@ -80,9 +84,100 @@ public class OrderService : IOrderService
         OrderItem orderItem = _orderRepository.GetOrderItemById(orderItemid);
          await _orderRepository.RemoveProductFromShopCart(orderItem);
     }
-    public async Task<InvoiceSiteSideViewModel> FillInvoiceSiteSideViewModel(int userId)
-    {
-      return   await  _orderRepository.FillInvoiceSiteSideViewModel(userId);
 
+  public async Task<List<InvoiceSiteSideViewModel>> FillInvoiceSiteSideViewModel(int userId, CancellationToken cancellation)
+   {
+    var invoices = new List<InvoiceSiteSideViewModel>();
+    
+    // Get orders by user id.
+    var orders = _orderRepository.GetOrder(userId);
+    
+    foreach (var order in orders)
+    {
+        if (!order.Isfainally)
+        {
+            var invoice = new InvoiceSiteSideViewModel
+            {
+                Order = order,
+                InvoiceOrderItem = new List<InvoiceOrderDetailSiteSideViewModel>(),
+                IsReturend = false
+            };
+            
+            // Get order items for the current order.
+            var orderItems = _orderRepository.GetOrderItemByOrderId(order.Id);
+            
+            int i = 1;
+            
+            foreach (var orderItem in orderItems)
+            {
+                var product = await _productRepository.GetProductByIdAsync(i, cancellation);
+                
+                var invoiceOrderDetail = new InvoiceOrderDetailSiteSideViewModel
+                {
+                    OrderDetailID = orderItem.Id,
+                    Count = orderItem.Count,
+                    Price = orderItem.Price,
+                    Product = new InvoiceProductSiteSideViewModel
+                    {
+                        ProductId = product.Id,
+                        ProductTitle = product.Name,
+                        ProductImage = product.ProductImage
+                    }
+                };
+                
+                invoice.InvoiceOrderItem.Add(invoiceOrderDetail);
+            }
+            
+            invoices.Add(invoice);
+        }
+    }
+    
+    return await Task.FromResult(invoices);
+   }
+    public Task<InvoiceSiteSideViewModel> FillInvoiceSiteSideViewModelAsync(int userId, CancellationToken cancellation)
+    {
+        InvoiceSiteSideViewModel invoice = null;
+        // Get orders by user id
+        var orders = _orderRepository.GetOrder(userId);
+
+        foreach (var order in orders)
+        {
+            if (!order.Isfainally)
+            {
+                invoice = new InvoiceSiteSideViewModel
+                {
+                    Order = order,
+                    InvoiceOrderItem = new List<InvoiceOrderDetailSiteSideViewModel>(),
+                    IsReturend = false
+                };
+
+                // Get order items for the current order
+                var orderItems = _orderRepository.GetOrderItemByOrderId(order.Id);
+                foreach (var orderItem in orderItems)
+                {
+                    var product =  _productRepository.GetProductByIdAsync(2, cancellation);
+                    // ...
+
+                    var invoiceOrderDetail = new InvoiceOrderDetailSiteSideViewModel
+                    {
+                        OrderDetailID = orderItem.Id,
+                        Count = orderItem.Count,
+                        Price = orderItem.Price,
+                        Product = new InvoiceProductSiteSideViewModel
+                        {
+                            ProductId = product.Id,
+                            ProductTitle = product.Result.Name,
+                            ProductImage = product.Result.ProductImage
+                        }
+                    };
+
+                    invoice.InvoiceOrderItem.Add(invoiceOrderDetail);
+                }
+
+                break; // Since we only want one invoice, break the loop after the first valid order.
+            }
+        }
+
+        return Task.FromResult(invoice);
     }
 }
