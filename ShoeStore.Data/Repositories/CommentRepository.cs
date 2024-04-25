@@ -23,13 +23,13 @@ namespace ShoeStore.Data.Repositories
             }
         }
 
-        public void AddProductComment(Comment newComment, int productId, int pageId)
+        public void AddProductComment(Comment newComment, int productId)
         {
             if (newComment.ProductId == productId)
                 AddNewComment(newComment);
         }
 
-        public void AddBlogComment(Comment newComment, int blogId, int pageId)
+        public void AddBlogComment(Comment newComment, int blogId)
         {
             if (newComment.BlogId == blogId)
                 AddNewComment(newComment);
