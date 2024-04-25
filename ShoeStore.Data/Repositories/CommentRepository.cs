@@ -1,6 +1,8 @@
 ﻿using ShoeStore.Data.AppDbContext;
 using ShoeStore.Domain.Entities.Comment;
+using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.IRepositories;
+using System.Linq;
 
 namespace ShoeStore.Data.Repositories
 {
@@ -14,27 +16,29 @@ namespace ShoeStore.Data.Repositories
 
         public void AddNewComment(Comment newComment)
         {
+            if (!newComment.IsSeen && !newComment.IsDelete) 
+            {
+                _context.Comment.ToList().Add(newComment);
+                _context.SaveChanges();
+            }
+        }
+
+        public void AddProductComment(Comment newComment, int productId, int pageId)
+        {
+            if (newComment.ProductId == productId)
+                AddNewComment(newComment);
+        }
+
+        public void AddBlogComment(Comment newComment, int blogId, int pageId)
+        {
+            if (newComment.BlogId == blogId)
+                AddNewComment(newComment);
+        }
+
+        public void DeleteComment(Comment commentId)
+        {
             throw new NotImplementedException();
         }
 
-        public void AddProductComment(int ProductId, int pageId)
-        {
-            throw new NotImplementedException();
-        }
-        
-        public void AddBlogComment(int BlogId, int pageId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteComment(List<Comment> comment)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SaveChange()
-        {
-            _context.SaveChanges();
-        }
     }
 }
