@@ -51,9 +51,10 @@ public class UserRepository : IUserRepository
             FirstName = p.FirstName,
             LastName = p.LastName,
             Mobile = p.Mobile,
-            Password = p.Password
+            Password = p.Password,
+            IsDelete = p.IsDelete,
         })
-            .SingleOrDefaultAsync(p => p.Mobile == mobile, cancellation);
+            .SingleOrDefaultAsync(p => !p.IsDelete && p.Mobile == mobile, cancellation);
     }
 
     public async Task<User?> GetUserByIdAsync(int userId, CancellationToken cancellation)
