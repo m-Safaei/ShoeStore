@@ -38,13 +38,8 @@ public class OrderController : Controller
         #region Get UserId
          int UserId =User.GetUserId();
         #endregion
-
-        //Get Produc By ProductItemID
-        //Product _product = await _productService.GetProductByIdAsync(ProductId, cancellationToken);
         //Get ProductItem By ProductItemID
         Product product =await _productService.GetProductByProductItemId(productItemId, cancellationToken);
-       // var productItems = 1;
-
         #region Initial Order
         // Is Exit Any Order For Current User Today
         if (_orderService.IsExistOrderForUserInToday(UserId))
@@ -74,34 +69,32 @@ public class OrderController : Controller
     #region Plus Product OrderItem
     public async Task<IActionResult> PlusProductOrderItem(int id)
     {
-        
-        int OrderItemID = 2;
-        //if (id==null)
-        //{
-        //    return NotFound();
-        //}
-        Order order = _orderService.GetOrderByOrderItemId(OrderItemID);
+        if (id == null)
+        {
+            return NotFound();
+        }
+        Order order = _orderService.GetOrderByOrderItemId(id);
         if (await  _orderService.IsOrderInLastStepOfShoping(order.Id, User.GetUserId()))
         {
-            _orderService.PlusProductToTheOrderItem(OrderItemID);
+            _orderService.PlusProductToTheOrderItem(id);
         }
 
-        return View();
+        return View("ShopCart", "Order");
     }
 
     #endregion
     #region Minus Product OrderItem
     public async Task<IActionResult> MinusProductOrderItem(int id)
     {
-        int OrderItemID = 1;
-        //if (id==null)
-        //{
-        //    return NotFound();
-        //}
-        Order order = _orderService.GetOrderByOrderItemId(OrderItemID);
+
+        if (id == null)
+        {
+            return NotFound();
+        }
+        Order order = _orderService.GetOrderByOrderItemId(id);
         if (await _orderService.IsOrderInLastStepOfShoping(order.Id, User.GetUserId()))
         {
-            _orderService.MinusProductToTheOrderItem(OrderItemID);
+            _orderService.MinusProductToTheOrderItem(id);
         }
         return View();
     }
@@ -116,7 +109,8 @@ public class OrderController : Controller
             return NotFound();
         }
        await _orderService.RemoveProductFromShopCart(Id);
-        return View();
+        
+        return RedirectToAction("ShopCart", "Order");
     }
     #endregion
     #region ShopCart
@@ -126,13 +120,7 @@ public class OrderController : Controller
         //Get Last Order User
          var order =await _orderService.FillInvoiceSiteSideViewModelAsync(User.GetUserId(),cancellation);
         
-        if (order == null)
-        {
-            User.GetUserId();
-        }
         return View(order);
     }
     #endregion
-
-
 }

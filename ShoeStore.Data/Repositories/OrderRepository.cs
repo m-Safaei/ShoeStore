@@ -5,6 +5,8 @@ using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.IRepositories;
 using ShoeStore.Domain.DTOs.SiteSide.Order;
 namespace ShoeStore.Data.Repositories;
+
+using Microsoft.VisualBasic;
 using System.Collections.Generic;
 
 public class OrderRepository : IOrderRepository
@@ -33,7 +35,7 @@ public class OrderRepository : IOrderRepository
     }
     public Order GetOrderForCart(int userId)
     {
-        return _dbContext.Orders.SingleOrDefault(p=>p.UserId==userId&&p.Isfainally==false);
+        return _dbContext.Orders.SingleOrDefault(p=>p.UserId==userId&&p.Isfainally==false&&p.CreateDate.Day==DateTime.Now.Day && p.CreateDate.Month == DateTime.Now.Month);
     }
     public Order GetOrderByOrderItemId(int OrderItemId) 
     {
@@ -46,7 +48,7 @@ public class OrderRepository : IOrderRepository
     }
     public List<Order> GetOrder(int UserID)
     {
-      return  _dbContext.Orders.Where(e=>e.UserId==UserID).ToList();
+      return  _dbContext.Orders.Where(e=>e.UserId==UserID&&e.CreateDate.Day==DateTime.Now.Day && e.CreateDate.Month == DateTime.Now.Month).ToList();
     }
     public async Task<bool> IsOrderInLastStepOfShoping(int orderid,int Userid)
     {
