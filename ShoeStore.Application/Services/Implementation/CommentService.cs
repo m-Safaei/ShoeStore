@@ -1,6 +1,5 @@
 ﻿using ShoeStore.Application.Services.Interface;
 using ShoeStore.Domain.DTOs.SiteSide.Comment;
-using ShoeStore.Domain.DTOs.SiteSide.Account;
 using ShoeStore.Domain.Entities.Comment;
 using ShoeStore.Domain.IRepositories;
 
@@ -15,11 +14,11 @@ namespace ShoeStore.Application.Services.Implementation
             _commentRepository = commentRepository;
         }
 
-        public void AddComment(CommentDTO comment, UserDto user)
+        public void AddComment(CommentDTO comment)
         {
             Comment newComment = new Comment()
             {
-                UserId = user.Id,
+                UserId = comment.UserId,
                 MessageTitle = comment.MessageTitle,
                 MessageBody = comment.MessageBody,
                 IsDelete = false,
@@ -27,13 +26,7 @@ namespace ShoeStore.Application.Services.Implementation
             };
 
             _commentRepository.AddNewComment(newComment);
-
         }
 
-        public void DeleteComment(CommentDTO comment)
-        {
-            throw new NotImplementedException();
-        }
-        
     }
 }

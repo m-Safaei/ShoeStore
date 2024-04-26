@@ -1,8 +1,7 @@
-﻿using ShoeStore.Data.AppDbContext;
+﻿using Microsoft.EntityFrameworkCore;
+using ShoeStore.Data.AppDbContext;
 using ShoeStore.Domain.Entities.Comment;
-using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.IRepositories;
-using System.Linq;
 
 namespace ShoeStore.Data.Repositories
 {
@@ -16,28 +15,21 @@ namespace ShoeStore.Data.Repositories
 
         public void AddNewComment(Comment newComment)
         {
-            if (!newComment.IsSeen && !newComment.IsDelete) 
+            if (newComment != null) 
             {
-                _context.Comment.ToList().Add(newComment);
+                _context.Comments.Add(newComment);
                 _context.SaveChanges();
             }
         }
 
-        public void AddProductComment(Comment newComment, int productId)
+        public async Task<List<Comment>> GetListOfProductComments() 
         {
-            if (newComment.ProductId == productId)
-                AddNewComment(newComment);
+            return await _context.Comments.Where(p => !p.IsDelete && p.ProductId != null).ToListAsync();
         }
 
-        public void AddBlogComment(Comment newComment, int blogId)
+        public async Task<List<Comment>> GetListOfBlogComments()
         {
-            if (newComment.BlogId == blogId)
-                AddNewComment(newComment);
-        }
-
-        public void DeleteComment(Comment commentId)
-        {
-            throw new NotImplementedException();
+            return await _context.Comments.Where(p => !p.IsDelete && p.BlogId != null).ToListAsync();
         }
 
     }

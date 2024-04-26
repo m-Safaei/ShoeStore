@@ -36,7 +36,7 @@ public class ShoeStoreDbContext: DbContext
     public DbSet<OrderItem> orderItems { get; set; }
 
     public DbSet<ContactUs> ContactUs { get; set; } 
-    public DbSet<Comment> Comment { get; set; } 
+    public DbSet<Comment> Comments { get; set; } 
 
 
     public DbSet<Role> Roles { get; set; }
