@@ -54,11 +54,11 @@ public class OrderRepository : IOrderRepository
     }
     #endregion
     #region OrderItem
-    public bool IsExistOrderItemFromUserFromToday(int OrderId,int productId)
+    public bool IsExistOrderItemFromUserFromToday(int OrderId,int productItemId)
     {
 
       //  return _dbContext.orderItems.Any(p => p.ProductId == productId && p.OrderId == OrderId);
-        return _dbContext.orderItems.Any(p =>  p.OrderId == OrderId);
+        return _dbContext.orderItems.Any(p =>  p.OrderId == OrderId&&p.ProductItemId== productItemId);
 
     }
     public void AddOrderItem(OrderItem orderItem)

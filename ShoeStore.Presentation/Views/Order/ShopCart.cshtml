@@ -19,7 +19,7 @@
                         {
                               <tr>
                             <td>
-                                <a href="#"><img src="@item.Product.ProductImage" alt=""></a>
+                                <a href="#"><img src="/images/shoes/1.jpg" alt=""></a>
                             </td>
                             <td>
                                 <a href="#">@item.Product.ProductTitle</a>
@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="col">
                                         <h2 class="td-color">
-                                            <a href="#" class="icon"><i class="ti-close"></i></a>
+                                            <a href="#" class="icon"> <i class="ti-close"></i></a>
                                         </h2>
                                     </div>
                                 </div>
@@ -47,13 +47,19 @@
                             <td>
                                 <div class="qty-box">
                                     <div class="input-group">
-                                        <input type="number" name="quantity" class="form-control input-number" value="1">
+                                    <input type="number"  name="quantity"  class="form-control input-number" value="@item.Count">
                                     </div>
                                 </div>
                             </td>
-                            <td><a href="#" class="icon"><i class="ti-close"></i></a></td>
+                                <td><a  asp-action="RemoveProductFromShopCart" asp-controller="Order" asp-route-Id="@item.OrderDetailID" class="icon"><i class="ti-close"></i></a></td>
                             <td>
-                                <h2 class="td-color">14539.00</h2>
+                                    @{
+                                        var tedad = item.Count;
+                                        var TotalForPrduct = item.Price * tedad;
+                                        
+                                        <h2 class="td-color">@TotalForPrduct</h2>
+                                       
+                                    }
                             </td>
                         </tr> 
                         }
@@ -67,7 +73,18 @@
                             <tr>
                                 <td>قیمت کل :</td>
                                 <td>
-                                    <h2>16935.00</h2>
+                                    @{
+                                        int TotalFainal = 0;
+                                        foreach (var item in Model.InvoiceOrderItem)
+                                        {
+                                            var tedadProduct = item.Count;
+                                            var Total = item.Price * tedadProduct;
+                                            var tedadOrderItem = Model.InvoiceOrderItem.Count();
+                                            TotalFainal += Convert.ToInt16(Total);
+                                        }
+                                        <h2 class="td-color">@TotalFainal</h2>
+                                    }
+                                    
                                 </td>
                             </tr>
                         </tfoot>

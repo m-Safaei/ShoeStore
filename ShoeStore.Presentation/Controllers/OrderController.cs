@@ -50,7 +50,7 @@ public class OrderController : Controller
         if (_orderService.IsExistOrderForUserInToday(UserId))
         {
             Order order = _orderService.GetOrderForCart(UserId);
-            if (_orderService.IsExistOrderItemFromUserFromToday(order.Id, product.Id))
+            if (_orderService.IsExistOrderItemFromUserFromToday(order.Id, productItemId))
             {
                 _orderService.AddOneMoreProductToTheShopCart(order.Id, product.Id);
             }
@@ -108,14 +108,14 @@ public class OrderController : Controller
 
     #endregion
     #region Delete Product From ShopCart
-    public async Task<IActionResult> RemoveProductFromShopCart(int id)
+    public async Task<IActionResult> RemoveProductFromShopCart(int Id)
     {
        
-        if (id == 0)
+        if (Id == 0)
         {
             return NotFound();
         }
-       await _orderService.RemoveProductFromShopCart(id);
+       await _orderService.RemoveProductFromShopCart(Id);
         return View();
     }
     #endregion

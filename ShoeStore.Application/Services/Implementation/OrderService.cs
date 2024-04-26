@@ -2,6 +2,7 @@
 using ShoeStore.Application.Services.Interface;
 using ShoeStore.Domain.DTOs.SiteSide.Order;
 using ShoeStore.Domain.Entities.Order;
+using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Domain.IRepositories;
 namespace ShoeStore.Application.Services.Implementation;
 #endregion
@@ -11,11 +12,13 @@ public class OrderService : IOrderService
     public readonly IOrderRepository _orderRepository;
     public readonly IProductRepository _productRepository;
     public readonly ISizeRepository _sizeRepository;
-    public OrderService(IOrderRepository orderRepository, IProductRepository productRepository,ISizeRepository sizeRepository)
+    public readonly IProductItemRepository _productItemRepository;
+    public OrderService(IOrderRepository orderRepository, IProductRepository productRepository,ISizeRepository sizeRepository, IProductItemRepository productItemRepository)
     {
         _orderRepository = orderRepository;
         _productRepository = productRepository;
         _sizeRepository = sizeRepository;
+        _productItemRepository = productItemRepository;
     }
     #endregion
     public int AddOrderToTheShopCart(int userId)
@@ -134,7 +137,7 @@ public class OrderService : IOrderService
     
     return await Task.FromResult(invoices);
    }
-    public Task<InvoiceSiteSideViewModel> FillInvoiceSiteSideViewModelAsync(int userId, CancellationToken cancellation)
+    public async Task<InvoiceSiteSideViewModel> FillInvoiceSiteSideViewModelAsync(int userId, CancellationToken cancellation)
     {
         InvoiceSiteSideViewModel invoice = null;
         // Get orders by user id
@@ -155,8 +158,10 @@ public class OrderService : IOrderService
                 var orderItems = _orderRepository.GetOrderItemByOrderId(order.Id);
                 foreach (var orderItem in orderItems)
                 {
-                    var product =  _productRepository.GetProductByIdAsync(2, cancellation);
-                    // ...
+                   ProductItem productItem =await _productItemRepository.GetProductItemByIdAsync(orderItem.ProductItemId,cancellation);
+
+                    var product =  _productRepository.GetProductByIdAsync(productItem.ProductId, cancellation);
+                   
 
                     var invoiceOrderDetail = new InvoiceOrderDetailSiteSideViewModel
                     {
@@ -178,6 +183,6 @@ public class OrderService : IOrderService
             }
         }
 
-        return Task.FromResult(invoice);
+        return await Task.FromResult(invoice);
     }
 }
