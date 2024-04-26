@@ -1,4 +1,6 @@
 ﻿using ShoeStore.Application.Services.Interface;
+using ShoeStore.Domain.DTOs.SiteSide.Comment;
+using ShoeStore.Domain.DTOs.SiteSide.Account;
 using ShoeStore.Domain.Entities.Comment;
 using ShoeStore.Domain.IRepositories;
 
@@ -6,24 +8,32 @@ namespace ShoeStore.Application.Services.Implementation
 {
     public class CommentService : ICommentService
     {
-        private readonly ICommentRepository _comment;
+        private readonly ICommentRepository _commentRepository;
 
-        public CommentService(ICommentRepository comment)
+        public CommentService(ICommentRepository commentRepository)
         {
-            _comment = comment;
+            _commentRepository = commentRepository;
         }
 
-        public void AddComment(Comment comment, int userid)
+        public void AddComment(CommentDTO comment, UserDto user)
         {
-            comment.UserId = userid;
-            comment.CreateDate = DateTime.Now;
-            comment.MessageTitle = string.Empty;
-            comment.MessageBody= string.Empty;
-            comment.IsSeen = false;
-            comment.IsDelete = false;
+            Comment newComment = new Comment()
+            {
+                UserId = user.Id,
+                MessageTitle = comment.MessageTitle,
+                MessageBody = comment.MessageBody,
+                IsDelete = false,
+                IsSeen = false
+            };
 
-            _comment.AddComment(comment);
+            _commentRepository.AddNewComment(newComment);
+
         }
 
+        public void DeleteComment(CommentDTO comment)
+        {
+            throw new NotImplementedException();
+        }
+        
     }
 }

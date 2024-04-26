@@ -4,8 +4,10 @@ namespace ShoeStore.Domain.IRepositories
 {
     public interface ICommentRepository
     {
-        void AddComment(Comment comment);
-        void Savechanges();
+        void AddNewComment(Comment newComment);
+        void AddProductComment(Comment newComment, int productId);
+        void AddBlogComment(Comment newComment, int blogId);
+        void DeleteComment(Comment commentId);
 
     }
 }
