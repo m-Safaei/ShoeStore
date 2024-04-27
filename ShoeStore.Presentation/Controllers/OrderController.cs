@@ -38,19 +38,14 @@ public class OrderController : Controller
         #region Get UserId
          int UserId =User.GetUserId();
         #endregion
-
-        //Get Produc By ProductItemID
-        //Product _product = await _productService.GetProductByIdAsync(ProductId, cancellationToken);
         //Get ProductItem By ProductItemID
         Product product =await _productService.GetProductByProductItemId(productItemId, cancellationToken);
-       // var productItems = 1;
-
         #region Initial Order
         // Is Exit Any Order For Current User Today
         if (_orderService.IsExistOrderForUserInToday(UserId))
         {
             Order order = _orderService.GetOrderForCart(UserId);
-            if (_orderService.IsExistOrderItemFromUserFromToday(order.Id, product.Id))
+            if (_orderService.IsExistOrderItemFromUserFromToday(order.Id, productItemId))
             {
                 _orderService.AddOneMoreProductToTheShopCart(order.Id, product.Id);
             }
@@ -66,71 +61,66 @@ public class OrderController : Controller
             _orderService.AddProductToOrderItem(productItemId, order.Id,product.Price, Count);
         }
         #endregion
-       
-        return View();
+
+        return RedirectToAction("ShopCart","Order");
 
     }
     #endregion
     #region Plus Product OrderItem
     public async Task<IActionResult> PlusProductOrderItem(int id)
     {
-        
-        int OrderItemID = 2;
-        //if (id==null)
-        //{
-        //    return NotFound();
-        //}
-        Order order = _orderService.GetOrderByOrderItemId(OrderItemID);
+        if (id == null)
+        {
+            return NotFound();
+        }
+        Order order = _orderService.GetOrderByOrderItemId(id);
         if (await  _orderService.IsOrderInLastStepOfShoping(order.Id, User.GetUserId()))
         {
-            _orderService.PlusProductToTheOrderItem(OrderItemID);
+            _orderService.PlusProductToTheOrderItem(id);
         }
 
-        return View();
+        return View("ShopCart", "Order");
     }
 
     #endregion
     #region Minus Product OrderItem
     public async Task<IActionResult> MinusProductOrderItem(int id)
     {
-        int OrderItemID = 1;
-        //if (id==null)
-        //{
-        //    return NotFound();
-        //}
-        Order order = _orderService.GetOrderByOrderItemId(OrderItemID);
+
+        if (id == null)
+        {
+            return NotFound();
+        }
+        Order order = _orderService.GetOrderByOrderItemId(id);
         if (await _orderService.IsOrderInLastStepOfShoping(order.Id, User.GetUserId()))
         {
-            _orderService.MinusProductToTheOrderItem(OrderItemID);
+            _orderService.MinusProductToTheOrderItem(id);
         }
         return View();
     }
 
     #endregion
     #region Delete Product From ShopCart
-    public async Task<IActionResult> RemoveProductFromShopCart(int id)
+    public async Task<IActionResult> RemoveProductFromShopCart(int Id)
     {
        
-        if (id == 0)
+        if (Id == 0)
         {
             return NotFound();
         }
-       await _orderService.RemoveProductFromShopCart(id);
-        return View();
+       await _orderService.RemoveProductFromShopCart(Id);
+        
+        return RedirectToAction("ShopCart", "Order");
     }
     #endregion
     #region ShopCart
-    public async Task<IActionResult> ShopCart()
+    public async Task<IActionResult> ShopCart(CancellationToken cancellation)
     {
+        
         //Get Last Order User
-         var order =await _orderService.FillInvoiceSiteSideViewModel(User.GetUserId());
-        if (order == null)
-        {
-            User.GetUserId();
-        }
+         var order =await _orderService.FillInvoiceSiteSideViewModelAsync(User.GetUserId(),cancellation);
+        
         return View(order);
     }
     #endregion
-
-
 }

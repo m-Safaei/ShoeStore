@@ -12,6 +12,7 @@ public interface IOrderRepository
     Order GetOrderForCart(int userId);
     Order GetOrderByOrderItemId(int OrderItemId);
     Task<bool> IsOrderInLastStepOfShoping(int orderid, int Userid);
+    List<Order> GetOrder(int UserID);
 
     #region orderItem
     bool IsExistOrderItemFromUserFromToday(int OrderId, int productId);
@@ -20,7 +21,8 @@ public interface IOrderRepository
     OrderItem GetOrderItem(int orderid,int productid);
     OrderItem GetOrderItemById(int orderid);
     Task RemoveProductFromShopCart(OrderItem orderItem);
-    Task<InvoiceSiteSideViewModel> FillInvoiceSiteSideViewModel(int userId);
+
+    List<OrderItem> GetOrderItemByOrderId(int OrderId);
     #endregion
 
 
