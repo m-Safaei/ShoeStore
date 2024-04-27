@@ -25,7 +25,17 @@ namespace ShoeStore.Application.Services.Implementation
                 IsSeen = false
             };
 
-            _commentRepository.AddNewComment(newComment);
+            _commentRepository.AddComment(newComment);
+        }
+
+        public async Task<List<Comment>> GetListOfProductComments(CancellationToken cancellation)
+        {
+            return await _commentRepository.GetListOfProductComments(cancellation);
+        }
+
+        public async Task<List<Comment>> GetListOfBlogComments()
+        {
+            return await _commentRepository.GetListOfBlogComments();
         }
 
     }

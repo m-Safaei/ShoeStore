@@ -13,18 +13,18 @@ namespace ShoeStore.Data.Repositories
             _context = context;
         }
 
-        public void AddNewComment(Comment newComment)
+        public void AddComment(Comment Comment)
         {
-            if (newComment != null) 
+            if (Comment != null) 
             {
-                _context.Comments.Add(newComment);
+                _context.Comments.Add(Comment);
                 _context.SaveChanges();
             }
         }
 
-        public async Task<List<Comment>> GetListOfProductComments() 
+        public async Task<List<Comment>> GetListOfProductComments(CancellationToken cancellation) 
         {
-            return await _context.Comments.Where(p => !p.IsDelete && p.ProductId != null).ToListAsync();
+            return await _context.Comments.Where(p => !p.IsDelete && p.ProductId != null).ToListAsync(cancellation);
         }
 
         public async Task<List<Comment>> GetListOfBlogComments()
