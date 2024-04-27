@@ -61,8 +61,8 @@ public class OrderController : Controller
             _orderService.AddProductToOrderItem(productItemId, order.Id,product.Price, Count);
         }
         #endregion
-       
-        return View();
+
+        return RedirectToAction("ShopCart","Order");
 
     }
     #endregion
