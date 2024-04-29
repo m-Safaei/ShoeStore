@@ -124,9 +124,9 @@ public class OrderController : Controller
     }
     #endregion
     #region Check Out
-    //public async Task<IActionResult> CheckOut(int OrderId)
-    //{
-
-    //}
+    public async Task<IActionResult> CheckOut(int OrderId)
+    {
+        return View();
+    }
     #endregion
 }
