@@ -6,6 +6,8 @@ using ShoeStore.Domain.Entities.Product;
 using ShoeStore.Application.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using ShoeStore.Domain.IRepositories;
+using Microsoft.CodeAnalysis;
+using ShoeStore.Domain.DTOs.SiteSide.Location;
 
 namespace ShoeStore.Presentation.Controllers;
 #endregion
@@ -119,7 +121,6 @@ public class OrderController : Controller
         
         //Get Last Order User
          var order =await _orderService.FillInvoiceSiteSideViewModelAsync(User.GetUserId(),cancellation);
-        
         return View(order);
     }
     #endregion
@@ -129,4 +130,15 @@ public class OrderController : Controller
         return View();
     }
     #endregion
+    [HttpPost]
+    public async Task<IActionResult> FinalOrderRegistration(LocationDTO locationDTO )
+    {
+       int id = await  _orderService.AddLocation(locationDTO,User.GetUserId());
+       await  _orderService.UpdateOrder(id);
+       return RedirectToAction("Final", "Order");
+    }
+    public IActionResult Final()
+    {
+        return View();
+    }
 }
