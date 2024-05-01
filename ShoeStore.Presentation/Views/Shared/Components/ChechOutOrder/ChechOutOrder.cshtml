@@ -24,13 +24,7 @@
                         <h2>@item.Price</h2>
                     </td>
                     <td>
-                        @{
-                            var tedad = item.Count;
-                            var TotalForPrduct = item.Price * tedad;
-
-                            <h2 class="td-color">@TotalForPrduct</h2>
-
-                        }
+                        @{var tedad = item.Count;var TotalForPrduct = item.Price * tedad;<h2 class="td-color">@TotalForPrduct</h2>}
                     </td>
                 </tr>
             }
