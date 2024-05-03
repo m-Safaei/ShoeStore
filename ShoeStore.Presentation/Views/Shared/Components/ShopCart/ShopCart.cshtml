@@ -1,6 +1,21 @@
 ﻿@model ShoeStore.Domain.DTOs.SiteSide.Order.InvoiceSiteSideViewModel
 <div class="cart_media">
-    <ul class="cart_product">
+    @if (Model==null)
+    {
+        <section class="p-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 style=“text-align:center”> سبد خرید شما خالی است</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+    @if (Model!=null)
+    {
+          <ul class="cart_product">
      @foreach (var item in Model.InvoiceOrderItem)
         {
             <li>
@@ -26,8 +41,6 @@
             </div>
         </li> 
         } 
-       
-
     </ul>
     <ul class="cart_total">
         <li>
@@ -42,5 +55,8 @@
             </div>
             
         </li>
-    </ul>
+    </ul>  
+    }
+
+
 </div>

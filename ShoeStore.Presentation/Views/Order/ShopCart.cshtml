@@ -1,6 +1,22 @@
 ﻿@model ShoeStore.Domain.DTOs.SiteSide.Order.InvoiceSiteSideViewModel
 <section class="cart-section section-b-space">
     <div class="container">
+        @if (Model == null)
+        {
+            <section class="p-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="error-section">
+                                <h2> سبد خرید شما خالی است </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+        @if (Model != null)
+        {
         <div class="row">
             <div class="col-sm-12 table-responsive-xs">
                 <table class="table cart-table">
@@ -96,6 +112,7 @@
             <div class="col-6"><a asp-action ="CheckOut" asp-controller="Order" class="btn btn-solid">ادامه خرید</a></div>
             <div class="col-6"><a href="#" class="btn btn-solid">بررسی</a></div>
         </div>
+        }
     </div>
 </section>
 <!--section end-->
