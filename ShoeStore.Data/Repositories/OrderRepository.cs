@@ -7,6 +7,7 @@ using ShoeStore.Domain.DTOs.SiteSide.Order;
 namespace ShoeStore.Data.Repositories;
 
 using Microsoft.VisualBasic;
+using ShoeStore.Domain.Entities.User;
 using System.Collections.Generic;
 
 public class OrderRepository : IOrderRepository
@@ -54,6 +55,13 @@ public class OrderRepository : IOrderRepository
     {
        return await _dbContext.Orders.AnyAsync(p=>p.Isfainally==false&&p.UserId==Userid);
     }
+    public async Task UpdateOrder(int UserId)
+    {
+        var order = GetOrderForCart(UserId);
+        order.Isfainally= true;
+       _dbContext.Orders.Update(order);
+        SaveChanges();
+    }
     #endregion
     #region OrderItem
     public bool IsExistOrderItemFromUserFromToday(int OrderId,int productItemId)
@@ -91,5 +99,10 @@ public class OrderRepository : IOrderRepository
         SaveChanges();
     }
     #endregion
+    public void AddLocation(Location location)
+    {
+        _dbContext.Locations.Add(location);
+        SaveChanges();
+    }
 
 }

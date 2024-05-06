@@ -17,7 +17,7 @@
                     <tbody>
                         @foreach (var item in Model.InvoiceOrderItem)
                         {
-                              <tr>
+                          <tr>
                             <td>
                                 <a href="#"><img src="/images/shoes/1.jpg" alt=""></a>
                             </td>
@@ -61,7 +61,7 @@
                                        
                                     }
                             </td>
-                        </tr> 
+                          </tr> 
                         }
                      
                     </tbody>
@@ -93,7 +93,7 @@
             </div>
         </div>
         <div class="row cart-buttons">
-            <div class="col-6"><a href="#" class="btn btn-solid">ادامه خرید</a></div>
+            <div class="col-6"><a asp-action ="CheckOut" asp-controller="Order" class="btn btn-solid">ادامه خرید</a></div>
             <div class="col-6"><a href="#" class="btn btn-solid">بررسی</a></div>
         </div>
     </div>

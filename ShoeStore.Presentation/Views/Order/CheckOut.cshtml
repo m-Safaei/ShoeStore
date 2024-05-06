@@ -1,0 +1,94 @@
+﻿@model ShoeStore.Domain.DTOs.SiteSide.Location.LocationDTO
+<!-- section start -->
+<section class="section-b-space">
+    <div class="container">
+        <div class="checkout-page">
+            <div class="checkout-form">
+                <form asp-action="FinalOrderRegistration" asp-controller="Order">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12 col-xs-12">
+                           
+                            <div class="checkout-title">
+                                <h3>جزئیات صورتحساب</h3>
+                            </div>
+                            <div class="row check-out">
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                    <div class="field-label">نام کوچک</div>
+                                    <input type="text" asp-for="FirstName" value="" placeholder="">
+                                </div>
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                    <div class="field-label">نام خانوادگی</div>
+                                    <input type="text" asp-for="LastName" value="" placeholder="">
+                                </div>
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                    <div class="field-label">تلفن</div>
+                                    <input type="text" asp-for="FhoneNumber" value="" placeholder="">
+                                </div>
+
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <div class="field-label">آدرس</div>
+                                    <input type="text" asp-for="Address" value="" placeholder="آدرس ">
+                                </div>
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <div class="field-label">استان</div>
+                                    <input type="text" asp-for="Province" value="" placeholder="">
+                                </div>
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <div class="field-label">شهر</div>
+                                    <input type="text" asp-for="City" value="" placeholder="">
+                                </div>
+                                <div class="form-group col-md-12 col-sm-6 col-xs-12">
+                                    <div class="field-label">منطقه</div>
+                                    <input type="text" asp-for="Region" value="" placeholder="">
+                                </div>
+                                <div class="form-group col-md-12 col-sm-6 col-xs-12">
+                                    <div class="field-label">کد پستی</div>
+                                    <input type="text" asp-for="PostalCode" value="" placeholder="">
+                                </div>
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input type="checkbox" name="shipping-option" id="account-option"> &ensp;
+                                    <label for="account-option">ساخت حساب ؟ </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12 col-xs-12">
+                            <div class="checkout-details">
+
+                                @await Component.InvokeAsync("ChechOutOrder");
+                                <div class="payment-box">
+                                    <div class="upper-box">
+                                        <div class="payment-options">
+                                            <ul>
+                                                <li>
+                                                    <div class="radio-option">
+                                                        <input type="radio" name="payment-group" id="payment-1" checked="checked">
+                                                        <label for="payment-1">پرداخت ها را چک کنید<span class="small-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="radio-option">
+                                                        <input type="radio" name="payment-group" id="payment-2">
+                                                        <label for="payment-2">پرداخت نقدی هنگام تحویل<span class="small-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="radio-option paypal">
+                                                        <input type="radio" name="payment-group" id="payment-3">
+                                                        <label for="payment-3">پی پال<span class="image"><img src="../assets/images/paypal.png" alt=""></span></label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn-solid btn">ثبت سفارش</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- section end -->
