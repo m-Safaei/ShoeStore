@@ -60,6 +60,11 @@ namespace ShoeStore.Presentation.Controllers
             return RedirectToAction("Index","Home");
         }
 
+        public IActionResult ListOfComments(CancellationToken cancellation = default) 
+        {
+            var list = _commentService.GetListOfProductComments(cancellation);
+            return View(list);
+        }
 
     }
 }
