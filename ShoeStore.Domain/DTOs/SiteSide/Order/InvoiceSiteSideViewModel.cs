@@ -9,26 +9,26 @@ namespace ShoeStore.Domain.DTOs.SiteSide.Order
     public record InvoiceSiteSideViewModel
     {
         #region proeprties
-        public Domain.Entities.Order.Order Order { get; set; }
-        public List<InvoiceOrderDetailSiteSideViewModel> InvoiceOrderItem { get; set; }      
+        public Domain.Entities.Order.Order? Order { get; set; }
+        public List<InvoiceOrderDetailSiteSideViewModel>? InvoiceOrderItem { get; set; }      
         public bool IsReturend { get; set; }
         #endregion
     }
     public class InvoiceOrderDetailSiteSideViewModel
     {
-        public int OrderDetailID { get; set; }
-        public int Count { get; set; }
-        public decimal Price { get; set; }
+        public int? OrderDetailID { get; set; }
+        public int? Count { get; set; }
+        public decimal? Price { get; set; }
         public InvoiceProductSiteSideViewModel Product { get; set; }
       //  public InvoiceSizeSiteSideViewModel InvoiceSize { get; set; }
     }
     public class InvoiceProductSiteSideViewModel
     {
-        public int ProductId { get; set; }
+        public int? ProductId { get; set; }
 
-        public string ProductTitle { get; set; }
+        public string? ProductTitle { get; set; }
 
-        public string ProductImage { get; set; }
+        public string? ProductImage { get; set; }
     }
     //public class InvoiceSizeSiteSideViewModel
     //{

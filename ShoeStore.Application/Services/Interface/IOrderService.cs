@@ -1,4 +1,5 @@
 ﻿#region Using
+using ShoeStore.Domain.DTOs.SiteSide.Location;
 using ShoeStore.Domain.DTOs.SiteSide.Order;
 using ShoeStore.Domain.Entities.Order;
 using ShoeStore.Domain.Entities.Product;
@@ -11,6 +12,7 @@ public interface IOrderService
     Order GetOrderForCart(int userId);
     Order GetOrderByOrderItemId(int OrderItemId);
     Task<bool> IsOrderInLastStepOfShoping(int orderid, int Userid);
+    Task UpdateOrder(int UserId);
     #region OrderItem
     bool IsExistOrderItemFromUserFromToday(int OrderId, int productId);
     void AddProductToOrderItem(int productId, int orderId, decimal Price,int count);
@@ -18,11 +20,9 @@ public interface IOrderService
     void PlusProductToTheOrderItem(int id); 
     void MinusProductToTheOrderItem(int id);
     Task RemoveProductFromShopCart(int orderItemid);
-    Task<List<InvoiceSiteSideViewModel>> FillInvoiceSiteSideViewModel(int userId, CancellationToken cancellation);
     Task<InvoiceSiteSideViewModel> FillInvoiceSiteSideViewModelAsync(int userId, CancellationToken cancellation);
     #endregion
-
-
+    Task<int> AddLocation(LocationDTO locationDTO, int UserId);
 
 }
 

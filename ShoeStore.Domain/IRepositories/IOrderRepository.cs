@@ -13,6 +13,7 @@ public interface IOrderRepository
     Order GetOrderByOrderItemId(int OrderItemId);
     Task<bool> IsOrderInLastStepOfShoping(int orderid, int Userid);
     List<Order> GetOrder(int UserID);
+    Task UpdateOrder(int UserId);
 
     #region orderItem
     bool IsExistOrderItemFromUserFromToday(int OrderId, int productId);
@@ -25,7 +26,7 @@ public interface IOrderRepository
     List<OrderItem> GetOrderItemByOrderId(int OrderId);
     #endregion
 
-
+    void AddLocation(Location location);
 
 
 }

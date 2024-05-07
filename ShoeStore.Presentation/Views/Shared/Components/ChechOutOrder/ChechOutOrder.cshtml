@@ -1,0 +1,53 @@
+﻿@model ShoeStore.Domain.DTOs.SiteSide.Order.InvoiceSiteSideViewModel
+<div class="order-box">
+    <div class="title-box">
+        <div>محصول <span>جمع</span></div>
+    </div>
+    <ul class="qty">
+        <table class="table cart-table">
+            <thead>
+                <tr class="table-head">
+                    <th scope="col">اسم محصول</th>
+                    <th scope="col">تعداد</th>
+                    <th scope="col">جمع </th>
+                </tr>
+            </thead>
+        </table>
+        <tbody>
+            @foreach (var item in Model.InvoiceOrderItem)
+            {
+                <tr>
+                    <td>
+                        <h2>@item.Product.ProductTitle</h2>
+                    </td>
+                    <td>
+                        <h2>@item.Price</h2>
+                    </td>
+                    <td>
+                        @{var tedad = item.Count;var TotalForPrduct = item.Price * tedad;<h2 class="td-color">@TotalForPrduct</h2>}
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </ul> 
+    <ul class="sub-total">
+        <li>جمع فرعی <span class="count">1380.10</span></li>
+        <li>
+            روش ارسال
+            <div class="shipping">
+                <div class="shopping-option">
+                    <input type="checkbox" name="free-shipping" id="free-shipping">
+                    <label for="free-shipping">ارسال رایگان</label>
+                </div>
+                <div class="shopping-option">
+                    <input type="checkbox" name="local-pickup" id="local-pickup">
+                    <label for="local-pickup">وانت محلی</label>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <ul class="total">
+        <li>جمع <span class="count">1620.00</span></li>
+    </ul>
+</div>

@@ -1,8 +1,10 @@
 ﻿#region Using
 using ShoeStore.Application.Services.Interface;
+using ShoeStore.Domain.DTOs.SiteSide.Location;
 using ShoeStore.Domain.DTOs.SiteSide.Order;
 using ShoeStore.Domain.Entities.Order;
 using ShoeStore.Domain.Entities.Product;
+using ShoeStore.Domain.Entities.User;
 using ShoeStore.Domain.IRepositories;
 namespace ShoeStore.Application.Services.Implementation;
 #endregion
@@ -88,55 +90,6 @@ public class OrderService : IOrderService
          await _orderRepository.RemoveProductFromShopCart(orderItem);
     }
 
-  public async Task<List<InvoiceSiteSideViewModel>> FillInvoiceSiteSideViewModel(int userId, CancellationToken cancellation)
-   {
-    var invoices = new List<InvoiceSiteSideViewModel>();
-    
-    // Get orders by user id.
-    var orders = _orderRepository.GetOrder(userId);
-    
-    foreach (var order in orders)
-    {
-        if (!order.Isfainally)
-        {
-            var invoice = new InvoiceSiteSideViewModel
-            {
-                Order = order,
-                InvoiceOrderItem = new List<InvoiceOrderDetailSiteSideViewModel>(),
-                IsReturend = false
-            };
-            
-            // Get order items for the current order.
-            var orderItems = _orderRepository.GetOrderItemByOrderId(order.Id);
-            
-            int i = 1;
-            
-            foreach (var orderItem in orderItems)
-            {
-                var product = await _productRepository.GetProductByIdAsync(i, cancellation);
-                
-                var invoiceOrderDetail = new InvoiceOrderDetailSiteSideViewModel
-                {
-                    OrderDetailID = orderItem.Id,
-                    Count = orderItem.Count,
-                    Price = orderItem.Price,
-                    Product = new InvoiceProductSiteSideViewModel
-                    {
-                        ProductId = product.Id,
-                        ProductTitle = product.Name,
-                        ProductImage = product.ProductImage
-                    }
-                };
-                
-                invoice.InvoiceOrderItem.Add(invoiceOrderDetail);
-            }
-            
-            invoices.Add(invoice);
-        }
-    }
-    
-    return await Task.FromResult(invoices);
-   }
     public async Task<InvoiceSiteSideViewModel> FillInvoiceSiteSideViewModelAsync(int userId, CancellationToken cancellation)
     {
         InvoiceSiteSideViewModel invoice = null;
@@ -184,5 +137,27 @@ public class OrderService : IOrderService
         }
 
         return await Task.FromResult(invoice);
+    }
+     
+    public async Task<int> AddLocation(LocationDTO locationDTO,int UserId)
+    {
+        Location location = new Location()
+        {
+            FirstName= locationDTO.FirstName,
+            LastName= locationDTO.LastName,
+            FhoneNumber= locationDTO.FhoneNumber,
+            Address= locationDTO.Address,
+            City= locationDTO.City,
+            Region= locationDTO.Region,
+            PostalCode= locationDTO.PostalCode,
+            Province= locationDTO.Province,
+            UserId= UserId,
+        };
+        _orderRepository.AddLocation(location);
+        return UserId;
+    }
+    public async Task UpdateOrder(int UserId)
+    {
+       await _orderRepository.UpdateOrder(UserId);
     }
 }
