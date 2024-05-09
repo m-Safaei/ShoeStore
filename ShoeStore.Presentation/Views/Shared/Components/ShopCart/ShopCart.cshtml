@@ -1,6 +1,6 @@
 ﻿@model ShoeStore.Domain.DTOs.SiteSide.Order.InvoiceSiteSideViewModel
 <div class="cart_media">
-    @if (Model==null)
+    @if (Model==null || Model.InvoiceOrderItem==null || !Model.InvoiceOrderItem.Any())
     {
         <section class="p-0">
             <div class="container">
@@ -12,8 +12,7 @@
             </div>
         </section>
     }
-
-    @if (Model!=null)
+    else
     {
           <ul class="cart_product">
      @foreach (var item in Model.InvoiceOrderItem)
