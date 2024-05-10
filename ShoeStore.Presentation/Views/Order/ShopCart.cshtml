@@ -96,7 +96,7 @@
                                             var tedadProduct = item.Count;
                                             var Total = item.Price * tedadProduct;
                                             var tedadOrderItem = Model.InvoiceOrderItem.Count();
-                                            TotalFainal += Convert.ToInt16(Total);
+                                            TotalFainal += Convert.ToInt32(Total);
                                         }
                                         <h2 class="td-color">@TotalFainal</h2>
                                     }

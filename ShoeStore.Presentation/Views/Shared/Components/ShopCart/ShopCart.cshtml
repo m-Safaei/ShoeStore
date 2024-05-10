@@ -44,7 +44,7 @@
     <ul class="cart_total">
         <li>
             <div class="total">
-                <h5>جمع کل :  <span>@{int TotalFainal = 0;foreach (var item in Model.InvoiceOrderItem){var tedadProduct = item.Count;var Total = item.Price * tedadProduct;var tedadOrderItem = Model.InvoiceOrderItem.Count();TotalFainal += Convert.ToInt16(Total);}<span>@TotalFainal</span>}</span></h5>
+                <h5>جمع کل :  <span>@{int TotalFainal = 0;foreach (var item in Model.InvoiceOrderItem){var tedadProduct = item.Count;var Total = item.Price * tedadProduct;var tedadOrderItem = Model.InvoiceOrderItem.Count();TotalFainal += Convert.ToInt32(Total);}<span>@TotalFainal</span>}</span></h5>
             </div>
         </li>
         <li>
