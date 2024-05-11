@@ -14,18 +14,18 @@ namespace ShoeStore.Application.Services.Implementation
             _commentRepository = commentRepository;
         }
 
-        public void AddComment(CommentDTO comment)
+        public async Task AddComment(CommentDTO comment, int userId,CancellationToken cancellation)
         {
             Comment newComment = new Comment()
             {
-                UserId = comment.UserId,
+                UserId = userId,
                 MessageTitle = comment.MessageTitle,
                 MessageBody = comment.MessageBody,
                 IsDelete = false,
                 IsSeen = false
             };
 
-            _commentRepository.AddComment(newComment);
+            _commentRepository.AddComment(newComment,cancellation);
         }
 
         public async Task<List<Comment>> GetListOfProductComments(CancellationToken cancellation)

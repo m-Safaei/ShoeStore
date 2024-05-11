@@ -5,7 +5,7 @@ namespace ShoeStore.Application.Services.Interface
 {
     public interface ICommentService
     {
-        void AddComment(CommentDTO comment);
+        Task AddComment(CommentDTO comment, int userId, CancellationToken cancellation);
         Task<List<Comment>> GetListOfProductComments(CancellationToken cancellation);
         Task<List<Comment>> GetListOfBlogComments();
     }

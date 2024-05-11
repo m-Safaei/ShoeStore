@@ -1,0 +1,21 @@
+﻿<div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
+    <form asp-controller="ProductController" asp-action="AddCommentForProduct" class="theme-form">
+        <div class="form-row row">
+            <div class="col-md-6">
+                <label for="name">نام</label>
+                <input type="text" class="form-control" id="name" placeholder="نام خود را وارد کنید " required="">
+            </div>
+            <div class="col-md-12">
+                <label for="review">عنوان نظر </label>
+                <input type="text" class="form-control" id="review" placeholder="موضوع را وارد کنید " required="">
+            </div>
+            <div class="col-md-12">
+                <label for="review">متن نظر </label>
+                <textarea class="form-control" placeholder="متن خود را وارد کنید " id="exampleFormControlTextarea1" rows="6"></textarea>
+            </div>
+            <div class="col-md-12">
+                <button class="btn btn-solid" type="submit">نظر خود را ارسال کنید</button>
+            </div>
+        </div>
+    </form>
+</div>

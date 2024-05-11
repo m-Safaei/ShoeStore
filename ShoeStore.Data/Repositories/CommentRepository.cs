@@ -13,7 +13,7 @@ namespace ShoeStore.Data.Repositories
             _context = context;
         }
 
-        public void AddComment(Comment Comment)
+        public void AddComment(Comment Comment, CancellationToken cancellation)
         {
             if (Comment != null) 
             {

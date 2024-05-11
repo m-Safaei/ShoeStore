@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ShoeStore.Application.Services.Interface;
+using ShoeStore.Application.Utilities;
 using ShoeStore.Domain.DTOs.SiteSide.Comment;
 
 namespace ShoeStore.Presentation.Controllers
@@ -51,11 +52,11 @@ namespace ShoeStore.Presentation.Controllers
 
 
         [HttpPost,ValidateAntiForgeryToken,Authorize]
-        public IActionResult AddCommentForProduct(CommentDTO comment) 
+        public async Task<IActionResult> AddCommentForProduct(CommentDTO comment, CancellationToken cancellation = default) 
         {
             //Add Comment For Product
-            if (ModelState.IsValid)
-                _commentService.AddComment(comment);
+            if (ModelState.IsValid && User.Identity.IsAuthenticated)
+                await _commentService.AddComment(comment, User.GetUserId(), cancellation);
             
             return RedirectToAction("Index","Home");
         }
