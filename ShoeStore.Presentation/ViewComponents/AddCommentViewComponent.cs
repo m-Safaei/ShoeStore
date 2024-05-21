@@ -13,10 +13,11 @@ namespace ShoeStore.Presentation.ViewComponents
             _commentService = commentService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(CancellationToken cancellation = default)
+        public async Task<IViewComponentResult> InvokeAsync(CommentDTO newComment, CancellationToken cancellation = default)
         {
 
-            return View("AddComment", await _commentService.AddComment(new CommentDTO(), User.GetUserId(), cancellation));
+            return View("AddComment", 
+                await _commentService.AddComment(newComment, User.GetUserId(), cancellation));
         }
     }
 }

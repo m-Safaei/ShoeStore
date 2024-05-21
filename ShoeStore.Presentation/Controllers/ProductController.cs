@@ -55,7 +55,7 @@ namespace ShoeStore.Presentation.Controllers
         public async Task<IActionResult> AddCommentForProduct(CommentDTO comment, CancellationToken cancellation = default) 
         {
             //Add Comment For Product
-            if (ModelState.IsValid && User.Identity.IsAuthenticated)
+            if (ModelState.IsValid)
                 await _commentService.AddComment(comment, User.GetUserId(), cancellation);
             
             return RedirectToAction("Index","Home");

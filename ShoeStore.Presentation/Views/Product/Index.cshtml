@@ -217,7 +217,10 @@
                         </div>
                     </div>
                     @await Component.InvokeAsync("ListOfComments")
-                    @await Component.InvokeAsync("AddComment")
+                    @if(User.Identity.IsAuthenticated)
+                    {
+                        @await Component.InvokeAsync("AddComment",new {newComment = Model.ProductComment})
+                    }
                     @*<div class="tab-pane fade" id="top-comments" role="tabpanel" aria-labelledby="listOfComments-top-tab">
                         <div class="row section-b-space blog-detail-page ratio2_3">
                             <div class="col-sm-12">
