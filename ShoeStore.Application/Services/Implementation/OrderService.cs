@@ -92,7 +92,7 @@ public class OrderService : IOrderService
 
     public async Task<InvoiceSiteSideViewModel> FillInvoiceSiteSideViewModelAsync(int userId, CancellationToken cancellation)
     {
-        InvoiceSiteSideViewModel invoice = null;
+        InvoiceSiteSideViewModel invoice = new();
         // Get orders by user id
         var orders = _orderRepository.GetOrder(userId);
 

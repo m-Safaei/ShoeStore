@@ -59,6 +59,7 @@ namespace ShoeStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Comments");
+
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.ContactUs.ContactUs", b =>
