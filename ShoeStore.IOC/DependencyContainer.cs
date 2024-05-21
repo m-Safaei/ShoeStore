@@ -32,6 +32,10 @@ public class DependencyContainer
 
         services.AddScoped<IFavoriteProductRepository, FavoriteProductRepository>();
         services.AddScoped<IFavoriteProductService, FavoriteProductService>();
+
+        services.AddScoped<ICommentRepository, CommentRepository>();
+        services.AddScoped<ICommentService, CommentService>();
+
     }
 }
 

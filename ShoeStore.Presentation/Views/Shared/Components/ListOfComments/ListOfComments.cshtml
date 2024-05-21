@@ -1,0 +1,26 @@
+﻿@using ShoeStore.Application.Utilities
+@model ShoeStore.Domain.DTOs.SiteSide.Comment.CommentDTO
+
+<div class="tab-pane fade" id="top-comments" role="tabpanel" aria-labelledby="listOfComments-top-tab">
+    <form asp-controller="ProductController" asp-action="ListOfComments">
+        <div class="row section-b-space blog-detail-page ratio2_3">
+            <div class="col-sm-12">
+                <ul class="comment-section">
+                    @foreach(var comment in Model.MessageBody)
+                    {
+                        <li>
+                            <div class="media">
+                                <div class="media-body">
+                                    <h6>@User.Identity.Name<span>@Model.CreateDate</span></h6>
+                                    @*<p>@Model.MessageTitle</p>*@
+                                    <p>@Model.MessageBody</p>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+

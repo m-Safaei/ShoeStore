@@ -216,7 +216,12 @@
                             </table> *@
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="top-comments" role="tabpanel" aria-labelledby="listOfComments-top-tab">
+                    @await Component.InvokeAsync("ListOfComments")
+                    @if(User.Identity.IsAuthenticated)
+                    {
+                        @await Component.InvokeAsync("AddComment",new {newComment = Model.ProductComment})
+                    }
+                    @*<div class="tab-pane fade" id="top-comments" role="tabpanel" aria-labelledby="listOfComments-top-tab">
                         <div class="row section-b-space blog-detail-page ratio2_3">
                             <div class="col-sm-12">
                                 <ul class="comment-section">
@@ -250,8 +255,8 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
+                    </div>*@
+                    @*<div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
                         <form class="theme-form">
                             <div class="form-row row">
                                 <div class="col-md-6">
@@ -275,7 +280,7 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>

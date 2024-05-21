@@ -5,6 +5,7 @@ namespace ShoeStore.Domain.DTOs.SiteSide.Comment
 {
     public class CommentDTO
     {
+        public DateTime CreateDate { get; set; } = DateTime.Now;
         public int UserId { get; set; }
         public int? ProductId { get; set; }
         public int? BlogId { get; set; }

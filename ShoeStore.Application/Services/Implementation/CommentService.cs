@@ -1,6 +1,5 @@
 ﻿using ShoeStore.Application.Services.Interface;
 using ShoeStore.Domain.DTOs.SiteSide.Comment;
-using ShoeStore.Domain.DTOs.SiteSide.Account;
 using ShoeStore.Domain.Entities.Comment;
 using ShoeStore.Domain.IRepositories;
 
@@ -15,25 +14,29 @@ namespace ShoeStore.Application.Services.Implementation
             _commentRepository = commentRepository;
         }
 
-        public void AddComment(CommentDTO comment, UserDto user)
+        public async Task AddComment(CommentDTO comment, int userId,CancellationToken cancellation)
         {
             Comment newComment = new Comment()
             {
-                UserId = user.Id,
+                UserId = userId,
                 MessageTitle = comment.MessageTitle,
                 MessageBody = comment.MessageBody,
                 IsDelete = false,
                 IsSeen = false
             };
 
-            _commentRepository.AddNewComment(newComment);
-
+            _commentRepository.AddComment(newComment,cancellation);
         }
 
-        public void DeleteComment(CommentDTO comment)
+        public async Task<List<Comment>> GetListOfProductComments(CancellationToken cancellation)
         {
-            throw new NotImplementedException();
+            return await _commentRepository.GetListOfProductComments(cancellation);
         }
-        
+
+        public async Task<List<Comment>> GetListOfBlogComments()
+        {
+            return await _commentRepository.GetListOfBlogComments();
+        }
+
     }
 }

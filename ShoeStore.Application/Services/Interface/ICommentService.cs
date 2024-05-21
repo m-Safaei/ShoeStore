@@ -1,14 +1,12 @@
-﻿using ShoeStore.Domain.DTOs.SiteSide.Account;
-using ShoeStore.Domain.DTOs.SiteSide.Comment;
-using ShoeStore.Domain.Entities.Product;
-using System.Security.Cryptography;
+﻿using ShoeStore.Domain.DTOs.SiteSide.Comment;
+using ShoeStore.Domain.Entities.Comment;
 
 namespace ShoeStore.Application.Services.Interface
 {
     public interface ICommentService
     {
-        void AddComment(CommentDTO comment, UserDto user);
-        void DeleteComment(CommentDTO comment);
-
+        Task AddComment(CommentDTO comment, int userId, CancellationToken cancellation);
+        Task<List<Comment>> GetListOfProductComments(CancellationToken cancellation);
+        Task<List<Comment>> GetListOfBlogComments();
     }
 }

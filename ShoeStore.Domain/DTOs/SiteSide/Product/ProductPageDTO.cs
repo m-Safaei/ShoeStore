@@ -1,4 +1,6 @@
-﻿namespace ShoeStore.Domain.DTOs.SiteSide.Product;
+﻿using ShoeStore.Domain.DTOs.SiteSide.Comment;
+
+namespace ShoeStore.Domain.DTOs.SiteSide.Product;
 
 public class ProductPageDTO
 {
@@ -11,4 +13,6 @@ public class ProductPageDTO
     public int Price { get; set; }
     public int DiscountPercentage { get; set; }
     public ICollection<SizeDTO>? SizeDTOs { get; set; }
+
+    public CommentDTO ProductComment { get; set; }
 }
