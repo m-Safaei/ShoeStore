@@ -18,7 +18,8 @@ namespace ShoeStore.Application.Services.Implementation
         {
             Comment newComment = new Comment()
             {
-                UserId = userId,
+                UserId = comment.UserId,
+                ProductId = comment.ProductId,
                 MessageTitle = comment.MessageTitle,
                 MessageBody = comment.MessageBody,
                 IsDelete = false,
