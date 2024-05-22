@@ -219,9 +219,27 @@
                     @await Component.InvokeAsync("ListOfComments")
                     @if(User.Identity.IsAuthenticated)
                     {
-                        @await Component.InvokeAsync("AddComment",new {newComment = Model.ProductComment})
+                        <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
+                            <form asp-controller="Product" asp-action="AddCommentForProduct" method="post" class="theme-form">
+                                <div class="form-row row">
+                                    <input type="hidden" name="ProductId" value="@Model.ProductId"/>
+                                    <input type="hidden" name="UserId" value="@User.GetUserId()"/>
+                                    <div class="col-md-12">
+                                        <label for="review">عنوان نظر </label>
+                                        <input name="MessageTitle" type="text" class="form-control" id="review" placeholder="موضوع را وارد کنید " required="">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="review">متن نظر </label>
+                                        <textarea name="MessageBody" class="form-control" placeholder="متن خود را وارد کنید " id="exampleFormControlTextarea1" rows="6"></textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-solid" type="submit">نظر خود را ارسال کنید</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     }
-                    @*<div class="tab-pane fade" id="top-comments" role="tabpanel" aria-labelledby="listOfComments-top-tab">
+                    <div class="tab-pane fade" id="top-comments" role="tabpanel" aria-labelledby="listOfComments-top-tab">
                         <div class="row section-b-space blog-detail-page ratio2_3">
                             <div class="col-sm-12">
                                 <ul class="comment-section">
@@ -255,32 +273,8 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>*@
-                    @*<div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
-                        <form class="theme-form">
-                            <div class="form-row row">
-                                <div class="col-md-6">
-                                    <label for="name">نام</label>
-                                    <input type="text" class="form-control" id="name" placeholder="نام خود را وارد کنید " required="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="email">ایمیل</label>
-                                    <input type="text" class="form-control" id="email" placeholder="ایمیل" required="">
-                                </div>
-                                <div class="col-md-12">
-                                    <label for="review">عنوان نظر </label>
-                                    <input type="text" class="form-control" id="review" placeholder="موضوع را وارد کنید " required="">
-                                </div>
-                                <div class="col-md-12">
-                                    <label for="review">عنوان نظر </label>
-                                    <textarea class="form-control" placeholder="متن خود را وارد کنید " id="exampleFormControlTextarea1" rows="6"></textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <button class="btn btn-solid" type="submit">نظر خود را ارسال کنید</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>*@
+                    </div>
+                    
                 </div>
             </div>
         </div>

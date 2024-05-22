@@ -1,26 +1,27 @@
 ﻿@using ShoeStore.Application.Utilities
-@model ShoeStore.Domain.DTOs.SiteSide.Comment.CommentDTO
+@* @model ShoeStore.Domain.DTOs.SiteSide.Comment.CommentDTO *@
+@model List<ShoeStore.Domain.Entities.Comment.Comment>
 
 <div class="tab-pane fade" id="top-comments" role="tabpanel" aria-labelledby="listOfComments-top-tab">
-    <form asp-controller="ProductController" asp-action="ListOfComments">
-        <div class="row section-b-space blog-detail-page ratio2_3">
-            <div class="col-sm-12">
-                <ul class="comment-section">
-                    @foreach(var comment in Model.MessageBody)
-                    {
-                        <li>
-                            <div class="media">
-                                <div class="media-body">
-                                    <h6>@User.Identity.Name<span>@Model.CreateDate</span></h6>
-                                    @*<p>@Model.MessageTitle</p>*@
-                                    <p>@Model.MessageBody</p>
-                                </div>
+    <div class="row section-b-space blog-detail-page ratio2_3">
+        <div class="col-sm-12">
+            <ul class="comment-section">
+                @foreach (var comment in Model)
+                {
+                    <li>
+                        <div class="media">
+                            <img src="/images/Defult.jpg" alt="عکس محصول ">
+                            <div class="media-body">
+                                <h6>@User.Identity.Name <span>@comment.CreateDate.ToShamsi()</span></h6>
+                                <p>@comment.MessageBody</p>
                             </div>
-                        </li>
-                    }
-                </ul>
-            </div>
+                        </div>
+                    </li>
+                }
+                
+            </ul>
         </div>
-    </form>
+    </div>
 </div>
+
 
