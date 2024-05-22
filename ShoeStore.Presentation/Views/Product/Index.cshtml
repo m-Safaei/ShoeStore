@@ -4,7 +4,7 @@
 
 
 
-@await Component.InvokeAsync("ProductPageBreadCrumb", new { childCategoryId = Model.ProductCategoryId});
+@await Component.InvokeAsync("ProductPageBreadCrumb", new { childCategoryId = Model.ProductCategoryId });
 <!-- section start -->
 <section>
     <div class="collection-wrapper">
@@ -78,7 +78,7 @@
                         @if (Model.DiscountPercentage > 0)
                         {
                             <h4><del>@Model.Price</del><span>تخفیف</span></h4>
-                            <h3>@((Model.Price * (100 - Model.DiscountPercentage))/100)</h3>
+                            <h3>@((Model.Price * (100 - Model.DiscountPercentage)) / 100)</h3>
                         }
                         else
                         {
@@ -126,8 +126,8 @@
                             <div class="product-buttons">
                                 @if (Model.SizeDTOs != null && Model.SizeDTOs.Any())
                                 {
-                                    <button type="submit"    href="javascript:void(0)" id="cartEffect" class="btn btn-solid hover-solid btn-animation">اضافه کردن به سبد</button>
-                                } 
+                                    <button type="submit" href="javascript:void(0)" id="cartEffect" class="btn btn-solid hover-solid btn-animation">اضافه کردن به سبد</button>
+                                }
                                 <a asp-controller="FavoriteProduct" asp-action="AddFavoriteProduct" asp-route-productId="@Model.ProductId" asp-route-userId="@User.GetUserId()" class="btn btn-solid">علاقه مندی</a>
                             </div>
                         </form>
@@ -217,28 +217,27 @@
                         </div>
                     </div>
                     @await Component.InvokeAsync("ListOfComments")
-                    @if(User.Identity.IsAuthenticated)
-                    {
-                        <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
-                            <form asp-controller="Product" asp-action="AddCommentForProduct" method="post" class="theme-form">
-                                <div class="form-row row">
-                                    <input type="hidden" name="ProductId" value="@Model.ProductId"/>
-                                    <input type="hidden" name="UserId" value="@User.GetUserId()"/>
-                                    <div class="col-md-12">
-                                        <label for="review">عنوان نظر </label>
-                                        <input name="MessageTitle" type="text" class="form-control" id="review" placeholder="موضوع را وارد کنید " required="">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="review">متن نظر </label>
-                                        <textarea name="MessageBody" class="form-control" placeholder="متن خود را وارد کنید " id="exampleFormControlTextarea1" rows="6"></textarea>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <button class="btn btn-solid" type="submit">نظر خود را ارسال کنید</button>
-                                    </div>
+
+                    <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
+                        <form asp-controller="Product" asp-action="AddCommentForProduct" method="post" class="theme-form">
+                            <div class="form-row row">
+                                <input type="hidden" name="ProductId" value="@Model.ProductId" />
+                                <input type="hidden" name="UserId" value="@User.GetUserId()" />
+                                <div class="col-md-12">
+                                    <label for="review">عنوان نظر </label>
+                                    <input name="MessageTitle" type="text" class="form-control" id="review" placeholder="موضوع را وارد کنید " required="">
                                 </div>
-                            </form>
-                        </div>
-                    }
+                                <div class="col-md-12">
+                                    <label for="review">متن نظر </label>
+                                    <textarea name="MessageBody" class="form-control" placeholder="متن خود را وارد کنید " id="exampleFormControlTextarea1" rows="6"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="btn btn-solid" type="submit">نظر خود را ارسال کنید</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
                     <div class="tab-pane fade" id="top-comments" role="tabpanel" aria-labelledby="listOfComments-top-tab">
                         <div class="row section-b-space blog-detail-page ratio2_3">
                             <div class="col-sm-12">
@@ -274,7 +273,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -285,8 +284,6 @@
 @await Component.InvokeAsync("RelatedProducts", new { categoryId = Model.ProductCategoryId })
 <!-- product section end -->
 <!-- theme setting -->
-
-
 <!-- theme setting -->
 <!-- Add to cart modal popup start-->
 <div class="modal fade bd-example-modal-lg theme-modal cart-modal" id="addtocart" tabindex="-1" role="dialog" aria-hidden="true">
@@ -439,4 +436,4 @@
     <img src="../assets/images/fashion/pro/1.jpg" class="img-fluid" alt="">
     <h3>اضافه کردن به سبد</h3>
 </div>
-<!-- اضافه کردن به سبد notification --> 
+<!-- اضافه کردن به سبد notification -->

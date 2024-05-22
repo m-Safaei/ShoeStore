@@ -52,13 +52,18 @@ namespace ShoeStore.Presentation.Controllers
 
 
         [HttpPost,ValidateAntiForgeryToken,Authorize]
-        public async Task<IActionResult> AddCommentForProduct(CommentDTO comment, CancellationToken cancellation = default) 
+        public async Task<IActionResult> AddCommentForProduct(CommentDTO comment, CancellationToken cancellation = default)
         {
-            //Add Comment For Product
-            if (ModelState.IsValid)
-                await _commentService.AddComment(comment, User.GetUserId(), cancellation);
-            
-            return RedirectToAction("Index","Home");
+            if (User.Identity.IsAuthenticated)
+            {
+                //Add Comment For Product
+                if (ModelState.IsValid)
+                    await _commentService.AddComment(comment, User.GetUserId(), cancellation);
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            return RedirectToAction("Login", "Account");
         }
 
     }
