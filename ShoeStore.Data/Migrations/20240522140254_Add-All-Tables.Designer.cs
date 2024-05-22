@@ -12,8 +12,8 @@ using ShoeStore.Data.AppDbContext;
 namespace ShoeStore.Data.Migrations
 {
     [DbContext(typeof(ShoeStoreDbContext))]
-    [Migration("20240510094323_Add-All")]
-    partial class AddAll
+    [Migration("20240522140254_Add-All-Tables")]
+    partial class AddAllTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,7 +61,7 @@ namespace ShoeStore.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("ShoeStore.Domain.Entities.ContactUs.ContactUs", b =>
