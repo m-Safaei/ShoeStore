@@ -14,7 +14,7 @@ namespace ShoeStore.Application.Services.Implementation
             _commentRepository = commentRepository;
         }
 
-        public async Task AddComment(CommentDTO comment, int userId,CancellationToken cancellation)
+        public async Task AddComment(CommentDTO comment, CancellationToken cancellation)
         {
             Comment newComment = new Comment()
             {

@@ -13,6 +13,4 @@ public class ProductPageDTO
     public int Price { get; set; }
     public int DiscountPercentage { get; set; }
     public ICollection<SizeDTO>? SizeDTOs { get; set; }
-
-    public CommentDTO ProductComment { get; set; }
 }
