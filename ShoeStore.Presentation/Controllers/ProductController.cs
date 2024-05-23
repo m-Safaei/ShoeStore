@@ -58,7 +58,7 @@ namespace ShoeStore.Presentation.Controllers
             {
                 //Add Comment For Product
                 if (ModelState.IsValid)
-                    await _commentService.AddComment(comment, User.GetUserId(), cancellation);
+                    await _commentService.AddComment(comment, cancellation);
 
                 return RedirectToAction("Index", "Home");
             }
