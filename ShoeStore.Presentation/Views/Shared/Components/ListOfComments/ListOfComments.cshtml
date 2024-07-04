@@ -4,14 +4,14 @@
 <div class="tab-pane fade" id="top-comments" role="tabpanel" aria-labelledby="listOfComments-top-tab">
     <div class="row section-b-space blog-detail-page ratio2_3">
         <div class="col-sm-12">
-            <ul class="comment-section">
+            <ul class="comment-section" style="display: flex;flex-direction: column">
                 @foreach (var comment in Model)
                 {
                     <li>
                         <div class="media">
                             <img src="/images/Defult.jpg" alt="عکس محصول ">
                             <div class="media-body">
-                                <h6>@User.Identity.Name <span>@comment.CreateDate.ToShamsi()</span></h6>
+                                <h6>@comment.UserName <span>@comment.CreateDate.ToShamsi()</span></h6>
                                 <p>@comment.MessageBody</p>
                             </div>
                         </div>
